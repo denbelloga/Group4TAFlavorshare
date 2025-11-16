@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Recipes - Recipe App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <nav>
+        <a href="landing-page.html" id="logo">Recipe App</a>
+        <ul>
+            <li><a href="landing-page.html">Home</a></li>
+            <li><a href="browse.html">Browse</a></li>
+            <li><a href="upload.html">Upload</a></li>
+            <li><a href="sign-in.html" id="signInLink">Sign In</a></li>
+        </ul>
+    </nav>
+    <main id="main">
+        <h2>Browse Recipes</h2>
+        <div class="recipe-grid">
+            <div class="recipe-card" tabindex="0" onclick="openModal('Chocolate Cake', 'A delicious chocolate cake recipe. Ingredients: flour, sugar, cocoa...')">
+                <img src="https://via.placeholder.com/200" alt="Chocolate Cake">
+                <h3>Chocolate Cake</h3>
+            </div>
+            <div class="recipe-card" tabindex="0" onclick="openModal('Pasta Primavera', 'Fresh pasta with vegetables. Ingredients: pasta, veggies, olive oil...')">
+                <img src="https://via.placeholder.com/200" alt="Pasta Primavera">
+                <h3>Pasta Primavera</h3>
+            </div>
+            <!-- Add more cards as needed -->
+        </div>
+        <div id="modal" style="display: none;" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+            <div class="modal-content">
+                <span onclick="closeModal()" aria-label="Close">&times;</span>
+                <h2 id="modalTitle"></h2>
+                <p id="modalDetails"></p>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
