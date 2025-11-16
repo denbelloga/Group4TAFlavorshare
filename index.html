@@ -1,15 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe App</title>
-    <script>
-        // Redirect to landing page
-        window.location.href = 'landing-page.html';
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FlavorShare</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
-    <p>If not redirected, <a href="landing-page.html">click here</a>.</p>
+  <header class="header">
+    <div class="logo">FlavorShare</div>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Explore</a>
+      <a href="#">My Cookbook</a>
+      <a href="#">Following</a>
+    </nav>
+    <div class="search-upload">
+      <input type="search" placeholder="Search recipes..." aria-label="Search recipes"/>
+      <button class="upload-btn">+ Upload a Recipe</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Share Your Flavor!</h1>
+    <p>Good food is best shared. Discover amazing recipes from home cooks around the world and share your own creations.</p>
+    <input type="search" placeholder="Search for recipes, ingredients, or chefs..." aria-label="Search recipes, ingredients, or chefs" class="hero-search" />
+    <div class="filter-buttons">
+      <button class="filter active">All</button>
+      <button class="filter">Vegetarian</button>
+      <button class="filter">Vegan</button>
+      <button class="filter">Desserts</button>
+      <button class="filter">Italian</button>
+      <button class="filter">Asian</button>
+      <button class="filter">Healthy</button>
+    </div>
+  </section>
+
+  <main>
+    <h2 class="section-title">Trending Recipes</h2>
+    <div class="cards-container">
+      <article class="card card-red">
+        <div class="card-content">
+          <h3>Creamy Carbonara</h3>
+          <p>Maria Romano</p>
+          <div class="stats">
+            <span title="Rating">⭐ 4.9</span>
+            <span title="Comments">💬 234</span>
+            <span title="Preparation time">⏱ 25 min</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card card-yellow">
+        <div class="card-content">
+          <h3>Rainbow Cupcakes</h3>
+          <p>Emma Baker</p>
+          <div class="stats">
+            <span title="Rating">⭐ 4.8</span>
+            <span title="Comments">💬 189</span>
+            <span title="Preparation time">⏱ 40 min</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card card-green">
+        <div class="card-content">
+          <h3>Thai Green Curry</h3>
+          <p>Alex Chen</p>
+          <div class="stats">
+            <span title="Rating">⭐ 4.7</span>
+            <span title="Comments">💬 310</span>
+            <span title="Preparation time">⏱ 35 min</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 FlavorShare. Good food is best shared.</p>
+  </footer>
 </body>
 </html>
