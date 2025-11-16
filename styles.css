@@ -228,5 +228,42 @@ footer {
   }
   .nav-links {
     display: none;
+
+    /* Hero section fills the full viewport height minus header height */
+.hero {
+  min-height: calc(100vh - 60px); /* Adjust 60px if your header's height differs */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertical centering */
+  align-items: center;     /* Horizontal centering */
+  background: linear-gradient(180deg, #eb5424 0%, #f2a83f 100%);
+  color: white;
+  text-align: center;
+  padding: 0 20px;  /* Less top and bottom padding for full height */
+  box-sizing: border-box;
+}
+
+/* Optional: Increase font sizes slightly for larger viewport */
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+.hero-search {
+  width: 100%;
+  max-width: 480px;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  border-radius: 40px;
+  border: none;
+  outline: none;
+  margin-bottom: 2rem;
+}
   }
 }
