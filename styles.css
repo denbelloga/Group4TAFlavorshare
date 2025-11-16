@@ -1,4 +1,4 @@
-/* Reset & base */
+/* Reset and base styles */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -11,36 +11,36 @@ body {
   line-height: 1.5;
 }
 
-/* HEADER */
+/* Header styles */
 .header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   background: white;
-  padding: 12px 24px;
   border-bottom: 1px solid #ddd;
+  padding: 16px 32px;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 100;
   height: 60px;
-  font-weight: 600;
-  font-size: 1rem;
 }
 
-.logo {
-  font-weight: 800;
-  font-size: 1.3rem;
+.logo a {
+  text-decoration: none;
   color: #eb5424;
-  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.5rem;
 }
 
 .nav-links a {
-  margin: 0 12px;
-  color: #2c2c2c;
+  margin: 0 16px;
   text-decoration: none;
-  font-weight: 600;
+  color: #111;
+  font-weight: 500;
   cursor: pointer;
 }
+
+.nav-links a.active,
 .nav-links a:hover {
   color: #eb5424;
 }
@@ -52,11 +52,11 @@ body {
 }
 
 .search-upload input[type="search"] {
-  padding: 8px 12px;
-  border-radius: 20px;
-  border: 1px solid #ccc;
-  width: 220px;
+  padding: 8px 16px;
   font-size: 1rem;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  width: 200px;
   transition: border-color 0.3s;
 }
 
@@ -66,61 +66,62 @@ body {
 }
 
 .upload-btn {
-  background: #feb5a8;
-  color: #a94448;
+  background-color: #feb5a8;
   border: none;
-  font-weight: 600;
   padding: 8px 16px;
   border-radius: 20px;
+  color: #a94448;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s;
 }
+
 .upload-btn:hover {
-  background: #eb5424;
+  background-color: #eb5424;
   color: white;
 }
 
-/* HERO SECTION */
+/* Hero section */
 .hero {
   height: 50vh;
   min-height: 320px;
-  max-height: 380px;
+  max-height: 400px;
+  background: linear-gradient(180deg, #eb5424cc 0%, #f2a83fcc 100%),
+    url('images/Title-Image-8.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: white;
+  text-align: center;
+  padding: 40px 20px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px 20px 0 20px;
-  text-align: center;
-  background: linear-gradient(180deg, #eb5424cc 0%, #f2a83fcc 100%), url('images/Title-Image-8.webp');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  color: white;
 }
 
 .hero h1 {
-  font-size: 2.8rem;
+  font-size: 3rem;
   font-weight: 900;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 .hero p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  margin-bottom: 32px;
   max-width: 600px;
-  margin-bottom: 25px;
-  line-height: 1.5;
 }
 
 .hero-search {
-  width: 100%;
   max-width: 480px;
-  padding: 12px 24px;
-  font-size: 1.05rem;
-  border-radius: 30px;
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 40px;
   border: none;
+  margin-bottom: 24px;
+  font-size: 1.1rem;
   outline: none;
-  margin-bottom: 25px;
 }
 
 .filter-buttons {
@@ -131,60 +132,61 @@ body {
 }
 
 .filter {
-  padding: 8px 18px;
-  background: white;
-  border-radius: 30px;
-  font-weight: 700;
-  cursor: pointer;
+  background-color: white;
+  color: black;
   border: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 8px 20px;
+  font-weight: 700;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .filter:hover {
-  background: #fbd7ce;
+  background-color: #fbd7ce;
   color: #eb5424;
 }
 
 .filter.active {
-  background: #eb5424;
+  background-color: #eb5424;
   color: white;
 }
 
-/* MAIN CONTENT */
+/* Main content */
 main {
-  max-width: 970px;
-  margin: 0 auto 60px auto;
-  background: #fff8f0;
-  padding: 40px 30px 60px 30px;
-  border-radius: 20px 20px 0 0;
-  box-shadow: 0 6px 18px rgb(0 0 0 / 0.05);
+  max-width: 1000px;
+  margin: -30px auto 60px auto;
+  padding: 40px 20px 60px 20px;
+  background-color: #fff8f0;
+  border-radius: 30px 30px 0 0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
 }
 
 .section-title {
-  font-weight: 900;
-  font-size: 1.7rem;
-  margin-bottom: 35px;
   text-align: center;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 40px;
 }
 
-/* Recipe cards container */
+/* Cards container */
 .cards-container {
   display: flex;
-  gap: 28px;
   justify-content: center;
+  gap: 30px;
   flex-wrap: wrap;
 }
 
-/* EACH CARD */
+/* Individual recipe cards */
 .card {
-  background: white;
-  border-radius: 14px;
+  background-color: white;
+  border-radius: 16px;
   width: 280px;
-  padding: 18px 22px;
-  box-shadow: 1px 1px 6px rgb(0 0 0 / 0.1);
+  padding: 20px 24px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.1);
   cursor: pointer;
+  transition: border-color 0.3s;
   border: 1.5px solid transparent;
-  transition: border-color 0.3s ease;
   display: flex;
   flex-direction: column;
 }
@@ -208,29 +210,28 @@ main {
 .card-image {
   width: 100%;
   height: 160px;
+  border-radius: 16px 16px 0 0;
+  margin-bottom: 14px;
   object-fit: cover;
-  border-radius: 14px 14px 0 0;
-  margin-bottom: 12px;
-  display: block;
 }
 
 .card h3 {
-  font-size: 1.15rem;
-  font-weight: 900;
+  font-size: 1.2rem;
+  font-weight: 700;
   margin-bottom: 8px;
 }
 
 .card p {
-  font-size: 0.9rem;
-  color: #777555;
-  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #6b6b4a;
+  margin-bottom: 16px;
 }
 
 .stats {
   display: flex;
-  gap: 22px;
+  gap: 20px;
+  font-size: 0.95rem;
   color: #888;
-  font-size: 0.9rem;
 }
 
 .stats span {
@@ -239,22 +240,22 @@ main {
   gap: 6px;
 }
 
-/* FOOTER */
+/* Footer */
 footer {
-  background: #222222;
+  background-color: #222;
   color: #ddd;
-  padding: 22px 0;
+  padding: 20px 0;
   text-align: center;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
 }
 
-/* RESPONSIVE */
+/* Responsive */
 @media (max-width: 840px) {
   header {
     flex-wrap: wrap;
-    gap: 14px;
+    gap: 12px;
   }
-  .search-upload input {
+  .search-upload input[type="search"] {
     width: 180px;
   }
   .cards-container {
@@ -262,8 +263,9 @@ footer {
     align-items: center;
   }
 }
+
 @media (max-width: 420px) {
-  .search-upload input {
+  .search-upload input[type="search"] {
     width: 125px;
   }
   .nav-links {
