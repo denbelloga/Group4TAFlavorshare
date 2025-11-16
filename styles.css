@@ -71,11 +71,18 @@ body {
 
 /* HERO SECTION */
 .hero {
+  min-height: calc(100vh - 60px);  /* 100vh means full screen height, minus 60px for the menu */
+  display: flex;                   /* help put things in the middle */
+  flex-direction: column;          /* stack stuff from top to bottom */
+  justify-content: center;         /* center stuff up and down */
+  align-items: center;             /* center stuff left and right */
   background: linear-gradient(180deg, #eb5424 0%, #f2a83f 100%);
   color: white;
   text-align: center;
-  padding: 50px 20px;
-  margin-bottom: 40px;
+  padding: 20px;                   /* nice space all around */
+  box-sizing: border-box;
+}
+
 }
 .hero h1 {
   font-size: 2.8rem;
