@@ -3,13 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   filterButtons.forEach(button => {
     button.addEventListener('click', () => {
-      // Remove active class from all
+      // Remove active class from all buttons
       filterButtons.forEach(btn => btn.classList.remove('active'));
-      // Add active on clicked
+      // Add active class to clicked button
       button.classList.add('active');
 
-      // Here is where you can filter recipes by category
-      // For now, no filtering logic is included since this is static
+      // Placeholder: You can add filtering logic here if you want to filter recipes.
     });
   });
 });
