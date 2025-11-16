@@ -6,7 +6,7 @@
 }
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #fffbf5;
+  background: #fff8f0;
   color: #202020;
   line-height: 1.5;
 }
@@ -16,19 +16,20 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #fff;
+  background: white;
   padding: 12px 24px;
   border-bottom: 1px solid #ddd;
   position: sticky;
   top: 0;
   z-index: 10;
-  height: 60px; /* Make sure this matches with hero calc */
+  height: 60px;
 }
 
 .logo {
   font-weight: bold;
   font-size: 1.3rem;
-  color: #eb5424; /* orange */
+  color: #eb5424;
+  cursor: pointer;
 }
 
 .nav-links a {
@@ -36,7 +37,7 @@ body {
   font-size: 1rem;
   color: #2c2c2c;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
 }
 .nav-links a:hover {
@@ -48,19 +49,27 @@ body {
   align-items: center;
   gap: 12px;
 }
+
 .search-upload input[type="search"] {
-  padding: 6px 12px;
-  border-radius: 8px;
+  padding: 8px 12px;
+  border-radius: 20px;
   border: 1px solid #ccc;
-  width: 250px;
+  width: 220px;
   font-size: 1rem;
+  transition: border-color 0.3s;
 }
+
+.search-upload input[type="search"]:focus {
+  outline: none;
+  border-color: #eb5424;
+}
+
 .upload-btn {
   background: #f9c1b2;
   color: #eb5424;
   border: none;
   font-weight: 600;
-  padding: 8px 14px;
+  padding: 8px 16px;
   border-radius: 20px;
   cursor: pointer;
   transition: background 0.3s ease;
@@ -70,68 +79,58 @@ body {
   color: white;
 }
 
-/* HERO SECTION WITH BACKGROUND IMAGE */
+/* HERO SECTION */
 .hero {
-  min-height: calc(100vh - 60px); /* full viewport height minus header */
+  min-height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
-  justify-content: center;   /* vertical center */
-  align-items: center;       /* horizontal center */
-  text-align: center;
-  padding: 20px;
-  box-sizing: border-box;
-
-  /* Background with gradient overlay and your uploaded image */
-  background-image:
-    linear-gradient(180deg, rgba(235, 84, 36, 0.9) 0%, rgba(242, 168, 63, 0.9) 100%),
-    url('images/Title-Image-8.webp');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed; /* Optional: fixes background when scrolling */
-
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px 60px 20px;
+  background: linear-gradient(180deg, #eb5424 0%, #f2a83f 100%);
   color: white;
+  text-align: center;
 }
 
 .hero h1 {
   font-size: 3rem;
   font-weight: 900;
-  margin-bottom: 1rem;
+  margin-bottom: 15px;
 }
 
 .hero p {
-  font-size: 1.3rem;
-  max-width: 600px;
-  margin-bottom: 2rem;
+  font-size: 1.25rem;
+  max-width: 650px;
+  margin-bottom: 32px;
+  line-height: 1.5em;
 }
 
 .hero-search {
   width: 100%;
   max-width: 480px;
-  padding: 12px 20px;
+  padding: 12px 24px;
   font-size: 1.1rem;
-  border-radius: 40px;
+  border-radius: 30px;
   border: none;
   outline: none;
-  margin-bottom: 2rem;
+  margin-bottom: 30px;
 }
 
 .filter-buttons {
-  margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 12px;
+  justify-content: center;
 }
 
 .filter {
-  border: none;
-  background: white;
   padding: 8px 18px;
+  background: white;
   border-radius: 30px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.3s;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .filter:hover {
@@ -147,59 +146,68 @@ body {
 /* MAIN CONTENT */
 main {
   max-width: 1000px;
-  margin: 0 auto 60px auto;
-  padding: 0 16px;
+  margin: -30px auto 60px auto;
+  background: #fff8f0;
+  padding: 40px 30px 60px 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.05);
 }
 
 .section-title {
-  font-weight: 700;
-  font-size: 1.6rem;
-  margin-bottom: 24px;
+  font-weight: 900;
+  font-size: 1.8rem;
+  margin-bottom: 36px;
   text-align: center;
-  color: #202020;
 }
 
+/* CARDS CONTAINER */
 .cards-container {
   display: flex;
-  gap: 30px;
+  gap: 32px;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 /* CARD */
 .card {
-  background: white;
-  border-radius: 15px;
   width: 280px;
-  box-shadow: 0 6px 15px rgb(0 0 0 / 0.1);
-  overflow: hidden;
-  cursor: pointer;
+  padding: 20px 22px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 1px 1px 4px rgb(0 0 0 / 0.1);
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: border-color 0.3s ease;
 }
 
-.card .card-content {
-  padding: 15px 20px 20px 20px;
-  flex-grow: 1;
+.card:hover {
+  border-color: #f28e24;
 }
+
+.card-red { border-color: #f59a8f; }
+.card-yellow { border-color: #f7d09a; }
+.card-green { border-color: #92c3af; }
 
 .card h3 {
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: 1.15rem;
+  font-weight: 900;
   margin-bottom: 6px;
+  color: #202020;
 }
 
 .card p {
   font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 12px;
+  color: #777555;
+  margin-bottom: 18px;
 }
 
 .stats {
   display: flex;
-  gap: 16px;
+  gap: 24px;
+  color: #888;
   font-size: 0.9rem;
-  color: #666;
 }
 
 .stats span {
@@ -208,40 +216,20 @@ main {
   gap: 6px;
 }
 
-.card-red {
-  background: #e95735;
-}
-
-.card-yellow {
-  background: #f5a623;
-}
-
-.card-green {
-  background: #16a085;
-}
-
-.card-red .card-content,
-.card-yellow .card-content,
-.card-green .card-content {
-  background: white;
-  margin-top: auto;
-  border-radius: 0 0 15px 15px;
-}
-
 /* FOOTER */
 footer {
-  background: #222;
+  background: #222222;
   color: #ddd;
-  padding: 20px 0;
+  padding: 22px 0;
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
 }
 
 /* RESPONSIVE */
 @media (max-width: 840px) {
   header {
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 14px;
   }
   .search-upload input {
     width: 180px;
@@ -251,10 +239,9 @@ footer {
     align-items: center;
   }
 }
-
 @media (max-width: 420px) {
   .search-upload input {
-    width: 120px;
+    width: 125px;
   }
   .nav-links {
     display: none;
