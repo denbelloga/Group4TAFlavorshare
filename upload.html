@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Recipe - Recipe App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <nav>
+        <a href="landing-page.html" id="logo">Recipe App</a>
+        <ul>
+            <li><a href="landing-page.html">Home</a></li>
+            <li><a href="browse.html">Browse</a></li>
+            <li><a href="upload.html">Upload</a></li>
+            <li><a href="sign-in.html" id="signInLink">Sign In</a></li>
+        </ul>
+    </nav>
+    <main id="main" class="container">
+        <h2>Upload Recipe</h2>
+        <form id="uploadForm">
+            <label for="title">Recipe Title:</label>
+            <input type="text" id="title" aria-required="true" required>
+            <label for="description">Description:</label>
+            <textarea id="description" aria-required="true" required></textarea>
+            <label for="ingredients">Ingredients:</label>
+            <textarea id="ingredients" aria-required="true" required></textarea>
+            <button type="submit">Upload</button>
+            <div id="uploadError" style="color: red; margin-top: 10px;"></div>
+        </form>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
