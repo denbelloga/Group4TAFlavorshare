@@ -269,6 +269,107 @@ footer {
     width: 125px;
   }
   .nav-links {
+
+
+/* Modal backdrop */
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Hide modal */
+.hidden {
+  display: none;
+}
+
+/* Modal content */
+.modal-content {
+  background: #ffe6d9;
+  padding: 30px 40px;
+  max-width: 380px;
+  border-radius: 15px;
+  position: relative;
+  color: #d95326;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.modal-content h2 {
+  margin-bottom: 10px;
+  font-weight: 900;
+}
+
+.modal-content p {
+  color: #666;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.modal-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 25px 0;
+  text-align: left;
+  color: #993d2d;
+}
+.modal-content ul li {
+  margin: 10px 0;
+  font-weight: 600;
+  position: relative;
+  padding-left: 30px;
+}
+.modal-content ul li::before {
+  content: "✔";
+  color: #d95326;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  font-size: 1.25rem;
+  line-height: 1;
+  top: 0;
+}
+
+/* Buttons */
+.primary-btn {
+  background-color: #d95326;
+  border: none;
+  color: white;
+  padding: 12px 22px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 10px;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+.primary-btn:hover {
+  background-color: #b4401f;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 30px;
+  color: #d95326;
+  cursor: pointer;
+}
+
+/* Small legal text */
+.small-text {
+  font-size: 0.75rem;
+  color: #999;
+  margin-top: 10px;
+}
     display: none;
   }
 }
