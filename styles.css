@@ -22,6 +22,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 10;
+  height: 60px; /* Make sure this matches with hero calc */
 }
 
 .logo {
@@ -69,43 +70,52 @@ body {
   color: white;
 }
 
-/* HERO SECTION */
+/* HERO SECTION WITH BACKGROUND IMAGE */
 .hero {
-  min-height: calc(100vh - 60px);  /* 100vh means full screen height, minus 60px for the menu */
-  display: flex;                   /* help put things in the middle */
-  flex-direction: column;          /* stack stuff from top to bottom */
-  justify-content: center;         /* center stuff up and down */
-  align-items: center;             /* center stuff left and right */
-  background: linear-gradient(180deg, #eb5424 0%, #f2a83f 100%);
-  color: white;
+  min-height: calc(100vh - 60px); /* full viewport height minus header */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* vertical center */
+  align-items: center;       /* horizontal center */
   text-align: center;
-  padding: 20px;                   /* nice space all around */
+  padding: 20px;
   box-sizing: border-box;
+
+  /* Background with gradient overlay and your uploaded image */
+  background-image:
+    linear-gradient(180deg, rgba(235, 84, 36, 0.9) 0%, rgba(242, 168, 63, 0.9) 100%),
+    url('images/Title-Image-8.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed; /* Optional: fixes background when scrolling */
+
+  color: white;
 }
 
-}
 .hero h1 {
-  font-size: 2.8rem;
+  font-size: 3rem;
   font-weight: 900;
-  margin-bottom: 12px;
+  margin-bottom: 1rem;
 }
+
 .hero p {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   max-width: 600px;
-  margin: 0 auto 24px auto;
+  margin-bottom: 2rem;
 }
+
 .hero-search {
   width: 100%;
   max-width: 480px;
-  padding: 10px 18px;
-  font-size: 1rem;
+  padding: 12px 20px;
+  font-size: 1.1rem;
   border-radius: 40px;
   border: none;
   outline: none;
+  margin-bottom: 2rem;
 }
-.hero-search::placeholder {
-  color: #cccccc;
-}
+
 .filter-buttons {
   margin-top: 20px;
   display: flex;
@@ -113,6 +123,7 @@ body {
   justify-content: center;
   gap: 12px;
 }
+
 .filter {
   border: none;
   background: white;
@@ -122,10 +133,12 @@ body {
   cursor: pointer;
   transition: background 0.3s;
 }
+
 .filter:hover {
   background: #fbd7ce;
   color: #eb5424;
 }
+
 .filter.active {
   background: #eb5424;
   color: white;
@@ -137,6 +150,7 @@ main {
   margin: 0 auto 60px auto;
   padding: 0 16px;
 }
+
 .section-title {
   font-weight: 700;
   font-size: 1.6rem;
@@ -144,6 +158,7 @@ main {
   text-align: center;
   color: #202020;
 }
+
 .cards-container {
   display: flex;
   gap: 30px;
@@ -162,6 +177,7 @@ main {
   display: flex;
   flex-direction: column;
 }
+
 .card .card-content {
   padding: 15px 20px 20px 20px;
   flex-grow: 1;
@@ -172,17 +188,20 @@ main {
   font-weight: 700;
   margin-bottom: 6px;
 }
+
 .card p {
   font-size: 0.9rem;
   color: #666;
   margin-bottom: 12px;
 }
+
 .stats {
   display: flex;
   gap: 16px;
   font-size: 0.9rem;
   color: #666;
 }
+
 .stats span {
   display: flex;
   align-items: center;
@@ -192,12 +211,15 @@ main {
 .card-red {
   background: #e95735;
 }
+
 .card-yellow {
   background: #f5a623;
 }
+
 .card-green {
   background: #16a085;
 }
+
 .card-red .card-content,
 .card-yellow .card-content,
 .card-green .card-content {
@@ -229,48 +251,12 @@ footer {
     align-items: center;
   }
 }
+
 @media (max-width: 420px) {
   .search-upload input {
     width: 120px;
   }
   .nav-links {
     display: none;
-
-    /* Hero section fills the full viewport height minus header height */
-.hero {
-  min-height: calc(100vh - 60px); /* Adjust 60px if your header's height differs */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Vertical centering */
-  align-items: center;     /* Horizontal centering */
-  background: linear-gradient(180deg, #eb5424 0%, #f2a83f 100%);
-  color: white;
-  text-align: center;
-  padding: 0 20px;  /* Less top and bottom padding for full height */
-  box-sizing: border-box;
-}
-
-/* Optional: Increase font sizes slightly for larger viewport */
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.hero p {
-  font-size: 1.3rem;
-  max-width: 600px;
-  margin-bottom: 2rem;
-}
-
-.hero-search {
-  width: 100%;
-  max-width: 480px;
-  padding: 12px 20px;
-  font-size: 1.1rem;
-  border-radius: 40px;
-  border: none;
-  outline: none;
-  margin-bottom: 2rem;
-}
   }
 }
