@@ -80,7 +80,7 @@ body {
   color: white;
 }
 
-/* HERO SECTION (Orange gradient with image background) */
+/* HERO SECTION */
 .hero {
   height: 50vh;
   min-height: 320px;
@@ -91,16 +91,11 @@ body {
   align-items: center;
   padding: 40px 20px 0 20px;
   text-align: center;
-  
-  /* Gradient with background image */
-  background-image:
-    linear-gradient(180deg, #eb5424cc 0%, #f2a83fcc 100%), 
-    url('images/Title-Image-8.webp'); /* Replace with your image path */
+  background: linear-gradient(180deg, #eb5424cc 0%, #f2a83fcc 100%), url('images/Title-Image-8.webp');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  
   color: white;
 }
 
@@ -198,9 +193,26 @@ main {
   border-color: #f28e24;
 }
 
-.card-red { border-color: #f59a8f; }
-.card-yellow { border-color: #f7d09a; }
-.card-green { border-color: #92c3af; }
+.card-red {
+  border-color: #f59a8f;
+}
+
+.card-yellow {
+  border-color: #f7d09a;
+}
+
+.card-green {
+  border-color: #92c3af;
+}
+
+.card-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 14px 14px 0 0;
+  margin-bottom: 12px;
+  display: block;
+}
 
 .card h3 {
   font-size: 1.15rem;
