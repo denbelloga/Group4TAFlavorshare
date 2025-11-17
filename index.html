@@ -1,146 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FlavorShare - Home</title>
-
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlavorShare - Home</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-  <!-- ================= NAVIGATION ================= -->
-  <nav>
+<!-- ------------------------------------------- -->
+<!-- Navigation Header -->
+<!-- ------------------------------------------- -->
+<nav>
     <div class="logo">FlavorShare</div>
 
     <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="explore.html">Explore</a></li>
-      <li><a href="my-cookbook.html">My Cookbook</a></li>
-      <li><a href="following.html">Following</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="explore.html">Explore</a></li>
+        <li><a href="my-cookbook.html">My Cookbook</a></li>
+        <li><a href="following.html">Following</a></li>
     </ul>
 
     <div class="actions">
+        <input type="text" placeholder="Search recipes...">
+        
+        <button class="upload-btn" onclick="window.location.href='upload.html'">
+            + Upload a Recipe
+        </button>
 
-      <input type="search" placeholder="Search recipes..." />
+        <a href="sign-in.html" class="sign-in-btn">Sign In</a>
 
-      <button class="upload-btn" onclick="location.href='upload-recipe.html'">
-        + Upload a Recipe
-      </button>
-
-      <!-- SIGN IN BUTTON (hidden when logged in) -->
-      <a href="sign-in.html" id="signInBtn" class="sign-in-btn">Sign In</a>
-
-      <!-- USER PROFILE DROPDOWN (visible when logged in) -->
-      <div id="profileMenu">
-        <button id="profileToggle"></button>
-        <div id="profileDropdown">
-          <button onclick="logoutUser()">Log Out</button>
+        <div class="user-menu" id="userMenu">
+            <span id="usernameLabel"></span>
+            <div class="user-dropdown">
+                <button id="logoutBtn">Log Out</button>
+            </div>
         </div>
-      </div>
-
-      <span id="notifBell" class="notif-bell">🔔</span>
-
     </div>
-  </nav>
+</nav>
 
-  <!-- ================= NOTIFICATION PANEL ================= -->
-  <div id="notifPanel" class="notif-panel">
-    <h3>Notifications</h3>
-    <ul id="notifList">
-      <li>Maria followed you.</li>
-      <li>Your Pancake recipe received 12 new likes.</li>
-      <li>You unlocked the “Rising Cook” badge!</li>
-    </ul>
-    <button class="notif-close" id="notifClose">Close</button>
-  </div>
-
-
-  <!-- ================= HERO SECTION ================= -->
-  <header class="hero-section">
+<!-- ------------------------------------------- -->
+<!-- Hero Section -->
+<!-- ------------------------------------------- -->
+<section class="hero-section">
     <div class="hero-content">
-      <h1>Share Your Flavor.</h1>
-      <p>
-        Discover creative dishes from home cooks around the world —  
-        and share your own culinary masterpieces.
-      </p>
+        <h1>Share Your Flavor.</h1>
+        <p>Discover creative dishes from home cooks around the world — and share your own culinary masterpieces.</p>
 
-      <div class="hero-search">
-        <input type="search" placeholder="Search for recipes, ingredients, or chefs...">
-      </div>
-
-      <a href="explore.html" class="hero-btn">Explore Recipes</a>
+        <button class="upload-btn" onclick="window.location.href='explore.html'">
+            Explore Recipes
+        </button>
     </div>
-  </header>
+</section>
 
+<!-- ------------------------------------------- -->
+<!-- Trending Recipes Section -->
+<!-- ------------------------------------------- -->
+<section class="trending-section">
+    <h2>🔥 Trending Recipes</h2>
+    <p>Fresh picks from the community</p>
 
-  <!-- ================= TRENDING RECIPES ================= -->
-  <main>
+    <div class="trending-grid">
 
-    <h2>Trending Recipes</h2>
-    <p class="subtitle">Fresh picks from the community</p>
-
-    <div class="recipe-grid">
-
-      <div class="recipe-card" onclick="openRecipeModal('carbonara')">
-        <img src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg" alt="">
-        <div class="recipe-card-info">
-          <h3>Creamy Carbonara</h3>
-          <p>by Maria Romano</p>
+        <!-- Recipe 1 -->
+        <div class="trending-card" onclick="openRecipeModal('Creamy Carbonara')">
+            <img src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg" alt="">
+            <div class="trending-info">
+                <h3>Creamy Carbonara</h3>
+                <p>by Maria Romano</p>
+            </div>
         </div>
-      </div>
 
-      <div class="recipe-card" onclick="openRecipeModal('cheesecake')">
-        <img src="https://images.pexels.com/photos/704569/pexels-photo-704569.jpeg" alt="">
-        <div class="recipe-card-info">
-          <h3>Blueberry Cheesecake</h3>
-          <p>by Sophia Monroe</p>
+        <!-- Recipe 2 -->
+        <div class="trending-card" onclick="openRecipeModal('Avocado Toast Supreme')">
+            <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg" alt="">
+            <div class="trending-info">
+                <h3>Avocado Toast Supreme</h3>
+                <p>by Sophia Monroe</p>
+            </div>
         </div>
-      </div>
 
-      <div class="recipe-card" onclick="openRecipeModal('ramen')">
-        <img src="https://images.pexels.com/photos/2773940/pexels-photo-2773940.jpeg" alt="">
-        <div class="recipe-card-info">
-          <h3>Beef Ramen Bowl</h3>
-          <p>by Kenji Sato</p>
+        <!-- Recipe 3 -->
+        <div class="trending-card" onclick="openRecipeModal('Truffle Pasta')">
+            <img src="https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg" alt="">
+            <div class="trending-info">
+                <h3>Truffle Pasta</h3>
+                <p>by Luca Bianchi</p>
+            </div>
         </div>
-      </div>
 
     </div>
+</section>
 
-  </main>
 
+<!-- ------------------------------------------- -->
+<!-- Recipe Modal -->
+<!-- ------------------------------------------- -->
+<div id="recipeModal" class="recipe-modal">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeRecipeModal()">×</span>
 
-  <!-- ================= RECIPE MODAL ================= -->
-  <div id="recipeModal">
-    <div id="modalContent">
-
-      <span id="closeRecipeModal">&times;</span>
-
-      <img id="modalImage" src="">
-      <div class="modal-inner">
+        <img id="modalImage" src="">
         <h2 id="modalTitle"></h2>
         <p id="modalAuthor"></p>
 
         <h3>About this recipe</h3>
-        <p id="modalDesc"></p>
+        <p id="modalDescription"></p>
 
         <h3>Ingredients</h3>
         <ul id="modalIngredients"></ul>
 
         <h3>Instructions</h3>
-        <ol id="modalSteps"></ol>
-      </div>
+        <ol id="modalInstructions"></ol>
     </div>
-  </div>
+</div>
 
 
-  <!-- ================= FOOTER ================= -->
-  <footer>
-    © 2025 FlavorShare. Good food is best shared.
-  </footer>
-
+<script src="script.js"></script>
 </body>
 </html>
