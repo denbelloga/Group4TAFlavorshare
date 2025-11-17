@@ -1,151 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FlavorShare - Home</title>
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-
-  <!-- Global CSS -->
-  <link rel="stylesheet" href="css/global.css" />
+  <title>FlavorShare</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
 </head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo"><a href="index.html">FlavorShare</a></div>
+    <nav class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="explore.html">Explore</a>
+      <a href="#" id="cookbookBtn">My Cookbook</a>
+      <a href="#" id="followingBtn">Following</a>
+    </nav>
+    <div class="search-upload">
+      <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
+      <a href="sign-in.html" class="sign-in-btn">Sign In</a>
+    </div>
+  </header>
 
-<body class="bg-[#FFF6E8] font-sans text-gray-800 min-h-screen flex flex-col">
-
-  <!-- HEADER -->
-  <div id="header"></div>
-
-  <!-- HERO SECTION -->
-  <section
-    class="bg-gradient-to-br from-[#F36F21] via-[#F7942A] to-[#F6B80B] text-white px-6 md:px-20 py-20 text-center">
-    <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Share Your Flavor!</h1>
-    <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 leading-relaxed">
-      Good food is best shared. Discover amazing recipes from home cooks around the world and share your own creations.
-    </p>
-
-    <!-- Search bar -->
-    <form class="max-w-xl mx-auto relative">
-      <input type="search" placeholder="Search for recipes, ingredients, or chefs..."
-        class="w-full rounded-full py-3 px-5 text-gray-800 outline-none focus:ring-4 focus:ring-[#F36F21] shadow-lg" />
-      <button type="submit" aria-label="Search"
-        class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 hover:text-[#F36F21] transition">
-        <i class="fas fa-search fa-lg"></i>
-      </button>
-    </form>
-
-    <!-- Filter buttons -->
-    <div class="mt-8 flex flex-wrap justify-center gap-4">
-      <button class="bg-[#F36F21] text-white rounded-full px-5 py-2 font-semibold shadow">All</button>
-      <button class="bg-white text-gray-800 rounded-full px-5 py-2 font-semibold shadow hover:bg-orange-100">
-        Vegetarian
-      </button>
-      <button class="bg-white text-gray-800 rounded-full px-5 py-2 font-semibold shadow hover:bg-orange-100">Vegan
-      </button>
-      <button class="bg-white text-gray-800 rounded-full px-5 py-2 font-semibold shadow hover:bg-orange-100">Desserts
-      </button>
-      <button class="bg-white text-gray-800 rounded-full px-5 py-2 font-semibold shadow hover:bg-orange-100">Italian</button>
-      <button class="bg-white text-gray-800 rounded-full px-5 py-2 font-semibold shadow hover:bg-orange-100">Asian</button>
-      <button class="bg-white text-gray-800 rounded-full px-5 py-2 font-semibold shadow hover:bg-orange-100">Healthy</button>
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Share Your Flavor!</h1>
+    <p>Good food is best shared. Discover amazing recipes from home cooks around the world and share your own creations.</p>
+    <div class="filter-buttons">
+      <button class="filter active">All</button>
+      <button class="filter">Vegetarian</button>
+      <button class="filter">Vegan</button>
+      <button class="filter">Desserts</button>
+      <button class="filter">Italian</button>
+      <button class="filter">Asian</button>
+      <button class="filter">Healthy</button>
     </div>
   </section>
 
-  <!-- TRENDING RECIPES -->
-  <main class="flex-grow max-w-7xl mx-auto px-6 md:px-12 py-12">
-
-    <h2 class="text-2xl font-semibold text-gray-900 mb-8 text-center">Trending Recipes</h2>
-
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
-
-      <!-- Card 1 -->
-      <article
-        class="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
-        <div class="h-48 bg-[#E15B24]"></div>
-        <div class="p-6">
-          <h3 class="font-semibold text-lg mb-1">Creamy Carbonara</h3>
-          <p class="text-gray-600 mb-4">Maria Romano</p>
-          <div class="flex items-center justify-between text-gray-500 text-sm">
-            <div class="flex items-center gap-1">
-              <i class="fas fa-star text-yellow-400"></i>
-              <span>4.9</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <i class="fas fa-comment"></i>
-              <span>234</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <i class="fas fa-clock"></i>
-              <span>25 min</span>
-            </div>
+  <!-- Trending recipes -->
+  <main>
+    <h2 class="section-title">Trending Recipes</h2>
+    <div class="cards-container">
+      <article class="card card-red">
+        <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara" class="card-image" />
+        <div class="card-content">
+          <h3>Creamy Carbonara</h3>
+          <p>Maria Romano</p>
+          <div class="stats">
+            <span title="Rating">⭐ 4.9</span>
+            <span title="Comments">💬 234</span>
+            <span title="Preparation time">⏱ 25 min</span>
           </div>
         </div>
       </article>
 
-      <!-- Card 2 -->
-      <article
-        class="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
-        <div class="h-48 bg-[#F3A11B]"></div>
-        <div class="p-6">
-          <h3 class="font-semibold text-lg mb-1">Rainbow Cupcakes</h3>
-          <p class="text-gray-600 mb-4">Emma Baker</p>
-          <div class="flex items-center justify-between text-gray-500 text-sm">
-            <div class="flex items-center gap-1">
-              <i class="fas fa-star text-yellow-400"></i>
-              <span>4.8</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <i class="fas fa-comment"></i>
-              <span>189</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <i class="fas fa-clock"></i>
-              <span>40 min</span>
-            </div>
+      <article class="card card-yellow">
+        <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes" class="card-image" />
+        <div class="card-content">
+          <h3>Rainbow Cupcakes</h3>
+          <p>Emma Baker</p>
+          <div class="stats">
+            <span title="Rating">⭐ 4.8</span>
+            <span title="Comments">💬 189</span>
+            <span title="Preparation time">⏱ 40 min</span>
           </div>
         </div>
       </article>
 
-      <!-- Card 3 -->
-      <article
-        class="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
-        <div class="h-48 bg-[#00B478]"></div>
-        <div class="p-6">
-          <h3 class="font-semibold text-lg mb-1">Thai Green Curry</h3>
-          <p class="text-gray-600 mb-4">Alex Chen</p>
-          <div class="flex items-center justify-between text-gray-500 text-sm">
-            <div class="flex items-center gap-1">
-              <i class="fas fa-star text-yellow-400"></i>
-              <span>4.7</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <i class="fas fa-comment"></i>
-              <span>310</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <i class="fas fa-clock"></i>
-              <span>35 min</span>
-            </div>
+      <article class="card card-green">
+        <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry" class="card-image" />
+        <div class="card-content">
+          <h3>Thai Green Curry</h3>
+          <p>Alex Chen</p>
+          <div class="stats">
+            <span title="Rating">⭐ 4.7</span>
+            <span title="Comments">💬 310</span>
+            <span title="Preparation time">⏱ 35 min</span>
           </div>
         </div>
       </article>
-
     </div>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="bg-[#212121] text-gray-300 text-center py-6">
-    &copy; 2025 FlavorShare. Good food is best shared.
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 FlavorShare. Good food is best shared.</p>
   </footer>
 
-  <!-- Scripts -->
-  <script src="js/header.js"></script>
-  <script src="js/script.js"></script>
-
+  <!-- Modal popup -->
+  <div id="signupModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <button id="closeModal" class="close-btn" aria-label="Close modal">&times;</button>
+      <h2 id="modalTitle">New to FlavorShare?</h2>
+      <p>Join our community ...</p>
+      <ul>
+        <li>✔ Upload unlimited recipes with photos</li>
+        <li>✔ Save your favorite recipes in collections</li>
+        <li>✔ Get feedback from fellow food enthusiasts</li>
+        <li>✔ Follow top chefs and home cooks</li>
+        <li>✔ Create your personalized cookbook</li>
+      </ul>
+      <button id="createAccountBtn" class="primary-btn">Create an Account</button>
+      <p class="small-text">By signing up, you agree to our Terms of Service and Privacy Policy</p>
+    </div>
+  </div>
 </body>
-
 </html>
