@@ -294,6 +294,17 @@ function loadCookbookPage() {
     )
     .join("");
 }
+function showSuccessMessage(msg) {
+  const popup = document.getElementById("successPopup");
+  if (!popup) return;
+
+  popup.textContent = msg;
+  popup.classList.add("show");
+
+  setTimeout(() => {
+    popup.classList.remove("show");
+  }, 3000);
+}
 
 /* ============ INIT EVERYTHING ============ */
 document.addEventListener("DOMContentLoaded", () => {
