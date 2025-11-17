@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlavorShare – Explore</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <nav>
+    <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="browse.html" class="active">Explore</a></li>
+      <li><a href="my-cookbook.html" id="protectCookbook">My Cookbook</a></li>
+      <li><a href="following.html" id="protectFollowing">Following</a></li>
+    </ul>
+    <div class="actions">
+      <input type="search" placeholder="Search recipes..." />
+      <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
+      <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
+      <div id="userMenu" class="hidden">
+        <span id="userNameDisplay"></span>
+        <div id="userDropdown" class="hidden">
+          <button id="logoutBtn">Log Out</button>
+        </div>
+      </div>
+      <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
+      <span id="notifBell" class="notif-bell">🔔</span>
+    </div>
+  </nav>
+
+  <div id="notifPanel">
+    <h4>Notifications</h4>
+    <ul>
+      <li>No new notifications.</li>
+    </ul>
+    <button id="notifClose">Close</button>
+  </div>
+
+  <main>
+    <section>
+      <h2>Explore All Recipes</h2>
+      <p class="section-subtitle">Discover recipes by mood, cuisine, and experience level.</p>
+
+      <div class="filter-row">
+        <button class="filter-pill active">All</button>
+        <button class="filter-pill">Pasta</button>
+        <button class="filter-pill">Dessert</button>
+        <button class="filter-pill">Asian</button>
+        <button class="filter-pill">Comfort</button>
+        <button class="filter-pill">Quick & Easy</button>
+      </div>
+
+      <div class="recipe-grid">
+        <article class="recipe-card">
+          <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara" />
+          <div class="info">
+            <h3>Creamy Carbonara</h3>
+            <p class="author">Maria Romano</p>
+            <div class="meta-row">
+              <span class="pill">⭐ 4.9</span>
+              <span class="pill">25 min</span>
+            </div>
+            <div class="card-actions">
+              <button class="primary-btn"
+                onclick="addToCookbook('creamy-carbonara','Creamy Carbonara','Maria Romano','images/creamy-carbonara-1-4.jpg')">
+                Save
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="recipe-card">
+          <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes" />
+          <div class="info">
+            <h3>Rainbow Cupcakes</h3>
+            <p class="author">Emma Baker</p>
+            <div class="meta-row">
+              <span class="pill">⭐ 4.8</span>
+              <span class="pill">40 min</span>
+            </div>
+            <div class="card-actions">
+              <button class="primary-btn"
+                onclick="addToCookbook('rainbow-cupcakes','Rainbow Cupcakes','Emma Baker','images/rainbow-cupcakes-17.jpg')">
+                Save
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="recipe-card">
+          <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry" />
+          <div class="info">
+            <h3>Thai Green Curry</h3>
+            <p class="author">Alex Chen</p>
+            <div class="meta-row">
+              <span class="pill">⭐ 4.7</span>
+              <span class="pill">35 min</span>
+            </div>
+            <div class="card-actions">
+              <button class="primary-btn"
+                onclick="addToCookbook('thai-green-curry','Thai Green Curry','Alex Chen','images/Thai-Green-Curry-square-FS.jpg')">
+                Save
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="recipe-card">
+          <img src="images/Palabok.jpg" alt="Palabok Fiesta" />
+          <div class="info">
+            <h3>Palabok Fiesta</h3>
+            <p class="author">Lara Santos</p>
+            <div class="meta-row">
+              <span class="pill">⭐ 4.6</span>
+              <span class="pill">45 min</span>
+            </div>
+            <div class="card-actions">
+              <button class="primary-btn"
+                onclick="addToCookbook('palabok-fiesta','Palabok Fiesta','Lara Santos','images/Palabok.jpg')">
+                Save
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 FlavorShare. Good food is best shared.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
