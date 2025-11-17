@@ -142,6 +142,48 @@
       localStorage.setItem('welcomeShown', 'true');
       // Optionally reload page or update UI to enable full access
       location.reload();
+
+
+      <!-- home.html -->
+<body>
+  ...
+  <!-- Your existing page content -->
+
+  <!-- Include the modal here -->
+  <div id="welcomeModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-xl p-8 max-w-sm w-full text-center shadow-lg">
+      <h2 class="text-2xl font-bold text-[#E4572E] mb-4">Welcome to FlavorShare!</h2>
+      <p class="text-gray-700 mb-8">Start uploading your recipe. Enjoy!</p>
+      <button id="welcomeOkBtn"
+        class="px-6 py-3 rounded-full bg-[#E4572E] text-white font-semibold shadow-soft hover:bg-[#b73d20] transition">
+        OK
+      </button>
+    </div>
+  </div>
+
+  <script src="js/header.js"></script>
+  <script src="js/recipes-data.js"></script>
+  <script src="js/home.js"></script>
+
+  <!-- Add this script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const showWelcome = localStorage.getItem('showWelcome');
+      const welcomeModal = document.getElementById('welcomeModal');
+      const welcomeOkBtn = document.getElementById('welcomeOkBtn');
+
+      if (showWelcome === 'true') {
+        welcomeModal.classList.remove('hidden');
+
+        welcomeOkBtn.addEventListener('click', () => {
+          welcomeModal.classList.add('hidden');
+          localStorage.removeItem('showWelcome');
+          window.location.href = 'home.html'; // Redirect to home for full access
+        });
+      }
+    });
+  </script>
+</body>
     });
   });
 </script>
