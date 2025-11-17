@@ -341,3 +341,45 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addToCookbook = addToCookbook;
 window.openRecipeModal = openRecipeModal;
 window.closeRecipeModal = closeRecipeModal;
+
+// ========= USER LOGIN STATE =========
+document.addEventListener("DOMContentLoaded", () => {
+    const username = localStorage.getItem("flavorshareUser");
+
+    const signInBtn = document.getElementById("signInButton");
+    const userMenu = document.getElementById("userMenu");
+    const navUsername = document.getElementById("navUsername");
+
+    if (username) {
+        signInBtn.style.display = "none";
+        userMenu.style.display = "block";
+        navUsername.textContent = username;
+    } else {
+        signInBtn.style.display = "inline-block";
+        userMenu.style.display = "none";
+    }
+
+    // Toggle dropdown
+    userMenu.addEventListener("click", () => {
+        userMenu.classList.toggle("show");
+    });
+});
+
+// ========= LOGOUT =========
+function logoutUser() {
+    localStorage.removeItem("flavorshareUser");
+    location.href = "index.html";
+}
+
+// ========= NOTIFICATIONS =========
+const notifBell = document.getElementById("notifBell");
+const notifPanel = document.getElementById("notifPanel");
+const notifClose = document.getElementById("notifClose");
+
+notifBell.addEventListener("click", () => {
+    notifPanel.style.display = "block";
+});
+notifClose.addEventListener("click", () => {
+    notifPanel.style.display = "none";
+});
+
