@@ -3,46 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FlavorShare – Sign In</title>
+  <title>Sign In - FlavorShare</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <!-- SIMPLE NAV (just logo for auth pages) -->
-  <nav>
-    <div class="logo">FlavorShare</div>
-    <div class="actions">
-      <a href="index.html" class="sign-in-btn">Back to Home</a>
-    </div>
-  </nav>
 
-  <main>
-    <div class="auth-container">
-      <h1>Welcome Back 👋</h1>
-      <p class="section-subtitle">Sign in to continue sharing delicious recipes.</p>
+<body class="auth-body">
 
-      <form id="signInForm">
-        <label>Email</label>
-        <input type="email" name="email" id="email" placeholder="yourname@gmail.com" required />
+  <div class="auth-container">
+    <h1 class="auth-logo">FlavorShare</h1>
 
-        <label>Password</label>
-        <div class="password-row">
-          <input type="password" name="password" id="password" required />
-        </div>
+    <h2 class="auth-title">Welcome Back</h2>
+    <p class="auth-sub">Sign in to continue</p>
 
-        <button type="submit" class="btn-primary full-width">Sign In</button>
+    <!-- SIGN IN FORM -->
+    <form id="signInForm" class="auth-form">
+      <label>Email</label>
+      <input type="email" name="email" placeholder="Enter email" required />
 
-        <button type="button" class="google-btn full-width">
-          <span>G</span> Continue with Google (Demo)
-        </button>
+      <label>Password</label>
+      <input type="password" name="password" placeholder="Enter password" required />
 
-        <div class="auth-links">
-          <a href="forgot-password.html">Forgot password?</a>
-          <span>•</span>
-          <a href="sign-up.html">Create an account</a>
-        </div>
-      </form>
-    </div>
-  </main>
+      <button type="submit" class="auth-btn">Sign In</button>
+
+      <p id="signInError" class="auth-error"></p>
+    </form>
+
+    <p class="auth-link">
+      Don't have an account? <a href="sign-up.html">Create one</a>
+    </p>
+  </div>
 
   <script src="script.js"></script>
 </body>
