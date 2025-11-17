@@ -97,6 +97,27 @@
     .continue-text:hover {
       text-decoration: underline;
     }
+    /* Error message styles */
+    .error-message {
+      flex-basis: 100%;
+      margin-top: -10px;
+      margin-bottom: 14px;
+      color: #d9534f;
+      font-weight: 700;
+      font-size: 0.9rem;
+      background-color: #f8d7da;
+      padding: 6px 12px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      border: 1.5px solid #d43f3a;
+    }
+    .exclamation-mark {
+      font-size: 1.25rem;
+      margin-right: 8px;
+      color: #d9534f;
+      font-weight: 900;
+    }
   </style>
 </head>
 <body>
@@ -106,10 +127,13 @@
       Already have an account?
       <a href="sign-in.html">Sign In</a>
     </div>
-    <form id="signupForm">
+    <form id="signupForm" novalidate>
       <input type="text" name="firstName" placeholder="First Name" required />
       <input type="text" name="lastName" placeholder="Last Name" required />
-      <input type="email" name="email" placeholder="Email Address" required />
+      <input type="email" name="email" placeholder="Email Address" id="emailInput" required />
+      <div id="emailError" class="error-message" style="display:none;" role="alert" aria-live="assertive">
+        <span class="exclamation-mark">❗</span> Invalid Email!
+      </div>
       <input type="password" name="password" placeholder="Password" required />
       <button type="submit" class="signup-btn">Sign Up</button>
     </form>
@@ -117,17 +141,33 @@
   </div>
 
   <script>
-    document.getElementById('signupForm').addEventListener('submit', function(e) {
+    const form = document.getElementById('signupForm');
+    const emailInput = document.getElementById('emailInput');
+    const emailError = document.getElementById('emailError');
+
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
+      const email = emailInput.value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // simple email check
+
+      if (!emailRegex.test(email)) {
+        emailError.style.display = 'flex';
+        emailInput.setAttribute('aria-invalid', 'true');
+        emailInput.focus();
+        return;
+      } else {
+        emailError.style.display = 'none';
+        emailInput.removeAttribute('aria-invalid');
+      }
+
       alert('Thank you for signing up! (This is a demo alert.)');
-      // You can add real sign-up code here.
-      window.location.href = 'index.html'; // Redirect to homepage
+      // Here you can implement real signup logic
+      window.location.href = 'index.html';
     });
 
-    document.getElementById('continueWithoutSignup').addEventListener('click', function() {
-      // Proceed without signing in:
+    document.getElementById('continueWithoutSignup').addEventListener('click', () => {
       alert('Continuing without signing in.');
-      window.location.href = 'index.html'; // Redirect to homepage
+      window.location.href = 'index.html';
     });
   </script>
 </body>
