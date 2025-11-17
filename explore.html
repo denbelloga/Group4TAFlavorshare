@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Explore Recipes - FlavorShare</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="css/global.css" />
+</head>
+
+<body class="bg-[#FFF8F0] font-sans text-gray-800 flex flex-col min-h-screen">
+
+  <!-- HEADER -->
+  <div id="header"></div>
+
+  <main class="flex-1 max-inner-width mx-auto px-6 py-10">
+
+    <h1 class="text-3xl font-extrabold text-[#E4572E] mb-8">Discover New Recipes</h1>
+
+    <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+      <!-- Creamy Carbonara -->
+      <article class="bg-white rounded-xl shadow-soft overflow-hidden">
+        <img src="image/Carbonara.jpg" alt="Creamy Carbonara" class="w-full h-48 object-cover" />
+        <div class="p-5">
+          <h3 class="font-semibold text-lg mb-1">Creamy Carbonara</h3>
+          <p class="text-gray-600 text-sm">Classic Italian pasta dish</p>
+        </div>
+      </article>
+
+      <!-- Rainbow Cupcakes -->
+      <article class="bg-white rounded-xl shadow-soft overflow-hidden">
+        <img src="image/RainbowCupcakes.jpg" alt="Rainbow Cupcakes" class="w-full h-48 object-cover" />
+        <div class="p-5">
+          <h3 class="font-semibold text-lg mb-1">Rainbow Cupcakes</h3>
+          <p class="text-gray-600 text-sm">Colorful and sweet treats</p>
+        </div>
+      </article>
+
+      <!-- Thai Green Curry -->
+      <article class="bg-white rounded-xl shadow-soft overflow-hidden">
+        <img src="image/ThaiGreenCurry.jpg" alt="Thai Green Curry" class="w-full h-48 object-cover" />
+        <div class="p-5">
+          <h3 class="font-semibold text-lg mb-1">Thai Green Curry</h3>
+          <p class="text-gray-600 text-sm">Spicy and fragrant curry</p>
+        </div>
+      </article>
+
+      <!-- Palabok - NEW -->
+      <article class="relative bg-white rounded-xl shadow-soft overflow-hidden">
+
+        <!-- NEW badge top right -->
+        <span
+          class="absolute top-3 right-3 bg-[#E4572E] text-white text-xs font-semibold px-2 py-1 rounded-full uppercase shadow">NEW</span>
+
+        <img src="image/Palabok.jpg" alt="Palabok" class="w-full h-48 object-cover" />
+        <div class="p-5 text-left">
+          <h3 class="font-semibold text-lg mb-2">Palabok</h3>
+          <p class="text-gray-700 mb-1 font-medium">By Panlasang Pinoy</p>
+
+          <div class="flex items-center gap-2 text-yellow-500 mb-1">
+            <i class="fa-solid fa-star"></i>
+            <span>4.5(2)</span>
+          </div>
+
+          <p class="text-gray-500 text-sm mb-3">45 min</p>
+
+          <p class="text-gray-700 text-sm leading-relaxed">
+            Pancit Palabok is a noodle dish with shrimp sauce and topped with several ingredients such as cooked shrimp, boiled pork, crushed chicharon, tinapa flakes, fried tofu, scallions, and fried garlic. A very tasty treat that is sure to relieve your hunger.
+          </p>
+        </div>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <footer class="bg-[#2D2A26] text-gray-300 text-sm py-6 mt-auto">
+    <div class="max-inner-width px-6 text-center mx-auto">
+      &copy; 2025 FlavorShare — Good food is best shared.
+    </div>
+  </footer>
+
+  <script src="js/header.js"></script>
+
+</body>
+
+</html>
