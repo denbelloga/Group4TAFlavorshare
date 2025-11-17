@@ -17,6 +17,47 @@ function logoutUser() {
   localStorage.removeItem(USER_KEY);
   window.location.href = "index.html";
 }
+/* === RECIPE POPUP DATA === */
+const recipeData = {
+  "creamy-carbonara": {
+    title: "Creamy Carbonara",
+    author: "Maria Romano",
+    image: "images/creamy-carbonara-1-4.jpg",
+    description: "A silky Italian pasta with eggs, parmesan, and crispy pancetta.",
+    ingredients: [
+      "200g spaghetti",
+      "2 eggs",
+      "1/2 cup parmesan cheese",
+      "Pancetta or bacon",
+      "Salt and pepper"
+    ],
+    steps: [
+      "Boil pasta until al dente.",
+      "Cook pancetta until crispy.",
+      "Mix eggs and parmesan.",
+      "Combine everything with pasta.",
+      "Serve warm."
+    ]
+  },
+
+  "rainbow-cupcakes": {
+    title: "Rainbow Cupcakes",
+    author: "Emma Baker",
+    image: "images/rainbow-cupcakes-17.jpg",
+    description: "Colorful, fun cupcakes perfect for birthdays and parties.",
+    ingredients: ["Flour", "Butter", "Sugar", "Eggs", "Food coloring"],
+    steps: ["Mix batter", "Split and color", "Fill cups", "Bake"]
+  },
+
+  "thai-green-curry": {
+    title: "Thai Green Curry",
+    author: "Alex Chen",
+    image: "images/Thai-Green-Curry-square-FS.jpg",
+    description: "A rich Thai curry with coconut milk, chicken, and herbs.",
+    ingredients: ["Chicken", "Coconut Milk", "Green Curry Paste", "Vegetables"],
+    steps: ["Cook chicken", "Add curry paste", "Add coconut milk", "Simmer"]
+  }
+};
 
 /* ============================================
    THEME / DARK MODE
