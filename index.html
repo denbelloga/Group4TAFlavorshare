@@ -6,6 +6,122 @@
     <title>FlavorShare - Home</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+<!-- ================= RECIPE DETAIL MODAL ================= -->
+<div id="recipeModal" class="recipe-modal">
+    <div class="recipe-modal-content">
+        <span class="close-modal" onclick="closeRecipeModal()">×</span>
+
+        <img id="modalImg" class="modal-img" src="" alt="Recipe Image">
+
+        <h2 id="modalTitle"></h2>
+        <p id="modalAuthor"></p>
+
+        <div class="modal-section">
+            <h3>About this recipe</h3>
+            <p id="modalDesc"></p>
+        </div>
+
+        <div class="modal-section">
+            <h3>Ingredients</h3>
+            <ul id="modalIngredients"></ul>
+        </div>
+
+        <div class="modal-section">
+            <h3>Instructions</h3>
+            <ol id="modalSteps"></ol>
+        </div>
+    </div>
+</div>
+
+<script>
+    const recipes = {
+        Carbonara: {
+            img: "images/creamy-carbonara-1-4.jpg",
+            title: "Creamy Carbonara",
+            author: "Maria Romano",
+            desc: "A silky-smooth Italian pasta made with eggs, parmesan, and pancetta.",
+            ingredients: [
+                "200g spaghetti",
+                "2 eggs",
+                "1/2 cup parmesan",
+                "Pancetta",
+                "Salt & pepper"
+            ],
+            steps: [
+                "Cook pasta until al dente.",
+                "Whisk eggs and parmesan together.",
+                "Fry pancetta until crispy.",
+                "Combine everything off heat.",
+                "Serve immediately."
+            ]
+        },
+
+        Cupcakes: {
+            img: "images/rainbow-cupcakes-17.jpg",
+            title: "Rainbow Cupcakes",
+            author: "Emma Baker",
+            desc: "Light, fluffy vanilla cupcakes with vibrant rainbow swirl frosting.",
+            ingredients: [
+                "Flour",
+                "Butter",
+                "Vanilla",
+                "Eggs",
+                "Sugar",
+                "Food coloring"
+            ],
+            steps: [
+                "Mix dry ingredients.",
+                "Mix wet ingredients.",
+                "Combine and portion into cups.",
+                "Bake for 20 minutes.",
+                "Decorate with rainbow buttercream."
+            ]
+        },
+
+        GreenCurry: {
+            img: "images/Thai-Green-Curry-square-FS.jpg",
+            title: "Thai Green Curry",
+            author: "Alex Chen",
+            desc: "A comforting, fragrant curry with coconut milk and tender chicken.",
+            ingredients: [
+                "Green curry paste",
+                "Coconut milk",
+                "Chicken",
+                "Bamboo shoots",
+                "Basil leaves"
+            ],
+            steps: [
+                "Sauté curry paste.",
+                "Add coconut milk and simmer.",
+                "Add chicken and cook.",
+                "Add veggies and herbs.",
+                "Serve with jasmine rice."
+            ]
+        }
+    };
+
+    function openRecipeModal(recipeKey) {
+        const r = recipes[recipeKey];
+        document.getElementById("modalImg").src = r.img;
+        document.getElementById("modalTitle").innerText = r.title;
+        document.getElementById("modalAuthor").innerText = "by " + r.author;
+        document.getElementById("modalDesc").innerText = r.desc;
+
+        const ingList = document.getElementById("modalIngredients");
+        ingList.innerHTML = "";
+        r.ingredients.forEach(i => ingList.innerHTML += `<li>${i}</li>`);
+
+        const stepList = document.getElementById("modalSteps");
+        stepList.innerHTML = "";
+        r.steps.forEach(s => stepList.innerHTML += `<li>${s}</li>`);
+
+        document.getElementById("recipeModal").classList.add("show");
+    }
+
+    function closeRecipeModal() {
+        document.getElementById("recipeModal").classList.remove("show");
+    }
+</script>
 
 <body>
 
