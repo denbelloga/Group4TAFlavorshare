@@ -1,67 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FlavorShare – Following</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Following - FlavorShare</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
 
-  <nav>
-  <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
+    <!-- ================= NAVIGATION ================= -->
+    <nav>
+        <div class="logo">FlavorShare</div>
 
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="browse.html">Explore</a></li>
-    <li><a href="my-cookbook.html" id="protectCookbook">My Cookbook</a></li>
-    <li><a href="following.html" id="protectFollowing">Following</a></li>
-  </ul>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="explore.html">Explore</a></li>
+            <li><a href="my-cookbook.html" class="protected-link">My Cookbook</a></li>
+            <li><a href="following.html" class="active protected-link">Following</a></li>
+        </ul>
 
-  <div class="actions">
-    <input type="search" placeholder="Search recipes..." />
-    <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
+        <div class="actions">
 
-    <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
+            <input type="search" placeholder="Search recipes..." class="search-bar">
 
-    <div id="userMenu" class="hidden">
-      <span id="userNameDisplay"></span>
-      <div id="userDropdown" class="hidden">
-        <button id="logoutBtn">Log Out</button>
-      </div>
+            <button class="upload-btn" onclick="location.href='upload.html'">
+                + Upload a Recipe
+            </button>
+
+            <!-- SIGN IN BUTTON (hidden when logged in) -->
+            <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
+
+            <!-- USER MENU (visible when logged in) -->
+            <div class="user-menu hidden" id="userMenu">
+                <span id="usernameDisplay"></span>
+                <div class="dropdown hidden" id="userDropdown">
+                    <button id="logoutBtn">Log Out</button>
+                </div>
+            </div>
+
+            <span id="notifBell" class="notif-bell" aria-label="Notifications">🔔</span>
+
+            <button id="darkModeToggle" class="dark-toggle">🌙</button>
+        </div>
+    </nav>
+
+    <!-- ================= NOTIFICATION PANEL ================= -->
+    <div id="notif-panel">
+        <h3>Notifications</h3>
+        <p>No new notifications yet.</p>
+        <button onclick="toggleNotif()" class="close-btn">Close</button>
     </div>
 
-    <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
-    <span id="notifBell" class="notif-bell">🔔</span>
-  </div>
-</nav>
+    <!-- ================= PAGE HEADER ================= -->
+    <header class="page-header">
+        <h1>Following</h1>
+        <p>All the amazing creators you're following.</p>
+    </header>
 
-<div id="notifPanel">
-  <h4>Notifications</h4>
-  <ul>
-    <li>No new notifications.</li>
-  </ul>
-  <button id="notifClose">Close</button>
-</div>
+    <!-- ================= FOLLOWING LIST ================= -->
+    <main>
+        <section class="following-list" id="followingList">
 
-  <main>
-    <section>
-      <h2>Following</h2>
-      <p class="section-subtitle">
-        When you start following other cooks, their latest recipes will appear here.
-      </p>
+            <!-- Dynamically filled from script.js -->
+            <!-- Example card style for reference:
+            <div class="follow-card">
+                <img src="profile.jpg" alt="Profile">
+                <h3>Maria Romano</h3>
+                <p>42 Recipes • 12.4k Followers</p>
+                <button class="unfollow-btn">Unfollow</button>
+            </div>
+            -->
 
-      <div class="empty-state">
-        <h3>You're not following anyone yet</h3>
-        <p>Explore community recipes and start following your favorite cooks.</p>
-      </div>
-    </section>
-  </main>
+        </section>
+    </main>
 
-  <footer>
-    © 2025 FlavorShare. Good food is best shared.
-  </footer>
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        © 2025 FlavorShare. Good food is best shared.
+    </footer>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
