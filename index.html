@@ -37,70 +37,39 @@
         <button onclick="toggleNotif()" class="close-btn">Close</button>
     </div>
 
-    <!-- ================= HERO SECTION ================= -->
-    <header class="hero-section">
-        <h1>Share Your Flavor!</h1>
-        <p>Good food is best shared. Discover amazing recipes from home cooks around the world and share your own creations.</p>
+    <!-- ================= ULTRA PREMIUM HERO ================= -->
 
-        <div class="hero-search">
-            <input type="search" placeholder="Search for recipes...">
+    <header class="hero-ultra">
+
+        <!-- Parallax Background Layer -->
+        <div class="hero-bg"></div>
+
+        <!-- Floating Elements -->
+        <img src="https://i.imgur.com/GxUuZxp.png" class="float-item float1">
+        <img src="https://i.imgur.com/aY5l1P2.png" class="float-item float2">
+        <img src="https://i.imgur.com/6gE9NjH.png" class="float-item float3">
+
+        <!-- Glow Ring -->
+        <div class="glow-ring"></div>
+
+        <!-- Frosted Glass Card -->
+        <div class="hero-card">
+            <h1>Share Your Flavor!</h1>
+            <p>Good food is best shared. Discover amazing recipes from home cooks around the world and share your own creations.</p>
+
+            <div class="hero-search">
+                <span class="search-icon">🔍</span>
+                <input type="search" placeholder="Search for recipes...">
+            </div>
+
+            <a href="browse.html" class="hero-btn">Explore Recipes</a>
         </div>
-
-        <a href="browse.html" class="hero-btn">Explore Recipes</a>
     </header>
 
-    <!-- ================= TRENDING RECIPES ================= -->
+    <!-- ================= TRENDING ================= -->
     <main>
         <h2>Trending Recipes</h2>
-
-        <div class="recipe-grid">
-
-            <!-- CARD 1 -->
-            <article class="explore-card">
-                <div class="card-color-strip red"></div>
-                <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara">
-                <div class="explore-card-content">
-                    <h3>Creamy Carbonara</h3>
-                    <p>Maria Romano</p>
-                    <div class="card-stats">
-                        <span>⭐ 4.9</span>
-                        <span>💬 234</span>
-                        <span>⏱ 25 min</span>
-                    </div>
-                </div>
-            </article>
-
-            <!-- CARD 2 -->
-            <article class="explore-card">
-                <div class="card-color-strip yellow"></div>
-                <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes">
-                <div class="explore-card-content">
-                    <h3>Rainbow Cupcakes</h3>
-                    <p>Emma Baker</p>
-                    <div class="card-stats">
-                        <span>⭐ 4.8</span>
-                        <span>💬 189</span>
-                        <span>⏱ 40 min</span>
-                    </div>
-                </div>
-            </article>
-
-            <!-- CARD 3 -->
-            <article class="explore-card">
-                <div class="card-color-strip green"></div>
-                <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry">
-                <div class="explore-card-content">
-                    <h3>Thai Green Curry</h3>
-                    <p>Alex Chen</p>
-                    <div class="card-stats">
-                        <span>⭐ 4.7</span>
-                        <span>💬 310</span>
-                        <span>⏱ 35 min</span>
-                    </div>
-                </div>
-            </article>
-
-        </div>
+        <p style="text-align:center; color:#777;">(You can add recipe cards here later.)</p>
     </main>
 
     <!-- ================= FOOTER ================= -->
@@ -109,9 +78,18 @@
     </footer>
 
     <script>
+        // toggle notifications
         function toggleNotif() {
             document.getElementById("notif-panel").classList.toggle("show");
         }
+
+        // Parallax effect
+        document.addEventListener("mousemove", (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.02;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.02;
+            document.querySelector(".hero-bg").style.transform =
+                `translate(${moveX}px, ${moveY}px) scale(1.05)`;
+        });
     </script>
 
 </body>
