@@ -1,291 +1,298 @@
-/* =========================================================
-   GLOBAL VARIABLES
-========================================================= */
+/* ============ USER / AUTH ============ */
+const USER_KEY = "fs_user";
+const THEME_KEY = "fs_theme";
 
-const exploreGrid = document.getElementById("exploreGrid");
-const recipeModal = document.getElementById("recipeModal");
-const modalContent = document.getElementById("modalContent");
-const closeRecipeModal = document.getElementById("closeRecipeModal");
-
-const darkModeToggle = document.getElementById("darkModeToggle");
-const savedUser = JSON.parse(localStorage.getItem("flavorUser")) || null;
-
-let currentUser = savedUser;
-
-/* =========================================================
-   HEADER LOAD
-========================================================= */
-document.addEventListener("DOMContentLoaded", () => {
-  loadHeader();
-  applyDarkMode();
-  protectPrivatePages();
-  loadExploreRecipes();
-});
-
-/* Load header.html dynamically */
-function loadHeader() {
-  fetch("header.html")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("header").innerHTML = data;
-      setupHeaderFunctions();
-    });
+function getUser() {
+  const raw = localStorage.getItem(USER_KEY);
+  return raw ? JSON.parse(raw) : null;
 }
 
-/* Handle header buttons after loading */
-function setupHeaderFunctions() {
-  const signInBtn = document.querySelector(".sign-in-btn");
-  const profileMenu = document.getElementById("profileMenu");
-  const profileName = document.getElementById("profileName");
+function saveUser(user) {
+  localStorage.setItem(USER_KEY, JSON.stringify(user));
+}
 
-  if (currentUser) {
-    signInBtn.style.display = "none";
-    profileMenu.style.display = "block";
-    profileName.textContent = currentUser.username;
+function logoutUser() {
+  localStorage.removeItem(USER_KEY);
+  window.location.href = "index.html";
+}
+
+/* ============ THEME / DARK MODE ============ */
+function applyTheme(theme) {
+  if (theme === "dark") {
+    document.body.classList.add("dark-mode");
+  } else {
+    document.body.classList.remove("dark-mode");
   }
+}
 
-  // Dropdown toggle
-  const profileToggle = document.getElementById("profileToggle");
-  const dropdown = document.getElementById("profileDropdown");
+function initTheme() {
+  const saved = localStorage.getItem(THEME_KEY) || "light";
+  applyTheme(saved);
 
-  if (profileToggle) {
-    profileToggle.addEventListener("click", () => {
-      dropdown.classList.toggle("show");
-    });
-  }
+  const toggle = document.getElementById("themeToggle");
+  if (!toggle) return;
 
-  // Logout
+  toggle.textContent = saved === "dark" ? "☀️ Light" : "🌙 Dark";
+
+  toggle.addEventListener("click", () => {
+    const current = document.body.classList.contains("dark-mode")
+      ? "dark"
+      : "light";
+    const next = current === "dark" ? "light" : "dark";
+    localStorage.setItem(THEME_KEY, next);
+    applyTheme(next);
+    toggle.textContent = next === "dark" ? "☀️ Light" : "🌙 Dark";
+  });
+}
+
+/* ============ NAVBAR STATE ============ */
+function initNavbar() {
+  const user = getUser();
+
+  const signInBtn = document.getElementById("signInBtn");
+  const userMenu = document.getElementById("userMenu");
+  const userNameDisplay = document.getElementById("userNameDisplay");
+  const userDropdown = document.getElementById("userDropdown");
   const logoutBtn = document.getElementById("logoutBtn");
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", handleLogout);
+
+  const protectCookbook = document.getElementById("protectCookbook");
+  const protectFollowing = document.getElementById("protectFollowing");
+  const uploadBtn = document.getElementById("uploadBtn");
+
+  if (user) {
+    if (signInBtn) signInBtn.style.display = "none";
+    if (userMenu) userMenu.classList.remove("hidden");
+    if (userNameDisplay) {
+      const name =
+        user.name && user.name.trim().length > 0
+          ? user.name
+          : user.email.split("@")[0];
+      userNameDisplay.textContent = name;
+    }
+  } else {
+    if (signInBtn) signInBtn.style.display = "inline-block";
+    if (userMenu) userMenu.classList.add("hidden");
   }
 
-  // Dark mode toggle
-  const darkToggle = document.getElementById("darkModeToggle");
-  if (darkToggle) {
-    darkToggle.addEventListener("click", toggleDarkMode);
+  function requireLogin(url) {
+    if (!getUser()) {
+      alert("You must sign in first.");
+      window.location.href = "sign-in.html";
+    } else {
+      window.location.href = url;
+    }
   }
 
-  // Notifications
-  const notifBell = document.getElementById("notifBell");
-  const notifPanel = document.getElementById("notifPanel");
-  const notifClose = document.getElementById("notifClose");
-
-  if (notifBell) {
-    notifBell.onclick = () => notifPanel.classList.add("show");
-  }
-  if (notifClose) {
-    notifClose.onclick = () => notifPanel.classList.remove("show");
-  }
-}
-
-/* =========================================================
-   DARK MODE SYSTEM
-========================================================= */
-
-function applyDarkMode() {
-  const mode = localStorage.getItem("flavorDarkMode") || "light";
-  document.body.setAttribute("data-theme", mode);
-}
-
-function toggleDarkMode() {
-  const current = document.body.getAttribute("data-theme");
-  const next = current === "light" ? "dark" : "light";
-
-  document.body.setAttribute("data-theme", next);
-  localStorage.setItem("flavorDarkMode", next);
-}
-
-/* =========================================================
-   ACCESS PROTECTION (My Cookbook / Following)
-========================================================= */
-function protectPrivatePages() {
-  const privatePages = ["my-cookbook.html", "following.html"];
-
-  const currentPage = window.location.pathname.split("/").pop();
-
-  if (privatePages.includes(currentPage) && !currentUser) {
-    alert("Please sign in to view this page.");
-    window.location.href = "sign-in.html";
-  }
-}
-
-/* =========================================================
-   SIGN IN / SIGN UP / LOGOUT
-========================================================= */
-
-function handleLogin(email, username) {
-  const user = { username, email };
-  localStorage.setItem("flavorUser", JSON.stringify(user));
-  currentUser = user;
-
-  window.location.href = "index.html";
-}
-
-function handleLogout() {
-  localStorage.removeItem("flavorUser");
-  window.location.href = "index.html";
-}
-
-/* =========================================================
-   EXPLORE PAGE RECIPE DATA
-========================================================= */
-
-const demoRecipes = [
-  {
-    id: 1,
-    title: "Creamy Carbonara",
-    author: "Maria Romano",
-    category: "pasta",
-    image: "https://i.imgur.com/Dp0YQht.jpeg",
-    desc: "A silky Italian pasta with eggs, parmesan and pancetta.",
-    ingredients: ["Spaghetti", "Eggs", "Parmesan", "Pancetta", "Black Pepper"]
-  },
-  {
-    id: 2,
-    title: "Garlic Butter Shrimp",
-    author: "Luis Vega",
-    category: "quick",
-    image: "https://i.imgur.com/tflkJ2M.jpeg",
-    desc: "Juicy shrimp simmered in garlic butter sauce.",
-    ingredients: ["Shrimp", "Butter", "Garlic", "Lemon"]
-  },
-  {
-    id: 3,
-    title: "Classic Pancakes",
-    author: "Ella Turner",
-    category: "dessert",
-    image: "https://i.imgur.com/eZq2Tzv.jpeg",
-    desc: "Soft and fluffy pancakes perfect for breakfast.",
-    ingredients: ["Flour", "Milk", "Eggs", "Sugar"]
-  },
-  {
-    id: 4,
-    title: "Beef Ramen Bowl",
-    author: "Kenji Sato",
-    category: "asian",
-    image: "https://i.imgur.com/RTv4e2i.jpeg",
-    desc: "A comforting Japanese noodle soup with beef.",
-    ingredients: ["Ramen", "Beef", "Soy Sauce", "Egg"]
-  }
-];
-
-/* =========================================================
-   LOAD RECIPES INTO EXPLORE PAGE
-========================================================= */
-
-function loadExploreRecipes() {
-  if (!exploreGrid) return;
-
-  exploreGrid.innerHTML = "";
-
-  demoRecipes.forEach(recipe => {
-    const card = document.createElement("div");
-    card.classList.add("recipe-card");
-    card.setAttribute("data-category", recipe.category);
-
-    card.innerHTML = `
-      <img src="${recipe.image}" alt="${recipe.title}">
-      <div class="recipe-card-info">
-        <h3>${recipe.title}</h3>
-        <p>by ${recipe.author}</p>
-      </div>
-    `;
-
-    card.addEventListener("click", () => openRecipeModal(recipe));
-    exploreGrid.appendChild(card);
-  });
-
-  setupFilters();
-}
-
-/* =========================================================
-   FILTERING
-========================================================= */
-
-function setupFilters() {
-  const buttons = document.querySelectorAll(".filter-btn");
-
-  buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      document.querySelector(".filter-btn.active")?.classList.remove("active");
-      btn.classList.add("active");
-
-      const category = btn.getAttribute("data-filter");
-      filterRecipes(category);
+  if (protectCookbook) {
+    protectCookbook.addEventListener("click", (e) => {
+      e.preventDefault();
+      requireLogin("my-cookbook.html");
     });
+  }
+
+  if (protectFollowing) {
+    protectFollowing.addEventListener("click", (e) => {
+      e.preventDefault();
+      requireLogin("following.html");
+    });
+  }
+
+  if (uploadBtn) {
+    uploadBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      requireLogin("upload.html");
+    });
+  }
+
+  if (userMenu && userDropdown) {
+    userMenu.addEventListener("click", () => {
+      userDropdown.classList.toggle("hidden");
+    });
+
+    document.addEventListener("click", (ev) => {
+      if (!userMenu.contains(ev.target)) {
+        userDropdown.classList.add("hidden");
+      }
+    });
+  }
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", logoutUser);
+  }
+}
+
+/* ============ NOTIFICATIONS ============ */
+function initNotifications() {
+  const bell = document.getElementById("notifBell");
+  const panel = document.getElementById("notifPanel");
+  const closeBtn = document.getElementById("notifClose");
+
+  if (!bell || !panel) return;
+
+  bell.addEventListener("click", () => {
+    panel.classList.toggle("show");
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      panel.classList.remove("show");
+    });
+  }
+}
+
+/* ============ AUTH FORMS ============ */
+function initSignInForm() {
+  const form = document.getElementById("signInForm");
+  if (!form) return;
+
+  const errorEl = document.getElementById("signInError");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = form.email.value.trim();
+    const password = form.password.value.trim();
+
+    if (!email || !password) {
+      if (errorEl) errorEl.textContent = "Email and password are required.";
+      return;
+    }
+
+    if (!email.endsWith("@gmail.com")) {
+      if (errorEl) errorEl.textContent = "Use a @gmail.com email.";
+      return;
+    }
+
+    // Accept ANY password
+    saveUser({ email, name: "" });
+    if (errorEl) errorEl.textContent = "";
+    window.location.href = "index.html";
   });
 }
 
-function filterRecipes(category) {
-  const cards = document.querySelectorAll(".recipe-card");
+function initSignUpForm() {
+  const form = document.getElementById("signUpForm");
+  if (!form) return;
 
-  cards.forEach(card => {
-    const match = category === "all" || card.dataset.category === category;
-    card.style.display = match ? "block" : "none";
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const password = form.password.value.trim();
+
+    if (!email || !password) return;
+    if (!email.endsWith("@gmail.com")) {
+      alert("Use a @gmail.com email.");
+      return;
+    }
+
+    saveUser({ email, name });
+    window.location.href = "index.html";
   });
 }
 
-/* =========================================================
-   RECIPE MODAL
-========================================================= */
+function initForgotForm() {
+  const form = document.getElementById("forgotForm");
+  if (!form) return;
 
-function openRecipeModal(recipe) {
-  modalContent.innerHTML = `
-    <img src="${recipe.image}">
-    <div class="modal-inner">
-      <h2>${recipe.title}</h2>
-      <p><strong>by ${recipe.author}</strong></p>
-
-      <h3>About this recipe</h3>
-      <p>${recipe.desc}</p>
-
-      <h3>Ingredients</h3>
-      <ul>
-        ${recipe.ingredients.map(i => `<li>${i}</li>`).join("")}
-      </ul>
-    </div>
-  `;
-
-  recipeModal.classList.add("show");
-}
-
-if (closeRecipeModal) {
-  closeRecipeModal.addEventListener("click", () => {
-    recipeModal.classList.remove("show");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    alert("Password reset link sent (demo).");
+    window.location.href = "reset-new-password.html";
   });
 }
 
-/* =========================================================
-   SAVE TO COOKBOOK SYSTEM
-========================================================= */
+function initResetForm() {
+  const form = document.getElementById("resetForm");
+  if (!form) return;
 
-function saveRecipe(recipeId) {
-  if (!currentUser) {
-    alert("Please sign in first.");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    alert("Password updated (demo).");
+    window.location.href = "sign-in.html";
+  });
+}
+
+/* ============ COOKBOOK (simple) ============ */
+function getCookbookKey() {
+  const user = getUser();
+  if (!user) return null;
+  return "fs_cookbook_" + user.email;
+}
+
+function addToCookbook(id, title, author, image) {
+  const user = getUser();
+  if (!user) {
+    alert("Sign in to save recipes.");
+    window.location.href = "sign-in.html";
+    return;
+  }
+  const key = getCookbookKey();
+  let list = JSON.parse(localStorage.getItem(key) || "[]");
+  if (!list.find((r) => r.id === id)) {
+    list.push({ id, title, author, image });
+    localStorage.setItem(key, JSON.stringify(list));
+    alert("Saved to your cookbook!");
+  } else {
+    alert("Already in your cookbook.");
+  }
+}
+
+function loadCookbookPage() {
+  const grid = document.getElementById("cookbookGrid");
+  const empty = document.getElementById("cookbookEmpty");
+  if (!grid) return;
+
+  const user = getUser();
+  if (!user) {
+    grid.innerHTML = "";
+    if (empty) {
+      empty.style.display = "block";
+      empty.querySelector("p").textContent = "Sign in to view your cookbook.";
+    }
     return;
   }
 
-  let saved = JSON.parse(localStorage.getItem("cookbook")) || [];
+  const key = getCookbookKey();
+  let list = JSON.parse(localStorage.getItem(key) || "[]");
 
-  if (!saved.includes(recipeId)) {
-    saved.push(recipeId);
-    localStorage.setItem("cookbook", JSON.stringify(saved));
-    alert("Recipe saved to your cookbook!");
+  if (list.length === 0) {
+    grid.innerHTML = "";
+    if (empty) {
+      empty.style.display = "block";
+      empty.querySelector("p").textContent =
+        "You haven't saved any recipes yet.";
+    }
+    return;
   }
+
+  if (empty) empty.style.display = "none";
+
+  grid.innerHTML = list
+    .map(
+      (r) => `
+      <article class="recipe-card">
+        <img src="${r.image}" alt="${r.title}">
+        <div class="info">
+          <h3>${r.title}</h3>
+          <p class="author">${r.author}</p>
+        </div>
+      </article>
+    `
+    )
+    .join("");
 }
 
-/* =========================================================
-   UPLOAD RECIPE PREVIEW
-========================================================= */
+/* ============ INIT ============ */
+document.addEventListener("DOMContentLoaded", () => {
+  initTheme();
+  initNavbar();
+  initNotifications();
+  initSignInForm();
+  initSignUpForm();
+  initForgotForm();
+  initResetForm();
+  loadCookbookPage();
+});
 
-function handleImagePreview(input, previewId) {
-  const file = input.files[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.onload = () => {
-    document.getElementById(previewId).src = reader.result;
-  };
-  reader.readAsDataURL(file);
-}
+/* Expose cookbook function for inline onClick */
+window.addToCookbook = addToCookbook;
