@@ -6,29 +6,31 @@
   <title>FlavorShare – Explore</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-  <!-- === RECIPE POPUP === -->
-<div id="recipeModal" class="recipe-modal hidden">
-  <div class="recipe-modal-content">
-    <span id="recipeModalClose" class="close-btn">×</span>
-
-    <img id="modalImage" class="modal-image" alt="Recipe Image">
-
-    <h2 id="modalTitle"></h2>
-    <p id="modalAuthor" class="modal-author"></p>
-
-    <h3>About this recipe</h3>
-    <p id="modalDescription"></p>
-
-    <h3>Ingredients</h3>
-    <ul id="modalIngredients"></ul>
-
-    <h3>Steps</h3>
-    <ol id="modalSteps"></ol>
-  </div>
-</div>
 
 <body>
 
+  <!-- === RECIPE POPUP === -->
+  <div id="recipeModal" class="recipe-modal hidden">
+    <div class="recipe-modal-content">
+      <span id="recipeModalClose" class="close-btn">×</span>
+
+      <img id="modalImage" class="modal-image" alt="Recipe Image">
+
+      <h2 id="modalTitle"></h2>
+      <p id="modalAuthor" class="modal-author"></p>
+
+      <h3>About this recipe</h3>
+      <p id="modalDescription"></p>
+
+      <h3>Ingredients</h3>
+      <ul id="modalIngredients"></ul>
+
+      <h3>Steps</h3>
+      <ol id="modalSteps"></ol>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
   <nav>
     <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
     <ul class="nav-links">
@@ -75,7 +77,9 @@
       </div>
 
       <div class="recipe-grid">
-        <article class="recipe-card">
+
+        <!-- CARD 1 -->
+        <article class="recipe-card" onclick="openRecipePopup('creamy-carbonara')">
           <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara" />
           <div class="info">
             <h3>Creamy Carbonara</h3>
@@ -86,14 +90,15 @@
             </div>
             <div class="card-actions">
               <button class="primary-btn"
-                onclick="addToCookbook('creamy-carbonara','Creamy Carbonara','Maria Romano','images/creamy-carbonara-1-4.jpg')">
+                onclick="event.stopPropagation(); addToCookbook('creamy-carbonara','Creamy Carbonara','Maria Romano','images/creamy-carbonara-1-4.jpg')">
                 Save
               </button>
             </div>
           </div>
         </article>
 
-        <article class="recipe-card">
+        <!-- CARD 2 -->
+        <article class="recipe-card" onclick="openRecipePopup('rainbow-cupcakes')">
           <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes" />
           <div class="info">
             <h3>Rainbow Cupcakes</h3>
@@ -104,14 +109,15 @@
             </div>
             <div class="card-actions">
               <button class="primary-btn"
-                onclick="addToCookbook('rainbow-cupcakes','Rainbow Cupcakes','Emma Baker','images/rainbow-cupcakes-17.jpg')">
+                onclick="event.stopPropagation(); addToCookbook('rainbow-cupcakes','Rainbow Cupcakes','Emma Baker','images/rainbow-cupcakes-17.jpg')">
                 Save
               </button>
             </div>
           </div>
         </article>
 
-        <article class="recipe-card">
+        <!-- CARD 3 -->
+        <article class="recipe-card" onclick="openRecipePopup('thai-green-curry')">
           <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry" />
           <div class="info">
             <h3>Thai Green Curry</h3>
@@ -122,14 +128,15 @@
             </div>
             <div class="card-actions">
               <button class="primary-btn"
-                onclick="addToCookbook('thai-green-curry','Thai Green Curry','Alex Chen','images/Thai-Green-Curry-square-FS.jpg')">
+                onclick="event.stopPropagation(); addToCookbook('thai-green-curry','Thai Green Curry','Alex Chen','images/Thai-Green-Curry-square-FS.jpg')">
                 Save
               </button>
             </div>
           </div>
         </article>
 
-        <article class="recipe-card">
+        <!-- CARD 4 -->
+        <article class="recipe-card" onclick="openRecipePopup('palabok-fiesta')">
           <img src="images/Palabok.jpg" alt="Palabok Fiesta" />
           <div class="info">
             <h3>Palabok Fiesta</h3>
@@ -140,12 +147,13 @@
             </div>
             <div class="card-actions">
               <button class="primary-btn"
-                onclick="addToCookbook('palabok-fiesta','Palabok Fiesta','Lara Santos','images/Palabok.jpg')">
+                onclick="event.stopPropagation(); addToCookbook('palabok-fiesta','Palabok Fiesta','Lara Santos','images/Palabok.jpg')">
                 Save
               </button>
             </div>
           </div>
         </article>
+
       </div>
     </section>
   </main>
@@ -155,6 +163,5 @@
   </footer>
 
   <script src="script.js" defer></script>
-
 </body>
 </html>
