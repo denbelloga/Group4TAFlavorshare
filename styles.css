@@ -362,5 +362,122 @@ footer {
   }
   .nav-links {
     display: none;
+
+    /* Modal Background */
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Hidden by default */
+.hidden {
+  display: none;
+}
+
+/* Modal content box */
+.modal-content {
+  background-color: #FFF2E6; /* Soft warm cream */
+  border-radius: 18px;
+  padding: 35px 40px 40px 40px;
+  max-width: 380px;
+  width: 90%;
+  box-shadow: 0 14px 28px rgba(235, 84, 36, 0.2), 0 10px 10px rgba(235, 84, 36, 0.15);
+  text-align: center;
+  color: #503225;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  color: #EB5424; /* Orange */
+  cursor: pointer;
+}
+
+/* Heading */
+.modal-content h2 {
+  font-weight: 900;
+  font-size: 24px;
+  margin-bottom: 6px;
+  font-family: 'Segoe UI Black', Arial Black, sans-serif;
+  color: #EB5424;
+}
+
+/* Subtitle */
+.modal-subtitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #7A5C46;
+  margin-bottom: 25px;
+}
+
+/* Checkmark list */
+.modal-list {
+  list-style: none;
+  margin: 0 0 25px 0;
+  padding: 0;
+  text-align: left;
+  font-weight: 600;
+  font-size: 16px;
+  color: #684E38;
+}
+
+.modal-list li {
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 12px;
+}
+
+.modal-list li::before {
+  content: '✔';
+  color: #EB5424;
+  position: absolute;
+  left: 0;
+  font-weight: 900;
+  font-size: 20px;
+  top: 0;
+  line-height: 1;
+}
+
+/* Primary button */
+.primary-btn {
+  background-color: #EB5424;
+  border: none;
+  color: white;
+  font-weight: 900;
+  font-family: 'Segoe UI Black', Arial Black, sans-serif;
+  font-size: 16px;
+  padding: 14px 0;
+  border-radius: 40px;
+  width: 100%;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.primary-btn:hover,
+.primary-btn:focus {
+  background-color: #b4401f;
+  outline: none;
+}
+
+/* Small legal text */
+.modal-small-text {
+  font-size: 12px;
+  color: #9B7E5C;
+  font-weight: 600;
+  line-height: 1.4;
+}
   }
 }
