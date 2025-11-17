@@ -1,91 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explore Recipes - FlavorShare</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Recipes - FlavorShare</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <!-- NAV -->
-    <nav>
-        <div class="logo">FlavorShare</div>
+  <!-- HEADER -->
+  <div id="header"></div>
 
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="explore.html" class="active">Explore</a></li>
-            <li><a href="my-cookbook.html">My Cookbook</a></li>
-            <li><a href="following.html">Following</a></li>
-        </ul>
+  <main class="explore-container">
 
-        <div class="actions">
-            <input type="search" placeholder="Search recipes...">
-            <button class="upload-btn" onclick="location.href='upload.html'">+ Upload a Recipe</button>
-            <a href="sign-in.html" class="sign-in-btn">Sign In</a>
-            <span class="notif-bell" onclick="toggleNotif()">🔔</span>
-        </div>
-    </nav>
+    <section class="explore-header">
+      <h1>Explore All Recipes</h1>
+      <p>Browse a curated collection of home-cooked recipes from around the world. Discover something new for every craving.</p>
+    </section>
 
-    <!-- NOTIF PANEL -->
-    <div id="notif-panel" class="notif-panel">
-        <h3>Notifications</h3>
-        <p>You have 3 new recipes from cooks you follow.</p>
-        <p>Maria saved your Creamy Carbonara.</p>
-        <p>New follower: @foodielover.</p>
-        <button onclick="toggleNotif()" class="close-btn">Close</button>
+    <!-- FILTER BUTTONS -->
+    <div class="explore-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="pasta">Pasta</button>
+      <button class="filter-btn" data-filter="dessert">Desserts</button>
+      <button class="filter-btn" data-filter="asian">Asian</button>
+      <button class="filter-btn" data-filter="comfort">Comfort Food</button>
+      <button class="filter-btn" data-filter="quick">Quick & Easy</button>
     </div>
 
-    <main class="explore-container">
+    <!-- RECIPE GRID -->
+    <div class="recipe-grid" id="exploreGrid">
 
-        <h1>Explore All Recipes</h1>
-        <p class="subtitle">
-            Browse a curated collection of home-cooked recipes from around the world.
-            Discover something new for every craving.
-        </p>
-
-        <!-- FILTER BUTTONS -->
-        <div class="filter-bar">
-            <button class="filter-btn active" onclick="filterRecipes('all')">All</button>
-            <button class="filter-btn" onclick="filterRecipes('pasta')">Pasta</button>
-            <button class="filter-btn" onclick="filterRecipes('dessert')">Desserts</button>
-            <button class="filter-btn" onclick="filterRecipes('asian')">Asian</button>
-            <button class="filter-btn" onclick="filterRecipes('comfort')">Comfort Food</button>
-            <button class="filter-btn" onclick="filterRecipes('quick')">Quick & Easy</button>
-        </div>
-
-        <!-- FIXED RECIPE GRID -->
-        <div id="exploreGrid" class="recipe-grid">
-
-            <!-- RECIPES WILL BE INJECTED BY JS -->
-
-        </div>
-    </main>
-
-    <!-- RECIPE MODAL -->
-    <div id="recipeModal" class="recipe-modal">
-        <div class="recipe-modal-content">
-            <span class="close-modal" onclick="closeRecipeModal()">×</span>
-            <img id="modalImage" src="">
-            <h2 id="modalTitle"></h2>
-            <p id="modalAuthor"></p>
-
-            <h3>About this recipe</h3>
-            <p id="modalDesc"></p>
-
-            <h3>Ingredients</h3>
-            <ul id="modalIngredients"></ul>
-
-            <h3>Instructions</h3>
-            <p id="modalSteps"></p>
-        </div>
+      <!-- Recipes will be injected by JS -->
+      
     </div>
 
-    <footer>
-        © 2025 FlavorShare. Good food is best shared.
-    </footer>
+  </main>
 
-    <script src="script.js"></script>
+  <!-- RECIPE MODAL -->
+  <div class="recipe-modal-overlay" id="recipeModal">
+    <div class="recipe-modal">
+      <span class="modal-close" id="closeRecipeModal">&times;</span>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
