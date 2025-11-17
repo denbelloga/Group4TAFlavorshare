@@ -6,6 +6,27 @@
   <title>FlavorShare – Home</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+  <!-- === RECIPE POPUP === -->
+<div id="recipeModal" class="recipe-modal hidden">
+  <div class="recipe-modal-content">
+    <span id="recipeModalClose" class="close-btn">×</span>
+
+    <img id="modalImage" class="modal-image" alt="Recipe Image">
+
+    <h2 id="modalTitle"></h2>
+    <p id="modalAuthor" class="modal-author"></p>
+
+    <h3>About this recipe</h3>
+    <p id="modalDescription"></p>
+
+    <h3>Ingredients</h3>
+    <ul id="modalIngredients"></ul>
+
+    <h3>Steps</h3>
+    <ol id="modalSteps"></ol>
+  </div>
+</div>
+
 <body>
 
   <!-- NAVBAR + NOTIF -->
