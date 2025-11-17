@@ -82,6 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // For demo: Show modal after 2 seconds (remove this for production)
   // setTimeout(showModal, 2000);
+
+      createAccountBtn.addEventListener('click', () => {
+  window.location.href = 'sign-up.html';
+});
 });
   });
 });
