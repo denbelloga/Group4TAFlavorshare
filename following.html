@@ -3,60 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Following - FlavorShare</title>
+  <title>FlavorShare – Following</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-  <!-- LOGIN REQUIRED MODAL -->
-<div id="loginRequiredModal" class="lock-modal">
-    <div class="lock-box">
-        <h2>🔒 Sign In Required</h2>
-        <p>You need to be signed in to access this feature.</p>
-        <div class="lock-actions">
-            <a href="sign-in.html" class="btn-primary">Sign In</a>
-            <a href="sign-up.html" class="btn-outline">Create Account</a>
-        </div>
-    </div>
-</div>
-
 <body>
-  <!-- NAV -->
+  <!-- NAVBAR -->
   <nav>
     <div class="logo">FlavorShare</div>
-
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="browse.html">Explore</a></li>
       <li><a href="my-cookbook.html">My Cookbook</a></li>
       <li><a href="following.html" class="active">Following</a></li>
     </ul>
-
     <div class="actions">
       <input type="search" placeholder="Search recipes..." />
-      <button class="upload-btn">+ Upload a Recipe</button>
+      <button class="upload-btn" onclick="location.href='upload.html'">+ Upload a Recipe</button>
       <a href="sign-in.html" class="sign-in-btn">Sign In</a>
       <span id="notifBell" class="notif-bell" aria-label="Notifications" role="button">🔔</span>
     </div>
   </nav>
 
-  <!-- NOTIF PANEL -->
+  <!-- NOTIFICATION PANEL -->
   <div id="notifPanel" class="notif-panel">
     <h4>Notifications</h4>
-    <ul>
-      <li>You’re not following anyone yet.</li>
+    <ul id="notifList">
+      <li>No notifications yet.</li>
     </ul>
     <button id="notifClose" class="notif-close">Close</button>
   </div>
 
   <main>
-    <h2>Following</h2>
-    <p style="text-align:center; max-width:600px; margin:0 auto 20px;">
-      When you follow other cooks, their latest recipes will appear here.
-    </p>
+    <section class="following-section">
+      <h2>Following</h2>
+      <p class="section-subtitle">
+        When you follow other cooks, their latest recipes will appear here.
+      </p>
+
+      <div id="followingEmpty" class="empty-state">
+        <h3>You're not following anyone yet</h3>
+        <p>Start exploring popular recipes and follow cooks you like.</p>
+        <a href="browse.html" class="btn-primary">Explore Recipes</a>
+      </div>
+    </section>
   </main>
 
   <footer>
     © 2025 FlavorShare. Good food is best shared.
   </footer>
+
+  <!-- LOGIN REQUIRED MODAL -->
+  <div id="loginRequiredModal" class="login-modal">
+    <div class="login-modal-box">
+      <h2>Sign In Required</h2>
+      <p>You need an account to view who you’re following.</p>
+      <div class="login-modal-actions">
+        <a href="sign-in.html" class="btn-primary">Sign In</a>
+        <a href="sign-up.html" class="btn-outline">Create Account</a>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
