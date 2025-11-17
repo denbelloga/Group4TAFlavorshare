@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,7 @@
     <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="browse.html">Explore</a></li>
+      <li><a href="explore.html">Explore</a></li>
       <li><a href="my-cookbook.html" id="protectCookbook">My Cookbook</a></li>
       <li><a href="following.html" id="protectFollowing">Following</a></li>
     </ul>
@@ -23,61 +24,48 @@
       <div id="userMenu" class="hidden">
         <span id="userNameDisplay"></span>
         <div id="userDropdown" class="hidden">
-          <button id="logoutBtn">Log Out</button>
+          <button id="logoutBtn" type="button">Log Out</button>
         </div>
       </div>
-      <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
+      <button id="themeToggle" class="theme-toggle" type="button">🌙 Dark</button>
       <span id="notifBell" class="notif-bell">🔔</span>
     </div>
   </nav>
 
   <div id="notifPanel">
     <h4>Notifications</h4>
-    <ul>
-      <li>No new notifications.</li>
-    </ul>
-    <button id="notifClose">Close</button>
+    <ul><li>No new notifications.</li></ul>
+    <button id="notifClose" type="button">Close</button>
   </div>
 
-  <!-- HERO -->
   <header class="hero-section">
-    <h1>Share Your Flavor!</h1>
-    <p>Good food is best shared. Discover recipes from home cooks and upload your own creations.</p>
-    <div class="hero-search">
-      <input type="search" placeholder="Search for recipes, ingredients, or chefs…" />
+    <div class="hero-inner">
+      <div class="hero-kicker">Recipe sharing for home cooks</div>
+      <h1>Share Your Flavor.</h1>
+      <p>Discover comforting recipes from real people and upload your own dishes for the world to try.</p>
+      <div class="hero-search">
+        <input type="search" placeholder="Search for recipes, ingredients, or chefs…" />
+      </div>
+      <div class="hero-pill-row">
+        <button class="hero-pill">🍝 Pasta</button>
+        <button class="hero-pill">🍰 Desserts</button>
+        <button class="hero-pill">🍜 Asian</button>
+        <button class="hero-pill">⏱ 30-min meals</button>
+      </div>
+      <a href="explore.html" class="hero-btn">
+        <span>Explore Recipes</span> <span>➜</span>
+      </a>
     </div>
-    <a href="browse.html" class="hero-btn">Explore Recipes</a>
   </header>
 
-  <!-- TRENDING -->
   <main>
     <section>
       <h2>Trending Recipes</h2>
       <p class="section-subtitle">Popular picks from FlavorShare cooks this week.</p>
 
       <div class="recipe-grid">
-        <!-- Card 1 -->
         <article class="recipe-card"
-          onclick="openRecipeModal({
-            title: 'Creamy Carbonara',
-            author: 'Maria Romano',
-            image: 'images/creamy-carbonara-1-4.jpg',
-            description: 'A silky Italian pasta with eggs, parmesan, and crispy pancetta.',
-            ingredients: [
-              '200g spaghetti',
-              '2 eggs',
-              '1/2 cup grated parmesan cheese',
-              '100g pancetta or bacon',
-              'Salt & pepper'
-            ],
-            instructions: [
-              'Cook spaghetti in salted boiling water until al dente.',
-              'Fry pancetta until crispy, then remove from heat.',
-              'Whisk eggs and parmesan together in a bowl.',
-              'Toss hot pasta with pancetta, then quickly combine with egg mixture.',
-              'Season and serve immediately.'
-            ]
-          })">
+          onclick="openRecipeModal({id: 'creamy-carbonara', title: 'Creamy Carbonara', author: 'Maria Romano', image: 'images/creamy-carbonara-1-4.jpg', description: 'A silky Italian classic with eggs, parmesan, and crispy bacon.', ingredients: ['200g spaghetti','2 eggs','1/2 cup grated parmesan','80g pancetta or bacon','Salt & pepper'], instructions: ['Cook pasta in salted boiling water until al dente.','Crisp the pancetta in a pan.','Whisk eggs and parmesan in a bowl.','Toss hot pasta with pancetta, then quickly add egg mixture off the heat.','Season and serve immediately.']})">
           <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara" />
           <div class="info">
             <h3>Creamy Carbonara</h3>
@@ -87,37 +75,17 @@
               <span class="pill">25 min</span>
               <span class="pill">Pasta</span>
             </div>
-            <div class="card-actions" onclick="event.stopPropagation()">
+            <div class="card-actions">
               <button class="primary-btn"
-                onclick="addToCookbook('creamy-carbonara','Creamy Carbonara','Maria Romano','images/creamy-carbonara-1-4.jpg')">
+                onclick="event.stopPropagation(); addToCookbook('creamy-carbonara','Creamy Carbonara','Maria Romano','images/creamy-carbonara-1-4.jpg')">
                 Save to Cookbook
               </button>
             </div>
           </div>
         </article>
 
-        <!-- Card 2 -->
         <article class="recipe-card"
-          onclick="openRecipeModal({
-            title: 'Rainbow Cupcakes',
-            author: 'Emma Baker',
-            image: 'images/rainbow-cupcakes-17.jpg',
-            description: 'Bright, fluffy cupcakes with a swirl of vanilla frosting.',
-            ingredients: [
-              '2 cups flour',
-              '1 cup sugar',
-              '2 eggs',
-              'Food coloring',
-              'Buttercream frosting'
-            ],
-            instructions: [
-              'Prepare cupcake batter and divide into bowls.',
-              'Tint each bowl with different food colors.',
-              'Layer colors in cupcake liners and bake.',
-              'Cool completely and frost generously.',
-              'Decorate with sprinkles.'
-            ]
-          })">
+          onclick="openRecipeModal({id: 'rainbow-cupcakes', title: 'Rainbow Cupcakes', author: 'Emma Baker', image: 'images/rainbow-cupcakes-17.jpg', description: 'Soft vanilla cupcakes topped with colorful buttercream swirls.', ingredients: ['2 cups flour','1 cup sugar','2 eggs','1 cup milk','Buttercream + food coloring'], instructions: ['Prepare cupcake batter and divide into bowls.','Tint each bowl with different food coloring.','Spoon colors into cupcake liners and bake.','Pipe rainbow-tinted buttercream on cooled cupcakes.']})">
           <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes" />
           <div class="info">
             <h3>Rainbow Cupcakes</h3>
@@ -127,37 +95,17 @@
               <span class="pill">40 min</span>
               <span class="pill">Dessert</span>
             </div>
-            <div class="card-actions" onclick="event.stopPropagation()">
+            <div class="card-actions">
               <button class="primary-btn"
-                onclick="addToCookbook('rainbow-cupcakes','Rainbow Cupcakes','Emma Baker','images/rainbow-cupcakes-17.jpg')">
+                onclick="event.stopPropagation(); addToCookbook('rainbow-cupcakes','Rainbow Cupcakes','Emma Baker','images/rainbow-cupcakes-17.jpg')">
                 Save to Cookbook
               </button>
             </div>
           </div>
         </article>
 
-        <!-- Card 3 -->
         <article class="recipe-card"
-          onclick="openRecipeModal({
-            title: 'Thai Green Curry',
-            author: 'Alex Chen',
-            image: 'images/Thai-Green-Curry-square-FS.jpg',
-            description: 'Fragrant coconut curry packed with vegetables and herbs.',
-            ingredients: [
-              'Green curry paste',
-              'Coconut milk',
-              'Chicken or tofu',
-              'Mixed vegetables',
-              'Thai basil'
-            ],
-            instructions: [
-              'Fry curry paste until fragrant.',
-              'Add coconut milk and bring to a simmer.',
-              'Add protein and cook through.',
-              'Add vegetables and simmer until tender.',
-              'Top with Thai basil and serve with rice.'
-            ]
-          })">
+          onclick="openRecipeModal({id: 'thai-green-curry', title: 'Thai Green Curry', author: 'Alex Chen', image: 'images/Thai-Green-Curry-square-FS.jpg', description: 'A fragrant coconut-based curry with vegetables and herbs.', ingredients: ['Green curry paste','Coconut milk','Chicken or tofu','Eggplant, beans, basil','Fish sauce (optional)'], instructions: ['Sauté curry paste until aromatic.','Add coconut milk and bring to a simmer.','Add protein and vegetables; cook until tender.','Finish with basil and season to taste.']})">
           <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry" />
           <div class="info">
             <h3>Thai Green Curry</h3>
@@ -167,9 +115,9 @@
               <span class="pill">35 min</span>
               <span class="pill">Asian</span>
             </div>
-            <div class="card-actions" onclick="event.stopPropagation()">
+            <div class="card-actions">
               <button class="primary-btn"
-                onclick="addToCookbook('thai-green-curry','Thai Green Curry','Alex Chen','images/Thai-Green-Curry-square-FS.jpg')">
+                onclick="event.stopPropagation(); addToCookbook('thai-green-curry','Thai Green Curry','Alex Chen','images/Thai-Green-Curry-square-FS.jpg')">
                 Save to Cookbook
               </button>
             </div>
@@ -179,22 +127,21 @@
     </section>
   </main>
 
-  <!-- RECIPE MODAL -->
-  <div id="recipeModal" class="recipe-modal-overlay">
-    <div class="recipe-modal">
-      <button class="modal-close" onclick="closeRecipeModal()">×</button>
-      <img id="modalImage" class="modal-image" src="" alt="Recipe">
+  <div id="recipeModal">
+    <div class="recipe-modal-inner">
+      <button class="modal-close" type="button">×</button>
+      <img id="modalImage" class="modal-image" src="" alt="Recipe image" />
       <h2 id="modalTitle"></h2>
       <p id="modalAuthor" class="modal-author"></p>
-
       <h3>About this recipe</h3>
       <p id="modalDescription"></p>
-
       <h3>Ingredients</h3>
       <ul id="modalIngredients"></ul>
-
       <h3>Instructions</h3>
       <ol id="modalInstructions"></ol>
+      <button id="saveFromModalBtn" class="primary-btn" type="button">
+        Save to Cookbook
+      </button>
     </div>
   </div>
 
