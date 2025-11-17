@@ -3,83 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Cookbook - FlavorShare</title>
+  <title>FlavorShare – My Cookbook</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-  <!-- LOGIN REQUIRED MODAL -->
-<div id="loginRequiredModal" class="lock-modal">
-    <div class="lock-box">
-        <h2>🔒 Sign In Required</h2>
-        <p>You need to be signed in to access this feature.</p>
-        <div class="lock-actions">
-            <a href="sign-in.html" class="btn-primary">Sign In</a>
-            <a href="sign-up.html" class="btn-outline">Create Account</a>
-        </div>
-    </div>
-</div>
-
 <body>
-
-  <!-- ================= NAVIGATION ================= -->
+  <!-- NAVBAR -->
   <nav>
     <div class="logo">FlavorShare</div>
-
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="browse.html">Explore</a></li>
       <li><a href="my-cookbook.html" class="active">My Cookbook</a></li>
       <li><a href="following.html">Following</a></li>
     </ul>
-
     <div class="actions">
-      <input type="search" placeholder="Search recipes..." class="nav-search">
-
+      <input type="search" placeholder="Search recipes..." />
       <button class="upload-btn" onclick="location.href='upload.html'">+ Upload a Recipe</button>
-
-      <div id="userMenuContainer">
-        <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
-
-        <!-- USER DROPDOWN -->
-        <div id="userDropdown" class="user-dropdown">
-          <span id="usernameDisplay"></span>
-          <div class="dropdown-content">
-            <button onclick="logoutUser()">Log Out</button>
-          </div>
-        </div>
-      </div>
-
-      <span id="notifBell" class="notif-bell">🔔</span>
+      <a href="sign-in.html" class="sign-in-btn">Sign In</a>
+      <span id="notifBell" class="notif-bell" aria-label="Notifications" role="button">🔔</span>
     </div>
   </nav>
 
-  <!-- ================= NOTIFICATION PANEL ================= -->
+  <!-- NOTIFICATION PANEL -->
   <div id="notifPanel" class="notif-panel">
     <h4>Notifications</h4>
     <ul id="notifList">
-      <li>No new notifications yet.</li>
+      <li>No notifications yet.</li>
     </ul>
     <button id="notifClose" class="notif-close">Close</button>
   </div>
 
-  <!-- ================= MAIN ================= -->
-  <main class="cookbook-container">
-    <h2>My Cookbook</h2>
+  <main>
+    <section>
+      <h2>My Cookbook</h2>
+      <p class="section-subtitle">
+        All the recipes you've saved live here. Come back anytime to cook your favorites.
+      </p>
 
-    <div id="cookbookGrid" class="recipe-grid"></div>
+      <div id="cookbookGrid" class="recipe-grid"></div>
 
-    <!-- EMPTY STATE -->
-    <div id="emptyState" class="empty-state">
-      <img src="https://cdn-icons-png.flaticon.com/512/706/706164.png" alt="Empty" />
-      <h3>Your cookbook is empty</h3>
-      <p>Save recipes you like and they will appear here!</p>
-      <a class="hero-btn" href="browse.html">Browse Recipes</a>
-    </div>
-
+      <div id="cookbookEmpty" class="empty-state">
+        <h3>Your cookbook is empty</h3>
+        <p>Browse recipes and tap “Save to Cookbook” to keep them here.</p>
+        <a href="browse.html" class="btn-primary">Discover Recipes</a>
+      </div>
+    </section>
   </main>
 
   <footer>
     © 2025 FlavorShare. Good food is best shared.
   </footer>
+
+  <!-- LOGIN REQUIRED MODAL -->
+  <div id="loginRequiredModal" class="login-modal">
+    <div class="login-modal-box">
+      <h2>Sign In Required</h2>
+      <p>You need an account to view your cookbook.</p>
+      <div class="login-modal-actions">
+        <a href="sign-in.html" class="btn-primary">Sign In</a>
+        <a href="sign-up.html" class="btn-outline">Create Account</a>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
