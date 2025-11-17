@@ -6,7 +6,8 @@
   <title>FlavorShare – Home</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-  <!-- === RECIPE POPUP === -->
+
+<!-- === RECIPE POPUP === -->
 <div id="recipeModal" class="recipe-modal hidden">
   <div class="recipe-modal-content">
     <span id="recipeModalClose" class="close-btn">×</span>
@@ -27,10 +28,10 @@
   </div>
 </div>
 
+
 <body>
 
-  <!-- NAVBAR + NOTIF -->
-  <!-- (Paste the shared navbar block here) -->
+  <!-- NAVBAR -->
   <nav>
     <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
     <ul class="nav-links">
@@ -62,6 +63,7 @@
     <button id="notifClose">Close</button>
   </div>
 
+
   <!-- HERO -->
   <header class="hero-section">
     <h1>Share Your Flavor!</h1>
@@ -72,6 +74,7 @@
     <a href="browse.html" class="hero-btn">Explore Recipes</a>
   </header>
 
+
   <!-- TRENDING -->
   <main>
     <section>
@@ -79,7 +82,10 @@
       <p class="section-subtitle">Popular picks from FlavorShare cooks this week.</p>
 
       <div class="recipe-grid">
-        <article class="recipe-card" onclick="openRecipePopup('creamy-carbonara')">
+
+        <!-- CARD 1 -->
+        <article class="recipe-card"
+          onclick="openRecipePopup('creamy-carbonara')">
 
           <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara" />
           <div class="info">
@@ -92,14 +98,17 @@
             </div>
             <div class="card-actions">
               <button class="primary-btn"
-                onclick="addToCookbook('creamy-carbonara','Creamy Carbonara','Maria Romano','images/creamy-carbonara-1-4.jpg')">
+                onclick="event.stopPropagation(); addToCookbook('creamy-carbonara','Creamy Carbonara','Maria Romano','images/creamy-carbonara-1-4.jpg')">
                 Save to Cookbook
               </button>
             </div>
           </div>
         </article>
 
-        onclick="openRecipePopup('rainbow-cupcakes')"
+
+        <!-- CARD 2 -->
+        <article class="recipe-card"
+          onclick="openRecipePopup('rainbow-cupcakes')">
 
           <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes" />
           <div class="info">
@@ -112,14 +121,17 @@
             </div>
             <div class="card-actions">
               <button class="primary-btn"
-                onclick="addToCookbook('rainbow-cupcakes','Rainbow Cupcakes','Emma Baker','images/rainbow-cupcakes-17.jpg')">
+                onclick="event.stopPropagation(); addToCookbook('rainbow-cupcakes','Rainbow Cupcakes','Emma Baker','images/rainbow-cupcakes-17.jpg')">
                 Save to Cookbook
               </button>
             </div>
           </div>
         </article>
 
-        onclick="openRecipePopup('thai-green-curry')"
+
+        <!-- CARD 3 -->
+        <article class="recipe-card"
+          onclick="openRecipePopup('thai-green-curry')">
 
           <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry" />
           <div class="info">
@@ -132,21 +144,22 @@
             </div>
             <div class="card-actions">
               <button class="primary-btn"
-                onclick="addToCookbook('thai-green-curry','Thai Green Curry','Alex Chen','images/Thai-Green-Curry-square-FS.jpg')">
+                onclick="event.stopPropagation(); addToCookbook('thai-green-curry','Thai Green Curry','Alex Chen','images/Thai-Green-Curry-square-FS.jpg')">
                 Save to Cookbook
               </button>
             </div>
           </div>
         </article>
+
       </div>
     </section>
   </main>
+
 
   <footer>
     © 2025 FlavorShare. Good food is best shared.
   </footer>
 
   <script src="script.js" defer></script>
-
 </body>
 </html>
