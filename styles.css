@@ -448,3 +448,23 @@ footer {
 }
   }
 }
+
+html, body {
+  height: auto;
+  overflow-y: auto;
+}
+
+body {
+  display: block;       /* not flex */
+  min-height: 100vh;    /* allows scrolling */
+}
+
+.hero-half {
+  height: 50vh;         /* top half only */
+  min-height: 300px;    /* keeps it safe on small screens */
+}
+
+main {
+  margin-top: 20px;
+}
+
