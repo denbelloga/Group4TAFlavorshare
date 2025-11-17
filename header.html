@@ -1,0 +1,48 @@
+<header class="bg-white shadow-sm fixed top-0 left-0 right-0 z-50">
+  <div class="max-inner-width px-6 py-3 flex items-center justify-between gap-4 flex-nowrap overflow-visible">
+
+    <!-- LEFT -->
+    <h1 class="text-xl font-bold text-[#E4572E]">FlavorShare</h1>
+
+    <!-- CENTER NAV -->
+    <nav class="flex-1 flex items-center justify-center gap-5 text-gray-700 font-medium">
+      <a id="homeLink" href="index.html" class="hover:text-[#E4572E]">Home</a>
+      <a href="explore.html" class="hover:text-[#E4572E]">Explore</a>
+      <a href="my-profile.html" class="hover:text-[#E4572E]" style="pointer-events:none;opacity:0.5;">My Cookbook</a>
+      <a href="following.html" class="hover:text-[#E4572E]" style="pointer-events:none;opacity:0.5;">Following</a>
+    </nav>
+
+    <!-- RIGHT -->
+    <div class="flex items-center gap-4 flex-nowrap">
+
+      <!-- SEARCH -->
+      <div class="relative flex items-center">
+        <input type="text" placeholder="Search recipes..."
+          class="pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#E4572E] text-gray-700"
+          style="width: 26rem !important;" />
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400 absolute left-3 top-2.5" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1116.65 16.65z" />
+        </svg>
+      </div>
+
+      <!-- BELL -->
+      <button
+        class="flex items-center justify-center w-9 h-9 rounded-full border border-[#E4572E]/40 text-[#E4572E] bg-[#FFEFE8] hover:bg-[#FFDCD0] transition-all duration-200 shadow-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M14.857 17.082a1 1 0 01-.857.918A1.002 1.002 0 0113 19h-2a1 1 0 01-.999-1.082L10 17H5a1 1 0 01-1-1V9a7 7 0 0114 0v7a1 1 0 01-1 1h-2.143zM12 22a2 2 0 100-4 2 2 0 000 4z" />
+        </svg>
+      </button>
+
+      <!-- SIGN IN LINK -->
+      <a href="sign-in.html" class="text-[#E4572E] font-semibold hover:underline">Sign In</a>
+
+      <!-- USER PILL CONTAINER -->
+      <div id="userPillContainer"></div>
+
+    </div>
+  </div>
+</header>
