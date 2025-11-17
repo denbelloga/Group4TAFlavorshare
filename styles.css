@@ -362,5 +362,68 @@ footer {
   }
   .nav-links {
     display: none;
+
+    /* Welcome Modal Background */
+#welcomeModal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(255, 245, 237, 0.95); /* light creamy transparent */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1500;
+}
+
+/* Show modal */
+#welcomeModal.active {
+  display: flex;
+}
+
+/* Modal Content Box */
+#welcomeModal .modal-content {
+  background: white;
+  border-radius: 10px;
+  padding: 40px 50px;
+  max-width: 380px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(235, 84, 36, 0.15);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Heading */
+#welcomeModal h2 {
+  font-weight: 900;
+  color: #eb5424;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+/* Paragraph text */
+#welcomeModal p {
+  font-weight: 600;
+  font-size: 16px;
+  color: #503225;
+  margin-bottom: 35px;
+}
+
+/* Continue button */
+#welcomeModal button {
+  width: 100%;
+  padding: 15px 0;
+  background-color: #eb5424;
+  color: white;
+  font-weight: 900;
+  font-family: 'Segoe UI Black', Arial Black, sans-serif;
+  font-size: 18px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#welcomeModal button:hover {
+  background-color: #d54320;
+}
   }
 }
