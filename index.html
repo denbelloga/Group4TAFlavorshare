@@ -8,44 +8,36 @@
 </head>
 <body>
 
-  <!-- NAVBAR + NOTIF -->
-  <!-- (Paste the shared navbar block here) -->
   <nav>
-  <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
-
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="browse.html">Explore</a></li>
-    <li><a href="my-cookbook.html" id="protectCookbook">My Cookbook</a></li>
-    <li><a href="following.html" id="protectFollowing">Following</a></li>
-  </ul>
-
-  <div class="actions">
-    <input type="search" placeholder="Search recipes..." />
-    <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
-
-    <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
-
-    <div id="userMenu" class="hidden">
-      <span id="userNameDisplay"></span>
-      <div id="userDropdown" class="hidden">
-        <button id="logoutBtn">Log Out</button>
+    <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="browse.html">Explore</a></li>
+      <li><a href="my-cookbook.html" id="protectCookbook">My Cookbook</a></li>
+      <li><a href="following.html" id="protectFollowing">Following</a></li>
+    </ul>
+    <div class="actions">
+      <input type="search" placeholder="Search recipes..." />
+      <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
+      <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
+      <div id="userMenu" class="hidden">
+        <span id="userNameDisplay"></span>
+        <div id="userDropdown" class="hidden">
+          <button id="logoutBtn">Log Out</button>
+        </div>
       </div>
+      <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
+      <span id="notifBell" class="notif-bell">🔔</span>
     </div>
+  </nav>
 
-    <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
-    <span id="notifBell" class="notif-bell">🔔</span>
+  <div id="notifPanel">
+    <h4>Notifications</h4>
+    <ul>
+      <li>No new notifications.</li>
+    </ul>
+    <button id="notifClose">Close</button>
   </div>
-</nav>
-
-<div id="notifPanel">
-  <h4>Notifications</h4>
-  <ul>
-    <li>No new notifications.</li>
-  </ul>
-  <button id="notifClose">Close</button>
-</div>
-
 
   <!-- HERO -->
   <header class="hero-section">
@@ -64,32 +56,68 @@
       <p class="section-subtitle">Popular picks from FlavorShare cooks this week.</p>
 
       <div class="recipe-grid">
-       <article class="recipe-card">
-  <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara" />
-  <div class="info">
-    <h3>Creamy Carbonara</h3>
-    <p class="author">Maria Romano</p>
-    <div class="meta-row">
-      <span class="pill">⭐ 4.9</span>
-      <span class="pill">25 min</span>
-      <span class="pill">Pasta</span>
-    </div>
-    <div class="card-actions">
-      <button class="primary-btn"
-        onclick="addToCookbook('creamy-carbonara','Creamy Carbonara','Maria Romano','images/creamy-carbonara-1-4.jpg')">
-        Save to Cookbook
-      </button>
-    </div>
+        <!-- Card 1 -->
+        <article class="recipe-card"
+          onclick="openRecipeModal({
+            title: 'Creamy Carbonara',
+            author: 'Maria Romano',
+            image: 'images/creamy-carbonara-1-4.jpg',
+            description: 'A silky Italian pasta with eggs, parmesan, and crispy pancetta.',
+            ingredients: [
+              '200g spaghetti',
+              '2 eggs',
+              '1/2 cup grated parmesan cheese',
+              '100g pancetta or bacon',
+              'Salt & pepper'
+            ],
+            instructions: [
+              'Cook spaghetti in salted boiling water until al dente.',
+              'Fry pancetta until crispy, then remove from heat.',
+              'Whisk eggs and parmesan together in a bowl.',
+              'Toss hot pasta with pancetta, then quickly combine with egg mixture.',
+              'Season and serve immediately.'
+            ]
+          })">
+          <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara" />
+          <div class="info">
+            <h3>Creamy Carbonara</h3>
+            <p class="author">Maria Romano</p>
+            <div class="meta-row">
+              <span class="pill">⭐ 4.9</span>
+              <span class="pill">25 min</span>
+              <span class="pill">Pasta</span>
+            </div>
+            <div class="card-actions" onclick="event.stopPropagation()">
+              <button class="primary-btn"
+                onclick="addToCookbook('creamy-carbonara','Creamy Carbonara','Maria Romano','images/creamy-carbonara-1-4.jpg')">
+                Save to Cookbook
+              </button>
+            </div>
+          </div>
+        </article>
 
-    <!-- 👇 Mini box that appears when card is expanded -->
-    <div class="recipe-details">
-      Silky egg sauce, crispy bacon, and parmesan tossed with hot pasta.
-      Click anywhere outside the card to close this preview.
-    </div>
-  </div>
-</article>
-
-        <article class="recipe-card">
+        <!-- Card 2 -->
+        <article class="recipe-card"
+          onclick="openRecipeModal({
+            title: 'Rainbow Cupcakes',
+            author: 'Emma Baker',
+            image: 'images/rainbow-cupcakes-17.jpg',
+            description: 'Bright, fluffy cupcakes with a swirl of vanilla frosting.',
+            ingredients: [
+              '2 cups flour',
+              '1 cup sugar',
+              '2 eggs',
+              'Food coloring',
+              'Buttercream frosting'
+            ],
+            instructions: [
+              'Prepare cupcake batter and divide into bowls.',
+              'Tint each bowl with different food colors.',
+              'Layer colors in cupcake liners and bake.',
+              'Cool completely and frost generously.',
+              'Decorate with sprinkles.'
+            ]
+          })">
           <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes" />
           <div class="info">
             <h3>Rainbow Cupcakes</h3>
@@ -99,7 +127,7 @@
               <span class="pill">40 min</span>
               <span class="pill">Dessert</span>
             </div>
-            <div class="card-actions">
+            <div class="card-actions" onclick="event.stopPropagation()">
               <button class="primary-btn"
                 onclick="addToCookbook('rainbow-cupcakes','Rainbow Cupcakes','Emma Baker','images/rainbow-cupcakes-17.jpg')">
                 Save to Cookbook
@@ -108,7 +136,28 @@
           </div>
         </article>
 
-        <article class="recipe-card">
+        <!-- Card 3 -->
+        <article class="recipe-card"
+          onclick="openRecipeModal({
+            title: 'Thai Green Curry',
+            author: 'Alex Chen',
+            image: 'images/Thai-Green-Curry-square-FS.jpg',
+            description: 'Fragrant coconut curry packed with vegetables and herbs.',
+            ingredients: [
+              'Green curry paste',
+              'Coconut milk',
+              'Chicken or tofu',
+              'Mixed vegetables',
+              'Thai basil'
+            ],
+            instructions: [
+              'Fry curry paste until fragrant.',
+              'Add coconut milk and bring to a simmer.',
+              'Add protein and cook through.',
+              'Add vegetables and simmer until tender.',
+              'Top with Thai basil and serve with rice.'
+            ]
+          })">
           <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry" />
           <div class="info">
             <h3>Thai Green Curry</h3>
@@ -118,7 +167,7 @@
               <span class="pill">35 min</span>
               <span class="pill">Asian</span>
             </div>
-            <div class="card-actions">
+            <div class="card-actions" onclick="event.stopPropagation()">
               <button class="primary-btn"
                 onclick="addToCookbook('thai-green-curry','Thai Green Curry','Alex Chen','images/Thai-Green-Curry-square-FS.jpg')">
                 Save to Cookbook
@@ -129,6 +178,25 @@
       </div>
     </section>
   </main>
+
+  <!-- RECIPE MODAL -->
+  <div id="recipeModal" class="recipe-modal-overlay">
+    <div class="recipe-modal">
+      <button class="modal-close" onclick="closeRecipeModal()">×</button>
+      <img id="modalImage" class="modal-image" src="" alt="Recipe">
+      <h2 id="modalTitle"></h2>
+      <p id="modalAuthor" class="modal-author"></p>
+
+      <h3>About this recipe</h3>
+      <p id="modalDescription"></p>
+
+      <h3>Ingredients</h3>
+      <ul id="modalIngredients"></ul>
+
+      <h3>Instructions</h3>
+      <ol id="modalInstructions"></ol>
+    </div>
+  </div>
 
   <footer>
     © 2025 FlavorShare. Good food is best shared.
