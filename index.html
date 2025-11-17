@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FlavorShare</title>
+
   <style>
     /* Reset */
     * {
@@ -11,13 +12,15 @@
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #fff8f0;
       color: #202020;
       line-height: 1.5;
     }
-    /* Header navigation */
+
+    /* Navbar */
     nav {
       display: flex;
       align-items: center;
@@ -27,31 +30,41 @@
       border-bottom: 1px solid #ddd;
       font-weight: 600;
     }
+
     nav .logo {
       font-weight: 800;
       font-size: 1.6rem;
       color: #eb5424;
-      cursor: pointer;
     }
+
+    nav .logo a {
+      text-decoration: none;
+      color: inherit;
+    }
+
     nav .nav-links {
       display: flex;
       gap: 32px;
       font-size: 1.1rem;
+      list-style: none;
     }
+
     nav .nav-links a {
       text-decoration: none;
       color: #3f3f46;
-      cursor: pointer;
     }
+
     nav .nav-links a:hover,
     nav .nav-links a.active {
       color: #eb5424;
     }
+
     nav .actions {
       display: flex;
-      gap: 16px;
       align-items: center;
+      gap: 16px;
     }
+
     nav .actions input[type="search"] {
       border-radius: 20px;
       border: 1px solid #ccc;
@@ -61,269 +74,31 @@
       outline: none;
       transition: border-color 0.3s;
     }
+
     nav .actions input[type="search"]:focus {
       border-color: #eb5424;
     }
-    nav .actions button,
-    nav .actions a.sign-in-btn {
+
+    nav .actions button {
       border-radius: 20px;
       border: 1.5px solid #eb5424;
       padding: 8px 22px;
       font-weight: 700;
       cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
-      text-decoration: none;
-      text-align: center;
-      display: inline-block;
-      color: #eb5424;
       background: transparent;
-    }
-    nav .actions button.upload-btn:hover,
-    nav .actions a.sign-in-btn:hover {
-      background: #eb5424;
-      color: #fff;
-    }
-
-    /* Hero Section */
-    .hero-section {
-      text-align: center;
-      padding: 80px 20px 60px 20px;
-      background: linear-gradient(180deg, #eb5424 0%, #fca311 100%);
-      color: white;
-    }
-    .hero-section h1 {
-      font-size: 3rem;
-      font-weight: 900;
-      margin-bottom: 1rem;
-    }
-    .hero-section p {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 3rem;
-      max-width: 620px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .hero-search {
-      width: 100%;
-      max-width: 480px;
-      padding: 16px 26px;
-      border-radius: 50px;
-      border: none;
-      font-size: 1.15rem;
-      outline: none;
-      margin-bottom: 3rem;
-    }
-
-    /* Filter buttons */
-    .filters {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      flex-wrap: wrap;
-      margin-bottom: 4rem;
-    }
-    .filters button {
-      background: white;
-      border: none;
-      padding: 10px 28px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      box-shadow: none;
-      transition: all 0.3s;
       color: #eb5424;
+      transition: 0.3s;
     }
-    .filters button:hover {
-      background: #ffb562;
-      color: white;
-    }
-    .filters button.active {
+
+    nav .actions button:hover {
       background: #eb5424;
       color: white;
     }
 
-    /* Trending Recipes Section */
-    main {
-      max-width: 1100px;
-      margin: 0 auto 80px auto;
-      padding: 0 20px;
-    }
-    main h2 {
-      font-weight: 900;
-      font-size: 1.9rem;
-      color: #3f3f46;
-      margin-bottom: 48px;
-      text-align: center;
-    }
-    .recipe-cards {
-      display: flex;
-      gap: 50px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .card {
-      background: white;
-      border-radius: 20px;
-      width: 280px;
-      padding-bottom: 22px;
-      box-shadow: 0 3px 8px rgb(0 0 0 / 0.1);
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-    }
-    .card-color-strip {
-      height: 160px;
-      border-radius: 20px 20px 0 0;
-    }
-    .red {
-      background:#ea5a2c;
-    }
-    .yellow {
-      background:#fbbd27;
-    }
-    .green {
-      background:#0db07f;
-    }
-    .card-content {
-      padding: 16px 20px 10px 20px;
-      flex-grow: 1;
-    }
-    .card-content h3 {
-      font-weight: 900;
-      font-size: 1.2rem;
-      color: #3a3a3a;
-      margin-bottom: 6px;
-    }
-    .card-content p {
-      font-weight: 700;
-      font-size: 1rem;
-      margin-bottom: 10px;
-      color: #756753;
-    }
-    .card-stats {
-      padding-left: 20px;
-      display: flex;
-      justify-content: space-between;
-      font-weight: 700;
-      font-size: 14px;
-      color: #756753;
-    }
-    .card-stats span {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* Footer */
-    footer {
-      background: #252525;
-      color: white;
-      text-align: center;
-      font-weight: 600;
-      font-size: 14px;
-      padding: 20px 0;
-      letter-spacing: 1.6px;
-    }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .recipe-cards {
-        flex-direction: column;
-        align-items: center;
-      }
-      nav .nav-links {
-        display: none;
-      }
-      nav .search-upload {
-        flex-grow: 1;
-        justify-content: flex-end;
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- Nav -->
-  <nav>
-    <div class="header">
-      <div class="logo"><a href="index.html">FlavorShare</a></div>
-      <ul class="nav-links">
-        <li><a href="#" class="active">Home</a></li>
-        <li><a href="#">Explore</a></li>
-        <li><a href="#">My Cookbook</a></li>
-        <li><a href="#">Following</a></li>
-      </ul>
-      <div class="search-upload">
-        <input type="search" placeholder="Search recipes..." aria-label="Search recipes..." />
-        <button class="upload-btn">+ Upload a Recipe</button>
-        <a href="sign-in.html" class="sign-in-btn">Sign In</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <section class="hero">
-    <h1>Share Your Flavor!</h1>
-    <p>Good food is best shared. Discover amazing recipes from home cooks around the world and share your own creations.</p>
-    <input type="search" class="hero-search" placeholder="Search for recipes, ingredients, or chefs..." aria-label="Search recipes, ingredients, or chefs" />
-    <div class="filters">
-      <button class="filter active">All</button>
-      <button class="filter">Vegetarian</button>
-      <button class="filter">Vegan</button>
-      <button class="filter">Desserts</button>
-      <button class="filter">Italian</button>
-      <button class="filter">Asian</button>
-      <button class="filter">Healthy</button>
-    </div>
-  </section>
-
-  <!-- Trending Recipes -->
-  <main>
-    <h2>Trending Recipes</h2>
-    <div class="recipe-cards">
-      <article class="card">
-        <div class="card-color-strip red"></div>
-        <div class="card-content">
-          <h3>Creamy Carbonara</h3>
-          <p>Maria Romano</p>
-          <div class="card-stats">
-            <span>⭐ 4.9</span>
-            <span>💬 234</span>
-            <span>⏱ 25 min</span>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-color-strip yellow"></div>
-        <div class="card-content">
-          <h3>Rainbow Cupcakes</h3>
-          <p>Emma Baker</p>
-          <div class="card-stats">
-            <span>⭐ 4.8</span>
-            <span>💬 189</span>
-            <span>⏱ 40 min</span>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-color-strip green"></div>
-        <div class="card-content">
-          <h3>Thai Green Curry</h3>
-          <p>Alex Chen</p>
-          <div class="card-stats">
-            <span>⭐ 4.7</span>
-            <span>💬 310</span>
-            <span>⏱ 35 min</span>
-          </div>
-        </div>
-      </article>
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 FlavorShare. Good food is best shared.</p>
-  </footer>
-</body>
-</html>
+    nav .actions a.sign-in-btn {
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      text-decoration: none;
+      border: 1.4px solid #eb5424;
+      color: #
