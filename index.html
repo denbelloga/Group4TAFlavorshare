@@ -67,10 +67,59 @@
     </header>
 
     <!-- ================= TRENDING ================= -->
-    <main>
-        <h2>Trending Recipes</h2>
-        <p style="text-align:center; color:#777;">(You can add recipe cards here later.)</p>
-    </main>
+   <main>
+    <h2>Trending Recipes</h2>
+
+    <section class="trending-grid">
+
+        <!-- Trending Card 1 -->
+        <article class="recipe-card-premium" onclick="openRecipeModal('Carbonara')">
+            <div class="recipe-thumb">
+                <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara">
+            </div>
+            <div class="recipe-body">
+                <h2>Creamy Carbonara</h2>
+                <p class="author">by Maria Romano • Pasta</p>
+                <div class="pill-row">
+                    <span class="pill">⭐ 4.9</span>
+                    <span class="pill">25 min</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- Trending Card 2 -->
+        <article class="recipe-card-premium" onclick="openRecipeModal('Cupcakes')">
+            <div class="recipe-thumb">
+                <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes">
+            </div>
+            <div class="recipe-body">
+                <h2>Rainbow Cupcakes</h2>
+                <p class="author">by Emma Baker • Desserts</p>
+                <div class="pill-row">
+                    <span class="pill">⭐ 4.8</span>
+                    <span class="pill">40 min</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- Trending Card 3 -->
+        <article class="recipe-card-premium" onclick="openRecipeModal('GreenCurry')">
+            <div class="recipe-thumb">
+                <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry">
+            </div>
+            <div class="recipe-body">
+                <h2>Thai Green Curry</h2>
+                <p class="author">by Alex Chen • Asian</p>
+                <div class="pill-row">
+                    <span class="pill">⭐ 4.7</span>
+                    <span class="pill">35 min</span>
+                </div>
+            </div>
+        </article>
+
+    </section>
+</main>
+
 
     <!-- ================= FOOTER ================= -->
     <footer>
