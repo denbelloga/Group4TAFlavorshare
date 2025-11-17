@@ -102,14 +102,25 @@
   <script>
     document.getElementById('signInForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      alert('You are signed in! (This is a demo.)');
-      // Here you can set logged-in state, then redirect
-      localStorage.setItem('loggedIn', 'true');
-      window.location.href = 'index.html';
 
-      // After successful sign in
-localStorage.setItem('welcomeShown', 'false'); // Set 'false' means not shown yet
-window.location.href = 'home.html'; // Redirect to landing page
+      // Demo authentication - replace with real backend validation
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+
+      // Simple demo validation (accept any non-empty inputs)
+      if(email && password) {
+        // Save logged-in user info (you can extend with user data from backend)
+        const user = { email: email, name: 'Demo User' };
+        localStorage.setItem('user', JSON.stringify(user));
+
+        // Flag to show welcome modal on next page load
+        localStorage.setItem('welcomeShown', 'false');
+
+        // Redirect to home page (landing page)
+        window.location.href = 'home.html';
+      } else {
+        alert('Please provide valid email and password.');
+      }
     });
   </script>
 </body>
