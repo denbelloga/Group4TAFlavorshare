@@ -2,103 +2,158 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FlavorShare</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlavorShare – Home</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-  <style>
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <a href="index.html">FlavorShare</a>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="browse.html">Browse</a>
+      <a href="upload.html">Upload</a>
+      <a href="sign-in.html" id="signInLink">Sign In</a>
+    </nav>
+
+    <div class="search-upload">
+      <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
+      <a href="sign-in.html" class="sign-in-btn">Sign In</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main">
+    
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Share Your Flavor!</h1>
+      <p>
+        Discover delicious recipes from home cooks around the world and share
+        your own creations with the FlavorShare community.
+      </p>
+
+      <!-- Filters -->
+      <div class="filter-buttons">
+        <button class="filter active">All</button>
+        <button class="filter">Vegetarian</button>
+        <button class="filter">Desserts</button>
+        <button class="filter">Quick Meals</button>
+        <button class="filter">Asian</button>
+        <button class="filter">Italian</button>
+      </div>
+    </section>
+
+    <!-- Trending Section -->
+    <section>
+      <h2 class="section-title">Trending Recipes</h2>
+
+      <div class="cards-container">
+
+        <article class="card card-red recipe-card"
+          tabindex="0"
+          data-title="Creamy Carbonara"
+          data-details="A classic creamy pasta made with eggs, parmesan, pancetta, and black pepper.">
+          <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara" class="card-image" />
+          <h3>Creamy Carbonara</h3>
+          <p>Maria Romano</p>
+          <div class="stats">
+            <span>⭐ 4.9</span>
+            <span>⏱ 25 min</span>
+          </div>
+        </article>
+
+        <article class="card card-yellow recipe-card"
+          tabindex="0"
+          data-title="Rainbow Cupcakes"
+          data-details="Colorful vanilla cupcakes topped with buttercream frosting and rainbow sprinkles.">
+          <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes" class="card-image" />
+          <h3>Rainbow Cupcakes</h3>
+          <p>Emma Baker</p>
+          <div class="stats">
+            <span>⭐ 4.8</span>
+            <span>⏱ 40 min</span>
+          </div>
+        </article>
+
+        <article class="card card-green recipe-card"
+          tabindex="0"
+          data-title="Thai Green Curry"
+          data-details="A creamy and aromatic curry made with coconut milk, herbs, and spices.">
+          <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry" class="card-image" />
+          <h3>Thai Green Curry</h3>
+          <p>Alex Chen</p>
+          <div class="stats">
+            <span>⭐ 4.7</span>
+            <span>⏱ 35 min</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 FlavorShare — Good food is best shared.
+  </footer>
+
+  <script src="script.js"></script>
+
+  <!-- Recipe Modal -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <button class="close-btn" id="closeModal" aria-label="Close">&times;</button>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDetails"></p>
+    </div>
+  </div>
+
+  <!-- Modal Script -->
+  <script>
+    const cards = document.querySelectorAll('.recipe-card');
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDetails = document.getElementById('modalDetails');
+    const closeModalBtn = document.getElementById('closeModal');
+
+    function openModal(title, details) {
+      modalTitle.textContent = title;
+      modalDetails.textContent = details;
+      modal.classList.remove('hidden');
     }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #fff8f0;
-      color: #202020;
-      line-height: 1.5;
+    function closeModal() {
+      modal.classList.add('hidden');
+      modalTitle.textContent = '';
+      modalDetails.textContent = '';
     }
 
-    /* Navbar */
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 40px;
-      background: #fff;
-      border-bottom: 1px solid #ddd;
-      font-weight: 600;
-    }
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        openModal(card.dataset.title, card.dataset.details);
+      });
 
-    nav .logo {
-      font-weight: 800;
-      font-size: 1.6rem;
-      color: #eb5424;
-    }
+      card.addEventListener('keypress', e => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openModal(card.dataset.title, card.dataset.details);
+        }
+      });
+    });
 
-    nav .logo a {
-      text-decoration: none;
-      color: inherit;
-    }
+    closeModalBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => {
+      if (e.target === modal) closeModal();
+    });
+  </script>
 
-    nav .nav-links {
-      display: flex;
-      gap: 32px;
-      font-size: 1.1rem;
-      list-style: none;
-    }
-
-    nav .nav-links a {
-      text-decoration: none;
-      color: #3f3f46;
-    }
-
-    nav .nav-links a:hover,
-    nav .nav-links a.active {
-      color: #eb5424;
-    }
-
-    nav .actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    nav .actions input[type="search"] {
-      border-radius: 20px;
-      border: 1px solid #ccc;
-      padding: 8px 20px;
-      width: 300px;
-      font-size: 1rem;
-      outline: none;
-      transition: border-color 0.3s;
-    }
-
-    nav .actions input[type="search"]:focus {
-      border-color: #eb5424;
-    }
-
-    nav .actions button {
-      border-radius: 20px;
-      border: 1.5px solid #eb5424;
-      padding: 8px 22px;
-      font-weight: 700;
-      cursor: pointer;
-      background: transparent;
-      color: #eb5424;
-      transition: 0.3s;
-    }
-
-    nav .actions button:hover {
-      background: #eb5424;
-      color: white;
-    }
-
-    nav .actions a.sign-in-btn {
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      text-decoration: none;
-      border: 1.4px solid #eb5424;
-      color: #
+</body>
+</html>
