@@ -6,18 +6,22 @@
   <title>FlavorShare – Upload Recipe</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-  <div id="successPopup" class="success-popup">Recipe added successfully!</div>
-<!-- SUCCESS ANIMATION OVERLAY -->
-<div id="uploadSuccessOverlay" class="success-overlay hidden">
-  <div class="success-box">
-    <div class="checkmark">✔</div>
-    <h2>Recipe Uploaded!</h2>
-    <p>Your recipe was added and saved to your cookbook.</p>
-  </div>
-</div>
 
 <body>
 
+  <!-- SUCCESS POPUP (must be inside body!) -->
+  <div id="successPopup" class="success-popup">Recipe added successfully!</div>
+
+  <!-- FULLSCREEN SUCCESS OVERLAY -->
+  <div id="uploadSuccessOverlay" class="success-overlay hidden">
+    <div class="success-box">
+      <div class="checkmark">✔</div>
+      <h2>Recipe Uploaded!</h2>
+      <p>Your recipe was added and saved to your cookbook.</p>
+    </div>
+  </div>
+
+  <!-- ================= NAV ================= -->
   <nav>
     <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
     <ul class="nav-links">
@@ -26,21 +30,28 @@
       <li><a href="my-cookbook.html" id="protectCookbook">My Cookbook</a></li>
       <li><a href="following.html" id="protectFollowing">Following</a></li>
     </ul>
+
     <div class="actions">
       <input type="search" placeholder="Search recipes..." />
-      <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
+
+      <!-- FIX: type="button" -->
+      <button class="upload-btn" id="uploadBtn" type="button">+ Upload a Recipe</button>
+
       <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
+
       <div id="userMenu" class="hidden">
         <span id="userNameDisplay"></span>
         <div id="userDropdown" class="hidden">
           <button id="logoutBtn">Log Out</button>
         </div>
       </div>
+
       <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
       <span id="notifBell" class="notif-bell">🔔</span>
     </div>
   </nav>
 
+  <!-- ================= NOTIF PANEL ================= -->
   <div id="notifPanel">
     <h4>Notifications</h4>
     <ul>
@@ -49,6 +60,7 @@
     <button id="notifClose">Close</button>
   </div>
 
+  <!-- ================= MAIN ================= -->
   <main>
     <section>
       <h2>Upload a Recipe</h2>
@@ -82,6 +94,5 @@
   </footer>
 
   <script src="script.js" defer></script>
-
 </body>
 </html>
