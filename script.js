@@ -173,6 +173,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
       createAccountBtn.addEventListener('click', () => {
   window.location.href = 'sign-up.html';
+
+        // js/script.js
+document.addEventListener('DOMContentLoaded', () => {
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  if (user) {
+    // Enable My Cookbook and Following links
+    const myCookbookLink = document.querySelector('nav a[href="my-profile.html"]');
+    const followingLink = document.querySelector('nav a[href="following.html"]');
+    if (myCookbookLink) {
+      myCookbookLink.style.pointerEvents = 'auto';
+      myCookbookLink.classList.remove('text-gray-400');
+      myCookbookLink.classList.add('hover:text-[#E4572E]');
+    }
+    if (followingLink) {
+      followingLink.style.pointerEvents = 'auto';
+      followingLink.classList.remove('text-gray-400');
+      followingLink.classList.add('hover:text-[#E4572E]');
+    }
+
+    // Show Upload a Recipe button if you have one with id=uploadBtn
+    const uploadBtn = document.getElementById('uploadBtn');
+    if (uploadBtn) uploadBtn.style.display = 'inline-block';
+
+    // Hide Sign In link
+    const signInLink = document.querySelector('a[href="sign-in.html"]');
+    if (signInLink) signInLink.style.display = 'none';
+
+    // Optionally, update user pill here with user info
+  }
+});
 });
 });
   });
