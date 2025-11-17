@@ -17,27 +17,19 @@ function logoutUser() {
   localStorage.removeItem(USER_KEY);
   window.location.href = "index.html";
 }
-/* === RECIPE POPUP DATA === */
+
+
+/* ============================================
+   RECIPE POPUP DATA (static examples)
+============================================ */
 const recipeData = {
   "creamy-carbonara": {
     title: "Creamy Carbonara",
     author: "Maria Romano",
     image: "images/creamy-carbonara-1-4.jpg",
     description: "A silky Italian pasta with eggs, parmesan, and crispy pancetta.",
-    ingredients: [
-      "200g spaghetti",
-      "2 eggs",
-      "1/2 cup parmesan cheese",
-      "Pancetta or bacon",
-      "Salt and pepper"
-    ],
-    steps: [
-      "Boil pasta until al dente.",
-      "Cook pancetta until crispy.",
-      "Mix eggs and parmesan.",
-      "Combine everything with pasta.",
-      "Serve warm."
-    ]
+    ingredients: ["200g spaghetti", "2 eggs", "1/2 cup parmesan cheese", "Pancetta", "Salt and pepper"],
+    steps: ["Boil pasta", "Cook pancetta", "Mix eggs & cheese", "Combine", "Serve warm"]
   },
 
   "rainbow-cupcakes": {
@@ -46,7 +38,7 @@ const recipeData = {
     image: "images/rainbow-cupcakes-17.jpg",
     description: "Colorful, fun cupcakes perfect for birthdays and parties.",
     ingredients: ["Flour", "Butter", "Sugar", "Eggs", "Food coloring"],
-    steps: ["Mix batter", "Split and color", "Fill cups", "Bake"]
+    steps: ["Mix batter", "Add colors", "Pour", "Bake"]
   },
 
   "thai-green-curry": {
@@ -55,10 +47,14 @@ const recipeData = {
     image: "images/Thai-Green-Curry-square-FS.jpg",
     description: "A rich Thai curry with coconut milk, chicken, and herbs.",
     ingredients: ["Chicken", "Coconut Milk", "Green Curry Paste", "Vegetables"],
-    steps: ["Cook chicken", "Add curry paste", "Add coconut milk", "Simmer"]
+    steps: ["Cook chicken", "Add paste", "Add coconut milk", "Simmer"]
   }
 };
 
+
+/* ============================================
+   POPUP OPEN FUNCTION
+============================================ */
 function openRecipePopup(id) {
   const data = recipeData[id];
   if (!data) return;
@@ -82,11 +78,7 @@ function openRecipePopup(id) {
    THEME / DARK MODE
 ============================================ */
 function applyTheme(theme) {
-  if (theme === "dark") {
-    document.body.classList.add("dark-mode");
-  } else {
-    document.body.classList.remove("dark-mode");
-  }
+  document.body.classList.toggle("dark-mode", theme === "dark");
 }
 
 function initTheme() {
@@ -99,15 +91,13 @@ function initTheme() {
   toggle.textContent = saved === "dark" ? "☀️ Light" : "🌙 Dark";
 
   toggle.addEventListener("click", () => {
-    const isDark = document.body.classList.contains("dark-mode");
-    const next = isDark ? "light" : "dark";
-
-    localStorage.setItem(THEME_KEY, next);
-    applyTheme(next);
-
-    toggle.textContent = next === "dark" ? "☀️ Light" : "🌙 Dark";
+    const newTheme = document.body.classList.contains("dark-mode") ? "light" : "dark";
+    localStorage.setItem(THEME_KEY, newTheme);
+    applyTheme(newTheme);
+    toggle.textContent = newTheme === "dark" ? "☀️ Light" : "🌙 Dark";
   });
 }
+
 
 /* ============================================
    NAVBAR
@@ -125,44 +115,32 @@ function initNavbar() {
   const protectFollowing = document.getElementById("protectFollowing");
   const uploadBtn = document.getElementById("uploadBtn");
 
-  // Show user or sign in
   if (user) {
     if (signInBtn) signInBtn.style.display = "none";
     if (userMenu) userMenu.classList.remove("hidden");
-    if (userNameDisplay) {
-      userNameDisplay.textContent = user.name || user.email.split("@")[0];
-    }
+    if (userNameDisplay) userNameDisplay.textContent = user.name || user.email.split("@")[0];
   } else {
     if (signInBtn) signInBtn.style.display = "inline-block";
     if (userMenu) userMenu.classList.add("hidden");
   }
 
-  // Protect pages
-  function requireLogin(url) {
-    if (!getUser()) window.location.href = "sign-in.html";
-    else window.location.href = url;
-  }
-
-  if (protectCookbook) {
-    protectCookbook.addEventListener("click", (e) => {
+  const protect = (el, url) => {
+    if (!el) return;
+    el.addEventListener("click", e => {
       if (!getUser()) {
         e.preventDefault();
         window.location.href = "sign-in.html";
+      } else {
+        window.location.href = url;
       }
     });
-  }
+  };
 
-  if (protectFollowing) {
-    protectFollowing.addEventListener("click", (e) => {
-      if (!getUser()) {
-        e.preventDefault();
-        window.location.href = "sign-in.html";
-      }
-    });
-  }
+  protect(protectCookbook, "my-cookbook.html");
+  protect(protectFollowing, "following.html");
 
   if (uploadBtn) {
-    uploadBtn.addEventListener("click", (e) => {
+    uploadBtn.addEventListener("click", e => {
       if (!getUser()) {
         e.preventDefault();
         window.location.href = "sign-in.html";
@@ -172,21 +150,19 @@ function initNavbar() {
     });
   }
 
-  // Dropdown
   if (userMenu && userDropdown) {
-    userMenu.addEventListener("click", () => {
-      userDropdown.classList.toggle("hidden");
-    });
+    userMenu.addEventListener("click", () =>
+      userDropdown.classList.toggle("hidden")
+    );
 
-    document.addEventListener("click", (ev) => {
-      if (!userMenu.contains(ev.target)) {
-        userDropdown.classList.add("hidden");
-      }
+    document.addEventListener("click", ev => {
+      if (!userMenu.contains(ev.target)) userDropdown.classList.add("hidden");
     });
   }
 
   if (logoutBtn) logoutBtn.addEventListener("click", logoutUser);
 }
+
 
 /* ============================================
    NOTIFICATIONS
@@ -198,16 +174,10 @@ function initNotifications() {
 
   if (!bell || !panel) return;
 
-  bell.addEventListener("click", () => {
-    panel.classList.toggle("show");
-  });
-
-  if (closeBtn) {
-    closeBtn.addEventListener("click", () => {
-      panel.classList.remove("show");
-    });
-  }
+  bell.addEventListener("click", () => panel.classList.toggle("show"));
+  if (closeBtn) closeBtn.addEventListener("click", () => panel.classList.remove("show"));
 }
+
 
 /* ============================================
    AUTH FORMS
@@ -218,9 +188,8 @@ function initSignInForm() {
 
   const errorEl = document.getElementById("signInError");
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", e => {
     e.preventDefault();
-
     const email = form.email.value.trim();
     const password = form.password.value.trim();
 
@@ -228,7 +197,6 @@ function initSignInForm() {
       errorEl.textContent = "Email and password are required.";
       return;
     }
-
     if (!email.endsWith("@gmail.com")) {
       errorEl.textContent = "Use a @gmail.com email.";
       return;
@@ -243,12 +211,10 @@ function initSignUpForm() {
   const form = document.getElementById("signUpForm");
   if (!form) return;
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", e => {
     e.preventDefault();
-
     const name = form.name.value.trim();
     const email = form.email.value.trim();
-    const password = form.password.value.trim();
 
     if (!email.endsWith("@gmail.com")) {
       alert("Use a @gmail.com email.");
@@ -260,35 +226,13 @@ function initSignUpForm() {
   });
 }
 
-function initForgotForm() {
-  const form = document.getElementById("forgotForm");
-  if (!form) return;
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    alert("Password reset link sent!");
-    window.location.href = "reset-new-password.html";
-  });
-}
-
-function initResetForm() {
-  const form = document.getElementById("resetForm");
-  if (!form) return;
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    alert("Password updated!");
-    window.location.href = "sign-in.html";
-  });
-}
 
 /* ============================================
-   COOKBOOK
+   COOKBOOK STORAGE
 ============================================ */
 function getCookbookKey() {
   const user = getUser();
-  if (!user) return null;
-  return "fs_cookbook_" + user.email;
+  return user ? "fs_cookbook_" + user.email : null;
 }
 
 function addToCookbook(id, title, author, image) {
@@ -302,16 +246,19 @@ function addToCookbook(id, title, author, image) {
   const key = getCookbookKey();
   let list = JSON.parse(localStorage.getItem(key) || "[]");
 
-  if (!list.find((r) => r.id === id)) {
+  if (!list.some(r => r.id === id)) {
     list.push({ id, title, author, image });
     localStorage.setItem(key, JSON.stringify(list));
     alert("Saved to your cookbook!");
-  } else alert("Already saved!");
+  } else {
+    alert("Already saved!");
+  }
 }
 
 function loadCookbookPage() {
   const grid = document.getElementById("cookbookGrid");
   const empty = document.getElementById("cookbookEmpty");
+
   if (!grid) return;
 
   const user = getUser();
@@ -321,8 +268,7 @@ function loadCookbookPage() {
     return;
   }
 
-  const key = getCookbookKey();
-  let list = JSON.parse(localStorage.getItem(key) || "[]");
+  const list = JSON.parse(localStorage.getItem(getCookbookKey()) || "[]");
 
   if (list.length === 0) {
     empty.style.display = "block";
@@ -331,45 +277,41 @@ function loadCookbookPage() {
   }
 
   empty.style.display = "none";
-
   grid.innerHTML = list
     .map(
-      (r) => `
-    <article class="recipe-card">
-      <img src="${r.image}" alt="${r.title}">
-      <div class="info">
-        <h3>${r.title}</h3>
-        <p class="author">${r.author}</p>
-      </div>
-    </article>
-  `
+      r => `
+      <article class="recipe-card">
+        <img src="${r.image}" alt="${r.title}">
+        <div class="info">
+          <h3>${r.title}</h3>
+          <p class="author">${r.author}</p>
+        </div>
+      </article>
+    `
     )
     .join("");
 }
 
+
 /* ============================================
-   UPLOAD FORM + SUCCESS ANIMATION
+   UPLOAD RECIPE FORM + SUCCESS
 ============================================ */
 function initUploadForm() {
   const form = document.getElementById("uploadForm");
   if (!form) return;
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", e => {
     e.preventDefault();
 
     const user = getUser();
     if (!user) {
-      alert("Please sign in first.");
       window.location.href = "sign-in.html";
       return;
     }
 
-    // Use correct IDs from upload.html
     const title = document.getElementById("recipeTitle").value.trim();
     const desc = document.getElementById("recipeDesc").value.trim();
     const imageUrl = document.getElementById("recipeImage").value.trim();
-    const ingredients = document.getElementById("recipeIngredients").value.trim();
-    const steps = document.getElementById("recipeSteps").value.trim();
 
     if (!title || !desc || !imageUrl) {
       alert("Please fill all required fields.");
@@ -377,9 +319,9 @@ function initUploadForm() {
     }
 
     const key = getCookbookKey();
-    const recipeId = "recipe-" + Date.now();
-
     let list = JSON.parse(localStorage.getItem(key) || "[]");
+
+    const recipeId = "recipe-" + Date.now();
 
     list.push({
       id: recipeId,
@@ -390,7 +332,7 @@ function initUploadForm() {
 
     localStorage.setItem(key, JSON.stringify(list));
 
-    // SUCCESS ANIMATION
+    // Success animation
     const overlay = document.getElementById("uploadSuccessOverlay");
     overlay.classList.add("show");
 
@@ -402,6 +344,7 @@ function initUploadForm() {
     form.reset();
   });
 }
+
 
 /* ============================================
    INIT EVERYTHING
@@ -418,16 +361,21 @@ document.addEventListener("DOMContentLoaded", () => {
   initUploadForm();
 });
 
-/* Allow inline onclick() */
-window.addToCookbook = addToCookbook;
 
+/* ============================================
+   POPUP CLOSE EVENTS
+============================================ */
 document.getElementById("recipeModalClose").addEventListener("click", () => {
   document.getElementById("recipeModal").classList.add("hidden");
 });
 
-document.getElementById("recipeModal").addEventListener("click", (e) => {
+document.getElementById("recipeModal").addEventListener("click", e => {
   if (e.target.id === "recipeModal") {
     document.getElementById("recipeModal").classList.add("hidden");
   }
 });
 
+
+/* Allow inline button access */
+window.addToCookbook = addToCookbook;
+window.openRecipePopup = openRecipePopup;
