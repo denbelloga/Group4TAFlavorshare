@@ -1,195 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FlavorShare</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="script.js"></script>
+  <title>FlavorShare - Home</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="css/global.css" />
 </head>
-<body>
-  <!-- Header -->
-  <header class="header">
-    <div class="logo"><a href="index.html">FlavorShare</a></div>
-    <nav class="nav-links">
-      <a href="index.html" class="active">Home</a>
-      <a href="explore.html">Explore</a>
-      <a href="#" id="cookbookBtn">My Cookbook</a>
-      <a href="#" id="followingBtn">Following</a>
-    </nav>
-    <div class="search-upload">
-      <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
-      <a href="sign-in.html" class="sign-in-btn">Sign In</a>
-    </div>
-  </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h1>Share Your Flavor!</h1>
-    <p>Good food is best shared. Discover amazing recipes from home cooks around the world and share your own creations.</p>
-    <div class="filter-buttons">
-      <button class="filter active">All</button>
-      <button class="filter">Vegetarian</button>
-      <button class="filter">Vegan</button>
-      <button class="filter">Desserts</button>
-      <button class="filter">Italian</button>
-      <button class="filter">Asian</button>
-      <button class="filter">Healthy</button>
-    </div>
-  </section>
+<body class="bg-[#FFF8F0] font-sans text-gray-800 flex flex-col min-h-screen">
 
-  <!-- Trending recipes -->
-  <main>
-    <h2 class="section-title">Trending Recipes</h2>
-    <div class="cards-container">
-      <article class="card card-red">
-        <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara" class="card-image" />
-        <div class="card-content">
-          <h3>Creamy Carbonara</h3>
-          <p>Maria Romano</p>
-          <div class="stats">
-            <span title="Rating">⭐ 4.9</span>
-            <span title="Comments">💬 234</span>
-            <span title="Preparation time">⏱ 25 min</span>
-          </div>
-        </div>
-      </article>
+  <!-- HEADER -->
+  <div id="header"></div>
 
-      <article class="card card-yellow">
-        <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes" class="card-image" />
-        <div class="card-content">
-          <h3>Rainbow Cupcakes</h3>
-          <p>Emma Baker</p>
-          <div class="stats">
-            <span title="Rating">⭐ 4.8</span>
-            <span title="Comments">💬 189</span>
-            <span title="Preparation time">⏱ 40 min</span>
-          </div>
-        </div>
-      </article>
+  <main class="flex-1 flex flex-col max-inner-width mx-auto px-4 py-10">
 
-      <article class="card card-green">
-        <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry" class="card-image" />
-        <div class="card-content">
-          <h3>Thai Green Curry</h3>
-          <p>Alex Chen</p>
-          <div class="stats">
-            <span title="Rating">⭐ 4.7</span>
-            <span title="Comments">💬 310</span>
-            <span title="Preparation time">⏱ 35 min</span>
-          </div>
-        </div>
-      </article>
-    </div>
+    <section class="bg-gradient-to-r from-[#E4572E] to-[#F3A712] text-white shadow-md rounded-xl p-8 mb-10">
+      <h1 id="welcomeTitle" class="text-4xl font-extrabold mb-4">Welcome to FlavorShare</h1>
+      <p>Here's what's cooking today. Discover new recipes, follow your favorite chefs, and share your culinary creations.</p>
+
+      <div class="flex flex-wrap gap-4 mt-6">
+        <a href="upload-recipe.html"
+          class="px-6 py-3 rounded-full bg-white text-[#E4572E] font-semibold shadow-soft hover:bg-orange-50 transition">
+          <i class="fa-solid fa-upload mr-2"></i> Upload a Recipe
+        </a>
+
+        <a href="explore.html"
+          class="px-6 py-3 rounded-full bg-white/80 text-white font-semibold border border-white/30 backdrop-blur-sm hover:bg-white/30 transition">
+          <i class="fa-solid fa-compass mr-2"></i> Explore Recipes
+        </a>
+      </div>
+    </section>
+
+    <section class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+      <!-- Sidebar -->
+      <aside class="space-y-6 lg:col-span-1 bg-white rounded-xl shadow-soft p-6">
+        <h3 class="font-bold text-gray-800 mb-4">Quick Links</h3>
+        <ul class="space-y-3 text-gray-700">
+          <li><a href="upload-recipe.html" class="hover:text-[#E4572E]">Upload Recipe</a></li>
+          <li><a href="my-profile.html" class="hover:text-[#E4572E]">My Profile</a></li>
+          <li><a href="my-profile.html" class="hover:text-[#E4572E]">My Cookbook</a></li>
+          <li><a href="following.html" class="hover:text-[#E4572E]">Following</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main Content -->
+      <section class="lg:col-span-3 space-y-10">
+        <!-- This area can be used for trending or featured recipes -->
+        <h2 class="text-2xl font-semibold text-[#E4572E]">Trending Recipes</h2>
+        <p class="text-gray-700">Coming soon...</p>
+      </section>
+    </section>
   </main>
 
-  <!-- Modal popup for new users -->
-<div id="signupModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal-content" role="document">
-    <button id="closeModal" class="close-btn" aria-label="Close modal">&times;</button>
-    <h2 id="modalTitle">New to FlavorShare?</h2>
-    <p class="modal-subtitle">Join our community ...</p>
-    <ul class="modal-list">
-      <li>Upload unlimited recipes with photos</li>
-      <li>Save your favorite recipes in collections</li>
-      <li>Get feedback from fellow food enthusiasts</li>
-      <li>Follow top chefs and home cooks</li>
-      <li>Create your personalized cookbook</li>
-    </ul>
-    <button id="createAccountBtn" class="primary-btn">Create an Account</button>
-    <p class="modal-small-text">
-      By signing up, you agree to our Terms of Service and Privacy Policy
-    </p>
-  </div>
-</div>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 FlavorShare. Good food is best shared.</p>
+  <footer class="bg-[#2D2A26] text-gray-300 text-sm py-6 mt-auto text-center">
+    &copy; 2025 FlavorShare — Good food is best shared.
   </footer>
 
-  <!-- Modal popup -->
-  <div id="signupModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-content">
-      <button id="closeModal" class="close-btn" aria-label="Close modal">&times;</button>
-      <h2 id="modalTitle">New to FlavorShare?</h2>
-      <p>Join our community ...</p>
-      <ul>
-        <li>✔ Upload unlimited recipes with photos</li>
-        <li>✔ Save your favorite recipes in collections</li>
-        <li>✔ Get feedback from fellow food enthusiasts</li>
-        <li>✔ Follow top chefs and home cooks</li>
-        <li>✔ Create your personalized cookbook</li>
-      </ul>
-      <button id="createAccountBtn" class="primary-btn">Create an Account</button>
-      <p class="small-text">By signing up, you agree to our Terms of Service and Privacy Policy</p>
-
-      <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const welcomeShown = localStorage.getItem('welcomeShown');
-    const welcomeModal = document.getElementById('welcomeModal');
-    const welcomeOkBtn = document.getElementById('welcomeOkBtn');
-
-    // Show modal only if user is signed in AND welcome not shown yet
-    // (You should have some way to detect signed in user; here we just check welcomeShown flag)
-    if(welcomeShown === 'false') {
-      welcomeModal.classList.remove('hidden');
-    }
-
-    welcomeOkBtn.addEventListener('click', () => {
-      welcomeModal.classList.add('hidden');
-      // Mark welcome as shown
-      localStorage.setItem('welcomeShown', 'true');
-      // Optionally reload page or update UI to enable full access
-      location.reload();
-
-
-      <!-- home.html -->
-<body>
-  ...
-  <!-- Your existing page content -->
-
-  <!-- Include the modal here -->
-  <div id="welcomeModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-    <div class="bg-white rounded-xl p-8 max-w-sm w-full text-center shadow-lg">
-      <h2 class="text-2xl font-bold text-[#E4572E] mb-4">Welcome to FlavorShare!</h2>
-      <p class="text-gray-700 mb-8">Start uploading your recipe. Enjoy!</p>
-      <button id="welcomeOkBtn"
-        class="px-6 py-3 rounded-full bg-[#E4572E] text-white font-semibold shadow-soft hover:bg-[#b73d20] transition">
-        OK
-      </button>
-    </div>
-  </div>
-
   <script src="js/header.js"></script>
-  <script src="js/recipes-data.js"></script>
-  <script src="js/home.js"></script>
-
-  <!-- Add this script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const showWelcome = localStorage.getItem('showWelcome');
-      const welcomeModal = document.getElementById('welcomeModal');
-      const welcomeOkBtn = document.getElementById('welcomeOkBtn');
-
-      if (showWelcome === 'true') {
-        welcomeModal.classList.remove('hidden');
-
-        welcomeOkBtn.addEventListener('click', () => {
-          welcomeModal.classList.add('hidden');
-          localStorage.removeItem('showWelcome');
-          window.location.href = 'home.html'; // Redirect to home for full access
-
-          <script src="js/script.js"></script>
-        });
-      }
-    });
-  </script>
+  <script src="js/script.js"></script>
 </body>
-    });
-  });
-</script>
-    </div>
-  </div>
-</body>
+
 </html>
