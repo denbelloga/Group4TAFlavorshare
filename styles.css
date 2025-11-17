@@ -212,3 +212,88 @@ footer {
   color: white;
   margin-top: 40px;
 }
+/* ================= LOGIN REQUIRED MODAL ================= */
+
+.lock-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    animation: fadeIn 0.3s ease;
+}
+
+.lock-modal.show {
+    display: flex;
+}
+
+.lock-box {
+    background: white;
+    padding: 30px;
+    width: 90%;
+    max-width: 380px;
+    text-align: center;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    animation: popIn 0.3s ease;
+}
+
+.lock-box h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: #eb5424;
+}
+
+.lock-box p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+.lock-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-primary {
+    background: #eb5424;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.btn-primary:hover {
+    background: #c73e15;
+}
+
+.btn-outline {
+    border: 2px solid #eb5424;
+    padding: 12px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #eb5424;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.btn-outline:hover {
+    background: #ffe3d6;
+}
+
+/* Animations */
+@keyframes popIn {
+    0% { transform: scale(0.85); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
