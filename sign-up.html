@@ -1,107 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - FlavorShare</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlavorShare – Sign Up</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
-<body class="signin-body">
-
-    <!-- Dark Mode Toggle -->
-    <div class="darkmode-toggle" onclick="toggleDarkMode()">🌙</div>
-
-    <div class="signin-container">
-
-        <!-- Floating Shapes -->
-        <div class="signin-shape shape1"></div>
-        <div class="signin-shape shape2"></div>
-        <div class="signin-shape shape3"></div>
-
-        <form class="signin-card" onsubmit="return register(event)">
-
-            <!-- Logo Reveal -->
-            <div class="signin-logo">Create Your Account</div>
-
-            <h1>Join FlavorShare 🍽️</h1>
-            <p class="signin-subtext">Start sharing and discovering amazing recipes.</p>
-
-            <label>Full Name</label>
-            <input id="fullname" type="text" placeholder="Juan Dela Cruz" required>
-
-            <label>Email</label>
-            <input id="email" type="email" placeholder="yourname@gmail.com" required>
-
-            <label>Password</label>
-            <div class="password-wrapper">
-                <input id="password" type="password" placeholder="••••••••" required>
-                <span class="toggle-password" onclick="togglePassword('password')">👁</span>
-            </div>
-
-            <label>Confirm Password</label>
-            <div class="password-wrapper">
-                <input id="confirm" type="password" placeholder="••••••••" required>
-                <span class="toggle-password" onclick="togglePassword('confirm')">👁</span>
-            </div>
-
-            <button type="submit" class="signin-btn">Create Account</button>
-
-            <!-- Google Button -->
-            <button type="button" class="google-btn">
-                <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google">
-                Sign up with Google
-            </button>
-
-            <p class="signin-alt">
-                Already have an account? <a href="sign-in.html">Sign In</a>
-            </p>
-
-        </form>
+<body>
+  <nav>
+    <div class="logo">FlavorShare</div>
+    <div class="actions">
+      <a href="index.html" class="sign-in-btn">Back to Home</a>
     </div>
+  </nav>
 
-    <!-- Success redirect popup -->
-    <div id="success-popup">✔ Account created successfully!</div>
+  <main>
+    <div class="auth-container">
+      <h1>Create Your Account 🍳</h1>
+      <p class="section-subtitle">Save recipes, upload your own, and follow your favorite home cooks.</p>
 
-    <script>
-        /* Password show/hide */
-        function togglePassword(id) {
-            let field = document.getElementById(id);
-            field.type = field.type === "password" ? "text" : "password";
-        }
+      <form id="signUpForm">
+        <label>Username</label>
+        <input type="text" name="username" required />
 
-        /* Dark mode toggle */
-        function toggleDarkMode() {
-            document.body.classList.toggle("dark-mode");
-        }
+        <label>Email</label>
+        <input type="email" name="email" placeholder="yourname@gmail.com" required />
 
-        /* Registration logic */
-        function register(e) {
-            e.preventDefault();
+        <label>Password</label>
+        <input type="password" name="password" required />
 
-            let email = document.getElementById("email").value;
-            let pass = document.getElementById("password").value;
-            let confirm = document.getElementById("confirm").value;
+        <button type="submit" class="btn-primary full-width">Sign Up</button>
 
-            if (!email.endsWith("@gmail.com")) {
-                alert("Email must end with @gmail.com");
-                return;
-            }
+        <button type="button" class="google-btn full-width">
+          <span>G</span> Sign up with Google (Demo)
+        </button>
 
-            if (pass !== confirm) {
-                alert("Passwords do not match!");
-                return;
-            }
+        <div class="auth-links">
+          <span>Already have an account?</span>
+          <a href="sign-in.html">Sign In</a>
+        </div>
+      </form>
+    </div>
+  </main>
 
-            let popup = document.getElementById("success-popup");
-            popup.classList.add("show");
-
-            setTimeout(() => {
-                window.location.href = "sign-in.html";
-            }, 1800);
-        }
-    </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
