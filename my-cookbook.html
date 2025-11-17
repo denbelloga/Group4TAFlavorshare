@@ -3,17 +3,17 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My Cookbook - FlavorShare</title>
 
-  <!-- Tailwind -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 
-  <!-- Global Styles -->
-  <link rel="stylesheet" href="css/global.css">
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="css/global.css" />
 </head>
 
 <body class="bg-[#FFF8F0] font-sans text-gray-800 flex flex-col min-h-screen">
@@ -21,35 +21,27 @@
   <!-- HEADER -->
   <div id="header"></div>
 
-  <main class="flex-1 max-inner-width mx-auto px-6 py-10 flex flex-col items-center justify-center text-center" id="mainContent">
-
-    <!-- Content will be controlled by JS -->
-
+  <main id="mainContent" class="flex-1 max-inner-width mx-auto px-6 py-20 flex flex-col items-center justify-center text-center">
+    <!-- Content controlled by JS -->
   </main>
 
-  <footer class="bg-[#2D2A26] text-gray-300 text-sm py-6 mt-auto">
-    <div class="max-inner-width px-6 text-center mx-auto">
-      &copy; 2025 FlavorShare — Good food is best shared.
-    </div>
+  <footer class="bg-[#2D2A26] text-gray-300 text-sm py-6 mt-auto text-center">
+    &copy; 2025 FlavorShare — Good food is best shared.
   </footer>
 
   <script src="js/header.js"></script>
-
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const userStr = localStorage.getItem('user');
       const mainContent = document.getElementById('mainContent');
 
       if (!userStr) {
-        // User not logged in - redirect to sign-in page
-        window.location.href = 'sign-in.html';
+        window.location.href = 'sign-in.html'; // redirect if not logged in
         return;
       }
 
-      // Parse user data (if needed)
       const user = JSON.parse(userStr);
 
-      // For now, no uploads yet, so show message encouraging upload
       mainContent.innerHTML = `
         <div class="bg-white rounded-xl p-10 shadow-soft max-w-lg">
           <i class="fa-solid fa-book-open text-[#E4572E] text-6xl mb-6"></i>
@@ -66,7 +58,6 @@
       `;
     });
   </script>
-
 </body>
 
 </html>
