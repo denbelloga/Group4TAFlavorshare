@@ -1,109 +1,360 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FlavorShare</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="script.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FlavorShare</title>
+<style>
+  /* ----- Basic Reset & Base ----- */
+  * {
+    box-sizing: border-box;
+    margin: 0; padding: 0;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff8f0;
+  }
+
+  /* ----- Header ----- */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 16px 32px;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    height: 60px;
+  }
+  .logo a {
+    color: #eb5424;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-decoration: none;
+  }
+  .nav-links a {
+    margin: 0 16px;
+    text-decoration: none;
+    color: #111;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .nav-links a:hover {
+    color: #eb5424;
+  }
+  .user-menu, .search-upload {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .upload-btn {
+    background-color: #feb5a8;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    color: #a94448;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .upload-btn:hover {
+    background-color: #eb5424;
+    color: white;
+  }
+
+  /* Sign In Button + User Dropdown */
+  #signInButton, #userNameButton {
+    background: none;
+    border: 1.5px solid #eb5424;
+    border-radius: 20px;
+    color: #eb5424;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 8px 14px;
+    cursor: pointer;
+    position: relative;
+  }
+  #signInButton:hover, #userNameButton:hover {
+    background-color: #eb5424;
+    color: white;
+  }
+  .dropdown-menu {
+    position: absolute;
+    top: 120%;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    display: none;
+    min-width: 140px;
+    z-index: 20000;
+  }
+  .dropdown-menu.show {
+    display: block;
+  }
+  .dropdown-menu button {
+    background: none;
+    border: none;
+    width: 100%;
+    padding: 10px 16px;
+    text-align: left;
+    color: #eb5424;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .dropdown-menu button:hover {
+    background-color: #fbd7ce;
+  }
+
+  /* ----- Modal Background ----- */
+  .modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0,0,0,0.35);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 30000;
+  }
+  .modal.active {
+    display: flex;
+  }
+  .modal-content {
+    background: white;
+    padding: 40px 50px;
+    max-width: 380px;
+    width: 90%;
+    border-radius: 18px;
+    box-shadow: 0 14px 28px rgba(235, 84, 36, 0.15), 0 10px 10px rgba(235, 84, 36, 0.15);
+    text-align: center;
+    color: #503225;
+    font-weight: 900;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+  }
+  .modal-content h2 {
+    color: #eb5424;
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  .modal-content form input {
+    width: 100%;
+    margin: 8px 0 20px 0;
+    padding: 14px 18px;
+    border-radius: 19px;
+    border: 1px solid #d5d9dc;
+    font-weight: 600;
+    font-size: 16px;
+    color: #503225;
+    outline: none;
+  }
+  .modal-content form input::placeholder {
+    color: #c9c9c9;
+  }
+  .modal-content form input:focus {
+    border-color: #eb5424;
+  }
+  .modal-content form button {
+    width: 100%;
+    background-color: #eb5424;
+    color: white;
+    font-weight: 900;
+    font-size: 18px;
+    padding: 15px 0;
+    border-radius: 19px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .modal-content form button:hover {
+    background-color: #c84320;
+  }
+  .modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 28px;
+    border: none;
+    color: #eb5424;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  /* ----- Welcome popup modal ----- */
+  #welcomeModal .modal-content {
+    background: linear-gradient(rgba(235,84,36,0.85), rgba(242,168,63,0.85)), url('images/Title-Image-8.webp') center/cover no-repeat;
+    color: white;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+  }
+  #welcomeModal .modal-content button {
+    background-color: #fff2de;
+    color: #eb5424;
+    font-weight: 900;
+    font-family: 'Segoe UI Black', Arial Black, sans-serif;
+    font-size: 1.3rem;
+    border-radius: 25px;
+    padding: 15px 0;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-shadow: none;
+  }
+  #welcomeModal .modal-content button:hover {
+    background-color: #eb5424;
+    color: white;
+  }
+</style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="header">
-    <div class="logo"><a href="index.html">FlavorShare</a></div>
-    <nav class="nav-links">
-      <a href="index.html" class="active">Home</a>
-      <a href="explore.html">Explore</a>
-      <a href="#" id="cookbookBtn">My Cookbook</a>
-      <a href="#" id="followingBtn">Following</a>
-    </nav>
-    <div class="search-upload">
-      <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
-      <a href="sign-in.html" class="sign-in-btn">Sign In</a>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero">
-    <h1>Share Your Flavor!</h1>
-    <p>Good food is best shared. Discover amazing recipes from home cooks around the world and share your own creations.</p>
-    <div class="filter-buttons">
-      <button class="filter active">All</button>
-      <button class="filter">Vegetarian</button>
-      <button class="filter">Vegan</button>
-      <button class="filter">Desserts</button>
-      <button class="filter">Italian</button>
-      <button class="filter">Asian</button>
-      <button class="filter">Healthy</button>
-    </div>
-  </section>
-
-  <!-- Trending recipes -->
-  <main>
-    <h2 class="section-title">Trending Recipes</h2>
-    <div class="cards-container">
-      <article class="card card-red">
-        <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara" class="card-image" />
-        <div class="card-content">
-          <h3>Creamy Carbonara</h3>
-          <p>Maria Romano</p>
-          <div class="stats">
-            <span title="Rating">⭐ 4.9</span>
-            <span title="Comments">💬 234</span>
-            <span title="Preparation time">⏱ 25 min</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="card card-yellow">
-        <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes" class="card-image" />
-        <div class="card-content">
-          <h3>Rainbow Cupcakes</h3>
-          <p>Emma Baker</p>
-          <div class="stats">
-            <span title="Rating">⭐ 4.8</span>
-            <span title="Comments">💬 189</span>
-            <span title="Preparation time">⏱ 40 min</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="card card-green">
-        <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry" class="card-image" />
-        <div class="card-content">
-          <h3>Thai Green Curry</h3>
-          <p>Alex Chen</p>
-          <div class="stats">
-            <span title="Rating">⭐ 4.7</span>
-            <span title="Comments">💬 310</span>
-            <span title="Preparation time">⏱ 35 min</span>
-          </div>
-        </div>
-      </article>
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 FlavorShare. Good food is best shared.</p>
-  </footer>
-
-  <!-- Modal popup -->
-  <div id="signupModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-content">
-      <button id="closeModal" class="close-btn" aria-label="Close modal">&times;</button>
-      <h2 id="modalTitle">New to FlavorShare?</h2>
-      <p>Join our community ...</p>
-      <ul>
-        <li>✔ Upload unlimited recipes with photos</li>
-        <li>✔ Save your favorite recipes in collections</li>
-        <li>✔ Get feedback from fellow food enthusiasts</li>
-        <li>✔ Follow top chefs and home cooks</li>
-        <li>✔ Create your personalized cookbook</li>
-      </ul>
-      <button id="createAccountBtn" class="primary-btn">Create an Account</button>
-      <p class="small-text">By signing up, you agree to our Terms of Service and Privacy Policy</p>
+<!-- Header -->
+<header class="header">
+  <div class="logo"><a href="index.html">FlavorShare</a></div>
+  <nav class="nav-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="explore.html">Explore</a>
+    <a href="#" id="cookbookBtn">My Cookbook</a>
+    <a href="#" id="followingBtn">Following</a>
+  </nav>
+  <div class="search-upload">
+    <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
+    <button id="signInButton">Sign In</button>
+    <div class="dropdown-menu" id="userDropdown" role="menu" aria-hidden="true">
+      <button id="logOutBtn" role="menuitem">Log Out</button>
     </div>
   </div>
+</header>
+
+<!-- Sign In Modal -->
+<div class="modal" id="signInModal" role="dialog" aria-modal="true" aria-labelledby="signInModalTitle" aria-hidden="true">
+  <div class="modal-content">
+    <button class="modal-close-btn" id="closeSignInModal" aria-label="Close Sign In Modal">&times;</button>
+    <h2 id="signInModalTitle">Sign In</h2>
+    <form id="signInForm">
+      <input type="email" id="signInEmail" placeholder="Email Address" required />
+      <input type="password" id="signInPassword" placeholder="Password" required />
+      <button type="submit">Sign In</button>
+    </form>
+  </div>
+</div>
+
+<!-- Welcome Popup Modal -->
+<div class="modal" id="welcomeModal" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle" aria-hidden="true">
+  <div class="modal-content">
+    <h2 id="welcomeTitle">Welcome to FlavorShare!</h2>
+    <p>Start adding your recipe and share your delicious flavors.</p>
+    <button id="continueBtn">Continue</button>
+  </div>
+</div>
+
+<script>
+  const signInButton = document.getElementById('signInButton');
+  const userDropdown = document.getElementById('userDropdown');
+  const logOutBtn = document.getElementById('logOutBtn');
+  const signInModal = document.getElementById('signInModal');
+  const closeSignInModal = document.getElementById('closeSignInModal');
+  const signInForm = document.getElementById('signInForm');
+  const welcomeModal = document.getElementById('welcomeModal');
+  const continueBtn = document.getElementById('continueBtn');
+
+  // Show sign in modal
+  signInButton.addEventListener('click', () => {
+    if (localStorage.getItem('loggedIn') === 'true') {
+      userDropdown.classList.toggle('show');
+      userDropdown.setAttribute('aria-hidden', !userDropdown.classList.contains('show'));
+    } else {
+      signInModal.classList.add('active');
+      signInModal.setAttribute('aria-hidden', 'false');
+    }
+  });
+
+  // Close sign in modal
+  closeSignInModal.addEventListener('click', () => {
+    signInModal.classList.remove('active');
+    signInModal.setAttribute('aria-hidden', 'true');
+  });
+
+  // Close modals if clicking outside content
+  window.addEventListener('click', (e) => {
+    if (e.target === signInModal) {
+      signInModal.classList.remove('active');
+      signInModal.setAttribute('aria-hidden', 'true');
+    } else if (e.target !== signInButton && !userDropdown.contains(e.target)) {
+      userDropdown.classList.remove('show');
+      userDropdown.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+  // Sign in form submit
+  signInForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('signInEmail').value;
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    // Mark as logged in and hide sign in modal
+    localStorage.setItem('loggedIn', 'true');
+    localStorage.setItem('userName', email.split('@')[0]); // store username from email before @
+    signInModal.classList.remove('active');
+    signInModal.setAttribute('aria-hidden', 'true');
+    updateUserUI();
+    // Show welcome modal
+    welcomeModal.classList.add('active');
+    welcomeModal.setAttribute('aria-hidden', 'false');
+  });
+
+  // Continue button on welcome modal
+  continueBtn.addEventListener('click', () => {
+    welcomeModal.classList.remove('active');
+    welcomeModal.setAttribute('aria-hidden', 'true');
+    window.location.href = 'index.html';
+  });
+
+  // Log out button
+  logOutBtn.addEventListener('click', () => {
+    localStorage.removeItem('loggedIn');
+    localStorage.removeItem('userName');
+    updateUserUI();
+    userDropdown.classList.remove('show');
+    userDropdown.setAttribute('aria-hidden', 'true');
+  });
+
+  // Update UI based on login status
+  function updateUserUI() {
+    const loggedIn = localStorage.getItem('loggedIn') === 'true';
+    if (loggedIn) {
+      const userName = localStorage.getItem('userName') || 'User';
+      signInButton.textContent = userName;
+      signInButton.style.borderColor = '#4a2318';
+      signInButton.style.color = '#4a2318';
+      signInButton.style.backgroundColor = '#f5e7e1';
+      signInButton.style.fontWeight = '700';
+      signInButton.style.cursor = 'pointer';
+    } else {
+      signInButton.textContent = 'Sign In';
+      signInButton.style.borderColor = '#eb5424';
+      signInButton.style.color = '#eb5424';
+      signInButton.style.backgroundColor = 'transparent';
+      signInButton.style.fontWeight = '600';
+      signInButton.style.cursor = 'pointer';
+    }
+  }
+
+  // Initialize UI on page load
+  updateUserUI();
+</script>
+
+<style>
+  /* Add minimal style for dropdown menu show */
+  .dropdown-menu.show {
+    display: block;
+  }
+</style>
 </body>
 </html>
