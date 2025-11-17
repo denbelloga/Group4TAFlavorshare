@@ -1,72 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explore Recipes - FlavorShare</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore Recipes - FlavorShare</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-
-<!-- NAVIGATION (same as home) -->
-<nav>
+  <!-- NAV -->
+  <nav>
     <div class="logo">FlavorShare</div>
 
     <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="browse.html" class="active">Explore</a></li>
-        <li><a href="my-cookbook.html">My Cookbook</a></li>
-        <li><a href="following.html">Following</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="browse.html" class="active">Explore</a></li>
+      <li><a href="my-cookbook.html">My Cookbook</a></li>
+      <li><a href="following.html">Following</a></li>
     </ul>
 
     <div class="actions">
-        <input type="search" placeholder="Search recipes...">
-
-        <button class="upload-btn">+ Upload a Recipe</button>
-
-        <a href="sign-in.html" class="sign-in-btn">Sign In</a>
-
-        <i class="fa-solid fa-bell notif-bell"></i>
+      <input type="search" placeholder="Search recipes..." />
+      <button class="upload-btn">+ Upload a Recipe</button>
+      <a href="sign-in.html" class="sign-in-btn">Sign In</a>
+      <span id="notifBell" class="notif-bell" aria-label="Notifications" role="button">🔔</span>
     </div>
-</nav>
+  </nav>
 
-<!-- MAIN CONTENT -->
-<main>
+  <!-- NOTIFICATION PANEL -->
+  <div id="notifPanel" class="notif-panel">
+    <h4>Notifications</h4>
+    <ul>
+      <li>New comment on Creamy Carbonara.</li>
+      <li>2 people saved your Thai Green Curry.</li>
+    </ul>
+    <button id="notifClose" class="notif-close">Close</button>
+  </div>
+
+  <!-- MAIN -->
+  <main>
     <h2>Explore Recipes</h2>
 
     <div class="recipe-grid">
-        <div class="recipe-card" onclick="openModal('Creamy Carbonara', 'A rich and savory pasta dish made with eggs, cheese, and pancetta.')">
-            <img src="https://via.placeholder.com/260x170" alt="Creamy Carbonara">
-            <h3>Creamy Carbonara</h3>
-            <p>Maria Romano</p>
-        </div>
+      <div class="recipe-card"
+           onclick="openModal('Creamy Carbonara','A rich and savory pasta with eggs, parmesan, and crispy pancetta.')">
+        <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara" />
+        <h3>Creamy Carbonara</h3>
+        <p>Maria Romano</p>
+      </div>
 
-        <div class="recipe-card" onclick="openModal('Rainbow Cupcakes', 'Colorful cupcakes topped with creamy frosting.')">
-            <img src="https://via.placeholder.com/260x170" alt="Rainbow Cupcakes">
-            <h3>Rainbow Cupcakes</h3>
-            <p>Emma Baker</p>
-        </div>
+      <div class="recipe-card"
+           onclick="openModal('Rainbow Cupcakes','Colorful vanilla cupcakes topped with fluffy frosting.')">
+        <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes" />
+        <h3>Rainbow Cupcakes</h3>
+        <p>Emma Baker</p>
+      </div>
 
-        <div class="recipe-card" onclick="openModal('Thai Green Curry', 'A flavorful Thai curry with coconut milk and green chili paste.')">
-            <img src="https://via.placeholder.com/260x170" alt="Thai Green Curry">
-            <h3>Thai Green Curry</h3>
-            <p>Alex Chen</p>
-        </div>
+      <div class="recipe-card"
+           onclick="openModal('Thai Green Curry','Creamy coconut curry with fresh herbs and vegetables.')">
+        <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry" />
+        <h3>Thai Green Curry</h3>
+        <p>Alex Chen</p>
+      </div>
     </div>
-</main>
+  </main>
 
-<!-- FOOTER -->
-<footer>
+  <!-- SIMPLE MODAL -->
+  <div id="modal" class="recipe-modal">
+    <div class="modal-content">
+      <span id="modalClose" class="modal-close" aria-label="Close">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDetails"></p>
+    </div>
+  </div>
+
+  <footer>
     © 2025 FlavorShare. Good food is best shared.
-</footer>
+  </footer>
 
-<script>
-function openModal(title, details) {
-    alert(title + "\n\n" + details);
-}
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
