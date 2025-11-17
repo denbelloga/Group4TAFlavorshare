@@ -305,6 +305,35 @@ function showSuccessMessage(msg) {
     popup.classList.remove("show");
   }, 3000);
 }
+function initUploadForm() {
+  const form = document.getElementById("uploadForm");
+  if (!form) return;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const user = getUser();
+    if (!user) {
+      alert("Please sign in first.");
+      window.location.href = "sign-in.html";
+      return;
+    }
+
+    // Example fields — adjust names to your exact HTML fields
+    const title = form.title.value.trim();
+    const author = user.name || user.email;
+    const image = form.image.value; // or uploaded preview URL
+
+    if (!title || !image) {
+      alert("Please fill out required fields.");
+      return;
+    }
+
+    showSuccessMessage("Recipe added successfully!");
+
+    form.reset();
+  });
+}
 
 /* ============ INIT EVERYTHING ============ */
 document.addEventListener("DOMContentLoaded", () => {
@@ -317,6 +346,18 @@ document.addEventListener("DOMContentLoaded", () => {
   initResetForm();
   loadCookbookPage();
 });
+document.addEventListener("DOMContentLoaded", () => {
+  initTheme();
+  initNavbar();
+  initNotifications();
+  initSignInForm();
+  initSignUpForm();
+  initForgotForm();
+  initResetForm();
+  loadCookbookPage();
+  initUploadForm(); // ← ADD THIS
+});
+
 
 /* Allow inline onclick access */
 window.addToCookbook = addToCookbook;
