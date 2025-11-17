@@ -106,6 +106,10 @@
       // Here you can set logged-in state, then redirect
       localStorage.setItem('loggedIn', 'true');
       window.location.href = 'index.html';
+
+      // After successful sign in
+localStorage.setItem('welcomeShown', 'false'); // Set 'false' means not shown yet
+window.location.href = 'home.html'; // Redirect to landing page
     });
   </script>
 </body>
