@@ -6,8 +6,8 @@
   <title>Sign Up - FlavorShare</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #fff8f0;
+      background-color: #fff9f5;
+      font-family: Arial, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -15,158 +15,112 @@
       margin: 0;
     }
     .signup-container {
-      background: white;
-      border-radius: 18px;
-      padding: 40px 30px 50px 30px;
+      background-color: white;
+      padding: 30px 40px 40px 40px;
+      border-radius: 15px;
+      box-shadow: 0 5px 18px rgba(235, 84, 36, 0.15);
       max-width: 400px;
-      width: 90%;
-      box-shadow: 0 12px 30px rgb(235 84 36 / 0.15);
+      width: 100%;
       text-align: center;
-      color: #503225;
     }
-    h2 {
+    .signup-container h2 {
       color: #eb5424;
-      font-weight: 900;
-      margin-bottom: 10px;
-      font-size: 28px;
+      font-weight: 700;
+      font-size: 24px;
+      margin-bottom: 8px;
     }
-    .signin-link {
-      font-weight: 600;
-      color: #503225;
-      margin-bottom: 35px;
+    .signin-text {
+      font-size: 14px;
+      margin-bottom: 25px;
+      color: #555;
     }
-    .signin-link a {
+    .signin-text a {
       color: #eb5424;
       text-decoration: none;
-      font-weight: 900;
+      cursor: pointer;
+      font-weight: 600;
       margin-left: 6px;
     }
-    .signin-link a:hover {
+    .signin-text a:hover {
       text-decoration: underline;
     }
     form {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      display: grid;
       gap: 15px;
-      margin-bottom: 35px;
+      grid-template-columns: repeat(2, 1fr);
+      margin-bottom: 25px;
     }
-    input {
-      flex: 1 1 48%;
-      padding: 15px 20px;
-      border-radius: 19px;
-      border: 1px solid #d5d9dc;
-      font-size: 16px;
-      color: #503225;
-      font-weight: 600;
+    input[type="text"], input[type="email"], input[type="password"] {
+      padding: 12px 15px;
+      border-radius: 15px;
+      border: 1px solid #ddd;
+      font-size: 14px;
       outline: none;
-      transition: border-color 0.3s ease;
+      font-weight: 600;
+      color: #444;
+    }
+    input[type="email"], input[type="password"] {
+      grid-column: 1 / -1; /* full width */
     }
     input::placeholder {
-      font-weight: 600;
-      color: rgba(80, 50, 37, 0.65);
+      color: #b4b4b2;
+      font-weight: 500;
     }
-    input:focus {
-      border-color: #eb5424;
-    }
-    /* Make email and password full width */
-    input[type="email"], input[type="password"] {
-      flex-basis: 100%;
-    }
-    button.signup-btn {
+    button {
+      grid-column: 1 / -1;
       background-color: #eb5424;
       color: white;
-      font-weight: 900;
-      font-size: 18px;
-      padding: 15px 0;
-      border-radius: 19px;
+      padding: 13px 0;
       border: none;
-      width: 100%;
+      border-radius: 15px;
+      font-size: 16px;
+      font-weight: 700;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
-    button.signup-btn:hover {
-      background-color: #c84320;
+    button:hover,
+    button:focus {
+      background-color: #c34922;
+      outline: none;
     }
     .continue-text {
+      font-size: 13px;
       font-weight: 600;
-      font-size: 14px;
-      color: rgba(80, 50, 37, 0.7);
+      color: #444;
       cursor: pointer;
     }
     .continue-text:hover {
       text-decoration: underline;
-    }
-    /* Error message styles */
-    .error-message {
-      flex-basis: 100%;
-      margin-top: -10px;
-      margin-bottom: 14px;
-      color: #d9534f;
-      font-weight: 700;
-      font-size: 0.9rem;
-      background-color: #f8d7da;
-      padding: 6px 12px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      border: 1.5px solid #d43f3a;
-    }
-    .exclamation-mark {
-      font-size: 1.25rem;
-      margin-right: 8px;
-      color: #d9534f;
-      font-weight: 900;
     }
   </style>
 </head>
 <body>
   <div class="signup-container">
     <h2>Sign Up</h2>
-    <div class="signin-link">
+    <div class="signin-text">
       Already have an account?
       <a href="sign-in.html">Sign In</a>
     </div>
     <form id="signupForm" novalidate>
       <input type="text" name="firstName" placeholder="First Name" required />
       <input type="text" name="lastName" placeholder="Last Name" required />
-      <input type="email" name="email" placeholder="Email Address" id="emailInput" required />
-      <div id="emailError" class="error-message" style="display:none;" role="alert" aria-live="assertive">
-        <span class="exclamation-mark">❗</span> Invalid Email!
-      </div>
+      <input type="email" name="email" placeholder="Email Address" required />
       <input type="password" name="password" placeholder="Password" required />
-      <button type="submit" class="signup-btn">Sign Up</button>
+      <button type="submit">Sign Up</button>
     </form>
     <div class="continue-text" id="continueWithoutSignup">Continue without signing in</div>
   </div>
 
   <script>
-    const form = document.getElementById('signupForm');
-    const emailInput = document.getElementById('emailInput');
-    const emailError = document.getElementById('emailError');
-
-    form.addEventListener('submit', (e) => {
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const email = emailInput.value.trim();
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // simple email check
-
-      if (!emailRegex.test(email)) {
-        emailError.style.display = 'flex';
-        emailInput.setAttribute('aria-invalid', 'true');
-        emailInput.focus();
-        return;
-      } else {
-        emailError.style.display = 'none';
-        emailInput.removeAttribute('aria-invalid');
-      }
-
-      alert('Thank you for signing up! (This is a demo alert.)');
-      // Here you can implement real signup logic
+      // Add validation or signup logic here
+      alert('Thank you for signing up! (Demo)');
       window.location.href = 'index.html';
     });
 
-    document.getElementById('continueWithoutSignup').addEventListener('click', () => {
-      alert('Continuing without signing in.');
+    document.getElementById('continueWithoutSignup').addEventListener('click', function() {
+      alert('Continuing without signing in');
       window.location.href = 'index.html';
     });
   </script>
