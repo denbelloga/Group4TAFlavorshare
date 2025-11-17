@@ -1,90 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FlavorShare – Home</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe App - Home</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* HALF ORANGE HERO */
+        .hero-half {
+            height: 50vh; /* EXACTLY half of screen height */
+            background: linear-gradient(180deg, #eb5424cc 0%, #f2a83fcc 100%), 
+                        url('images/Title-Image-8.webp') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero-half h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .hero-half p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .cta {
+            background-color: white;
+            color: #eb5424;
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-weight: 800;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: 0.3s ease;
+        }
+
+        .cta:hover {
+            background-color: #ffe5d6;
+        }
+
+        /* Bottom content spacing */
+        .bottom-section {
+            padding: 50px 24px;
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .bottom-section h2 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: #eb5424;
+            font-weight: 900;
+        }
+
+        .bottom-section p {
+            font-size: 1rem;
+            color: #333;
+            line-height: 1.6;
+        }
+    </style>
 </head>
+
 <body>
-  <a href="#main" class="skip-link">Skip to main content</a>
+    <a href="#main" class="skip-link">Skip to main content</a>
 
-  <!-- Shared Header -->
-  <header class="header">
-    <div class="logo"><a href="landing-page.html">FlavorShare</a></div>
-    <nav class="nav-links">
-      <a href="landing-page.html" class="active">Home</a>
-      <a href="browse.html">Browse</a>
-      <a href="upload.html">Upload</a>
-      <a href="sign-in.html" id="signInLink">Sign In</a>
+    <nav>
+        <a href="landing-page.html" id="logo">Recipe App</a>
+        <ul>
+            <li><a href="landing-page.html">Home</a></li>
+            <li><a href="browse.html">Browse</a></li>
+            <li><a href="upload.html">Upload</a></li>
+            <li><a href="sign-in.html" id="signInLink">Sign In</a></li>
+        </ul>
     </nav>
-    <div class="search-upload">
-      <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
-      <a href="sign-in.html" class="sign-in-btn">Sign In</a>
-    </div>
-  </header>
 
-  <main id="main">
-    <!-- Hero -->
-    <section class="hero">
-      <h1>Share Your Flavor!</h1>
-      <p>
-        Good food is best shared. Discover amazing recipes from home cooks
-        and share your own creations with the FlavorShare community.
-      </p>
-
-      <div class="filter-buttons">
-        <button class="filter active">All</button>
-        <button class="filter">Vegetarian</button>
-        <button class="filter">Desserts</button>
-        <button class="filter">Quick Meals</button>
-        <button class="filter">Asian</button>
-        <button class="filter">Italian</button>
-      </div>
+    <!-- ORANGE HERO (TOP HALF) -->
+    <section class="hero-half">
+        <h1>Welcome to Recipe App</h1>
+        <p>Discover delicious recipes and share your own creations.</p>
+        <a href="sign-in.html" class="cta">Get Started</a>
     </section>
 
-    <!-- Trending Recipes -->
-    <section>
-      <h2 class="section-title">Trending Recipes</h2>
+    <!-- WHITE BOTTOM HALF CONTENT -->
+    <main id="main" class="bottom-section">
+        <h2>Share & Explore Recipes</h2>
+        <p>
+            Browse a growing collection of home-cooked recipes made by real people.  
+            Join the community and upload your own creations today!
+        </p>
+    </main>
 
-      <div class="cards-container">
-        <article class="card card-red">
-          <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara" class="card-image" />
-          <h3>Creamy Carbonara</h3>
-          <p>Maria Romano</p>
-          <div class="stats">
-            <span>⭐ 4.9</span>
-            <span>⏱ 25 min</span>
-          </div>
-        </article>
-
-        <article class="card card-yellow">
-          <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes" class="card-image" />
-          <h3>Rainbow Cupcakes</h3>
-          <p>Emma Baker</p>
-          <div class="stats">
-            <span>⭐ 4.8</span>
-            <span>⏱ 40 min</span>
-          </div>
-        </article>
-
-        <article class="card card-green">
-          <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry" class="card-image" />
-          <h3>Thai Green Curry</h3>
-          <p>Alex Chen</p>
-          <div class="stats">
-            <span>⭐ 4.7</span>
-            <span>⏱ 35 min</span>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    © 2025 FlavorShare. Good food is best shared.
-  </footer>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
