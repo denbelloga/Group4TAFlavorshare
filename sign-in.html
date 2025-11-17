@@ -6,13 +6,13 @@
   <title>Sign In - FlavorShare</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #fff8f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0; padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
     }
 
     .signin-container {
@@ -39,7 +39,7 @@
       display: flex;
       flex-direction: column;
       gap: 15px;
-      margin-bottom: 10px;
+      margin-bottom: 25px;
     }
 
     input {
@@ -100,8 +100,7 @@
       display: none;
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(rgba(235, 84, 36, 0.85), rgba(242, 168, 63, 0.85)),
-                  url('images/Title-Image-8.webp') center/cover no-repeat;
+      background: linear-gradient(rgba(235,84,36,0.85), rgba(242,168,63,0.85)), url('images/Title-Image-8.webp') center/cover no-repeat;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -113,12 +112,11 @@
     }
 
     #welcomeModal .modal-content {
-      background: transparent; /* transparent so background image is visible */
+      background: transparent;
       border-radius: 15px;
       padding: 40px 50px;
       max-width: 380px;
       width: 90%;
-      box-shadow: none; /* no box shadow to keep image visible */
       text-align: center;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: white;
@@ -170,6 +168,7 @@
     <div class="signup-link">Don't have an account? <a href="sign-up.html">Sign Up</a></div>
   </section>
 
+  <!-- Welcome Modal -->
   <div id="welcomeModal" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle">
     <div class="modal-content">
       <h2 id="welcomeTitle">Welcome to FlavorShare!</h2>
@@ -185,7 +184,7 @@
 
     signInForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      // on successful sign in:
+      // Simulate login success
       localStorage.setItem('loggedIn', 'true');
       welcomeModal.classList.add('active');
     });
