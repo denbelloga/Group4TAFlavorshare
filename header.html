@@ -14,21 +14,41 @@
       <a href="my-profile.html" class="hover:text-[#E4572E] transition" id="navMyCookbook">My Cookbook</a>
       <a href="following.html" class="hover:text-[#E4572E] transition" id="navFollowing">Following</a>
 
-    </nav>
+   <nav>
+  <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
 
-    <!-- Right: Search, Bell, Upload, Sign In -->
-    <div class="flex items-center space-x-4">
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="browse.html">Explore</a></li>
+    <li><a href="my-cookbook.html" id="protectCookbook">My Cookbook</a></li>
+    <li><a href="following.html" id="protectFollowing">Following</a></li>
+  </ul>
 
-      <!-- Search Input -->
-      <div class="relative hidden md:block">
-        <input type="text" placeholder="Search recipes..."
-          class="rounded-full border border-gray-300 py-2 pl-10 pr-4 w-64 text-sm focus:outline-none focus:ring-2 focus:ring-[#E4572E]" />
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400 absolute left-3 top-2.5" fill="none"
-          viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1116.65 16.65z" />
-        </svg>
+  <div class="actions">
+    <input type="search" placeholder="Search recipes..." />
+    <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
+
+    <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
+
+    <div id="userMenu" class="hidden">
+      <span id="userNameDisplay"></span>
+      <div id="userDropdown" class="hidden">
+        <button id="logoutBtn">Log Out</button>
       </div>
+    </div>
+
+    <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
+    <span id="notifBell" class="notif-bell">🔔</span>
+  </div>
+</nav>
+
+<div id="notifPanel">
+  <h4>Notifications</h4>
+  <ul>
+    <li>No new notifications.</li>
+  </ul>
+  <button id="notifClose">Close</button>
+</div>
 
       <!-- Bell Icon Button -->
       <button
