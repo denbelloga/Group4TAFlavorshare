@@ -1159,3 +1159,7 @@ body, nav, .hero-card, .recipe-card-premium, footer {
     border-color: #444;
     color: white;
 }
+.signin-logo {
+    color: #eb5424 !important;
+}
+
