@@ -197,4 +197,56 @@ footer {
     object-fit: cover;  /* <-- keeps image cropped nicely */
     display: block;
 }
+.card-color-strip {
+    height: 8px;
+    width: 100%;
+}
+
+.red { background: #ea5a2c; }
+.yellow { background: #fbbd27; }
+.green { background: #0db07f; }
+
+.explore-card {
+    width: 260px;
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease;
+}
+
+.explore-card:hover {
+    transform: translateY(-4px);
+}
+
+.explore-card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+}
+.explore-card-content {
+    padding: 16px 20px 18px;
+}
+
+.explore-card-content h3 {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: #3a3a3a;
+    margin-bottom: 6px;
+}
+
+.explore-card-content p {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #756753;
+}
+.recipe-grid {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+}
+
 
