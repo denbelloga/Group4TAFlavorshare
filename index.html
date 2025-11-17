@@ -8,20 +8,23 @@
   <script defer src="script.js"></script>
 </head>
 <body>
+  <!-- Header -->
   <header class="header">
     <div class="logo"><a href="index.html">FlavorShare</a></div>
     <nav class="nav-links">
       <a href="index.html" class="active">Home</a>
       <a href="explore.html">Explore</a>
-      <a href="cookbook.html">My Cookbook</a>
-      <a href="following.html">Following</a>
+      <a href="#" id="cookbookBtn">My Cookbook</a>
+      <a href="#" id="followingBtn">Following</a>
     </nav>
     <div class="search-upload">
       <input type="search" placeholder="Search recipes..." aria-label="Search recipes" />
-      <button class="upload-btn">+ Upload a Recipe</button>
+      <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
+      <a href="sign-in.html" class="sign-in-btn">Sign In</a>
     </div>
   </header>
 
+  <!-- Hero -->
   <section class="hero">
     <h1>Share Your Flavor!</h1>
     <p>Good food is best shared. Discover amazing recipes from home cooks around the world and share your own creations.</p>
@@ -42,6 +45,7 @@
     </div>
   </section>
 
+  <!-- Trending recipes -->
   <main>
     <h2 class="section-title">Trending Recipes</h2>
     <div class="cards-container">
@@ -86,8 +90,27 @@
     </div>
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>© 2025 FlavorShare. Good food is best shared.</p>
   </footer>
+
+  <!-- Modal popup -->
+  <div id="signupModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <button id="closeModal" class="close-btn" aria-label="Close modal">&times;</button>
+      <h2 id="modalTitle">New to FlavorShare?</h2>
+      <p>Join our community ...</p>
+      <ul>
+        <li>✔ Upload unlimited recipes with photos</li>
+        <li>✔ Save your favorite recipes in collections</li>
+        <li>✔ Get feedback from fellow food enthusiasts</li>
+        <li>✔ Follow top chefs and home cooks</li>
+        <li>✔ Create your personalized cookbook</li>
+      </ul>
+      <button id="createAccountBtn" class="primary-btn">Create an Account</button>
+      <p class="small-text">By signing up, you agree to our Terms of Service and Privacy Policy</p>
+    </div>
+  </div>
 </body>
 </html>
