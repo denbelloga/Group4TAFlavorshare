@@ -4,44 +4,64 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sign In - FlavorShare</title>
-  <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Additional modal styling for welcome popup */
-    #welcomeModal {
-      position: fixed;
-      top: 0; left:0; right:0; bottom:0;
-      background-color: rgba(0, 0, 0, 0.35);
-      display: none;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff8f0;
+      display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 1000;
+      height: 100vh;
+      margin: 0;
     }
-    #welcomeModal.active {
-      display: flex;
-    }
-    #welcomeModal .modal-content {
+
+    .signin-container {
       background: white;
-      border-radius: 18px;
-      padding: 40px 50px;
+      padding: 40px 30px;
+      border-radius: 15px;
       max-width: 400px;
       width: 90%;
-      box-shadow: 0 12px 30px rgba(235, 84, 36, 0.15);
+      box-shadow: 0 6px 15px rgba(235, 84, 36, 0.15);
       text-align: center;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #503225;
+      position: relative;
+      z-index: 1;
     }
-    #welcomeModal h2 {
+
+    h2 {
       color: #eb5424;
       font-weight: 900;
       font-size: 28px;
-      margin-bottom: 15px;
+      margin-bottom: 16px;
     }
-    #welcomeModal p {
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 10px;
+    }
+
+    input {
+      padding: 14px 18px;
+      border-radius: 19px;
+      border: 1px solid #d5d9dc;
       font-size: 16px;
       font-weight: 600;
-      margin-bottom: 30px;
+      color: #503225;
+      outline: none;
+      transition: border-color 0.3s;
     }
-    #welcomeModal button {
+
+    input::placeholder {
+      color: #c9c9c9;
+    }
+
+    input:focus {
+      border-color: #eb5424;
+    }
+
+    button.signin-btn {
       background-color: #eb5424;
       color: white;
       font-weight: 900;
@@ -49,30 +69,111 @@
       padding: 15px 0;
       border-radius: 19px;
       border: none;
-      width: 100%;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
-    #welcomeModal button:hover {
+
+    button.signin-btn:hover {
       background-color: #c84320;
+    }
+
+    .signup-link {
+      font-weight: 600;
+      color: #503225;
+      font-size: 14px;
+    }
+
+    .signup-link a {
+      color: #eb5424;
+      text-decoration: none;
+      font-weight: 900;
+      margin-left: 6px;
+      cursor: pointer;
+    }
+
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+
+    /* Welcome Modal */
+    #welcomeModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(rgba(235, 84, 36, 0.85), rgba(242, 168, 63, 0.85)),
+                  url('images/Title-Image-8.webp') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    #welcomeModal.active {
+      display: flex;
+    }
+
+    #welcomeModal .modal-content {
+      background: transparent; /* transparent so background image is visible */
+      border-radius: 15px;
+      padding: 40px 50px;
+      max-width: 380px;
+      width: 90%;
+      box-shadow: none; /* no box shadow to keep image visible */
+      text-align: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      font-weight: 900;
+      filter: drop-shadow(0 0 8px rgba(0,0,0,0.7));
+    }
+
+    #welcomeModal h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+    }
+
+    #welcomeModal p {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 32px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+    }
+
+    #welcomeModal button {
+      width: 100%;
+      padding: 15px 0;
+      background-color: #fff2de;
+      color: #eb5424;
+      font-weight: 900;
+      font-size: 1.3rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      text-shadow: none;
+    }
+
+    #welcomeModal button:hover {
+      background-color: #eb5424;
+      color: white;
     }
   </style>
 </head>
 <body>
-  <main class="container" style="padding: 60px 20px; max-width: 400px; margin: auto; text-align: center;">
+  <section class="signin-container" role="main">
     <h2>Sign In</h2>
-    <form id="signInForm">
+    <form id="signInForm" novalidate>
       <input type="email" name="email" placeholder="Email Address" required />
       <input type="password" name="password" placeholder="Password" required />
       <button type="submit" class="signin-btn">Sign In</button>
     </form>
-  </main>
+    <div class="signup-link">Don't have an account? <a href="sign-up.html">Sign Up</a></div>
+  </section>
 
-  <!-- Welcome Modal -->
-  <div id="welcomeModal">
+  <div id="welcomeModal" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle">
     <div class="modal-content">
-      <h2>Welcome to FlavorShare!</h2>
-      <p>Start adding your delicious recipes now.</p>
+      <h2 id="welcomeTitle">Welcome to FlavorShare!</h2>
+      <p>Start adding your recipe and share your delicious flavors.</p>
       <button id="continueBtn">Continue</button>
     </div>
   </div>
@@ -82,18 +183,15 @@
     const welcomeModal = document.getElementById('welcomeModal');
     const continueBtn = document.getElementById('continueBtn');
 
-    signInForm.addEventListener('submit', function (e) {
+    signInForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      // You can validate here or just simulate successful login
-      // Set logged in flag
+      // on successful sign in:
       localStorage.setItem('loggedIn', 'true');
-      // Show welcome modal instead of redirecting
       welcomeModal.classList.add('active');
     });
 
-    continueBtn.addEventListener('click', function () {
+    continueBtn.addEventListener('click', () => {
       welcomeModal.classList.remove('active');
-      // Redirect to homepage
       window.location.href = 'index.html';
     });
   </script>
