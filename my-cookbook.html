@@ -7,7 +7,8 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- NAV -->
+
+  <!-- ================= NAVIGATION ================= -->
   <nav>
     <div class="logo">FlavorShare</div>
 
@@ -19,27 +20,49 @@
     </ul>
 
     <div class="actions">
-      <input type="search" placeholder="Search recipes..." />
-      <button class="upload-btn">+ Upload a Recipe</button>
-      <a href="sign-in.html" class="sign-in-btn">Sign In</a>
-      <span id="notifBell" class="notif-bell" aria-label="Notifications" role="button">🔔</span>
+      <input type="search" placeholder="Search recipes..." class="nav-search">
+
+      <button class="upload-btn" onclick="location.href='upload.html'">+ Upload a Recipe</button>
+
+      <div id="userMenuContainer">
+        <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
+
+        <!-- USER DROPDOWN -->
+        <div id="userDropdown" class="user-dropdown">
+          <span id="usernameDisplay"></span>
+          <div class="dropdown-content">
+            <button onclick="logoutUser()">Log Out</button>
+          </div>
+        </div>
+      </div>
+
+      <span id="notifBell" class="notif-bell">🔔</span>
     </div>
   </nav>
 
-  <!-- NOTIF PANEL -->
+  <!-- ================= NOTIFICATION PANEL ================= -->
   <div id="notifPanel" class="notif-panel">
     <h4>Notifications</h4>
-    <ul>
+    <ul id="notifList">
       <li>No new notifications yet.</li>
     </ul>
     <button id="notifClose" class="notif-close">Close</button>
   </div>
 
-  <main>
+  <!-- ================= MAIN ================= -->
+  <main class="cookbook-container">
     <h2>My Cookbook</h2>
-    <p style="text-align:center; max-width:600px; margin:0 auto 20px;">
-      Your cookbook is currently empty. Once you start uploading recipes, they’ll appear here.
-    </p>
+
+    <div id="cookbookGrid" class="recipe-grid"></div>
+
+    <!-- EMPTY STATE -->
+    <div id="emptyState" class="empty-state">
+      <img src="https://cdn-icons-png.flaticon.com/512/706/706164.png" alt="Empty" />
+      <h3>Your cookbook is empty</h3>
+      <p>Save recipes you like and they will appear here!</p>
+      <a class="hero-btn" href="browse.html">Browse Recipes</a>
+    </div>
+
   </main>
 
   <footer>
