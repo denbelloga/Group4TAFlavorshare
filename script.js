@@ -1,4 +1,6 @@
-/* ============ USER / AUTH ============ */
+/* ============================================
+   USER / AUTH
+============================================ */
 const USER_KEY = "fs_user";
 const THEME_KEY = "fs_theme";
 
@@ -16,7 +18,9 @@ function logoutUser() {
   window.location.href = "index.html";
 }
 
-/* ============ THEME / DARK MODE ============ */
+/* ============================================
+   THEME / DARK MODE
+============================================ */
 function applyTheme(theme) {
   if (theme === "dark") {
     document.body.classList.add("dark-mode");
@@ -37,13 +41,17 @@ function initTheme() {
   toggle.addEventListener("click", () => {
     const isDark = document.body.classList.contains("dark-mode");
     const next = isDark ? "light" : "dark";
+
     localStorage.setItem(THEME_KEY, next);
     applyTheme(next);
+
     toggle.textContent = next === "dark" ? "☀️ Light" : "🌙 Dark";
   });
 }
 
-/* ============ NAVBAR STATE ============ */
+/* ============================================
+   NAVBAR
+============================================ */
 function initNavbar() {
   const user = getUser();
 
@@ -57,33 +65,24 @@ function initNavbar() {
   const protectFollowing = document.getElementById("protectFollowing");
   const uploadBtn = document.getElementById("uploadBtn");
 
-  // Show user dropdown OR sign-in button
+  // Show user or sign in
   if (user) {
     if (signInBtn) signInBtn.style.display = "none";
     if (userMenu) userMenu.classList.remove("hidden");
-
     if (userNameDisplay) {
-      const name =
-        user.name && user.name.trim().length > 0
-          ? user.name
-          : user.email.split("@")[0];
-      userNameDisplay.textContent = name;
+      userNameDisplay.textContent = user.name || user.email.split("@")[0];
     }
   } else {
     if (signInBtn) signInBtn.style.display = "inline-block";
     if (userMenu) userMenu.classList.add("hidden");
   }
 
-  // 🔒 Require Login for Protected Pages
+  // Protect pages
   function requireLogin(url) {
-    if (!getUser()) {
-      window.location.href = "sign-in.html";
-    } else {
-      window.location.href = url;
-    }
+    if (!getUser()) window.location.href = "sign-in.html";
+    else window.location.href = url;
   }
 
-  // My Cookbook
   if (protectCookbook) {
     protectCookbook.addEventListener("click", (e) => {
       if (!getUser()) {
@@ -93,7 +92,6 @@ function initNavbar() {
     });
   }
 
-  // Following
   if (protectFollowing) {
     protectFollowing.addEventListener("click", (e) => {
       if (!getUser()) {
@@ -103,7 +101,6 @@ function initNavbar() {
     });
   }
 
-  // Upload
   if (uploadBtn) {
     uploadBtn.addEventListener("click", (e) => {
       if (!getUser()) {
@@ -115,7 +112,7 @@ function initNavbar() {
     });
   }
 
-  // User dropdown toggle
+  // Dropdown
   if (userMenu && userDropdown) {
     userMenu.addEventListener("click", () => {
       userDropdown.classList.toggle("hidden");
@@ -128,12 +125,12 @@ function initNavbar() {
     });
   }
 
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", logoutUser);
-  }
+  if (logoutBtn) logoutBtn.addEventListener("click", logoutUser);
 }
 
-/* ============ NOTIFICATIONS ============ */
+/* ============================================
+   NOTIFICATIONS
+============================================ */
 function initNotifications() {
   const bell = document.getElementById("notifBell");
   const panel = document.getElementById("notifPanel");
@@ -152,7 +149,9 @@ function initNotifications() {
   }
 }
 
-/* ============ AUTH FORMS ============ */
+/* ============================================
+   AUTH FORMS
+============================================ */
 function initSignInForm() {
   const form = document.getElementById("signInForm");
   if (!form) return;
@@ -161,16 +160,17 @@ function initSignInForm() {
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+
     const email = form.email.value.trim();
     const password = form.password.value.trim();
 
     if (!email || !password) {
-      if (errorEl) errorEl.textContent = "Email and password are required.";
+      errorEl.textContent = "Email and password are required.";
       return;
     }
 
     if (!email.endsWith("@gmail.com")) {
-      if (errorEl) errorEl.textContent = "Use a @gmail.com email.";
+      errorEl.textContent = "Use a @gmail.com email.";
       return;
     }
 
@@ -206,7 +206,7 @@ function initForgotForm() {
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    alert("Password reset link sent (demo).");
+    alert("Password reset link sent!");
     window.location.href = "reset-new-password.html";
   });
 }
@@ -217,12 +217,14 @@ function initResetForm() {
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    alert("Password updated (demo).");
+    alert("Password updated!");
     window.location.href = "sign-in.html";
   });
 }
 
-/* ============ COOKBOOK (localStorage-based) ============ */
+/* ============================================
+   COOKBOOK
+============================================ */
 function getCookbookKey() {
   const user = getUser();
   if (!user) return null;
@@ -244,24 +246,18 @@ function addToCookbook(id, title, author, image) {
     list.push({ id, title, author, image });
     localStorage.setItem(key, JSON.stringify(list));
     alert("Saved to your cookbook!");
-  } else {
-    alert("Already in your cookbook.");
-  }
+  } else alert("Already saved!");
 }
 
 function loadCookbookPage() {
   const grid = document.getElementById("cookbookGrid");
   const empty = document.getElementById("cookbookEmpty");
-
   if (!grid) return;
 
   const user = getUser();
   if (!user) {
-    grid.innerHTML = "";
-    if (empty) {
-      empty.style.display = "block";
-      empty.querySelector("p").textContent = "Sign in to view your cookbook.";
-    }
+    empty.style.display = "block";
+    empty.querySelector("p").textContent = "Sign in to view your cookbook.";
     return;
   }
 
@@ -269,42 +265,31 @@ function loadCookbookPage() {
   let list = JSON.parse(localStorage.getItem(key) || "[]");
 
   if (list.length === 0) {
-    grid.innerHTML = "";
-    if (empty) {
-      empty.style.display = "block";
-      empty.querySelector("p").textContent =
-        "You haven't saved any recipes yet.";
-    }
+    empty.style.display = "block";
+    empty.querySelector("p").textContent = "No saved recipes yet.";
     return;
   }
 
-  if (empty) empty.style.display = "none";
+  empty.style.display = "none";
 
   grid.innerHTML = list
     .map(
       (r) => `
-      <article class="recipe-card">
-        <img src="${r.image}" alt="${r.title}">
-        <div class="info">
-          <h3>${r.title}</h3>
-          <p class="author">${r.author}</p>
-        </div>
-      </article>
-    `
+    <article class="recipe-card">
+      <img src="${r.image}" alt="${r.title}">
+      <div class="info">
+        <h3>${r.title}</h3>
+        <p class="author">${r.author}</p>
+      </div>
+    </article>
+  `
     )
     .join("");
 }
-function showSuccessMessage(msg) {
-  const popup = document.getElementById("successPopup");
-  if (!popup) return;
 
-  popup.textContent = msg;
-  popup.classList.add("show");
-
-  setTimeout(() => {
-    popup.classList.remove("show");
-  }, 3000);
-}
+/* ============================================
+   UPLOAD FORM + SUCCESS ANIMATION
+============================================ */
 function initUploadForm() {
   const form = document.getElementById("uploadForm");
   if (!form) return;
@@ -319,64 +304,48 @@ function initUploadForm() {
       return;
     }
 
-    // GET FIELD VALUES
-    const title = form.title.value.trim();
-    const imageUrl = form.image.value.trim();
-    const author = user.name || user.email;
-    const recipeId = "recipe-" + Date.now();
+    // Use correct IDs from upload.html
+    const title = document.getElementById("recipeTitle").value.trim();
+    const desc = document.getElementById("recipeDesc").value.trim();
+    const imageUrl = document.getElementById("recipeImage").value.trim();
+    const ingredients = document.getElementById("recipeIngredients").value.trim();
+    const steps = document.getElementById("recipeSteps").value.trim();
 
-    if (!title || !imageUrl) {
-      alert("Please fill in all required fields.");
+    if (!title || !desc || !imageUrl) {
+      alert("Please fill all required fields.");
       return;
     }
 
-    // ========== AUTO-SAVE TO COOKBOOK ==========
-    const key = "fs_cookbook_" + user.email;
+    const key = getCookbookKey();
+    const recipeId = "recipe-" + Date.now();
+
     let list = JSON.parse(localStorage.getItem(key) || "[]");
 
     list.push({
       id: recipeId,
-      title: title,
-      author: author,
+      title,
+      author: user.name || user.email,
       image: imageUrl
     });
 
     localStorage.setItem(key, JSON.stringify(list));
 
-    // ========== SHOW SUCCESS ANIMATION ==========
+    // SUCCESS ANIMATION
     const overlay = document.getElementById("uploadSuccessOverlay");
     overlay.classList.add("show");
 
-    // Hide after 2 seconds and redirect to Explore
     setTimeout(() => {
       overlay.classList.remove("show");
       window.location.href = "browse.html";
     }, 2000);
 
-    // Clear form
     form.reset();
   });
 }
 
-    }
-
-    // Example fields — adjust names to your exact HTML fields
-    const title = form.title.value.trim();
-    const author = user.name || user.email;
-    const image = form.image.value; // or uploaded preview URL
-
-    if (!title || !image) {
-      alert("Please fill out required fields.");
-      return;
-    }
-
-    showSuccessMessage("Recipe added successfully!");
-
-    form.reset();
-  });
-}
-
-/* ============ INIT EVERYTHING ============ */
+/* ============================================
+   INIT EVERYTHING
+============================================ */
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
   initNavbar();
@@ -387,20 +356,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initResetForm();
   loadCookbookPage();
   initUploadForm();
-
-});
-document.addEventListener("DOMContentLoaded", () => {
-  initTheme();
-  initNavbar();
-  initNotifications();
-  initSignInForm();
-  initSignUpForm();
-  initForgotForm();
-  initResetForm();
-  loadCookbookPage();
-  initUploadForm(); // ← ADD THIS
 });
 
-
-/* Allow inline onclick access */
+/* Allow inline onclick() */
 window.addToCookbook = addToCookbook;
