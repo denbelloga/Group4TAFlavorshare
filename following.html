@@ -3,58 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FlavorShare – Upload Recipe</title>
+  <title>FlavorShare – Following</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- NAVBAR -->
+
   <nav>
-    <div class="logo">FlavorShare</div>
+    <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="browse.html">Explore</a></li>
-      <li><a href="my-cookbook.html">My Cookbook</a></li>
-      <li><a href="following.html">Following</a></li>
+      <li><a href="my-cookbook.html" id="protectCookbook">My Cookbook</a></li>
+      <li><a href="following.html" class="active" id="protectFollowing">Following</a></li>
     </ul>
     <div class="actions">
       <input type="search" placeholder="Search recipes..." />
-      <button class="upload-btn" onclick="location.href='upload.html'">+ Upload a Recipe</button>
-      <a href="sign-in.html" class="sign-in-btn">Sign In</a>
-      <span id="notifBell" class="notif-bell" aria-label="Notifications" role="button">🔔</span>
+      <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
+      <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
+      <div id="userMenu" class="hidden">
+        <span id="userNameDisplay"></span>
+        <div id="userDropdown" class="hidden">
+          <button id="logoutBtn">Log Out</button>
+        </div>
+      </div>
+      <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
+      <span id="notifBell" class="notif-bell">🔔</span>
     </div>
   </nav>
 
-  <!-- NOTIFICATION PANEL -->
-  <div id="notifPanel" class="notif-panel">
+  <div id="notifPanel">
     <h4>Notifications</h4>
-    <ul id="notifList">
-      <li>No notifications yet.</li>
+    <ul>
+      <li>No new notifications.</li>
     </ul>
-    <button id="notifClose" class="notif-close">Close</button>
+    <button id="notifClose">Close</button>
   </div>
 
   <main>
     <section>
-      <h2>Upload a Recipe</h2>
-      <div class="auth-container">
-        <form id="uploadForm">
-          <label>Recipe Title</label>
-          <input type="text" id="recipeTitle" required />
+      <h2>Following</h2>
+      <p class="section-subtitle">
+        When you start following other cooks, their latest recipes will appear here.
+      </p>
 
-          <label>Short Description</label>
-          <input type="text" id="recipeDesc" required />
-
-          <label>Image URL (for demo)</label>
-          <input type="url" id="recipeImage" />
-
-          <label>Ingredients</label>
-          <textarea id="recipeIngredients" rows="4"></textarea>
-
-          <label>Steps</label>
-          <textarea id="recipeSteps" rows="4"></textarea>
-
-          <button type="submit" class="btn-primary full-width">Upload Recipe</button>
-        </form>
+      <div class="empty-state">
+        <h3>You're not following anyone yet</h3>
+        <p>Explore community recipes and start following your favorite cooks.</p>
       </div>
     </section>
   </main>
@@ -62,18 +56,6 @@
   <footer>
     © 2025 FlavorShare. Good food is best shared.
   </footer>
-
-  <!-- LOGIN REQUIRED MODAL -->
-  <div id="loginRequiredModal" class="login-modal">
-    <div class="login-modal-box">
-      <h2>Sign In Required</h2>
-      <p>You need an account to upload recipes.</p>
-      <div class="login-modal-actions">
-        <a href="sign-in.html" class="btn-primary">Sign In</a>
-        <a href="sign-up.html" class="btn-outline">Create Account</a>
-      </div>
-    </div>
-  </div>
 
   <script src="script.js"></script>
 </body>
