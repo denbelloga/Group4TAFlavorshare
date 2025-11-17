@@ -10,37 +10,87 @@
 
 <body class="signin-body">
 
+    <!-- Dark Mode Toggle -->
+    <div class="darkmode-toggle" onclick="toggleDarkMode()">🌙</div>
+
     <div class="signin-container">
 
-        <!-- Floating decorative shapes -->
+        <!-- Floating Shapes -->
         <div class="signin-shape shape1"></div>
         <div class="signin-shape shape2"></div>
         <div class="signin-shape shape3"></div>
 
-        <form class="signin-card">
+        <form class="signin-card" onsubmit="return signIn(event)">
+            
+            <!-- Logo Reveal -->
+            <div class="signin-logo">FlavorShare</div>
 
             <h1>Welcome Back 👋</h1>
-            <p class="signin-subtext">Sign in to continue sharing and discovering amazing recipes.</p>
+            <p class="signin-subtext">Sign in to continue sharing delicious recipes.</p>
 
             <label>Email</label>
-            <input type="email" placeholder="yourname@gmail.com" required>
+            <input id="email" type="email" placeholder="yourname@gmail.com" required>
 
             <label>Password</label>
-            <input type="password" placeholder="••••••••" required>
+            <div class="password-wrapper">
+                <input id="password" type="password" placeholder="••••••••" required>
+                <span class="toggle-password" onclick="togglePassword()">👁</span>
+            </div>
 
             <button type="submit" class="signin-btn">Sign In</button>
 
+            <!-- Google Button -->
+            <button type="button" class="google-btn">
+                <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google">
+                Sign in with Google
+            </button>
+
             <p class="signin-note">
-                You can log in with ANY email ending in <strong>@gmail.com</strong>  
-                and ANY password.
+                Login allowed with any email ending in <strong>@gmail.com</strong> and any password.
             </p>
 
             <p class="signin-alt">
                 Don’t have an account? <a href="#">Create one</a>
             </p>
-
         </form>
     </div>
+
+    <!-- Success Redirect Animation -->
+    <div id="success-popup">✔ Logged in successfully!</div>
+
+    <script>
+        /* PASSWORD SHOW/HIDE */
+        function togglePassword() {
+            let pw = document.getElementById("password");
+            pw.type = pw.type === "password" ? "text" : "password";
+        }
+
+        /* DARK MODE TOGGLE */
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+
+        /* SIGN-IN LOGIC + SUCCESS ANIMATION */
+        function signIn(e) {
+            e.preventDefault();
+
+            let email = document.getElementById("email").value;
+
+            if (!email.endsWith("@gmail.com")) {
+                alert("Email must end with @gmail.com");
+                return false;
+            }
+
+            let popup = document.getElementById("success-popup");
+            popup.classList.add("show");
+
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 1800);
+
+            return false;
+        }
+    </script>
 
 </body>
 </html>
