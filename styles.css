@@ -418,3 +418,119 @@ footer {
   font-weight: 600;
   cursor: pointer;
 }
+/* =====================================================
+   TRENDING RECIPES GRID
+===================================================== */
+.trending-grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 32px;
+}
+
+/* =====================================================
+   FULL RECIPE MODAL
+===================================================== */
+.recipe-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 40px;
+    z-index: 5000;
+}
+
+.recipe-modal.show {
+    display: flex;
+}
+
+.recipe-modal-content {
+    background: #fffefc;
+    width: 90%;
+    max-width: 650px;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    animation: modalPop 0.25s ease;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+@keyframes modalPop {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.close-modal {
+    float: right;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.modal-img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-bottom: 15px;
+}
+
+.modal-section {
+    margin-top: 18px;
+}
+
+.modal-section h3 {
+    color: #eb5424;
+    margin-bottom: 5px;
+}
+
+.modal-section ul,
+.modal-section ol {
+    padding-left: 20px;
+}
+
+/* =====================================================
+   RESPONSIVE IMPROVEMENTS
+===================================================== */
+@media (max-width: 850px) {
+    nav {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    nav .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+    }
+
+    nav .actions input[type="search"] {
+        width: 180px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-section p {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+
+    .hero-btn {
+        margin-top: 10px;
+    }
+
+    .recipe-modal-content {
+        padding: 18px;
+    }
+
+    .modal-img {
+        height: 180px;
+    }
+}
