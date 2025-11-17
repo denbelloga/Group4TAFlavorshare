@@ -1,89 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sign In - FlavorShare</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #fff8f0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .signin-container {
-      background: white;
-      border-radius: 18px;
-      padding: 40px 30px 50px 30px;
-      max-width: 400px;
-      width: 90%;
-      box-shadow: 0 12px 30px rgb(235 84 36 / 0.15);
-      text-align: center;
-      color: #503225;
-    }
-    h2 {
-      color: #eb5424;
-      font-weight: 900;
-      margin-bottom: 10px;
-      font-size: 28px;
-    }
-    .signup-link {
-      font-weight: 600;
-      color: #503225;
-      margin-bottom: 35px;
-    }
-    .signup-link a {
-      color: #eb5424;
-      text-decoration: none;
-      font-weight: 900;
-      margin-left: 6px;
-    }
-    .signup-link a:hover {
-      text-decoration: underline;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-bottom: 35px;
-    }
-    input {
-      padding: 15px 20px;
-      border-radius: 19px;
-      border: 1px solid #d5d9dc;
-      font-size: 16px;
-      color: #503225;
-      font-weight: 600;
-      outline: none;
-      transition: border-color 0.3s ease;
-    }
-    input::placeholder {
-      font-weight: 600;
-      color: rgba(80, 50, 37, 0.65);
-    }
-    input:focus {
-      border-color: #eb5424;
-    }
-    button.signin-btn {
-      background-color: #eb5424;
-      color: white;
-      font-weight: 900;
-      font-family: 'Segoe UI Black', Arial Black, sans-serif;
-      font-size: 18px;
-      padding: 15px 0;
-      border-radius: 19px;
-      border: none;
-      width: 100%;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    button.signin-btn:hover {
-      background-color: #c84320;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sign In - FlavorShare</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff8f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .signin-container {
+    background: white;
+    border-radius: 18px;
+    padding: 40px 30px 50px 30px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 12px 30px rgb(235 84 36 / 0.15);
+    text-align: center;
+    color: #503225;
+  }
+  h2 {
+    color: #eb5424;
+    font-weight: 900;
+    margin-bottom: 10px;
+    font-size: 28px;
+  }
+  .signup-link {
+    font-weight: 600;
+    color: #503225;
+    margin-bottom: 35px;
+  }
+  .signup-link a {
+    color: #eb5424;
+    text-decoration: none;
+    font-weight: 900;
+    margin-left: 6px;
+  }
+  .signup-link a:hover {
+    text-decoration: underline;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 35px;
+  }
+  input {
+    padding: 15px 20px;
+    border-radius: 19px;
+    border: 1px solid #d5d9dc;
+    font-size: 16px;
+    color: #503225;
+    font-weight: 600;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  input::placeholder {
+    font-weight: 600;
+    color: rgba(80, 50, 37, 0.65);
+  }
+  input:focus {
+    border-color: #eb5424;
+  }
+  button.signin-btn {
+    background-color: #eb5424;
+    color: white;
+    font-weight: 900;
+    font-family: 'Segoe UI Black', Arial Black, sans-serif;
+    font-size: 18px;
+    padding: 15px 0;
+    border-radius: 19px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button.signin-btn:hover {
+    background-color: #c84320;
+  }
+</style>
 </head>
 <body>
   <div class="signin-container">
@@ -103,21 +103,17 @@
     document.getElementById('signInForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
-      // Demo authentication - replace with real backend validation
       const email = e.target.email.value;
       const password = e.target.password.value;
 
-      // Simple demo validation (accept any non-empty inputs)
-      if(email && password) {
-        // Save logged-in user info (you can extend with user data from backend)
-        const user = { email: email, name: 'Demo User' };
+      if (email && password) {
+        const user = {
+          email: email,
+          name: 'Demo User' // replace with real data after backend auth
+        };
         localStorage.setItem('user', JSON.stringify(user));
-
-        // Flag to show welcome modal on next page load
         localStorage.setItem('welcomeShown', 'false');
-
-        // Redirect to home page (landing page)
-        window.location.href = 'home.html';
+        window.location.href = 'index.html'; // redirect to homepage
       } else {
         alert('Please provide valid email and password.');
       }
