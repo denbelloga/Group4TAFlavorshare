@@ -7,11 +7,12 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
   <nav>
     <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="explore.html">Explore</a></li>
+      <li><a href="browse.html">Explore</a></li>
       <li><a href="my-cookbook.html" id="protectCookbook">My Cookbook</a></li>
       <li><a href="following.html" class="active" id="protectFollowing">Following</a></li>
     </ul>
@@ -22,27 +23,32 @@
       <div id="userMenu" class="hidden">
         <span id="userNameDisplay"></span>
         <div id="userDropdown" class="hidden">
-          <button id="logoutBtn" type="button">Log Out</button>
+          <button id="logoutBtn">Log Out</button>
         </div>
       </div>
-      <button id="themeToggle" class="theme-toggle" type="button">🌙 Dark</button>
+      <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
       <span id="notifBell" class="notif-bell">🔔</span>
     </div>
   </nav>
 
   <div id="notifPanel">
     <h4>Notifications</h4>
-    <ul><li>No new notifications.</li></ul>
-    <button id="notifClose" type="button">Close</button>
+    <ul>
+      <li>No new notifications.</li>
+    </ul>
+    <button id="notifClose">Close</button>
   </div>
 
   <main>
     <section>
       <h2>Following</h2>
-      <p class="section-subtitle">Creators you follow will appear here in a future version of FlavorShare (demo).</p>
+      <p class="section-subtitle">
+        When you start following other cooks, their latest recipes will appear here.
+      </p>
+
       <div class="empty-state">
-        <h3>No creators followed yet</h3>
-        <p>Explore recipes and follow your favorite cooks (feature coming soon).</p>
+        <h3>You're not following anyone yet</h3>
+        <p>Explore community recipes and start following your favorite cooks.</p>
       </div>
     </section>
   </main>
