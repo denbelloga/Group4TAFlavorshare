@@ -1,43 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Browse Recipes - Recipe App</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browse Recipes – FlavorShare</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <a href="#main" class="skip-link">Skip to main content</a>
-    <nav>
-        <a href="landing-page.html" id="logo">Recipe App</a>
-        <ul>
-            <li><a href="landing-page.html">Home</a></li>
-            <li><a href="browse.html">Browse</a></li>
-            <li><a href="upload.html">Upload</a></li>
-            <li><a href="sign-in.html" id="signInLink">Sign In</a></li>
-        </ul>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header class="header">
+    <div class="logo"><a href="landing-page.html">FlavorShare</a></div>
+    <nav class="nav-links">
+      <a href="landing-page.html">Home</a>
+      <a href="browse.html" class="active">Browse</a>
+      <a href="upload.html">Upload</a>
+      <a href="sign-in.html" id="signInLink">Sign In</a>
     </nav>
-    <main id="main">
-        <h2>Browse Recipes</h2>
-        <div class="recipe-grid">
-            <div class="recipe-card" tabindex="0" onclick="openModal('Chocolate Cake', 'A delicious chocolate cake recipe. Ingredients: flour, sugar, cocoa...')">
-                <img src="https://via.placeholder.com/200" alt="Chocolate Cake">
-                <h3>Chocolate Cake</h3>
-            </div>
-            <div class="recipe-card" tabindex="0" onclick="openModal('Pasta Primavera', 'Fresh pasta with vegetables. Ingredients: pasta, veggies, olive oil...')">
-                <img src="https://via.placeholder.com/200" alt="Pasta Primavera">
-                <h3>Pasta Primavera</h3>
-            </div>
-            <!-- Add more cards as needed -->
-        </div>
-        <div id="modal" style="display: none;" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
-            <div class="modal-content">
-                <span onclick="closeModal()" aria-label="Close">&times;</span>
-                <h2 id="modalTitle"></h2>
-                <p id="modalDetails"></p>
-            </div>
-        </div>
-    </main>
-    <script src="script.js"></script>
+    <div class="search-upload">
+      <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
+      <a href="sign-in.html" class="sign-in-btn">Sign In</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <h2 class="section-title">Browse Recipes</h2>
+
+    <div class="cards-container">
+      <article class="card card-red recipe-card"
+               tabindex="0"
+               data-title="Creamy Carbonara"
+               data-details="A classic creamy pasta with eggs, parmesan, pancetta, and black pepper.">
+        <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara" class="card-image" />
+        <h3>Creamy Carbonara</h3>
+        <p>Maria Romano</p>
+      </article>
+
+      <article class="card card-yellow recipe-card"
+               tabindex="0"
+               data-title="Rainbow Cupcakes"
+               data-details="Colorful vanilla cupcakes topped with buttercream frosting and sprinkles.">
+        <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes" class="card-image" />
+        <h3>Rainbow Cupcakes</h3>
+        <p>Emma Baker</p>
+      </article>
+
+      <article class="card card-green recipe-card"
+               tabindex="0"
+               data-title="Thai Green Curry"
+               data-details="Spicy and aromatic curry with coconut milk, vegetables, and herbs.">
+        <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry" class="card-image" />
+        <h3>Thai Green Curry</h3>
+        <p>Alex Chen</p>
+      </article>
+    </div>
+
+    <!-- Simple Modal -->
+    <div id="modal" class="modal hidden" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+      <div class="modal-content">
+        <button class="close-btn" id="closeModal" aria-label="Close">&times;</button>
+        <h2 id="modalTitle"></h2>
+        <p id="modalDetails"></p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 FlavorShare. Good food is best shared.
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Simple recipe modal wiring based on data attributes
+    const cards = document.querySelectorAll('.recipe-card');
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDetails = document.getElementById('modalDetails');
+    const closeModalBtn = document.getElementById('closeModal');
+
+    function openModal(title, details) {
+      modalTitle.textContent = title;
+      modalDetails.textContent = details;
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+      modalTitle.textContent = '';
+      modalDetails.textContent = '';
+    }
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        openModal(card.dataset.title, card.dataset.details);
+      });
+      card.addEventListener('keypress', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openModal(card.dataset.title, card.dataset.details);
+        }
+      });
+    });
+
+    closeModalBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => {
+      if (e.target === modal) closeModal();
+    });
+  </script>
 </body>
 </html>
