@@ -35,10 +35,8 @@ function initTheme() {
   toggle.textContent = saved === "dark" ? "☀️ Light" : "🌙 Dark";
 
   toggle.addEventListener("click", () => {
-    const current = document.body.classList.contains("dark-mode")
-      ? "dark"
-      : "light";
-    const next = current === "dark" ? "light" : "dark";
+    const isDark = document.body.classList.contains("dark-mode");
+    const next = isDark ? "light" : "dark";
     localStorage.setItem(THEME_KEY, next);
     applyTheme(next);
     toggle.textContent = next === "dark" ? "☀️ Light" : "🌙 Dark";
@@ -59,9 +57,11 @@ function initNavbar() {
   const protectFollowing = document.getElementById("protectFollowing");
   const uploadBtn = document.getElementById("uploadBtn");
 
+  // Show user dropdown OR sign-in button
   if (user) {
     if (signInBtn) signInBtn.style.display = "none";
     if (userMenu) userMenu.classList.remove("hidden");
+
     if (userNameDisplay) {
       const name =
         user.name && user.name.trim().length > 0
@@ -74,36 +74,48 @@ function initNavbar() {
     if (userMenu) userMenu.classList.add("hidden");
   }
 
+  // 🔒 Require Login for Protected Pages
   function requireLogin(url) {
     if (!getUser()) {
-      alert("You must sign in first.");
       window.location.href = "sign-in.html";
     } else {
       window.location.href = url;
     }
   }
 
+  // My Cookbook
   if (protectCookbook) {
     protectCookbook.addEventListener("click", (e) => {
-      e.preventDefault();
-      requireLogin("my-cookbook.html");
+      if (!getUser()) {
+        e.preventDefault();
+        window.location.href = "sign-in.html";
+      }
     });
   }
 
+  // Following
   if (protectFollowing) {
     protectFollowing.addEventListener("click", (e) => {
-      e.preventDefault();
-      requireLogin("following.html");
+      if (!getUser()) {
+        e.preventDefault();
+        window.location.href = "sign-in.html";
+      }
     });
   }
 
+  // Upload
   if (uploadBtn) {
     uploadBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      requireLogin("upload.html");
+      if (!getUser()) {
+        e.preventDefault();
+        window.location.href = "sign-in.html";
+      } else {
+        window.location.href = "upload.html";
+      }
     });
   }
 
+  // User dropdown toggle
   if (userMenu && userDropdown) {
     userMenu.addEventListener("click", () => {
       userDropdown.classList.toggle("hidden");
@@ -162,9 +174,7 @@ function initSignInForm() {
       return;
     }
 
-    // Accept ANY password
     saveUser({ email, name: "" });
-    if (errorEl) errorEl.textContent = "";
     window.location.href = "index.html";
   });
 }
@@ -175,11 +185,11 @@ function initSignUpForm() {
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+
     const name = form.name.value.trim();
     const email = form.email.value.trim();
     const password = form.password.value.trim();
 
-    if (!email || !password) return;
     if (!email.endsWith("@gmail.com")) {
       alert("Use a @gmail.com email.");
       return;
@@ -212,7 +222,7 @@ function initResetForm() {
   });
 }
 
-/* ============ COOKBOOK (simple) ============ */
+/* ============ COOKBOOK (localStorage-based) ============ */
 function getCookbookKey() {
   const user = getUser();
   if (!user) return null;
@@ -226,8 +236,10 @@ function addToCookbook(id, title, author, image) {
     window.location.href = "sign-in.html";
     return;
   }
+
   const key = getCookbookKey();
   let list = JSON.parse(localStorage.getItem(key) || "[]");
+
   if (!list.find((r) => r.id === id)) {
     list.push({ id, title, author, image });
     localStorage.setItem(key, JSON.stringify(list));
@@ -240,6 +252,7 @@ function addToCookbook(id, title, author, image) {
 function loadCookbookPage() {
   const grid = document.getElementById("cookbookGrid");
   const empty = document.getElementById("cookbookEmpty");
+
   if (!grid) return;
 
   const user = getUser();
@@ -282,7 +295,7 @@ function loadCookbookPage() {
     .join("");
 }
 
-/* ============ INIT ============ */
+/* ============ INIT EVERYTHING ============ */
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
   initNavbar();
@@ -294,5 +307,5 @@ document.addEventListener("DOMContentLoaded", () => {
   loadCookbookPage();
 });
 
-/* Expose cookbook function for inline onClick */
+/* Allow inline onclick access */
 window.addToCookbook = addToCookbook;
