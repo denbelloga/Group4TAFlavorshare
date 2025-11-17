@@ -3,81 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Explore Recipes - FlavorShare</title>
+  <title>FlavorShare - Browse</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 
 <body>
 
-  <!-- Navigation -->
-  <nav>
+<!-- NAV -->
+<nav>
     <div class="logo">FlavorShare</div>
 
     <ul class="nav-links">
-      <li><a href="landing-page.html">Home</a></li>
-      <li><a href="browse.html" class="active">Explore</a></li>
-      <li><a href="#">My Cookbook</a></li>
-      <li><a href="#">Following</a></li>
+        <li><a href="landing-page.html">Home</a></li>
+        <li><a href="browse.html" class="active">Explore</a></li>
+        <li><a href="#">My Cookbook</a></li>
+        <li><a href="#">Following</a></li>
     </ul>
 
     <div class="actions">
-      <input type="search" placeholder="Search recipes..." />
-      <button class="upload-btn">+ Upload a Recipe</button>
-      <a href="sign-in.html" class="sign-in-btn">Sign In</a>
-      <span class="notif-bell">🔔</span>
+        <input type="search" placeholder="Search recipes...">
+        <button class="upload-btn">+ Upload a Recipe</button>
+        <a href="sign-in.html" class="sign-in-btn">Sign In</a>
+        <span class="notif-bell">🔔</span>
     </div>
-  </nav>
+</nav>
 
-  <main>
-    <h2 class="page-title">Explore Recipes</h2>
+<main>
+    <h2>Browse Recipes</h2>
 
-    <div class="recipe-cards explore-layout">
-
-      <article class="card">
-        <img src="images/carbonara.jpg" alt="Carbonara" class="card-img">
-        <div class="card-content">
-          <h3>Creamy Carbonara</h3>
-          <p>Maria Romano</p>
-          <div class="card-stats">
-            <span>⭐ 4.9</span>
-            <span>💬 234</span>
-            <span>⏱ 25 min</span>
-          </div>
+    <div class="recipe-grid">
+        <div class="recipe-card" onclick="openModal('Creamy Carbonara', 'A classic Italian pasta with rich cream sauce.')">
+            <img src="https://images.unsplash.com/photo-1603133872878-684f3a4b52a3" alt="">
+            <h3>Creamy Carbonara</h3>
+            <p>Maria Romano</p>
         </div>
-      </article>
 
-      <article class="card">
-        <img src="images/rainbow-cupcakes.jpg" alt="Rainbow Cupcakes" class="card-img">
-        <div class="card-content">
-          <h3>Rainbow Cupcakes</h3>
-          <p>Emma Baker</p>
-          <div class="card-stats">
-            <span>⭐ 4.8</span>
-            <span>💬 189</span>
-            <span>⏱ 40 min</span>
-          </div>
+        <div class="recipe-card" onclick="openModal('Rainbow Cupcakes', 'Fun colorful cupcakes with sweet frosting!')">
+            <img src="https://images.unsplash.com/photo-1509440159598-953f6ecdfdd1" alt="">
+            <h3>Rainbow Cupcakes</h3>
+            <p>Emma Baker</p>
         </div>
-      </article>
 
-      <article class="card">
-        <img src="images/green-curry.jpg" alt="Thai Green Curry" class="card-img">
-        <div class="card-content">
-          <h3>Thai Green Curry</h3>
-          <p>Alex Chen</p>
-          <div class="card-stats">
-            <span>⭐ 4.7</span>
-            <span>💬 310</span>
-            <span>⏱ 35 min</span>
-          </div>
+        <div class="recipe-card" onclick="openModal('Thai Green Curry', 'A flavorful Thai dish with coconut milk and herbs.')">
+            <img src="https://images.unsplash.com/photo-1625943551124-1cb2d2741313" alt="">
+            <h3>Thai Green Curry</h3>
+            <p>Alex Chen</p>
         </div>
-      </article>
-
     </div>
-  </main>
+</main>
 
-  <footer>
-    © 2025 FlavorShare. Good food is best shared.
-  </footer>
+<!-- MODAL -->
+<div id="modal">
+  <div class="modal-content">
+    <span onclick="closeModal()">&times;</span>
+    <h2 id="modalTitle"></h2>
+    <p id="modalDetails"></p>
+  </div>
+</div>
+
+<footer>
+  © 2025 FlavorShare. Good food is best shared.
+</footer>
 
 </body>
 </html>
