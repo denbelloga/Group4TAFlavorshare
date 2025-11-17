@@ -283,6 +283,40 @@ main h2 {
   width: 100%;
   height: 170px;
   object-fit: cover;
+  /* Expandable recipe card effect */
+.recipe-card {
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* When clicked */
+.recipe-card.expanded {
+  transform: scale(1.05) translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+  z-index: 5;
+}
+
+/* Hidden extra details inside card */
+.recipe-details {
+  display: none;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(0, 0, 0, 0.08);
+  font-size: 0.82rem;
+  color: #666;
+}
+
+/* Show details when expanded */
+.recipe-card.expanded .recipe-details {
+  display: block;
+}
+
+/* In dark mode */
+body.dark-mode .recipe-details {
+  border-top-color: rgba(255, 255, 255, 0.15);
+  color: #cccccc;
+}
+
 }
 
 .recipe-card .info {
