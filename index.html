@@ -4,67 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlavorShare - Home</title>
-
-    <!-- Correct CSS Path -->
     <link rel="stylesheet" href="styles.css">
-
-    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
 
-<!-- Navigation Bar -->
-<nav class="main-nav">
-    <div class="nav-left">
-        <a class="logo" href="index.html">FlavorShare</a>
+<!-- NAVIGATION -->
+<nav>
+    <div class="logo">FlavorShare</div>
 
-        <ul class="nav-links">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="browse.html">Explore</a></li>
-            <li><a href="my-cookbook.html">My Cookbook</a></li>
-            <li><a href="following.html">Following</a></li>
-        </ul>
-    </div>
+    <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="browse.html">Explore</a></li>
+        <li><a href="my-cookbook.html">My Cookbook</a></li>
+        <li><a href="following.html">Following</a></li>
+    </ul>
 
-    <!-- Right Side Menu -->
-    <div class="nav-right">
-        <input type="text" class="search-bar" placeholder="Search recipes...">
+    <div class="actions">
+        <input type="search" placeholder="Search recipes...">
 
-        <a href="upload-recipe.html" class="upload-btn">+ Upload a Recipe</a>
+        <button class="upload-btn">+ Upload a Recipe</button>
 
         <a href="sign-in.html" class="sign-in-btn">Sign In</a>
 
-        <button class="notif-btn">
-            <i class="fas fa-bell"></i>
-        </button>
+        <i class="fa-solid fa-bell notif-bell"></i>
     </div>
 </nav>
 
 <!-- HERO SECTION -->
-<section class="hero">
-    <div class="hero-content">
-        <h1>Welcome to FlavorShare</h1>
-        <p>Discover delicious recipes and share your own creations.</p>
-        <a href="browse.html" class="cta">Get Started</a>
-    </div>
+<section class="hero-section">
+    <h1>Welcome to FlavorShare</h1>
+    <p>Discover delicious recipes and share your own creations.</p>
+    <a href="browse.html" class="hero-btn">Get Started</a>
 </section>
 
-<!-- MAIN CONTENT -->
-<main class="home-main">
-    <section class="feature-section">
-        <h2>Share Your Flavor!</h2>
-        <p>
-            Good food is best shared. Discover amazing recipes from home cooks
-            around the world and share your own creations.
-        </p>
-        <a href="browse.html" class="explore-link">Explore Recipes</a>
-    </section>
+<!-- MAIN SECTION -->
+<main>
+    <h2>Share Your Flavor!</h2>
+    <p style="text-align:center; max-width:700px; margin:auto;">
+        Good food is best shared. Discover amazing recipes from home cooks around the world
+        and share your own creations.
+    </p>
+
+    <div style="text-align:center; margin-top:20px;">
+        <a href="browse.html" class="hero-btn">Explore Recipes</a>
+    </div>
 </main>
 
 <!-- FOOTER -->
-<footer class="footer">
-    <p>© 2025 FlavorShare. Good food is best shared.</p>
+<footer>
+    © 2025 FlavorShare. Good food is best shared.
 </footer>
 
 </body>
