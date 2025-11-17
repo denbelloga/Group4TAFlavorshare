@@ -123,6 +123,28 @@
       </ul>
       <button id="createAccountBtn" class="primary-btn">Create an Account</button>
       <p class="small-text">By signing up, you agree to our Terms of Service and Privacy Policy</p>
+
+      <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const welcomeShown = localStorage.getItem('welcomeShown');
+    const welcomeModal = document.getElementById('welcomeModal');
+    const welcomeOkBtn = document.getElementById('welcomeOkBtn');
+
+    // Show modal only if user is signed in AND welcome not shown yet
+    // (You should have some way to detect signed in user; here we just check welcomeShown flag)
+    if(welcomeShown === 'false') {
+      welcomeModal.classList.remove('hidden');
+    }
+
+    welcomeOkBtn.addEventListener('click', () => {
+      welcomeModal.classList.add('hidden');
+      // Mark welcome as shown
+      localStorage.setItem('welcomeShown', 'true');
+      // Optionally reload page or update UI to enable full access
+      location.reload();
+    });
+  });
+</script>
     </div>
   </div>
 </body>
