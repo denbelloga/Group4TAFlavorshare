@@ -1,82 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Upload Recipe – FlavorShare</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlavorShare - Upload Recipe</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <a href="#main" class="skip-link">Skip to main content</a>
 
-  <header class="header">
-    <div class="logo"><a href="landing-page.html">FlavorShare</a></div>
-    <nav class="nav-links">
-      <a href="landing-page.html">Home</a>
-      <a href="browse.html">Browse</a>
-      <a href="upload.html" class="active">Upload</a>
-      <a href="sign-in.html" id="signInLink">Sign In</a>
-    </nav>
-    <div class="search-upload">
-      <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
-      <a href="sign-in.html" class="sign-in-btn">Sign In</a>
+<!-- NAV -->
+<nav>
+    <div class="logo">FlavorShare</div>
+
+    <ul class="nav-links">
+        <li><a href="landing-page.html">Home</a></li>
+        <li><a href="browse.html">Explore</a></li>
+        <li><a href="#">My Cookbook</a></li>
+        <li><a href="#">Following</a></li>
+    </ul>
+
+    <div class="actions">
+        <input type="search" placeholder="Search recipes...">
+        <button class="upload-btn active">+ Upload a Recipe</button>
+        <a href="sign-in.html" class="sign-in-btn">Sign In</a>
+        <span class="notif-bell">🔔</span>
     </div>
-  </header>
+</nav>
 
-  <main id="main">
-    <h2 class="section-title">Upload a Recipe</h2>
+<main>
+  <h2>Upload Your Recipe</h2>
 
-    <div class="cards-container">
-      <form id="uploadForm" class="card" style="max-width: 600px; width: 100%; padding: 24px;">
-        <label for="title">Recipe Title</label>
-        <input type="text" id="title" required aria-required="true" />
+  <form>
+      <input type="text" placeholder="Recipe Title" required>
+      <textarea rows="5" placeholder="Recipe Description" required></textarea>
+      <input type="file" accept="image/*">
+      <button type="submit">Submit Recipe</button>
+  </form>
+</main>
 
-        <label for="description">Description</label>
-        <textarea id="description" required aria-required="true"></textarea>
+<footer>
+  © 2025 FlavorShare. Good food is best shared.
+</footer>
 
-        <label for="ingredients">Ingredients</label>
-        <textarea id="ingredients" required aria-required="true"></textarea>
-
-        <button type="submit" class="upload-btn" style="margin-top:16px;">Upload</button>
-        <div id="uploadError" style="color: #c62828; margin-top: 10px; font-weight:600;"></div>
-        <div id="uploadSuccess" style="color: #2e7d32; margin-top: 8px; font-weight:600;"></div>
-      </form>
-    </div>
-  </main>
-
-  <footer>
-    © 2025 FlavorShare. Good food is best shared.
-  </footer>
-
-  <script src="script.js"></script>
-  <script>
-    const uploadForm = document.getElementById('uploadForm');
-    const uploadError = document.getElementById('uploadError');
-    const uploadSuccess = document.getElementById('uploadSuccess');
-
-    uploadForm.addEventListener('submit', e => {
-      e.preventDefault();
-      uploadError.textContent = '';
-      uploadSuccess.textContent = '';
-
-      const loggedIn = localStorage.getItem('loggedIn') === 'true';
-      if (!loggedIn) {
-        uploadError.textContent = 'Please sign in with a @gmail.com account before uploading.';
-        return;
-      }
-
-      const title = document.getElementById('title').value.trim();
-      const description = document.getElementById('description').value.trim();
-      const ingredients = document.getElementById('ingredients').value.trim();
-
-      if (!title || !description || !ingredients) {
-        uploadError.textContent = 'Please fill in all fields.';
-        return;
-      }
-
-      uploadSuccess.textContent = 'Recipe uploaded! (Demo only – no real backend yet.)';
-      uploadForm.reset();
-    });
-  </script>
 </body>
 </html>
