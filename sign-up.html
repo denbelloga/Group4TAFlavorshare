@@ -7,7 +7,7 @@
   <style>
     body {
       background-color: #fff9f5;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -25,7 +25,7 @@
     }
     .signup-container h2 {
       color: #eb5424;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 24px;
       margin-bottom: 8px;
     }
@@ -41,14 +41,12 @@
       font-weight: 600;
       margin-left: 6px;
     }
-    .signin-text a:hover {
-      text-decoration: underline;
-    }
+    .signin-text a:hover { text-decoration: underline; }
     form {
       display: grid;
       gap: 15px;
       grid-template-columns: repeat(2, 1fr);
-      margin-bottom: 25px;
+      margin-bottom: 10px;
     }
     input[type="text"], input[type="email"], input[type="password"] {
       padding: 12px 15px;
@@ -60,7 +58,7 @@
       color: #444;
     }
     input[type="email"], input[type="password"] {
-      grid-column: 1 / -1; /* full width */
+      grid-column: 1 / -1;
     }
     input::placeholder {
       color: #b4b4b2;
@@ -88,9 +86,16 @@
       font-weight: 600;
       color: #444;
       cursor: pointer;
+      margin-top: 6px;
     }
-    .continue-text:hover {
-      text-decoration: underline;
+    .continue-text:hover { text-decoration: underline; }
+    .error-msg {
+      grid-column: 1 / -1;
+      color: #c62828;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: left;
+      min-height: 1.2em;
     }
   </style>
 </head>
@@ -106,22 +111,45 @@
       <input type="text" name="lastName" placeholder="Last Name" required />
       <input type="email" name="email" placeholder="Email Address" required />
       <input type="password" name="password" placeholder="Password" required />
+      <div class="error-msg" id="signUpError"></div>
       <button type="submit">Sign Up</button>
     </form>
     <div class="continue-text" id="continueWithoutSignup">Continue without signing in</div>
   </div>
 
   <script>
-    document.getElementById('signupForm').addEventListener('submit', function(e) {
+    const signupForm = document.getElementById('signupForm');
+    const signUpError = document.getElementById('signUpError');
+    const continueWithoutSignup = document.getElementById('continueWithoutSignup');
+
+    signupForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      // Add validation or signup logic here
+      signUpError.textContent = '';
+
+      const firstName = signupForm.firstName.value.trim();
+      const lastName  = signupForm.lastName.value.trim();
+      const email     = signupForm.email.value.trim();
+      const password  = signupForm.password.value.trim();
+
+      if (!firstName || !lastName || !email || !password) {
+        signUpError.textContent = 'Please fill in all fields.';
+        return;
+      }
+      if (!email.endsWith('@gmail.com')) {
+        signUpError.textContent = 'For this demo, please use an email ending in @gmail.com.';
+        return;
+      }
+
+      localStorage.setItem('loggedIn', 'true');
+      const name = firstName || email.split('@')[0];
+      localStorage.setItem('user', JSON.stringify({ name, email }));
+
       alert('Thank you for signing up! (Demo)');
-      window.location.href = 'index.html';
+      window.location.href = 'landing-page.html';
     });
 
-    document.getElementById('continueWithoutSignup').addEventListener('click', function() {
-      alert('Continuing without signing in');
-      window.location.href = 'index.html';
+    continueWithoutSignup.addEventListener('click', function() {
+      window.location.href = 'landing-page.html';
     });
   </script>
 </body>
