@@ -181,22 +181,63 @@ body.dark .user-dropdown {
 /* -------------------------------------- */
 
 .hero-section {
-  width: 100%;
-  height: 380px;
-  background: url("https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg") center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
-  text-align: center;
-  color: #fff;
+    position: relative;
+    height: 65vh;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 0 0 20px 20px;
+    margin-bottom: 40px;
 }
 
-.hero-content {
-  background: rgba(0,0,0,0.45);
-  padding: 25px 35px;
-  border-radius: 20px;
-  max-width: 600px;
+.hero-section .hero-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(70%);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.hero-section .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+}
+
+.hero-center {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: white;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 20px;
+}
+
+.hero-center h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero-center p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.hero-btn {
+    background: #ff7a2f;
+    border: none;
+    padding: 12px 26px;
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+.hero-btn:hover {
+    background: #ff5400;
 }
 
 /* -------------------------------------- */
