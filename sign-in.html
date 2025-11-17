@@ -7,31 +7,62 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="auth-body">
+  <nav>
+    <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="explore.html">Explore</a></li>
+      <li><a href="my-cookbook.html" id="protectCookbook">My Cookbook</a></li>
+      <li><a href="following.html" id="protectFollowing">Following</a></li>
+    </ul>
+    <div class="actions">
+      <input type="search" placeholder="Search recipes..." />
+      <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
+      <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
+      <div id="userMenu" class="hidden">
+        <span id="userNameDisplay"></span>
+        <div id="userDropdown" class="hidden">
+          <button id="logoutBtn" type="button">Log Out</button>
+        </div>
+      </div>
+      <button id="themeToggle" class="theme-toggle" type="button">🌙 Dark</button>
+      <span id="notifBell" class="notif-bell">🔔</span>
+    </div>
+  </nav>
 
-  <div class="auth-container">
-    <h1 class="auth-logo">FlavorShare</h1>
-    <h2 class="auth-title">Welcome Back</h2>
-    <p class="auth-sub">Sign in with any @gmail.com email and any password.</p>
-
-    <form id="signInForm" class="auth-form">
-      <label>Email</label>
-      <input type="email" name="email" placeholder="you@gmail.com" required />
-
-      <label>Password</label>
-      <input type="password" name="password" placeholder="Enter any password" required />
-
-      <button type="submit" class="auth-btn">Sign In</button>
-      <p id="signInError" class="auth-error"></p>
-    </form>
-
-    <p class="auth-link">
-      Don't have an account?
-      <a href="sign-up.html">Sign up</a>
-    </p>
-    <p class="auth-link">
-      <a href="forgot-password.html">Forgot password?</a>
-    </p>
+  <div id="notifPanel">
+    <h4>Notifications</h4>
+    <ul><li>No new notifications.</li></ul>
+    <button id="notifClose" type="button">Close</button>
   </div>
+
+  <main>
+    <div class="auth-container">
+      <div class="auth-logo">FlavorShare</div>
+      <h1 class="auth-title">Welcome back</h1>
+      <p class="auth-sub">Sign in to save recipes and manage your cookbook.</p>
+
+      <form id="signInForm" class="auth-form" novalidate>
+        <label for="email">Email</label>
+        <input type="email" name="email" placeholder="you@gmail.com" required />
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="Your password" required />
+        <div id="signInError" class="auth-error"></div>
+        <button type="submit" class="auth-btn">Sign In</button>
+      </form>
+
+      <div class="auth-link">
+        <a href="forgot-password.html">Forgot password?</a>
+      </div>
+      <div class="auth-link">
+        Don't have an account? <a href="sign-up.html">Sign up</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 FlavorShare. Good food is best shared.
+  </footer>
 
   <script src="script.js"></script>
 </body>
