@@ -1,196 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sign In - FlavorShare</title>
-  <style>
-    body {
-      background-color: #fff8f0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0; padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .signin-container {
-      background: white;
-      padding: 40px 30px;
-      border-radius: 15px;
-      max-width: 400px;
-      width: 90%;
-      box-shadow: 0 6px 15px rgba(235, 84, 36, 0.15);
-      text-align: center;
-      color: #503225;
-      position: relative;
-      z-index: 1;
-    }
-    h2 {
-      color: #eb5424;
-      font-weight: 900;
-      font-size: 28px;
-      margin-bottom: 16px;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-bottom: 10px;
-    }
-    input {
-      padding: 14px 18px;
-      border-radius: 19px;
-      border: 1px solid #d5d9dc;
-      font-size: 16px;
-      font-weight: 600;
-      color: #503225;
-      outline: none;
-      transition: border-color 0.3s;
-    }
-    input::placeholder { color: #c9c9c9; }
-    input:focus { border-color: #eb5424; }
-    button.signin-btn {
-      background-color: #eb5424;
-      color: white;
-      font-weight: 900;
-      font-size: 18px;
-      padding: 15px 0;
-      border-radius: 19px;
-      border: none;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    button.signin-btn:hover { background-color: #c84320; }
-    .signup-link {
-      font-weight: 600;
-      color: #503225;
-      font-size: 14px;
-      margin-top: 8px;
-    }
-    .signup-link a {
-      color: #eb5424;
-      text-decoration: none;
-      font-weight: 900;
-      margin-left: 6px;
-      cursor: pointer;
-    }
-    .signup-link a:hover { text-decoration: underline; }
-    .error-msg {
-      color: #c62828;
-      font-size: 0.9rem;
-      font-weight: 600;
-      min-height: 1.2em;
-      margin-bottom: 8px;
-    }
-
-    /* Welcome Modal */
-    #welcomeModal {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(rgba(235,84,36,0.85), rgba(242,168,63,0.85)), url('images/Title-Image-8.webp') center/cover no-repeat;
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
-    }
-    #welcomeModal.active { display: flex; }
-    #welcomeModal .modal-content {
-      background: transparent;
-      border-radius: 15px;
-      padding: 40px 50px;
-      max-width: 380px;
-      width: 90%;
-      text-align: center;
-      color: white;
-      font-weight: 900;
-      filter: drop-shadow(0 0 8px rgba(0,0,0,0.7));
-    }
-    #welcomeModal h2 {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-    }
-    #welcomeModal p {
-      font-weight: 700;
-      font-size: 1.2rem;
-      margin-bottom: 32px;
-    }
-    #welcomeModal button {
-      width: 100%;
-      padding: 15px 0;
-      background-color: #fff2de;
-      color: #eb5424;
-      font-weight: 900;
-      font-size: 1.3rem;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-    #welcomeModal button:hover {
-      background-color: #eb5424;
-      color: white;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlavorShare - Sign In</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <section class="signin-container" role="main">
-    <h2>Sign In</h2>
-    <form id="signInForm" novalidate>
-      <input type="email" name="email" placeholder="Email Address" required />
-      <input type="password" name="password" placeholder="Password" required />
-      <div class="error-msg" id="signInError"></div>
-      <button type="submit" class="signin-btn">Sign In</button>
-    </form>
-    <div class="signup-link">
-      Don't have an account? <a href="sign-up.html">Sign Up</a>
+
+<!-- NAV -->
+<nav>
+    <div class="logo">FlavorShare</div>
+
+    <ul class="nav-links">
+        <li><a href="landing-page.html">Home</a></li>
+        <li><a href="browse.html">Explore</a></li>
+        <li><a href="#">My Cookbook</a></li>
+        <li><a href="#">Following</a></li>
+    </ul>
+
+    <div class="actions">
+        <input type="search" placeholder="Search recipes...">
+        <button class="upload-btn">+ Upload a Recipe</button>
+        <a href="sign-in.html" class="sign-in-btn active">Sign In</a>
+        <span class="notif-bell">🔔</span>
     </div>
-  </section>
+</nav>
 
-  <!-- Welcome Modal -->
-  <div id="welcomeModal" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle">
-    <div class="modal-content">
-      <h2 id="welcomeTitle">Welcome to FlavorShare!</h2>
-      <p>Start adding your recipes and share your delicious flavors.</p>
-      <button id="continueBtn">Continue</button>
-    </div>
-  </div>
+<main>
+  <h2>Sign In</h2>
 
-  <script>
-    const signInForm = document.getElementById('signInForm');
-    const signInError = document.getElementById('signInError');
-    const welcomeModal = document.getElementById('welcomeModal');
-    const continueBtn = document.getElementById('continueBtn');
+  <form>
+      <input type="email" placeholder="Email (@gmail.com)" required>
+      <input type="password" placeholder="Password" required>
 
-    signInForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      signInError.textContent = '';
+      <button type="submit">Sign In</button>
+  </form>
+</main>
 
-      const email = signInForm.email.value.trim();
-      const password = signInForm.password.value.trim();
+<footer>
+  © 2025 FlavorShare. Good food is best shared.
+</footer>
 
-      if (!email || !password) {
-        signInError.textContent = 'Please fill in both email and password.';
-        return;
-      }
-
-      if (!email.endsWith('@gmail.com')) {
-        signInError.textContent = 'For this demo, please use an email ending in @gmail.com.';
-        return;
-      }
-
-      // Demo "login": store state
-      localStorage.setItem('loggedIn', 'true');
-      const name = email.split('@')[0];
-      localStorage.setItem('user', JSON.stringify({ name, email }));
-
-      welcomeModal.classList.add('active');
-    });
-
-    continueBtn.addEventListener('click', () => {
-      welcomeModal.classList.remove('active');
-      window.location.href = 'landing-page.html';
-    });
-  </script>
 </body>
 </html>
