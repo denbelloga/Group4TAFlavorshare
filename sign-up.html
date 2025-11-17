@@ -1,156 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sign Up - FlavorShare</title>
-  <style>
-    body {
-      background-color: #fff9f5;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .signup-container {
-      background-color: white;
-      padding: 30px 40px 40px 40px;
-      border-radius: 15px;
-      box-shadow: 0 5px 18px rgba(235, 84, 36, 0.15);
-      max-width: 400px;
-      width: 100%;
-      text-align: center;
-    }
-    .signup-container h2 {
-      color: #eb5424;
-      font-weight: 800;
-      font-size: 24px;
-      margin-bottom: 8px;
-    }
-    .signin-text {
-      font-size: 14px;
-      margin-bottom: 25px;
-      color: #555;
-    }
-    .signin-text a {
-      color: #eb5424;
-      text-decoration: none;
-      cursor: pointer;
-      font-weight: 600;
-      margin-left: 6px;
-    }
-    .signin-text a:hover { text-decoration: underline; }
-    form {
-      display: grid;
-      gap: 15px;
-      grid-template-columns: repeat(2, 1fr);
-      margin-bottom: 10px;
-    }
-    input[type="text"], input[type="email"], input[type="password"] {
-      padding: 12px 15px;
-      border-radius: 15px;
-      border: 1px solid #ddd;
-      font-size: 14px;
-      outline: none;
-      font-weight: 600;
-      color: #444;
-    }
-    input[type="email"], input[type="password"] {
-      grid-column: 1 / -1;
-    }
-    input::placeholder {
-      color: #b4b4b2;
-      font-weight: 500;
-    }
-    button {
-      grid-column: 1 / -1;
-      background-color: #eb5424;
-      color: white;
-      padding: 13px 0;
-      border: none;
-      border-radius: 15px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    button:hover,
-    button:focus {
-      background-color: #c34922;
-      outline: none;
-    }
-    .continue-text {
-      font-size: 13px;
-      font-weight: 600;
-      color: #444;
-      cursor: pointer;
-      margin-top: 6px;
-    }
-    .continue-text:hover { text-decoration: underline; }
-    .error-msg {
-      grid-column: 1 / -1;
-      color: #c62828;
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-align: left;
-      min-height: 1.2em;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - FlavorShare</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <div class="signup-container">
-    <h2>Sign Up</h2>
-    <div class="signin-text">
-      Already have an account?
-      <a href="sign-in.html">Sign In</a>
+
+<body class="signin-body">
+
+    <!-- Dark Mode Toggle -->
+    <div class="darkmode-toggle" onclick="toggleDarkMode()">🌙</div>
+
+    <div class="signin-container">
+
+        <!-- Floating Shapes -->
+        <div class="signin-shape shape1"></div>
+        <div class="signin-shape shape2"></div>
+        <div class="signin-shape shape3"></div>
+
+        <form class="signin-card" onsubmit="return register(event)">
+
+            <!-- Logo Reveal -->
+            <div class="signin-logo">Create Your Account</div>
+
+            <h1>Join FlavorShare 🍽️</h1>
+            <p class="signin-subtext">Start sharing and discovering amazing recipes.</p>
+
+            <label>Full Name</label>
+            <input id="fullname" type="text" placeholder="Juan Dela Cruz" required>
+
+            <label>Email</label>
+            <input id="email" type="email" placeholder="yourname@gmail.com" required>
+
+            <label>Password</label>
+            <div class="password-wrapper">
+                <input id="password" type="password" placeholder="••••••••" required>
+                <span class="toggle-password" onclick="togglePassword('password')">👁</span>
+            </div>
+
+            <label>Confirm Password</label>
+            <div class="password-wrapper">
+                <input id="confirm" type="password" placeholder="••••••••" required>
+                <span class="toggle-password" onclick="togglePassword('confirm')">👁</span>
+            </div>
+
+            <button type="submit" class="signin-btn">Create Account</button>
+
+            <!-- Google Button -->
+            <button type="button" class="google-btn">
+                <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google">
+                Sign up with Google
+            </button>
+
+            <p class="signin-alt">
+                Already have an account? <a href="sign-in.html">Sign In</a>
+            </p>
+
+        </form>
     </div>
-    <form id="signupForm" novalidate>
-      <input type="text" name="firstName" placeholder="First Name" required />
-      <input type="text" name="lastName" placeholder="Last Name" required />
-      <input type="email" name="email" placeholder="Email Address" required />
-      <input type="password" name="password" placeholder="Password" required />
-      <div class="error-msg" id="signUpError"></div>
-      <button type="submit">Sign Up</button>
-    </form>
-    <div class="continue-text" id="continueWithoutSignup">Continue without signing in</div>
-  </div>
 
-  <script>
-    const signupForm = document.getElementById('signupForm');
-    const signUpError = document.getElementById('signUpError');
-    const continueWithoutSignup = document.getElementById('continueWithoutSignup');
+    <!-- Success redirect popup -->
+    <div id="success-popup">✔ Account created successfully!</div>
 
-    signupForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      signUpError.textContent = '';
+    <script>
+        /* Password show/hide */
+        function togglePassword(id) {
+            let field = document.getElementById(id);
+            field.type = field.type === "password" ? "text" : "password";
+        }
 
-      const firstName = signupForm.firstName.value.trim();
-      const lastName  = signupForm.lastName.value.trim();
-      const email     = signupForm.email.value.trim();
-      const password  = signupForm.password.value.trim();
+        /* Dark mode toggle */
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
 
-      if (!firstName || !lastName || !email || !password) {
-        signUpError.textContent = 'Please fill in all fields.';
-        return;
-      }
-      if (!email.endsWith('@gmail.com')) {
-        signUpError.textContent = 'For this demo, please use an email ending in @gmail.com.';
-        return;
-      }
+        /* Registration logic */
+        function register(e) {
+            e.preventDefault();
 
-      localStorage.setItem('loggedIn', 'true');
-      const name = firstName || email.split('@')[0];
-      localStorage.setItem('user', JSON.stringify({ name, email }));
+            let email = document.getElementById("email").value;
+            let pass = document.getElementById("password").value;
+            let confirm = document.getElementById("confirm").value;
 
-      alert('Thank you for signing up! (Demo)');
-      window.location.href = 'landing-page.html';
-    });
+            if (!email.endsWith("@gmail.com")) {
+                alert("Email must end with @gmail.com");
+                return;
+            }
 
-    continueWithoutSignup.addEventListener('click', function() {
-      window.location.href = 'landing-page.html';
-    });
-  </script>
+            if (pass !== confirm) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            let popup = document.getElementById("success-popup");
+            popup.classList.add("show");
+
+            setTimeout(() => {
+                window.location.href = "sign-in.html";
+            }, 1800);
+        }
+    </script>
+
 </body>
 </html>
