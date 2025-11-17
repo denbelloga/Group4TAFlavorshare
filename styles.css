@@ -41,17 +41,18 @@ nav {
   text-decoration: none;
   color: #444;
   font-weight: 600;
+  transition: 0.2s;
 }
 
-.nav-links a.active,
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
   color: #eb5424;
 }
 
 .actions {
   display: flex;
-  gap: 14px;
   align-items: center;
+  gap: 16px;
 }
 
 .actions input[type="search"] {
@@ -64,16 +65,17 @@ nav {
 .upload-btn {
   border: 1.5px solid #eb5424;
   padding: 8px 16px;
-  background: transparent;
+  background: white;
   color: #eb5424;
   border-radius: 20px;
+  font-weight: 700;
   cursor: pointer;
-  font-weight: 600;
+  transition: 0.3s;
 }
 
 .upload-btn:hover {
   background: #eb5424;
-  color: white;
+  color: #fff;
 }
 
 .sign-in-btn {
@@ -83,6 +85,11 @@ nav {
   border-radius: 20px;
   text-decoration: none;
   font-weight: 600;
+  transition: 0.3s;
+}
+
+.sign-in-btn:hover {
+  background: #c73f12;
 }
 
 .notif-bell {
@@ -90,18 +97,19 @@ nav {
   font-size: 1.4rem;
 }
 
-/* ================= NOTIF PANEL ================= */
+/* ================= NOTIFICATION PANEL ================= */
 
 #notif-panel {
   position: fixed;
-  right: 20px;
-  top: 80px;
+  right: 25px;
+  top: 85px;
   background: #fff;
   width: 260px;
   padding: 18px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   display: none;
+  z-index: 2000;
 }
 
 #notif-panel.show {
@@ -109,7 +117,7 @@ nav {
 }
 
 #notif-panel .close-btn {
-  margin-top: 12px;
+  margin-top: 14px;
   width: 100%;
   padding: 8px;
   background: #eb5424;
@@ -130,35 +138,52 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
   text-align: center;
+  color: white;
   padding: 20px;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 15px;
+}
+
+.hero-section p {
+  font-size: 1.3rem;
+  max-width: 600px;
+  margin-bottom: 25px;
 }
 
 .hero-search input {
   padding: 12px 20px;
   width: 380px;
-  border-radius: 25px;
   border: none;
+  border-radius: 24px;
   margin-bottom: 20px;
   font-size: 1.1rem;
 }
 
 .hero-btn {
-  background: #fff;
+  background: white;
   color: #eb5424;
   padding: 12px 26px;
+  border-radius: 25px;
   font-size: 1.1rem;
   font-weight: 700;
-  border-radius: 25px;
   text-decoration: none;
+  transition: 0.3s;
 }
 
-/* ================= TRENDING RECIPES ================= */
+.hero-btn:hover {
+  background: #ffe5d4;
+}
+
+/* ================= MAIN (Trending Recipes) ================= */
 
 main {
   max-width: 1100px;
-  margin: 40px auto;
+  margin: 50px auto;
   padding: 0 20px;
 }
 
@@ -170,20 +195,28 @@ main h2 {
   font-weight: 900;
 }
 
-.recipe-grid {
+/* ================= SHARED CARD STYLE (Home + Explore) ================= */
+
+.recipe-grid,
+.explore-grid {
   display: flex;
   gap: 40px;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-/* Card style shared by Explore + Trending */
 .explore-card {
   width: 260px;
   background: white;
   border-radius: 18px;
   overflow: hidden;
+  cursor: pointer;
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: transform 0.2s;
+}
+
+.explore-card:hover {
+  transform: scale(1.03);
 }
 
 .card-color-strip {
@@ -205,8 +238,9 @@ main h2 {
 }
 
 .explore-card-content h3 {
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   font-weight: 800;
+  font-size: 1.2rem;
 }
 
 .explore-card-content p {
@@ -226,7 +260,8 @@ main h2 {
 
 footer {
   text-align: center;
-  padding: 25px;
+  padding: 22px;
+  font-size: 0.9rem;
   color: #555;
   margin-top: 60px;
 }
