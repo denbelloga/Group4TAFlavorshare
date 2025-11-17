@@ -1,91 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FlavorShare - Home</title>
-    <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlavorShare – Home</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
 
-<!-- NAVBAR -->
-<nav>
-    <div class="logo">FlavorShare</div>
-
+  <!-- NAVBAR + NOTIF -->
+  <!-- (Paste the shared navbar block here) -->
+  <nav>
+    <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
     <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="explore.html">Explore</a></li>
-        <li><a href="my-cookbook.html">My Cookbook</a></li>
-        <li><a href="following.html">Following</a></li>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="browse.html">Explore</a></li>
+      <li><a href="my-cookbook.html" id="protectCookbook">My Cookbook</a></li>
+      <li><a href="following.html" id="protectFollowing">Following</a></li>
     </ul>
-
     <div class="actions">
-        <input type="text" placeholder="Search recipes..." />
-
-        <button class="upload-btn" onclick="window.location.href='upload.html'">
-            + Upload a Recipe
-        </button>
-
-        <a href="sign-in.html" class="sign-in-btn">Sign In</a>
-
-        <div class="user-menu" id="userMenu">
-            <span id="usernameLabel"></span>
-            <div class="user-dropdown">
-                <button id="logoutBtn">Log Out</button>
-            </div>
+      <input type="search" placeholder="Search recipes..." />
+      <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
+      <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
+      <div id="userMenu" class="hidden">
+        <span id="userNameDisplay"></span>
+        <div id="userDropdown" class="hidden">
+          <button id="logoutBtn">Log Out</button>
         </div>
+      </div>
+      <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
+      <span id="notifBell" class="notif-bell">🔔</span>
     </div>
-</nav>
+  </nav>
 
-<!-- HERO SECTION -->
-<header class="hero-section">
-    <img 
-        src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg"
-        class="hero-bg"
-        alt=""
-    >
+  <div id="notifPanel">
+    <h4>Notifications</h4>
+    <ul>
+      <li>No new notifications.</li>
+    </ul>
+    <button id="notifClose">Close</button>
+  </div>
 
-    <div class="hero-overlay"></div>
-
-    <div class="hero-center">
-        <h1>Share Your Flavor.</h1>
-        <p>Discover creative dishes from home cooks around the world — and share your own culinary masterpieces.</p>
-
-        <button class="hero-btn" onclick="window.location.href='explore.html'">
-            Explore Recipes
-        </button>
+  <!-- HERO -->
+  <header class="hero-section">
+    <h1>Share Your Flavor!</h1>
+    <p>Good food is best shared. Discover recipes from home cooks and upload your own creations.</p>
+    <div class="hero-search">
+      <input type="search" placeholder="Search for recipes, ingredients, or chefs…" />
     </div>
-</header>
+    <a href="browse.html" class="hero-btn">Explore Recipes</a>
+  </header>
 
-<!-- TRENDING SECTION -->
-<section class="trending-section">
-    <h2>🔥 Trending Recipes</h2>
-    <p>Fresh picks from the community</p>
+  <!-- TRENDING -->
+  <main>
+    <section>
+      <h2>Trending Recipes</h2>
+      <p class="section-subtitle">Popular picks from FlavorShare cooks this week.</p>
 
-    <div class="trending-grid">
-
-        <div class="trending-card" onclick="openRecipeModal('Creamy Carbonara')">
-            <img src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg" alt="">
+      <div class="recipe-grid">
+        <article class="recipe-card">
+          <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara" />
+          <div class="info">
             <h3>Creamy Carbonara</h3>
-            <p>by Maria Romano</p>
-        </div>
+            <p class="author">Maria Romano</p>
+            <div class="meta-row">
+              <span class="pill">⭐ 4.9</span>
+              <span class="pill">25 min</span>
+              <span class="pill">Pasta</span>
+            </div>
+            <div class="card-actions">
+              <button class="primary-btn"
+                onclick="addToCookbook('creamy-carbonara','Creamy Carbonara','Maria Romano','images/creamy-carbonara-1-4.jpg')">
+                Save to Cookbook
+              </button>
+            </div>
+          </div>
+        </article>
 
-        <div class="trending-card" onclick="openRecipeModal('Avocado Toast Supreme')">
-            <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg" alt="">
-            <h3>Avocado Toast Supreme</h3>
-            <p>by Sophia Monroe</p>
-        </div>
+        <article class="recipe-card">
+          <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes" />
+          <div class="info">
+            <h3>Rainbow Cupcakes</h3>
+            <p class="author">Emma Baker</p>
+            <div class="meta-row">
+              <span class="pill">⭐ 4.8</span>
+              <span class="pill">40 min</span>
+              <span class="pill">Dessert</span>
+            </div>
+            <div class="card-actions">
+              <button class="primary-btn"
+                onclick="addToCookbook('rainbow-cupcakes','Rainbow Cupcakes','Emma Baker','images/rainbow-cupcakes-17.jpg')">
+                Save to Cookbook
+              </button>
+            </div>
+          </div>
+        </article>
 
-        <div class="trending-card" onclick="openRecipeModal('Truffle Pasta')">
-            <img src="https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg" alt="">
-            <h3>Truffle Pasta</h3>
-            <p>by Luca Bianchi</p>
-        </div>
+        <article class="recipe-card">
+          <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry" />
+          <div class="info">
+            <h3>Thai Green Curry</h3>
+            <p class="author">Alex Chen</p>
+            <div class="meta-row">
+              <span class="pill">⭐ 4.7</span>
+              <span class="pill">35 min</span>
+              <span class="pill">Asian</span>
+            </div>
+            <div class="card-actions">
+              <button class="primary-btn"
+                onclick="addToCookbook('thai-green-curry','Thai Green Curry','Alex Chen','images/Thai-Green-Curry-square-FS.jpg')">
+                Save to Cookbook
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
 
-    </div>
-</section>
+  <footer>
+    © 2025 FlavorShare. Good food is best shared.
+  </footer>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
