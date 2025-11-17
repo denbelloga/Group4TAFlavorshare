@@ -1,64 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FlavorShare - Home</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlavorShare - Home</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <!-- NAVIGATION -->
-  <nav>
-    <div class="logo">FlavorShare</div>
 
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="browse.html">Explore</a></li>
-      <li><a href="my-cookbook.html">My Cookbook</a></li>
-      <li><a href="following.html">Following</a></li>
-    </ul>
+    <!-- ================= NAVIGATION ================= -->
+    <nav>
+        <div class="logo">FlavorShare</div>
 
-    <div class="actions">
-      <input type="search" placeholder="Search recipes..." />
-      <button class="upload-btn">+ Upload a Recipe</button>
-      <a href="sign-in.html" class="sign-in-btn">Sign In</a>
-      <span id="notifBell" class="notif-bell" aria-label="Notifications" role="button">🔔</span>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="browse.html">Explore</a></li>
+            <li><a href="cookbook.html">My Cookbook</a></li>
+            <li><a href="following.html">Following</a></li>
+        </ul>
+
+        <div class="actions">
+            <input type="search" placeholder="Search recipes...">
+            <button class="upload-btn">+ Upload a Recipe</button>
+            <a href="sign-in.html" class="sign-in-btn">Sign In</a>
+            <span class="notif-bell" onclick="toggleNotif()">🔔</span>
+        </div>
+    </nav>
+
+    <!-- ================= NOTIFICATION PANEL ================= -->
+    <div id="notif-panel">
+        <h3>Notifications</h3>
+        <p>Emma liked your Rainbow Cupcakes.</p>
+        <p>Alex followed your profile.</p>
+        <p>New recipe posted: Spicy Garlic Ramen.</p>
+        <button onclick="toggleNotif()" class="close-btn">Close</button>
     </div>
-  </nav>
 
-  <!-- NOTIFICATION PANEL -->
-  <div id="notifPanel" class="notif-panel">
-    <h4>Notifications</h4>
-    <ul>
-      <li>Emma liked your Rainbow Cupcakes.</li>
-      <li>Alex followed your profile.</li>
-      <li>New recipe: Spicy Garlic Ramen.</li>
-    </ul>
-    <button id="notifClose" class="notif-close">Close</button>
-  </div>
+    <!-- ================= HERO SECTION ================= -->
+    <header class="hero-section">
+        <h1>Share Your Flavor!</h1>
+        <p>Good food is best shared. Discover amazing recipes from home cooks around the world and share your own creations.</p>
 
-  <!-- HERO SECTION -->
-  <section class="hero-section">
-    <h1>Share Your Flavor!</h1>
-    <p>
-      Good food is best shared. Discover amazing recipes from home cooks
-      around the world and share your own creations.
-    </p>
-    <a href="browse.html" class="hero-btn">Explore Recipes</a>
-  </section>
+        <div class="hero-search">
+            <input type="search" placeholder="Search for recipes...">
+        </div>
 
-  <!-- MAIN -->
-  <main>
-    <h2>Trending Recipes</h2>
-    <p style="text-align:center;color:#666;">
-      (You can add recipe cards here later.)
-    </p>
-  </main>
+        <a href="browse.html" class="hero-btn">Explore Recipes</a>
+    </header>
 
-  <footer>
-    © 2025 FlavorShare. Good food is best shared.
-  </footer>
+    <!-- ================= TRENDING RECIPES ================= -->
+    <main>
+        <h2>Trending Recipes</h2>
+        <p style="text-align:center; color:#777;">(You can add recipe cards here later.)</p>
+    </main>
 
-  <script src="script.js"></script>
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        © 2025 FlavorShare. Good food is best shared.
+    </footer>
+
+    <script>
+        function toggleNotif() {
+            document.getElementById("notif-panel").classList.toggle("show");
+        }
+    </script>
+
 </body>
 </html>
