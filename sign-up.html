@@ -6,42 +6,31 @@
   <title>FlavorShare – Sign Up</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <nav>
-    <div class="logo">FlavorShare</div>
-    <div class="actions">
-      <a href="index.html" class="sign-in-btn">Back to Home</a>
-    </div>
-  </nav>
+<body class="auth-body">
 
-  <main>
-    <div class="auth-container">
-      <h1>Create Your Account 🍳</h1>
-      <p class="section-subtitle">Save recipes, upload your own, and follow your favorite home cooks.</p>
+  <div class="auth-container">
+    <h1 class="auth-logo">FlavorShare</h1>
+    <h2 class="auth-title">Create an Account</h2>
+    <p class="auth-sub">Use any @gmail.com email and any password.</p>
 
-      <form id="signUpForm">
-        <label>Username</label>
-        <input type="text" name="username" required />
+    <form id="signUpForm" class="auth-form">
+      <label>Name</label>
+      <input type="text" name="name" placeholder="Your name" required />
 
-        <label>Email</label>
-        <input type="email" name="email" placeholder="yourname@gmail.com" required />
+      <label>Email</label>
+      <input type="email" name="email" placeholder="you@gmail.com" required />
 
-        <label>Password</label>
-        <input type="password" name="password" required />
+      <label>Password</label>
+      <input type="password" name="password" placeholder="Any password" required />
 
-        <button type="submit" class="btn-primary full-width">Sign Up</button>
+      <button type="submit" class="auth-btn">Sign Up</button>
+    </form>
 
-        <button type="button" class="google-btn full-width">
-          <span>G</span> Sign up with Google (Demo)
-        </button>
-
-        <div class="auth-links">
-          <span>Already have an account?</span>
-          <a href="sign-in.html">Sign In</a>
-        </div>
-      </form>
-    </div>
-  </main>
+    <p class="auth-link">
+      Already have an account?
+      <a href="sign-in.html">Sign in</a>
+    </p>
+  </div>
 
   <script src="script.js"></script>
 </body>
