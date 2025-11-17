@@ -212,7 +212,7 @@ function initResetForm() {
   });
 }
 
-/* ============ COOKBOOK (simple) ============ */
+/* ============ COOKBOOK (per user) ============ */
 function getCookbookKey() {
   const user = getUser();
   if (!user) return null;
@@ -282,6 +282,49 @@ function loadCookbookPage() {
     .join("");
 }
 
+/* ============ RECIPE MODAL ============ */
+function openRecipeModal(data) {
+  const modal = document.getElementById("recipeModal");
+  if (!modal) return;
+
+  document.getElementById("modalImage").src = data.image;
+  document.getElementById("modalTitle").textContent = data.title;
+  document.getElementById("modalAuthor").textContent = "by " + data.author;
+  document.getElementById("modalDescription").textContent = data.description;
+
+  const ingList = document.getElementById("modalIngredients");
+  ingList.innerHTML = "";
+  data.ingredients.forEach((ing) => {
+    const li = document.createElement("li");
+    li.textContent = ing;
+    ingList.appendChild(li);
+  });
+
+  const instList = document.getElementById("modalInstructions");
+  instList.innerHTML = "";
+  data.instructions.forEach((step) => {
+    const li = document.createElement("li");
+    li.textContent = step;
+    instList.appendChild(li);
+  });
+
+  modal.style.display = "flex";
+}
+
+function closeRecipeModal() {
+  const modal = document.getElementById("recipeModal");
+  if (modal) modal.style.display = "none";
+}
+
+/* Close modal when clicking outside of it */
+document.addEventListener("click", (e) => {
+  const overlay = document.getElementById("recipeModal");
+  if (!overlay) return;
+  if (e.target === overlay) {
+    overlay.style.display = "none";
+  }
+});
+
 /* ============ INIT ============ */
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
@@ -292,46 +335,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initForgotForm();
   initResetForm();
   loadCookbookPage();
-  initCardPopups(); // 👈 NEW
 });
 
-// Keep this at bottom:
+/* expose cookbook function for inline onClick */
 window.addToCookbook = addToCookbook;
-
-/* ============ CARD POPUP (EXPAND ON CLICK) ============ */
-function initCardPopups() {
-  const cards = document.querySelectorAll(".recipe-card");
-  if (!cards.length) return;
-
-  cards.forEach((card) => {
-    card.addEventListener("click", (e) => {
-      // If click is on a button (Save, etc), don't toggle popup
-      if (e.target.closest("button")) return;
-
-      const alreadyExpanded = card.classList.contains("expanded");
-
-      // Collapse all cards first
-      document
-        .querySelectorAll(".recipe-card.expanded")
-        .forEach((c) => c.classList.remove("expanded"));
-
-      // If this one wasn't open, open it
-      if (!alreadyExpanded) {
-        card.classList.add("expanded");
-      }
-    });
-  });
-
-  // Clicking anywhere outside a card closes all
-  document.addEventListener("click", (e) => {
-    if (!e.target.closest(".recipe-card")) {
-      document
-        .querySelectorAll(".recipe-card.expanded")
-        .forEach((c) => c.classList.remove("expanded"));
-    }
-  });
-}
-
-/* Expose cookbook function for inline onClick */
-window.addToCookbook = addToCookbook;
-
+window.openRecipeModal = openRecipeModal;
+window.closeRecipeModal = closeRecipeModal;
