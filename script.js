@@ -59,6 +59,25 @@ const recipeData = {
   }
 };
 
+function openRecipePopup(id) {
+  const data = recipeData[id];
+  if (!data) return;
+
+  document.getElementById("modalImage").src = data.image;
+  document.getElementById("modalTitle").textContent = data.title;
+  document.getElementById("modalAuthor").textContent = "by " + data.author;
+  document.getElementById("modalDescription").textContent = data.description;
+
+  document.getElementById("modalIngredients").innerHTML =
+    data.ingredients.map(i => `<li>${i}</li>`).join("");
+
+  document.getElementById("modalSteps").innerHTML =
+    data.steps.map(s => `<li>${s}</li>`).join("");
+
+  document.getElementById("recipeModal").classList.remove("hidden");
+}
+
+
 /* ============================================
    THEME / DARK MODE
 ============================================ */
@@ -401,3 +420,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* Allow inline onclick() */
 window.addToCookbook = addToCookbook;
+
+document.getElementById("recipeModalClose").addEventListener("click", () => {
+  document.getElementById("recipeModal").classList.add("hidden");
+});
+
+document.getElementById("recipeModal").addEventListener("click", (e) => {
+  if (e.target.id === "recipeModal") {
+    document.getElementById("recipeModal").classList.add("hidden");
+  }
+});
+
