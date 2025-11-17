@@ -3,33 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign In - FlavorShare</title>
+  <title>FlavorShare – Sign In</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body class="auth-body">
 
   <div class="auth-container">
     <h1 class="auth-logo">FlavorShare</h1>
-
     <h2 class="auth-title">Welcome Back</h2>
-    <p class="auth-sub">Sign in to continue</p>
+    <p class="auth-sub">Sign in with any @gmail.com email and any password.</p>
 
-    <!-- SIGN IN FORM -->
     <form id="signInForm" class="auth-form">
       <label>Email</label>
-      <input type="email" name="email" placeholder="Enter email" required />
+      <input type="email" name="email" placeholder="you@gmail.com" required />
 
       <label>Password</label>
-      <input type="password" name="password" placeholder="Enter password" required />
+      <input type="password" name="password" placeholder="Enter any password" required />
 
       <button type="submit" class="auth-btn">Sign In</button>
-
       <p id="signInError" class="auth-error"></p>
     </form>
 
     <p class="auth-link">
-      Don't have an account? <a href="sign-up.html">Create one</a>
+      Don't have an account?
+      <a href="sign-up.html">Sign up</a>
+    </p>
+    <p class="auth-link">
+      <a href="forgot-password.html">Forgot password?</a>
     </p>
   </div>
 
