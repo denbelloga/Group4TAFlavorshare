@@ -1,67 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Browse Recipes – FlavorShare</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Recipes - FlavorShare</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <a href="#main" class="skip-link">Skip to main content</a>
 
-  <header class="header">
-    <div class="logo"><a href="landing-page.html">FlavorShare</a></div>
-    <nav class="nav-links">
-      <a href="landing-page.html">Home</a>
-      <a href="browse.html" class="active">Browse</a>
-      <a href="upload.html">Upload</a>
-      <a href="sign-in.html" id="signInLink">Sign In</a>
-    </nav>
-    <div class="search-upload">
-      <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">FlavorShare</div>
+
+    <ul class="nav-links">
+      <li><a href="landing-page.html">Home</a></li>
+      <li><a href="browse.html" class="active">Explore</a></li>
+      <li><a href="#">My Cookbook</a></li>
+      <li><a href="#">Following</a></li>
+    </ul>
+
+    <div class="actions">
+      <input type="search" placeholder="Search recipes..." />
+      <button class="upload-btn">+ Upload a Recipe</button>
       <a href="sign-in.html" class="sign-in-btn">Sign In</a>
+      <span class="notif-bell">🔔</span>
     </div>
-  </header>
+  </nav>
 
-  <main id="main">
-    <h2 class="section-title">Browse Recipes</h2>
+  <main>
+    <h2 class="page-title">Explore Recipes</h2>
 
-    <div class="cards-container">
-      <article class="card card-red recipe-card"
-               tabindex="0"
-               data-title="Creamy Carbonara"
-               data-details="A classic creamy pasta with eggs, parmesan, pancetta, and black pepper.">
-        <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara" class="card-image" />
-        <h3>Creamy Carbonara</h3>
-        <p>Maria Romano</p>
+    <div class="recipe-cards explore-layout">
+
+      <article class="card">
+        <img src="images/carbonara.jpg" alt="Carbonara" class="card-img">
+        <div class="card-content">
+          <h3>Creamy Carbonara</h3>
+          <p>Maria Romano</p>
+          <div class="card-stats">
+            <span>⭐ 4.9</span>
+            <span>💬 234</span>
+            <span>⏱ 25 min</span>
+          </div>
+        </div>
       </article>
 
-      <article class="card card-yellow recipe-card"
-               tabindex="0"
-               data-title="Rainbow Cupcakes"
-               data-details="Colorful vanilla cupcakes topped with buttercream frosting and sprinkles.">
-        <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes" class="card-image" />
-        <h3>Rainbow Cupcakes</h3>
-        <p>Emma Baker</p>
+      <article class="card">
+        <img src="images/rainbow-cupcakes.jpg" alt="Rainbow Cupcakes" class="card-img">
+        <div class="card-content">
+          <h3>Rainbow Cupcakes</h3>
+          <p>Emma Baker</p>
+          <div class="card-stats">
+            <span>⭐ 4.8</span>
+            <span>💬 189</span>
+            <span>⏱ 40 min</span>
+          </div>
+        </div>
       </article>
 
-      <article class="card card-green recipe-card"
-               tabindex="0"
-               data-title="Thai Green Curry"
-               data-details="Spicy and aromatic curry with coconut milk, vegetables, and herbs.">
-        <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry" class="card-image" />
-        <h3>Thai Green Curry</h3>
-        <p>Alex Chen</p>
+      <article class="card">
+        <img src="images/green-curry.jpg" alt="Thai Green Curry" class="card-img">
+        <div class="card-content">
+          <h3>Thai Green Curry</h3>
+          <p>Alex Chen</p>
+          <div class="card-stats">
+            <span>⭐ 4.7</span>
+            <span>💬 310</span>
+            <span>⏱ 35 min</span>
+          </div>
+        </div>
       </article>
-    </div>
 
-    <!-- Simple Modal -->
-    <div id="modal" class="modal hidden" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
-      <div class="modal-content">
-        <button class="close-btn" id="closeModal" aria-label="Close">&times;</button>
-        <h2 id="modalTitle"></h2>
-        <p id="modalDetails"></p>
-      </div>
     </div>
   </main>
 
@@ -69,43 +79,5 @@
     © 2025 FlavorShare. Good food is best shared.
   </footer>
 
-  <script src="script.js"></script>
-  <script>
-    // Simple recipe modal wiring based on data attributes
-    const cards = document.querySelectorAll('.recipe-card');
-    const modal = document.getElementById('modal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDetails = document.getElementById('modalDetails');
-    const closeModalBtn = document.getElementById('closeModal');
-
-    function openModal(title, details) {
-      modalTitle.textContent = title;
-      modalDetails.textContent = details;
-      modal.classList.remove('hidden');
-    }
-
-    function closeModal() {
-      modal.classList.add('hidden');
-      modalTitle.textContent = '';
-      modalDetails.textContent = '';
-    }
-
-    cards.forEach(card => {
-      card.addEventListener('click', () => {
-        openModal(card.dataset.title, card.dataset.details);
-      });
-      card.addEventListener('keypress', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          openModal(card.dataset.title, card.dataset.details);
-        }
-      });
-    });
-
-    closeModalBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', e => {
-      if (e.target === modal) closeModal();
-    });
-  </script>
 </body>
 </html>
