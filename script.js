@@ -292,7 +292,12 @@ document.addEventListener("DOMContentLoaded", () => {
   initForgotForm();
   initResetForm();
   loadCookbookPage();
+  initCardPopups(); // 👈 NEW
 });
+
+// Keep this at bottom:
+window.addToCookbook = addToCookbook;
+
 /* ============ CARD POPUP (EXPAND ON CLICK) ============ */
 function initCardPopups() {
   const cards = document.querySelectorAll(".recipe-card");
