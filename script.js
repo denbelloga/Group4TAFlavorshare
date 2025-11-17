@@ -293,6 +293,40 @@ document.addEventListener("DOMContentLoaded", () => {
   initResetForm();
   loadCookbookPage();
 });
+/* ============ CARD POPUP (EXPAND ON CLICK) ============ */
+function initCardPopups() {
+  const cards = document.querySelectorAll(".recipe-card");
+  if (!cards.length) return;
+
+  cards.forEach((card) => {
+    card.addEventListener("click", (e) => {
+      // If click is on a button (Save, etc), don't toggle popup
+      if (e.target.closest("button")) return;
+
+      const alreadyExpanded = card.classList.contains("expanded");
+
+      // Collapse all cards first
+      document
+        .querySelectorAll(".recipe-card.expanded")
+        .forEach((c) => c.classList.remove("expanded"));
+
+      // If this one wasn't open, open it
+      if (!alreadyExpanded) {
+        card.classList.add("expanded");
+      }
+    });
+  });
+
+  // Clicking anywhere outside a card closes all
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".recipe-card")) {
+      document
+        .querySelectorAll(".recipe-card.expanded")
+        .forEach((c) => c.classList.remove("expanded"));
+    }
+  });
+}
 
 /* Expose cookbook function for inline onClick */
 window.addToCookbook = addToCookbook;
+
