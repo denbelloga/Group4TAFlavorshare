@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Following - FlavorShare</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- NAV -->
+  <nav>
+    <div class="logo">FlavorShare</div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="browse.html">Explore</a></li>
+      <li><a href="my-cookbook.html">My Cookbook</a></li>
+      <li><a href="following.html" class="active">Following</a></li>
+    </ul>
+
+    <div class="actions">
+      <input type="search" placeholder="Search recipes..." />
+      <button class="upload-btn">+ Upload a Recipe</button>
+      <a href="sign-in.html" class="sign-in-btn">Sign In</a>
+      <span id="notifBell" class="notif-bell" aria-label="Notifications" role="button">🔔</span>
+    </div>
+  </nav>
+
+  <!-- NOTIF PANEL -->
+  <div id="notifPanel" class="notif-panel">
+    <h4>Notifications</h4>
+    <ul>
+      <li>You’re not following anyone yet.</li>
+    </ul>
+    <button id="notifClose" class="notif-close">Close</button>
+  </div>
+
+  <main>
+    <h2>Following</h2>
+    <p style="text-align:center; max-width:600px; margin:0 auto 20px;">
+      When you follow other cooks, their latest recipes will appear here.
+    </p>
+  </main>
+
+  <footer>
+    © 2025 FlavorShare. Good food is best shared.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
