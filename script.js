@@ -334,3 +334,157 @@ document.addEventListener("DOMContentLoaded", () => {
 // expose
 window.addToCookbook = addToCookbook;
 window.openRecipeModal = openRecipeModal;
+
+// =======================
+// EXPLORE RECIPES DATA
+// =======================
+
+const exploreRecipes = [
+    {
+        id: 1,
+        title: "Creamy Carbonara",
+        image: "images/carbonara.jpg",
+        author: "Maria Romano",
+        category: "pasta",
+        desc: "A silky Italian pasta with eggs, parmesan, and crispy pancetta.",
+        ingredients: [
+            "200g spaghetti", "2 eggs", "1/2 cup parmesan", "pancetta", "salt & pepper"
+        ],
+        steps: "Cook pasta, whisk eggs & cheese, mix with pancetta, toss together."
+    },
+    {
+        id: 2,
+        title: "Garlic Butter Shrimp",
+        image: "images/shrimp.jpg",
+        author: "Luis Vega",
+        category: "quick",
+        desc: "Juicy shrimp cooked in garlic butter with herbs.",
+        ingredients: [
+            "Shrimp", "Butter", "Garlic", "Paprika", "Parsley"
+        ],
+        steps: "Sauté garlic in butter, cook shrimp, add herbs, serve warm."
+    },
+    {
+        id: 3,
+        title: "Classic Pancakes",
+        image: "images/pancakes.jpg",
+        author: "Ella Turner",
+        category: "dessert",
+        desc: "Fluffy, golden pancakes perfect for mornings.",
+        ingredients: ["Flour", "Eggs", "Milk", "Sugar", "Butter"],
+        steps: "Mix batter, heat pan, cook until golden on both sides."
+    },
+    {
+        id: 4,
+        title: "Beef Ramen Bowl",
+        image: "images/ramen.jpg",
+        author: "Kenji Sato",
+        category: "asian",
+        desc: "Rich ramen broth with sliced beef, noodles, and veggies.",
+        ingredients: ["Ramen noodles", "Broth", "Beef", "Green onions"],
+        steps: "Simmer broth, cook noodles, add beef & toppings."
+    },
+    {
+        id: 5,
+        title: "BBQ Pulled Pork",
+        image: "images/pulledpork.jpg",
+        author: "Hank Wilson",
+        category: "comfort",
+        desc: "Slow-cooked pork with sweet smoky BBQ sauce.",
+        ingredients: ["Pork shoulder", "BBQ sauce", "Spices"],
+        steps: "Slow cook until tender, shred pork, mix with sauce."
+    },
+    {
+        id: 6,
+        title: "Thai Green Curry",
+        image: "images/greencurry.jpg",
+        author: "Nina Chai",
+        category: "asian",
+        desc: "Creamy coconut curry with vegetables and chicken.",
+        ingredients: ["Coconut milk", "Green curry paste", "Chicken", "Veggies"],
+        steps: "Sauté paste, add coconut milk, add chicken & simmer."
+    },
+    {
+        id: 7,
+        title: "Blueberry Cheesecake",
+        image: "images/cheesecake.jpg",
+        author: "Olivia Grace",
+        category: "dessert",
+        desc: "Rich baked cheesecake with blueberry topping.",
+        ingredients: ["Cream cheese", "Sugar", "Eggs", "Blueberries"],
+        steps: "Blend filling, bake crust, chill overnight."
+    },
+    {
+        id: 8,
+        title: "Chicken Alfredo",
+        image: "images/alfredo.jpg",
+        author: "Marco DeLuca",
+        category: "pasta",
+        desc: "Creamy Alfredo sauce tossed with fettuccine.",
+        ingredients: ["Fettuccine", "Cream", "Parmesan", "Chicken"],
+        steps: "Simmer cream, add cheese, mix pasta & chicken."
+    },
+    {
+        id: 9,
+        title: "Honey Soy Salmon",
+        image: "images/salmon.jpg",
+        author: "Tara Lin",
+        category: "quick",
+        desc: "Pan-seared salmon glazed in honey and soy.",
+        ingredients: ["Salmon", "Honey", "Soy sauce"],
+        steps: "Pan-sear salmon, add glaze, cook until caramelized."
+    },
+    {
+        id: 10,
+        title: "Molten Chocolate Cake",
+        image: "images/molten.jpg",
+        author: "Ethan Brooks",
+        category: "dessert",
+        desc: "Warm cake with gooey chocolate center.",
+        ingredients: ["Chocolate", "Butter", "Eggs", "Flour"],
+        steps: "Bake lightly so center stays soft."
+    },
+    {
+        id: 11,
+        title: "Sushi Rolls",
+        image: "images/sushi.jpg",
+        author: "Haruto Minami",
+        category: "asian",
+        desc: "Fresh sushi rolls with rice, seaweed, and toppings.",
+        ingredients: ["Rice", "Nori", "Fish", "Veggies"],
+        steps: "Prepare rice, roll tightly, slice cleanly."
+    },
+    {
+        id: 12,
+        title: "Mac & Cheese",
+        image: "images/mac.jpg",
+        author: "Grace Kelly",
+        category: "comfort",
+        desc: "Creamy stovetop mac and cheese.",
+        ingredients: ["Macaroni", "Cheese", "Milk", "Butter"],
+        steps: "Cook pasta, melt cheese sauce, mix everything."
+    }
+];
+
+
+// Render Recipes
+function loadExploreRecipes() {
+    const grid = document.getElementById("exploreGrid");
+    grid.innerHTML = "";
+
+    exploreRecipes.forEach(recipe => {
+        const card = `
+            <div class="recipe-card" data-category="${recipe.category}" onclick="openRecipeModal(${recipe.id})">
+                <img src="${recipe.image}">
+                <h3>${recipe.title}</h3>
+                <p class="author">by ${recipe.author}</p>
+            </div>
+        `;
+        grid.innerHTML += card;
+    });
+}
+
+if (document.getElementById("exploreGrid")) {
+    loadExploreRecipes();
+}
+
