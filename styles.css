@@ -1,4 +1,4 @@
-/* ================= GLOBAL RESET ================= */
+/* ============ RESET ============ */
 * {
     margin: 0;
     padding: 0;
@@ -6,207 +6,178 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     background: #fff8f0;
     color: #333;
-    line-height: 1.5;
 }
 
-/* ================= NAVIGATION BAR ================= */
-
+/* ============ NAV BAR ============ */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     padding: 18px 40px;
-    background: #ffffff;
-    border-bottom: 1px solid #ddd;
-
+    background: white;
     position: sticky;
     top: 0;
+    border-bottom: 1px solid #ddd;
     z-index: 1000;
 }
 
-/* Logo */
-nav .logo {
+.logo {
     font-size: 1.7rem;
     font-weight: 900;
     color: #eb5424;
 }
 
-/* Nav Links */
-nav .nav-links {
+.nav-links {
     display: flex;
+    gap: 30px;
     list-style: none;
-    gap: 32px;
 }
 
-nav .nav-links a {
+.nav-links a {
     text-decoration: none;
-    color: #444;
+    color: #333;
     font-weight: 600;
-    transition: 0.2s;
 }
 
-nav .nav-links a:hover,
-nav .nav-links a.active {
+.nav-links a:hover,
+.nav-links a.active {
     color: #eb5424;
 }
 
-/* Right-Side Actions */
-nav .actions {
+/* RIGHT SIDE ACTIONS */
+.actions {
     display: flex;
+    gap: 16px;
     align-items: center;
-    gap: 16px;
 }
 
-nav .actions input[type="search"]
-
-/* ================= NOTIFICATION PANEL ================= */
-
-.notif-panel {
-  position: fixed;
-  top: 70px;
-  right: 24px;
-  width: 260px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  padding: 16px 18px;
-  opacity: 0;
-  transform: translateY(-10px);
-  pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  z-index: 1500;
+.actions input[type="search"] {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    width: 200px;
 }
 
-.notif-panel.show {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+.upload-btn {
+    padding: 8px 16px;
+    border: 1.5px solid #eb5424;
+    border-radius: 20px;
+    background: transparent;
+    color: #eb5424;
+    font-weight: 700;
+    cursor: pointer;
 }
 
-.notif-panel h4 {
-  margin-bottom: 8px;
-  font-size: 1rem;
-  font-weight: 800;
-  color: #eb5424;
+.upload-btn:hover {
+    background: #eb5424;
+    color: white;
 }
 
-.notif-panel ul {
-  list-style: none;
-  margin-bottom: 10px;
+.sign-in-btn {
+    background: #eb5424;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 20px;
+    text-decoration: none;
 }
 
-.notif-panel li {
-  font-size: 0.9rem;
-  margin-bottom: 6px;
+.notif-bell {
+    font-size: 1.4rem;
+    cursor: pointer;
 }
 
-.notif-close {
-  width: 100%;
-  padding: 6px 0;
-  border-radius: 8px;
-  border: none;
-  background: #eb5424;
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
+/* ============ NOTIFICATION PANEL ============ */
+#notif-panel {
+    position: fixed;
+    top: 70px;
+    right: 40px;
+    background: white;
+    padding: 20px;
+    width: 260px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: none;
 }
 
-/* ================= RECIPE MODAL (BROWSE) ================= */
-
-.recipe-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 1400;
+#notif-panel.show {
+    display: block;
 }
 
-.recipe-modal.show {
-  display: flex;
+#notif-panel h3 {
+    margin-bottom: 10px;
+    color: #eb5424;
 }
 
-.recipe-modal .modal-content {
-  background: #fff;
-  padding: 24px;
-  border-radius: 12px;
-  max-width: 420px;
-  width: 90%;
+.close-btn {
+    margin-top: 10px;
+    padding: 6px 10px;
+    background: #eb5424;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
-.modal-close {
-  float: right;
-  font-size: 24px;
-  cursor: pointer;
+/* ============ HERO SECTION ============ */
+.hero-section {
+    padding: 80px 20px;
+    text-align: center;
+    background: linear-gradient(#eb5424aa, #fca311aa),
+        url("https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=1350")
+        center/cover no-repeat;
+    color: white;
 }
 
-/* ================= RESPONSIVE LAYOUT ================= */
-
-@media (max-width: 900px) {
-  nav {
-    flex-wrap: wrap;
-    padding: 12px 16px;
-  }
-
-  nav .nav-links {
-    gap: 16px;
-    font-size: 0.95rem;
-  }
-
-  nav .actions {
-    margin-top: 8px;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-
-  nav .actions input[type="search"] {
-    width: 180px;
-  }
-
-  .hero-section {
-    height: auto;
-    padding: 40px 20px;
-  }
-
-  .hero-section h1 {
-    font-size: 2.4rem;
-  }
-
-  .hero-section p {
-    font-size: 1.05rem;
-  }
-
-  main {
-    margin: 30px auto;
-  }
-
-  .recipe-grid {
-    gap: 24px;
-  }
-
-  .recipe-card {
-    width: 100%;
-    max-width: 320px;
-  }
+.hero-section h1 {
+    font-size: 3rem;
+    font-weight: 900;
 }
 
-@media (max-width: 600px) {
-  nav {
-    align-items: flex-start;
-  }
-
-  nav .nav-links {
-    font-size: 0.85rem;
-    flex-wrap: wrap;
-  }
-
-  nav .actions input[type="search"] {
-    width: 140px;
-  }
+.hero-section p {
+    margin: 15px auto 25px;
+    max-width: 600px;
+    font-size: 1.2rem;
 }
 
+.hero-search input {
+    padding: 12px 20px;
+    width: 350px;
+    border-radius: 25px;
+    border: none;
+    margin-bottom: 20px;
+}
+
+.hero-btn {
+    background: white;
+    color: #eb5424;
+    padding: 12px 28px;
+    border-radius: 25px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* ============ TRENDING RECIPES ============ */
+main {
+    max-width: 1100px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+main h2 {
+    color: #eb5424;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+/* ============ FOOTER ============ */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #222;
+    color: white;
+    margin-top: 60px;
+}
