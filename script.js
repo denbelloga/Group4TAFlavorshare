@@ -1,27 +1,53 @@
+function isLoggedIn() {
+  return localStorage.getItem('loggedIn') === 'true';
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const uploadBtn = document.getElementById('uploadBtn');
+  const cookbookBtn = document.getElementById('cookbookBtn');
+  const followingBtn = document.getElementById('followingBtn');
+  const signupModal = document.getElementById('signupModal');
+  const closeModalBtn = document.getElementById('closeModal');
+  const createAccountBtn = document.getElementById('createAccountBtn');
 
-  if (user) {
-    // Enable links normally disabled before login
-    const myCookbookLink = document.querySelector('nav a[href="my-profile.html"]');
-    const followingLink = document.querySelector('nav a[href="following.html"]');
-    if (myCookbookLink) {
-      myCookbookLink.style.pointerEvents = 'auto';
-      myCookbookLink.style.opacity = '1';
-    }
-    if (followingLink) {
-      followingLink.style.pointerEvents = 'auto';
-      followingLink.style.opacity = '1';
-    }
+  function showModal() {
+    signupModal.classList.remove('hidden');
+  }
 
-    // Hide Sign In link
-    const signInLink = document.querySelector('a[href="sign-in.html"]');
-    if (signInLink) signInLink.style.display = 'none';
+  function hideModal() {
+    signupModal.classList.add('hidden');
+  }
 
-    // Optionally show a user-pill or greeting
-    const userPillContainer = document.getElementById('userPillContainer');
-    if (userPillContainer) {
-      userPillContainer.innerHTML = `<span class="font-semibold text-[#E4572E]">Hi, ${user.name}</span>`;
+  function handleRestrictedClick(url) {
+    if (isLoggedIn()) {
+      window.location.href = url;
+    } else {
+      showModal();
     }
   }
+
+  uploadBtn.addEventListener('click', e => {
+    e.preventDefault();
+    handleRestrictedClick('upload.html');
+  });
+
+  cookbookBtn.addEventListener('click', e => {
+    e.preventDefault();
+    handleRestrictedClick('cookbook.html');
+  });
+
+  followingBtn.addEventListener('click', e => {
+    e.preventDefault();
+    handleRestrictedClick('following.html');
+  });
+
+  closeModalBtn.addEventListener('click', hideModal);
+
+  signupModal.addEventListener('click', e => {
+    if (e.target === signupModal) hideModal();
+  });
+
+  createAccountBtn.addEventListener('click', () => {
+    window.location.href = 'sign-in.html';
+  });
 });
