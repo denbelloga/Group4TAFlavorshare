@@ -16,78 +16,133 @@
   <link rel="stylesheet" href="css/global.css" />
 </head>
 
-<body class="bg-[#FFF8F0] font-sans text-gray-800 flex flex-col min-h-screen">
+<body class="bg-[#FFF6E8] font-sans text-gray-800 min-h-screen flex flex-col">
 
   <!-- HEADER -->
   <div id="header"></div>
 
-  <main class="flex-1 max-inner-width mx-auto px-6 py-10">
+  <!-- HERO SECTION -->
+  <section
+    class="bg-gradient-to-br from-[#F36F21] via-[#F7942A] to-[#F6B80B] text-white px-6 md:px-20 py-20 text-center">
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Share Your Flavor!</h1>
+    <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 leading-relaxed">
+      Good food is best shared. Discover amazing recipes from home cooks around the world and share your own creations.
+    </p>
 
-    <!-- HERO SECTION -->
-    <section
-      class="bg-gradient-to-r from-[#E4572E] to-[#F3A712] text-white rounded-xl shadow-md px-8 py-10 max-w-6xl mx-auto mb-12">
-      <h1 class="text-4xl font-extrabold mb-4">Welcome to FlavorShare</h1>
-      <p class="max-w-2xl text-orange-100 leading-relaxed text-lg mb-8">
-        Here's what's cooking today. Discover new recipes, follow your favorite chefs, and share your culinary creations.
-      </p>
+    <!-- Search bar -->
+    <form class="max-w-xl mx-auto relative">
+      <input type="search" placeholder="Search for recipes, ingredients, or chefs..."
+        class="w-full rounded-full py-3 px-5 text-gray-800 outline-none focus:ring-4 focus:ring-[#F36F21] shadow-lg" />
+      <button type="submit" aria-label="Search"
+        class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 hover:text-[#F36F21] transition">
+        <i class="fas fa-search fa-lg"></i>
+      </button>
+    </form>
 
-      <div class="flex flex-wrap gap-6">
-        <a href="upload-recipe.html"
-          class="px-7 py-3 rounded-full bg-white text-[#E4572E] font-semibold shadow-soft hover:bg-orange-50 transition flex items-center">
-          <i class="fa-solid fa-upload mr-3"></i>
-          Upload a Recipe
-        </a>
-        <a href="explore.html"
-          class="px-7 py-3 rounded-full bg-white/80 text-white font-semibold border border-white/30 backdrop-blur-sm hover:bg-white/30 transition flex items-center">
-          <i class="fa-solid fa-compass mr-3"></i>
-          Explore Recipes
-        </a>
-      </div>
-    </section>
+    <!-- Filter buttons -->
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <button class="bg-[#F36F21] text-white rounded-full px-5 py-2 font-semibold shadow">All</button>
+      <button class="bg-white text-gray-800 rounded-full px-5 py-2 font-semibold shadow hover:bg-orange-100">
+        Vegetarian
+      </button>
+      <button class="bg-white text-gray-800 rounded-full px-5 py-2 font-semibold shadow hover:bg-orange-100">Vegan
+      </button>
+      <button class="bg-white text-gray-800 rounded-full px-5 py-2 font-semibold shadow hover:bg-orange-100">Desserts
+      </button>
+      <button class="bg-white text-gray-800 rounded-full px-5 py-2 font-semibold shadow hover:bg-orange-100">Italian</button>
+      <button class="bg-white text-gray-800 rounded-full px-5 py-2 font-semibold shadow hover:bg-orange-100">Asian</button>
+      <button class="bg-white text-gray-800 rounded-full px-5 py-2 font-semibold shadow hover:bg-orange-100">Healthy</button>
+    </div>
+  </section>
 
-    <section class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-12">
+  <!-- TRENDING RECIPES -->
+  <main class="flex-grow max-w-7xl mx-auto px-6 md:px-12 py-12">
 
-      <!-- SIDEBAR -->
-      <aside class="space-y-8 bg-white rounded-xl p-6 shadow-soft">
-        <div>
-          <h3 class="font-bold text-gray-800 mb-4">Quick Links</h3>
-          <ul class="space-y-3 text-gray-700">
-            <li><a href="upload-recipe.html" class="hover:text-[#E4572E]">Upload Recipe</a></li>
-            <li><a href="my-profile.html" class="hover:text-[#E4572E]">My Profile</a></li>
-            <li><a href="my-profile.html" class="hover:text-[#E4572E]">My Cookbook</a></li>
-            <li><a href="following.html" class="hover:text-[#E4572E]">Following</a></li>
-          </ul>
+    <h2 class="text-2xl font-semibold text-gray-900 mb-8 text-center">Trending Recipes</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+
+      <!-- Card 1 -->
+      <article
+        class="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
+        <div class="h-48 bg-[#E15B24]"></div>
+        <div class="p-6">
+          <h3 class="font-semibold text-lg mb-1">Creamy Carbonara</h3>
+          <p class="text-gray-600 mb-4">Maria Romano</p>
+          <div class="flex items-center justify-between text-gray-500 text-sm">
+            <div class="flex items-center gap-1">
+              <i class="fas fa-star text-yellow-400"></i>
+              <span>4.9</span>
+            </div>
+            <div class="flex items-center gap-1">
+              <i class="fas fa-comment"></i>
+              <span>234</span>
+            </div>
+            <div class="flex items-center gap-1">
+              <i class="fas fa-clock"></i>
+              <span>25 min</span>
+            </div>
+          </div>
         </div>
+      </article>
 
-        <div>
-          <h3 class="font-bold text-gray-800 mb-4">Suggested Chefs</h3>
-          <p class="text-gray-600 text-sm italic">Coming soon...</p>
+      <!-- Card 2 -->
+      <article
+        class="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
+        <div class="h-48 bg-[#F3A11B]"></div>
+        <div class="p-6">
+          <h3 class="font-semibold text-lg mb-1">Rainbow Cupcakes</h3>
+          <p class="text-gray-600 mb-4">Emma Baker</p>
+          <div class="flex items-center justify-between text-gray-500 text-sm">
+            <div class="flex items-center gap-1">
+              <i class="fas fa-star text-yellow-400"></i>
+              <span>4.8</span>
+            </div>
+            <div class="flex items-center gap-1">
+              <i class="fas fa-comment"></i>
+              <span>189</span>
+            </div>
+            <div class="flex items-center gap-1">
+              <i class="fas fa-clock"></i>
+              <span>40 min</span>
+            </div>
+          </div>
         </div>
-      </aside>
+      </article>
 
-      <!-- MAIN CONTENT AREA -->
-      <section class="lg:col-span-3 space-y-12">
-
-        <!-- Trending Recipes Placeholder -->
-        <div>
-          <h2 class="text-2xl font-semibold text-[#E4572E] mb-4">Trending Recipes</h2>
-          <p class="text-gray-700 italic">This section will showcase trending recipes soon.</p>
+      <!-- Card 3 -->
+      <article
+        class="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
+        <div class="h-48 bg-[#00B478]"></div>
+        <div class="p-6">
+          <h3 class="font-semibold text-lg mb-1">Thai Green Curry</h3>
+          <p class="text-gray-600 mb-4">Alex Chen</p>
+          <div class="flex items-center justify-between text-gray-500 text-sm">
+            <div class="flex items-center gap-1">
+              <i class="fas fa-star text-yellow-400"></i>
+              <span>4.7</span>
+            </div>
+            <div class="flex items-center gap-1">
+              <i class="fas fa-comment"></i>
+              <span>310</span>
+            </div>
+            <div class="flex items-center gap-1">
+              <i class="fas fa-clock"></i>
+              <span>35 min</span>
+            </div>
+          </div>
         </div>
+      </article>
 
-        <!-- You can add more sections here -->
-
-      </section>
-
-    </section>
-
+    </div>
   </main>
 
   <!-- FOOTER -->
-  <footer class="bg-[#2D2A26] text-gray-300 text-center text-sm py-6 mt-auto">
-    &copy; 2025 FlavorShare — Good food is best shared.
+  <footer class="bg-[#212121] text-gray-300 text-center py-6">
+    &copy; 2025 FlavorShare. Good food is best shared.
   </footer>
 
-  <!-- JS files -->
+  <!-- Scripts -->
   <script src="js/header.js"></script>
   <script src="js/script.js"></script>
 
