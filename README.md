@@ -1,55 +1,81 @@
-# RecipeShare Web App
+# FlavorShare – Recipe Web App
 
-RecipeShare is a web app where users can **browse and view recipes**. To share your own recipes, you must create an account.  
+FlavorShare is a web app where users can **browse and view recipes**, and (in this MS1 version) try a demo flow for **signing in and uploading recipes**.
 
 ---
 
 ## User Problem
-Finding reliable recipes online is often difficult, and sharing personal recipes can be cumbersome. RecipeShare makes it easy to discover and share recipes in one place.  
+
+Finding reliable recipes online is messy, and saving or sharing your own recipes often feels scattered (screenshots, notes, chats). FlavorShare aims to make it easier to **discover recipes in card form and share your own** in one simple, consistent interface.
 
 ---
 
 ## Target Users
+
 - Home cooks looking for new recipes  
-- Food enthusiasts who want to share recipes  
-- Anyone exploring culinary ideas  
+- Students / beginners learning to cook  
+- Food enthusiasts who want to share their dishes  
 
 ---
 
-## Success Metrics
-- Browse recipes without signing in  
-- Create an account and upload recipes  
-- Navigation works end-to-end  
-- Forms validate input correctly  
-- Responsive and accessible UI  
+## Success Metrics (for MS1)
+
+- Landing page loads, shows hero + navigation clearly  
+- Users can:
+  - Go to **Browse** and view recipe cards  
+  - Open a **recipe detail modal** from a card  
+  - **Sign up / Sign in** using an email ending in `@gmail.com`  
+  - Access the **Upload Recipe** page only when signed in  
+- Forms have basic client-side validation  
+- Navigation links work end-to-end for MS1 flows  
+- Layout works on desktop and basic mobile sizes  
 
 ---
 
-## In-Scope Pages / Features
-- Landing Page  
-- Browse Recipes (cards)  
-- Recipe Detail / Modal  
-- Sign Up / Login  
-- Profile Page  
-- Upload Recipe (with validation)  
+## In-Scope Pages / Features (MS1)
+
+- **Landing Page** (`landing-page.html`)  
+- **Browse Recipes** (`browse.html`) – cards + modal  
+- **Upload Recipe** (`upload.html`) – with basic validation & login requirement  
+- **Sign Up** (`sign-up.html`) – demo signup with `@gmail.com` rule  
+- **Sign In** (`sign-in.html`) – demo login with `@gmail.com` rule  
+
+(Other pages like *My Cookbook* / *Following* are planned but not fully implemented in MS1.)
 
 ---
 
 ## Sitemap
-Landing Page
-├── Browse Recipes
-│ └── Recipe Detail / Modal
-├── Sign Up / Login
-│ └── Profile Page
-│ └── Upload Recipe
 
+Landing Page (`landing-page.html`)  
+├── Browse Recipes (`browse.html`)  
+│   └── Recipe Detail (modal)  
+├── Sign Up (`sign-up.html`)  
+├── Sign In (`sign-in.html`)  
+└── Upload Recipe (`upload.html`)  *(requires sign-in)*  
 
 ---
 
 ## Acceptance Criteria
-**Landing Page:** Navigation links work.  
-**Browse Recipes:** Recipes display as cards; clicking opens details.  
-**Recipe Detail / Modal:** Shows full recipe info; modal closes correctly.  
-**Sign Up / Login:** Users can register/login; forms validate input.  
-**Profile Page:** Shows user info and uploaded recipes.  
-**Upload Recipe:** Users can add recipes; form has validation and shows success/error/loading states.  
+
+**Landing Page**  
+- Navigation links to *Home, Browse, Upload, Sign In* work.  
+- Hero section is readable and visually clear.
+
+**Browse Recipes**  
+- Recipe cards are displayed.  
+- Clicking a card opens a modal with recipe info.  
+- Modal can be closed with a close button.
+
+**Recipe Detail / Modal**  
+- Shows recipe title and description.  
+- Closes cleanly and returns focus to the page.
+
+**Sign Up / Sign In**  
+- Forms validate required fields.  
+- Only emails ending in `@gmail.com` are considered valid.  
+- On success, a “logged-in” state is stored (via `localStorage`) and user is redirected.
+
+**Upload Recipe**  
+- Page can only be used properly when logged in.  
+- Required fields show validation errors if empty.  
+- On success, a confirmation message is shown (demo behavior).
