@@ -127,73 +127,73 @@ nav {
   cursor: pointer;
 }
 
-/* ================= HERO SECTION ================= */
+/* ================= HERO SECTION (FIXED) ================= */
 
 .hero-section {
-  height: 60vh;
-  background: linear-gradient(180deg, #eb5424cc 0%, #fca311cc 100%),
-              url("https://images.unsplash.com/photo-1525755662778-989d0524087e")
-              center/cover no-repeat;
+  height: 75vh;
+  background: linear-gradient(
+      rgba(235, 84, 36, 0.55),
+      rgba(252, 163, 17, 0.55)
+    ),
+    url("https://images.unsplash.com/photo-1525755662778-989d0524087e")
+    center/cover no-repeat;
+    
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   text-align: center;
   color: white;
   padding: 20px;
+
+  /* smooth centering */
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .hero-section h1 {
-  font-size: 3rem;
+  font-size: 3.2rem;
   font-weight: 900;
   margin-bottom: 15px;
 }
 
 .hero-section p {
-  font-size: 1.3rem;
-  max-width: 600px;
-  margin-bottom: 25px;
+  font-size: 1.25rem;
+  max-width: 750px;
+  margin-bottom: 30px;
+  line-height: 1.6;
 }
 
-.hero-search input {
-  padding: 12px 20px;
-  width: 380px;
+/* search box in hero */
+.hero-section .hero-search input {
+  padding: 14px 22px;
+  width: 420px;
+  max-width: 90%;
   border: none;
-  border-radius: 24px;
-  margin-bottom: 20px;
+  border-radius: 30px;
   font-size: 1.1rem;
+  margin-bottom: 20px;
+  outline: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
-.hero-btn {
+/* explore button */
+.hero-section .hero-btn {
   background: white;
   color: #eb5424;
-  padding: 12px 26px;
-  border-radius: 25px;
+  padding: 12px 30px;
+  border-radius: 30px;
   font-size: 1.1rem;
   font-weight: 700;
   text-decoration: none;
   transition: 0.3s;
 }
 
-.hero-btn:hover {
+.hero-section .hero-btn:hover {
   background: #ffe5d4;
 }
 
-/* ================= MAIN (Trending Recipes) ================= */
-
-main {
-  max-width: 1100px;
-  margin: 50px auto;
-  padding: 0 20px;
-}
-
-main h2 {
-  text-align: center;
-  font-size: 2rem;
-  color: #eb5424;
-  margin-bottom: 40px;
-  font-weight: 900;
-}
 
 /* ================= SHARED CARD STYLE (Home + Explore) ================= */
 
