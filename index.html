@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FlavorShare - Home</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-<!-- ------------------------------------------- -->
-<!-- Navigation Header -->
-<!-- ------------------------------------------- -->
+<!-- NAVBAR -->
 <nav>
     <div class="logo">FlavorShare</div>
 
     <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
         <li><a href="explore.html">Explore</a></li>
         <li><a href="my-cookbook.html">My Cookbook</a></li>
         <li><a href="following.html">Following</a></li>
     </ul>
 
     <div class="actions">
-        <input type="text" placeholder="Search recipes...">
-        
+        <input type="text" placeholder="Search recipes..." />
+
         <button class="upload-btn" onclick="window.location.href='upload.html'">
             + Upload a Recipe
         </button>
@@ -40,82 +38,53 @@
     </div>
 </nav>
 
-<!-- ------------------------------------------- -->
-<!-- Hero Section -->
-<!-- ------------------------------------------- -->
-<section class="hero-section">
-    <div class="hero-content">
+<!-- HERO SECTION -->
+<header class="hero-section">
+    <img 
+        src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg"
+        class="hero-bg"
+        alt=""
+    >
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-center">
         <h1>Share Your Flavor.</h1>
         <p>Discover creative dishes from home cooks around the world — and share your own culinary masterpieces.</p>
 
-        <button class="upload-btn" onclick="window.location.href='explore.html'">
+        <button class="hero-btn" onclick="window.location.href='explore.html'">
             Explore Recipes
         </button>
     </div>
-</section>
+</header>
 
-<!-- ------------------------------------------- -->
-<!-- Trending Recipes Section -->
-<!-- ------------------------------------------- -->
+<!-- TRENDING SECTION -->
 <section class="trending-section">
     <h2>🔥 Trending Recipes</h2>
     <p>Fresh picks from the community</p>
 
     <div class="trending-grid">
 
-        <!-- Recipe 1 -->
         <div class="trending-card" onclick="openRecipeModal('Creamy Carbonara')">
             <img src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg" alt="">
-            <div class="trending-info">
-                <h3>Creamy Carbonara</h3>
-                <p>by Maria Romano</p>
-            </div>
+            <h3>Creamy Carbonara</h3>
+            <p>by Maria Romano</p>
         </div>
 
-        <!-- Recipe 2 -->
         <div class="trending-card" onclick="openRecipeModal('Avocado Toast Supreme')">
             <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg" alt="">
-            <div class="trending-info">
-                <h3>Avocado Toast Supreme</h3>
-                <p>by Sophia Monroe</p>
-            </div>
+            <h3>Avocado Toast Supreme</h3>
+            <p>by Sophia Monroe</p>
         </div>
 
-        <!-- Recipe 3 -->
         <div class="trending-card" onclick="openRecipeModal('Truffle Pasta')">
             <img src="https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg" alt="">
-            <div class="trending-info">
-                <h3>Truffle Pasta</h3>
-                <p>by Luca Bianchi</p>
-            </div>
+            <h3>Truffle Pasta</h3>
+            <p>by Luca Bianchi</p>
         </div>
 
     </div>
 </section>
-
-
-<!-- ------------------------------------------- -->
-<!-- Recipe Modal -->
-<!-- ------------------------------------------- -->
-<div id="recipeModal" class="recipe-modal">
-    <div class="modal-content">
-        <span class="modal-close" onclick="closeRecipeModal()">×</span>
-
-        <img id="modalImage" src="">
-        <h2 id="modalTitle"></h2>
-        <p id="modalAuthor"></p>
-
-        <h3>About this recipe</h3>
-        <p id="modalDescription"></p>
-
-        <h3>Ingredients</h3>
-        <ul id="modalIngredients"></ul>
-
-        <h3>Instructions</h3>
-        <ol id="modalInstructions"></ol>
-    </div>
-</div>
-
 
 <script src="script.js"></script>
 </body>
