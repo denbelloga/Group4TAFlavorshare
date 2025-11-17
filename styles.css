@@ -600,3 +600,24 @@ body.dark-mode footer {
     grid-template-columns: 1fr;
   }
 }
+/* Success Popup */
+.success-popup {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #28a745;
+  color: white;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 9999;
+}
+
+.success-popup.show {
+  opacity: 1;
+}
+
