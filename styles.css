@@ -29,6 +29,7 @@ nav {
   font-size: 1.7rem;
   font-weight: 900;
   color: #eb5424;
+  cursor: pointer;
 }
 
 .nav-links {
@@ -274,49 +275,21 @@ main h2 {
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.11);
   overflow: hidden;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.recipe-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
 }
 
 .recipe-card img {
   width: 100%;
   height: 170px;
   object-fit: cover;
-  /* Expandable recipe card effect */
-.recipe-card {
-  position: relative;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* When clicked */
-.recipe-card.expanded {
-  transform: scale(1.05) translateY(-6px);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
-  z-index: 5;
-}
-
-/* Hidden extra details inside card */
-.recipe-details {
-  display: none;
-  margin-top: 8px;
-  padding-top: 8px;
-  border-top: 1px dashed rgba(0, 0, 0, 0.08);
-  font-size: 0.82rem;
-  color: #666;
-}
-
-/* Show details when expanded */
-.recipe-card.expanded .recipe-details {
-  display: block;
-}
-
-/* In dark mode */
-body.dark-mode .recipe-details {
-  border-top-color: rgba(255, 255, 255, 0.15);
-  color: #cccccc;
-}
-
 }
 
 .recipe-card .info {
@@ -352,8 +325,7 @@ body.dark-mode .recipe-details {
 
 .card-actions {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
   gap: 6px;
 }
 
@@ -365,15 +337,6 @@ body.dark-mode .recipe-details {
   color: white;
   font-size: 0.8rem;
   font-weight: 700;
-  cursor: pointer;
-}
-
-.icon-btn {
-  border-radius: 999px;
-  border: none;
-  padding: 6px 10px;
-  background: #ffe9da;
-  font-size: 0.8rem;
   cursor: pointer;
 }
 
@@ -599,13 +562,79 @@ body.dark-mode .primary-btn {
   color: #1a1a1a;
 }
 
-body.dark-mode .icon-btn {
-  background: #3a2418;
-  color: #ffb089;
-}
-
 body.dark-mode footer {
   background: #0c0c0c;
+}
+
+/* =============== RECIPE MODAL =============== */
+.recipe-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 60px 20px;
+  z-index: 9999;
+  overflow-y: auto;
+}
+
+.recipe-modal {
+  background: #fff;
+  border-radius: 24px;
+  max-width: 900px;
+  width: 100%;
+  padding: 30px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  animation: modalShow 0.25s ease-out;
+}
+
+@keyframes modalShow {
+  from { transform: translateY(40px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+.modal-image {
+  width: 100%;
+  height: 290px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-size: 28px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.modal-author {
+  margin-top: -10px;
+  color: #666;
+  font-style: italic;
+}
+
+/* Lists styling */
+.recipe-modal ul,
+.recipe-modal ol {
+  margin-left: 20px;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+/* DARK MODE MODAL */
+body.dark-mode .recipe-modal {
+  background: #222;
+  color: #fff;
+}
+
+body.dark-mode .modal-author {
+  color: #bbb;
 }
 
 /* =============== RESPONSIVE =============== */
