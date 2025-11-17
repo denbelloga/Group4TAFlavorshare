@@ -49,5 +49,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
   createAccountBtn.addEventListener('click', () => {
     window.location.href = 'sign-in.html';
+
+    document.addEventListener('DOMContentLoaded', () => {
+  const signupModal = document.getElementById('signupModal');
+  const closeModalBtn = document.getElementById('closeModal');
+  const createAccountBtn = document.getElementById('createAccountBtn');
+
+  // Function to show modal (call this when needed)
+  function showModal() {
+    signupModal.classList.remove('hidden');
+  }
+
+  // Function to hide modal
+  function hideModal() {
+    signupModal.classList.add('hidden');
+  }
+
+  // Close button event
+  closeModalBtn.addEventListener('click', hideModal);
+
+  // Click outside modal content closes modal
+  signupModal.addEventListener('click', (event) => {
+    if (event.target === signupModal) {
+      hideModal();
+    }
+  });
+
+  // Create Account button goes to sign-in page
+  createAccountBtn.addEventListener('click', () => {
+    window.location.href = 'sign-in.html';
+  });
+
+  // For demo: Show modal after 2 seconds (remove this for production)
+  // setTimeout(showModal, 2000);
+});
   });
 });
