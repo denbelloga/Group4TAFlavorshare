@@ -6,1160 +6,209 @@
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #fff8f0;
   color: #333;
-  overflow-x: hidden;
+  line-height: 1.5;
 }
 
-/* ============================================================
-   PREMIUM NAVIGATION
-============================================================ */
+/* ================= NAVIGATION BAR ================= */
+
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 18px 40px;
-  background: white;
-  border-bottom: 1px solid #eee;
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
   position: sticky;
   top: 0;
-  z-index: 2000;
+  z-index: 1000;
 }
 
-.logo {
-  font-size: 1.8rem;
+nav .logo {
+  font-size: 1.7rem;
   font-weight: 900;
   color: #eb5424;
 }
 
-.nav-links {
+nav .nav-links {
   display: flex;
-  gap: 34px;
+  gap: 32px;
   list-style: none;
 }
 
-.nav-links a {
+nav .nav-links a {
   text-decoration: none;
   color: #444;
   font-weight: 600;
   transition: 0.2s;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
+nav .nav-links a:hover,
+nav .nav-links a.active {
   color: #eb5424;
 }
 
-.actions {
+nav .actions {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 
-.actions input {
+nav .actions input[type="search"] {
+  border: 1px solid #ccc;
   padding: 8px 16px;
   border-radius: 20px;
-  border: 1px solid #ccc;
+  font-size: 1rem;
+  width: 250px;
 }
 
-.upload-btn {
-  border: 2px solid #eb5424;
+nav .actions .upload-btn {
+  border: 1.5px solid #eb5424;
   background: transparent;
   color: #eb5424;
-  padding: 7px 16px;
-  border-radius: 22px;
-  font-weight: 700;
-}
-
-.sign-in-btn {
-  background: #eb5424;
-  color: white;
-  padding: 8px 18px;
-  border-radius: 22px;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.notif-bell {
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-/* ============================================================
-   ULTRA PREMIUM HERO SECTION
-============================================================ */
-
-.hero-ultra {
-  position: relative;
-  height: 95vh;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Parallax background */
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-      rgba(235, 84, 36, 0.35),
-      rgba(252, 163, 17, 0.35)
-    ),
-    url("https://images.unsplash.com/photo-1525755662778-989d0524087e")
-    center/cover no-repeat;
-  transition: transform 0.2s ease-out;
-}
-
-/* Floating ingredients */
-.float-item {
-  position: absolute;
-  width: 120px;
-  opacity: 0.8;
-  animation: float 6s ease-in-out infinite;
-}
-
-.float1 { top: 10%; left: 10%; animation-delay: 0s; }
-.float2 { bottom: 12%; right: 15%; width: 100px; animation-delay: 1s; }
-.float3 { top: 15%; right: 28%; width: 130px; animation-delay: 2s; }
-
-@keyframes float {
-  0% { transform: translateY(0) rotate(0); }
-  50% { transform: translateY(-20px) rotate(8deg); }
-  100% { transform: translateY(0) rotate(0); }
-}
-
-/* Glow ring */
-.glow-ring {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle,
-      rgba(255, 255, 255, 0.5) 0%,
-      rgba(255, 255, 255, 0) 70%);
-  filter: blur(45px);
-  z-index: 1;
-}
-
-/* Glass card */
-.hero-card {
-  position: relative;
-  z-index: 10;
-  background: rgba(255, 255, 255, 0.23);
-  backdrop-filter: blur(16px);
-  border-radius: 32px;
-  padding: 50px 60px;
-  max-width: 650px;
-  text-align: center;
-  color: white;
-  animation: fadeSlide 1.3s ease-out forwards;
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-@keyframes fadeSlide {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.hero-card h1 {
-  font-size: 3.4rem;
-  margin-bottom: 15px;
-  font-weight: 900;
-}
-
-.hero-card p {
-  font-size: 1.2rem;
-  margin-bottom: 28px;
-}
-
-/* Search bar with icon */
-.hero-search {
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
-.search-icon {
-  position: absolute;
-  left: 18px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.hero-search input {
-  width: 100%;
-  max-width: 420px;
-  padding: 14px 22px 14px 45px;
-  font-size: 1.1rem;
-  border-radius: 50px;
-  border: none;
-}
-
-/* CTA button */
-.hero-btn {
-  display: inline-block;
-  margin-top: 10px;
-  background: white;
-  color: #eb5424;
-  padding: 14px 34px;
-  border-radius: 50px;
-  font-weight: 700;
-  font-size: 1.2rem;
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-
-.hero-btn:hover {
-  background: #ffe5d4;
-  transform: translateY(-4px);
-}
-
-/* ============================================================
-   FOOTER
-============================================================ */
-
-footer {
-  text-align: center;
-  padding: 35px;
-  color: #555;
-}
-
-/* ============================================================
-   ULTRA PREMIUM EXPLORE PAGE
-============================================================ */
-
-.explore-main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 60px 24px 80px;
-}
-
-/* Header text & filters */
-.explore-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.explore-header h1 {
-  font-size: 2.4rem;
-  color: #eb5424;
-  margin-bottom: 10px;
-}
-
-.explore-header p {
-  font-size: 1rem;
-  color: #555;
-  max-width: 650px;
-  margin: 0 auto 20px;
-  line-height: 1.6;
-}
-
-/* Filter chips */
-.explore-filters {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.chip {
-  border-radius: 999px;
   padding: 8px 16px;
-  border: 1px solid #f0b296;
-  background: #fff6ef;
-  color: #c24f21;
-  font-size: 0.9rem;
-  font-weight: 600;
+  border-radius: 20px;
+  font-weight: 700;
   cursor: pointer;
-  transition: 0.2s;
 }
 
-.chip:hover {
-  background: #ffc6a8;
-}
-
-.chip-active {
+nav .actions .upload-btn:hover {
   background: #eb5424;
-  color: white;
-  border-color: #eb5424;
+  color: #fff;
 }
 
-/* Recipe grid – ultra premium */
-.explore-grid {
-  margin-top: 30px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 32px;
-}
-
-/* Card */
-.recipe-card-premium {
-  background: linear-gradient(145deg, #ffffff, #fff2e9);
-  border-radius: 22px;
-  overflow: hidden;
-  box-shadow: 0 14px 30px rgba(0,0,0,0.12);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  position: relative;
-}
-
-.recipe-card-premium::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top left,
-      rgba(235,84,36,0.18),
-      transparent 55%);
-  opacity: 0;
-  transition: 0.25s ease;
-}
-
-.recipe-card-premium:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.18);
-}
-
-.recipe-card-premium:hover::before {
-  opacity: 1;
-}
-
-.recipe-thumb img {
-  width: 100%;
-  height: 190px;
-  object-fit: cover;
-  display: block;
-}
-
-.recipe-body {
-  padding: 16px 18px 18px;
-  position: relative;
-  z-index: 1;
-}
-
-.recipe-body h2 {
-  font-size: 1.15rem;
-  font-weight: 800;
-  margin-bottom: 4px;
-  color: #333;
-}
-
-.recipe-body .author {
-  font-size: 0.9rem;
-  color: #8a6850;
-  margin-bottom: 8px;
-}
-
-.recipe-body .excerpt {
-  font-size: 0.9rem;
-  color: #5a554f;
-  margin-bottom: 12px;
-}
-
-/* Pills row */
-.pill-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.pill {
-  font-size: 0.8rem;
-  background: #fff;
-  border-radius: 999px;
-  padding: 5px 10px;
-  border: 1px solid #f0c3a4;
-  color: #8c4a27;
-  font-weight: 600;
-}
-
-/* Notification panel (shared for all pages) */
-#notif-panel {
-  position: fixed;
-  right: 24px;
-  top: 80px;
-  width: 260px;
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 16px 18px;
-  box-shadow: 0 14px 35px rgba(0,0,0,0.18);
-  display: none;
-  z-index: 3000;
-}
-
-#notif-panel.show {
-  display: block;
-}
-
-#notif-panel h3 {
-  margin-bottom: 8px;
-  color: #eb5424;
-}
-
-#notif-panel p {
-  font-size: 0.85rem;
-  color: #444;
-  margin-bottom: 4px;
-}
-
-#notif-panel .close-btn {
-  margin-top: 10px;
-  width: 100%;
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: none;
+nav .actions .sign-in-btn {
+  padding: 8px 18px;
+  border-radius: 20px;
   background: #eb5424;
   color: #fff;
   font-weight: 600;
+  text-decoration: none;
+}
+
+nav .actions .notif-bell {
+  font-size: 1.4rem;
   cursor: pointer;
 }
-/* =====================================================
-   TRENDING RECIPES GRID
-===================================================== */
-.trending-grid {
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 32px;
-}
 
-/* =====================================================
-   FULL RECIPE MODAL
-===================================================== */
-.recipe-modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.65);
-    display: none;
-    justify-content: center;
-    align-items: flex-start;
-    padding-top: 40px;
-    z-index: 5000;
-}
+/* ================= USER MENU (NO COOKBOOK LINK) ================= */
 
-.recipe-modal.show {
-    display: flex;
-}
-
-.recipe-modal-content {
-    background: #fffefc;
-    width: 90%;
-    max-width: 650px;
-    border-radius: 20px;
-    padding: 25px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-    animation: modalPop 0.25s ease;
-    max-height: 85vh;
-    overflow-y: auto;
-}
-
-@keyframes modalPop {
-    from { transform: scale(0.85); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-.close-modal {
-    float: right;
-    font-size: 32px;
-    cursor: pointer;
-}
-
-.modal-img {
-    width: 100%;
-    height: 230px;
-    object-fit: cover;
-    border-radius: 14px;
-    margin-bottom: 15px;
-}
-
-.modal-section {
-    margin-top: 18px;
-}
-
-.modal-section h3 {
-    color: #eb5424;
-    margin-bottom: 5px;
-}
-
-.modal-section ul,
-.modal-section ol {
-    padding-left: 20px;
-}
-
-/* =====================================================
-   RESPONSIVE IMPROVEMENTS
-===================================================== */
-@media (max-width: 850px) {
-    nav {
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-
-    nav .nav-links {
-        order: 3;
-        width: 100%;
-        justify-content: center;
-    }
-
-    nav .actions input[type="search"] {
-        width: 180px;
-    }
-}
-
-@media (max-width: 600px) {
-
-    .hero-section h1 {
-        font-size: 2.2rem;
-    }
-
-    .hero-section p {
-        font-size: 1rem;
-        padding: 0 20px;
-    }
-
-    .hero-btn {
-        margin-top: 10px;
-    }
-
-    .recipe-modal-content {
-        padding: 18px;
-    }
-
-    .modal-img {
-        height: 180px;
-    }
-}
-/* =====================================================
-   TRENDING GRID MATCHING ULTRA-PREMIUM EXPLORE CARDS
-===================================================== */
-.trending-grid {
-  margin-top: 28px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 32px;
-}
-
-/* Premium card style (shared with explore page) */
-.recipe-card-premium {
-  background: linear-gradient(145deg, #ffffff, #fff2e9);
-  border-radius: 22px;
-  overflow: hidden;
-  box-shadow: 0 14px 30px rgba(0,0,0,0.12);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.user-menu-container {
   position: relative;
-  cursor: pointer;
+  display: inline-block;
 }
 
-.recipe-card-premium::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top left,
-      rgba(235,84,36,0.18),
-      transparent 55%);
-  opacity: 0;
-  transition: 0.25s ease;
-}
-
-.recipe-card-premium:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.18);
-}
-
-.recipe-card-premium:hover::before {
-  opacity: 1;
-}
-
-.recipe-thumb img {
-  width: 100%;
-  height: 190px;
-  object-fit: cover;
-  display: block;
-}
-
-.recipe-body {
-  padding: 16px 18px 18px;
-  position: relative;
-  z-index: 1;
-}
-
-.recipe-body h2 {
-  font-size: 1.15rem;
-  font-weight: 800;
-  margin-bottom: 4px;
-  color: #333;
-}
-
-.recipe-body .author {
-  font-size: 0.9rem;
-  color: #8a6850;
-  margin-bottom: 6px;
-}
-
-.recipe-body .excerpt {
-  font-size: 0.9rem;
-  color: #5a554f;
-  margin-bottom: 10px;
-}
-
-.pill-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.pill {
-  font-size: 0.8rem;
-  background: #fff;
-  border-radius: 999px;
-  padding: 5px 10px;
-  border: 1px solid #f0c3a4;
-  color: #8c4a27;
-  font-weight: 600;
-}
-
-/* =====================================================
-   RECIPE MODAL
-===================================================== */
-.recipe-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.65);
-  display: none;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 40px;
-  z-index: 5000;
-}
-
-.recipe-modal.show {
-  display: flex;
-}
-
-.recipe-modal-content {
-  background: #fffefc;
-  width: 90%;
-  max-width: 650px;
-  border-radius: 20px;
-  padding: 24px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-  animation: modalPop 0.25s ease;
-  max-height: 85vh;
-  overflow-y: auto;
-}
-
-@keyframes modalPop {
-  from { transform: scale(0.85); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-.close-modal {
-  float: right;
-  font-size: 32px;
-  cursor: pointer;
-}
-
-.modal-img {
-  width: 100%;
-  height: 230px;
-  object-fit: cover;
-  border-radius: 14px;
-  margin-bottom: 15px;
-}
-
-.modal-section {
-  margin-top: 18px;
-}
-
-.modal-section h3 {
-  color: #eb5424;
-  margin-bottom: 5px;
-}
-
-.modal-section ul,
-.modal-section ol {
-  padding-left: 20px;
-}
-
-/* =====================================================
-   DARK MODE (COFFEE THEME)
-===================================================== */
-body.dark-mode {
-  background: #1b120e;
-  color: #f8ede2;
-}
-
-body.dark-mode nav {
-  background: #24130f;
-  border-bottom-color: #3b2418;
-}
-
-body.dark-mode .logo {
-  color: #ffb275;
-}
-
-body.dark-mode .nav-links a {
-  color: #f1dfd0;
-}
-
-body.dark-mode .nav-links a.active,
-body.dark-mode .nav-links a:hover {
-  color: #ffb275;
-}
-
-body.dark-mode .upload-btn {
-  border-color: #ffb275;
-  color: #ffb275;
-  background: transparent;
-}
-
-body.dark-mode .upload-btn:hover {
-  background: #ffb275;
-  color: #24130f;
-}
-
-body.dark-mode .sign-in-btn {
-  background: #ffb275;
-  color: #24130f;
-}
-
-body.dark-mode footer {
-  background: #160d0a;
-  color: #f0ddd0;
-}
-
-/* Hero card in dark mode (glass over darker bg) */
-body.dark-mode .hero-card {
-  background: rgba(24, 14, 10, 0.7);
-}
-
-/* Cards in dark mode */
-body.dark-mode .recipe-card-premium {
-  background: linear-gradient(145deg, #2a1811, #341d14);
-  box-shadow: 0 14px 30px rgba(0,0,0,0.4);
-}
-
-body.dark-mode .recipe-body h2 {
-  color: #f9eee3;
-}
-
-body.dark-mode .recipe-body .author,
-body.dark-mode .recipe-body .excerpt {
-  color: #f0d2b7;
-}
-
-body.dark-mode .pill {
-  background: #2d1811;
-  border-color: #5a3320;
-  color: #ffb275;
-}
-
-/* Modal in dark mode */
-body.dark-mode .recipe-modal-content {
-  background: #24130f;
-  color: #f7e6d5;
-}
-
-body.dark-mode .modal-section h3 {
-  color: #ffb275;
-}
-
-/* Dark mode transition */
-body, nav, .hero-card, .recipe-card-premium, footer {
-  transition: background-color 0.3s ease, color 0.3s ease, background 0.3s ease;
-}
-
-/* Theme toggle button */
-.theme-toggle {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-size: 1.2rem;
-}
-
-/* =====================================================
-   RESPONSIVE TWEAKS
-===================================================== */
-@media (max-width: 900px) {
-  nav {
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 14px 16px;
-  }
-
-  .nav-links {
-    order: 3;
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .actions input[type="search"] {
-    width: 160px;
-  }
-
-  .hero-card {
-    padding: 32px 22px;
-    max-width: 90%;
-  }
-
-  .hero-card h1 {
-    font-size: 2.4rem;
-  }
-
-  .hero-card p {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .hero-ultra {
-    height: auto;
-    padding: 40px 0 30px;
-  }
-
-  .float-item {
-    display: none; /* hide decor images on small screens */
-  }
-
-  .recipe-modal-content {
-    padding: 18px;
-  }
-
-  .modal-img {
-    height: 180px;
-  }
-
-  .explore-main {
-    padding: 40px 16px 60px;
-  }
-}
-
-/* =====================================================
-   SIGN IN PAGE — ULTRA PREMIUM
-===================================================== */
-
-.signin-body {
-  background: linear-gradient(135deg, #eb5424, #ff9c6a, #ffe9d8);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Floating blurred shapes */
-.signin-shape {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(40px);
-  opacity: 0.55;
-}
-
-.shape1 {
-  width: 260px;
-  height: 260px;
-  background: #ff6a2e;
-  top: -60px;
-  left: -60px;
-}
-
-.shape2 {
-  width: 200px;
-  height: 200px;
-  background: #ffbf86;
-  bottom: -40px;
-  right: -20px;
-}
-
-.shape3 {
-  width: 180px;
-  height: 180px;
-  background: #ff9d5c;
-  top: 40%;
-  left: 70%;
-}
-
-/* Sign-in card */
-.signin-card {
-  width: 100%;
-  max-width: 420px;
-  padding: 40px 32px;
-  border-radius: 22px;
-
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
-
-  z-index: 5;
-  animation: fadeUp 0.5s ease;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.signin-card h1 {
-  text-align: center;
-  font-size: 2rem;
-  color: #eb5424;
-  margin-bottom: 4px;
-}
-
-.signin-subtext {
-  text-align: center;
-  color: #5a4a42;
-  font-size: 0.95rem;
-  margin-bottom: 22px;
-}
-
-.signin-card label {
-  display: block;
-  margin-top: 14px;
-  font-weight: 600;
-  color: #5c3b2e;
-}
-
-.signin-card input {
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: 12px;
-  border: 1px solid #d7b7a3;
-  margin-top: 6px;
-  font-size: 1rem;
-}
-
-.signin-btn {
-  width: 100%;
-  margin-top: 24px;
-  padding: 12px;
-  border: none;
-  border-radius: 16px;
+.user-pill {
   background: #eb5424;
   color: white;
   font-weight: 700;
-  font-size: 1.1rem;
+  padding: 8px 16px;
+  border-radius: 20px;
   cursor: pointer;
-  transition: 0.25s;
+  user-select: none;
 }
 
-.signin-btn:hover {
-  background: #c93f12;
+.user-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 45px;
+  background: white;
+  border-radius: 12px;
+  padding: 12px 0;
+  width: 160px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  z-index: 2000;
 }
 
-.signin-note {
-  margin-top: 18px;
-  font-size: 0.85rem;
-  color: #5a4a42;
+.user-dropdown.show {
+  display: block;
+}
+
+.user-dropdown a,
+.user-dropdown button {
+  display: block;
+  width: 100%;
+  padding: 10px 18px;
+  text-align: left;
+  background: transparent;
+  border: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: #333;
+  font-weight: 600;
+}
+
+.user-dropdown a:hover,
+.user-dropdown button:hover {
+  background: #ffe8df;
+}
+
+/* ================= HERO SECTION ================= */
+
+.hero-section {
+  background: linear-gradient(180deg, #eb5424 0%, #fca311 100%);
+  color: white;
   text-align: center;
+  padding: 90px 20px;
 }
 
-.signin-alt {
-  margin-top: 14px;
-  text-align: center;
-  font-size: 0.9rem;
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 15px;
 }
 
-.signin-alt a {
+.hero-section p {
+  font-size: 1.3rem;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+.hero-section .hero-search input {
+  width: 100%;
+  max-width: 480px;
+  padding: 16px 26px;
+  border-radius: 50px;
+  border: none;
+  margin-bottom: 30px;
+  font-size: 1rem;
+}
+
+.hero-btn {
+  background: white;
   color: #eb5424;
-  font-weight: bold;
+  padding: 12px 28px;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
 }
 
-/* =====================================================
-   ULTRA PREMIUM SIGN-IN PAGE
-===================================================== */
+/* ================= TRENDING RECIPES ================= */
 
-.signin-body {
-    background: linear-gradient(135deg, #eb5424, #ff9c6a, #fff0e6);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    transition: 0.4s ease-in-out;
+main {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 0 20px;
 }
 
-/* Dark Mode */
-.dark-mode {
-    background: #121212 !important;
-    color: #f0f0f0 !important;
+main h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #eb5424;
+  margin-bottom: 40px;
+  font-weight: 900;
 }
 
-.darkmode-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: white;
-    padding: 10px 14px;
-    border-radius: 50%;
-    font-size: 1.2rem;
-    cursor: pointer;
-    z-index: 2000;
-}
+/* ================= FOOTER ================= */
 
-/* Shapes */
-.signin-shape {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(50px);
-    opacity: 0.5;
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #252525;
+  color: white;
+  margin-top: 40px;
 }
-.shape1 { width: 260px; height: 260px; background: #ff6a2e; top: -60px; left: -60px; }
-.shape2 { width: 200px; height: 200px; background: #ffbf86; bottom: -40px; right: -20px; }
-.shape3 { width: 180px; height: 180px; background: #ff9d5c; top: 45%; left: 70%; }
-
-/* Sign-in Card */
-.signin-card {
-    width: 100%;
-    max-width: 420px;
-    background: rgba(255, 255, 255, 0.72);
-    backdrop-filter: blur(18px);
-    padding: 40px 32px;
-    border-radius: 22px;
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
-    animation: fadeUp 0.6s ease;
-}
-
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
-/* Logo Reveal */
-.signin-logo {
-    font-size: 2rem;
-    font-weight: 900;
-    text-align: center;
-    color: #eb5424;
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: logoReveal 1s forwards;
-}
-
-@keyframes logoReveal {
-    0% { opacity: 0; transform: translateY(-20px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-.signin-subtext {
-    text-align: center;
-    font-size: 0.95rem;
-    color: #6a594d;
-    margin-bottom: 25px;
-}
-
-/* Inputs */
-.signin-card input {
-    width: 100%;
-    padding: 12px 14px;
-    border-radius: 12px;
-    border: 1px solid #d7b7a3;
-    margin-top: 5px;
-}
-
-/* Password Wrapper */
-.password-wrapper {
-    position: relative;
-}
-
-.toggle-password {
-    position: absolute;
-    right: 12px;
-    top: 13px;
-    cursor: pointer;
-    font-size: 1.1rem;
-}
-
-/* Buttons */
-.signin-btn {
-    width: 100%;
-    margin-top: 22px;
-    background: #eb5424;
-    color: white;
-    padding: 12px;
-    border-radius: 14px;
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-    transition: 0.25s ease;
-}
-
-.signin-btn:hover {
-    background: #c13d11;
-}
-
-/* Google Button */
-.google-btn {
-    width: 100%;
-    margin-top: 16px;
-    background: white;
-    border: 1.5px solid #d9d9d9;
-    padding: 10px;
-    border-radius: 14px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    cursor: pointer;
-}
-
-.google-btn img {
-    width: 22px;
-    height: 22px;
-}
-
-/* Success Popup */
-#success-popup {
-    position: fixed;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #2ecc71;
-    color: white;
-    font-weight: 700;
-    padding: 14px 26px;
-    border-radius: 12px;
-    opacity: 0;
-    transition: 0.3s;
-    z-index: 3000;
-}
-
-#success-popup.show {
-    opacity: 1;
-}
-
-/* Dark Mode Effects */
-.dark-mode .signin-card {
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-}
-
-.dark-mode input {
-    background: #222;
-    border: 1px solid #444;
-    color: white;
-}
-
-.dark-mode .signin-btn {
-    background: #ff7b4a;
-}
-
-.dark-mode .google-btn {
-    background: #222;
-    border-color: #444;
-    color: white;
-}
-.signin-logo {
-    color: #eb5424 !important;
-}
-
