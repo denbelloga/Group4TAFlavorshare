@@ -1,70 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FlavorShare - Browse</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Recipes - FlavorShare</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
 
-<!-- NAV -->
+<!-- NAVIGATION (same as home) -->
 <nav>
     <div class="logo">FlavorShare</div>
 
     <ul class="nav-links">
-        <li><a href="landing-page.html">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="browse.html" class="active">Explore</a></li>
-        <li><a href="#">My Cookbook</a></li>
-        <li><a href="#">Following</a></li>
+        <li><a href="my-cookbook.html">My Cookbook</a></li>
+        <li><a href="following.html">Following</a></li>
     </ul>
 
     <div class="actions">
         <input type="search" placeholder="Search recipes...">
+
         <button class="upload-btn">+ Upload a Recipe</button>
+
         <a href="sign-in.html" class="sign-in-btn">Sign In</a>
-        <span class="notif-bell">🔔</span>
+
+        <i class="fa-solid fa-bell notif-bell"></i>
     </div>
 </nav>
 
+<!-- MAIN CONTENT -->
 <main>
-    <h2>Browse Recipes</h2>
+    <h2>Explore Recipes</h2>
 
     <div class="recipe-grid">
-        <div class="recipe-card" onclick="openModal('Creamy Carbonara', 'A classic Italian pasta with rich cream sauce.')">
-            <img src="https://images.unsplash.com/photo-1603133872878-684f3a4b52a3" alt="">
+        <div class="recipe-card" onclick="openModal('Creamy Carbonara', 'A rich and savory pasta dish made with eggs, cheese, and pancetta.')">
+            <img src="https://via.placeholder.com/260x170" alt="Creamy Carbonara">
             <h3>Creamy Carbonara</h3>
             <p>Maria Romano</p>
         </div>
 
-        <div class="recipe-card" onclick="openModal('Rainbow Cupcakes', 'Fun colorful cupcakes with sweet frosting!')">
-            <img src="https://images.unsplash.com/photo-1509440159598-953f6ecdfdd1" alt="">
+        <div class="recipe-card" onclick="openModal('Rainbow Cupcakes', 'Colorful cupcakes topped with creamy frosting.')">
+            <img src="https://via.placeholder.com/260x170" alt="Rainbow Cupcakes">
             <h3>Rainbow Cupcakes</h3>
             <p>Emma Baker</p>
         </div>
 
-        <div class="recipe-card" onclick="openModal('Thai Green Curry', 'A flavorful Thai dish with coconut milk and herbs.')">
-            <img src="https://images.unsplash.com/photo-1625943551124-1cb2d2741313" alt="">
+        <div class="recipe-card" onclick="openModal('Thai Green Curry', 'A flavorful Thai curry with coconut milk and green chili paste.')">
+            <img src="https://via.placeholder.com/260x170" alt="Thai Green Curry">
             <h3>Thai Green Curry</h3>
             <p>Alex Chen</p>
         </div>
     </div>
 </main>
 
-<!-- MODAL -->
-<div id="modal">
-  <div class="modal-content">
-    <span onclick="closeModal()">&times;</span>
-    <h2 id="modalTitle"></h2>
-    <p id="modalDetails"></p>
-  </div>
-</div>
-
+<!-- FOOTER -->
 <footer>
-  © 2025 FlavorShare. Good food is best shared.
+    © 2025 FlavorShare. Good food is best shared.
 </footer>
+
+<script>
+function openModal(title, details) {
+    alert(title + "\n\n" + details);
+}
+</script>
 
 </body>
 </html>
