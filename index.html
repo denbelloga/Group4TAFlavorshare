@@ -1,261 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlavorShare - Home</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlavorShare - Home</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<!-- ================= RECIPE DETAIL MODAL ================= -->
-<div id="recipeModal" class="recipe-modal">
-    <div class="recipe-modal-content">
-        <span class="close-modal" onclick="closeRecipeModal()">×</span>
-
-        <img id="modalImg" class="modal-img" src="" alt="Recipe Image">
-
-        <h2 id="modalTitle"></h2>
-        <p id="modalAuthor"></p>
-
-        <div class="modal-section">
-            <h3>About this recipe</h3>
-            <p id="modalDesc"></p>
-        </div>
-
-        <div class="modal-section">
-            <h3>Ingredients</h3>
-            <ul id="modalIngredients"></ul>
-        </div>
-
-        <div class="modal-section">
-            <h3>Instructions</h3>
-            <ol id="modalSteps"></ol>
-        </div>
-    </div>
-</div>
-
-<script>
-    const recipes = {
-        Carbonara: {
-            img: "images/creamy-carbonara-1-4.jpg",
-            title: "Creamy Carbonara",
-            author: "Maria Romano",
-            desc: "A silky-smooth Italian pasta made with eggs, parmesan, and pancetta.",
-            ingredients: [
-                "200g spaghetti",
-                "2 eggs",
-                "1/2 cup parmesan",
-                "Pancetta",
-                "Salt & pepper"
-            ],
-            steps: [
-                "Cook pasta until al dente.",
-                "Whisk eggs and parmesan together.",
-                "Fry pancetta until crispy.",
-                "Combine everything off heat.",
-                "Serve immediately."
-            ]
-        },
-
-        Cupcakes: {
-            img: "images/rainbow-cupcakes-17.jpg",
-            title: "Rainbow Cupcakes",
-            author: "Emma Baker",
-            desc: "Light, fluffy vanilla cupcakes with vibrant rainbow swirl frosting.",
-            ingredients: [
-                "Flour",
-                "Butter",
-                "Vanilla",
-                "Eggs",
-                "Sugar",
-                "Food coloring"
-            ],
-            steps: [
-                "Mix dry ingredients.",
-                "Mix wet ingredients.",
-                "Combine and portion into cups.",
-                "Bake for 20 minutes.",
-                "Decorate with rainbow buttercream."
-            ]
-        },
-
-        GreenCurry: {
-            img: "images/Thai-Green-Curry-square-FS.jpg",
-            title: "Thai Green Curry",
-            author: "Alex Chen",
-            desc: "A comforting, fragrant curry with coconut milk and tender chicken.",
-            ingredients: [
-                "Green curry paste",
-                "Coconut milk",
-                "Chicken",
-                "Bamboo shoots",
-                "Basil leaves"
-            ],
-            steps: [
-                "Sauté curry paste.",
-                "Add coconut milk and simmer.",
-                "Add chicken and cook.",
-                "Add veggies and herbs.",
-                "Serve with jasmine rice."
-            ]
-        }
-    };
-
-    function openRecipeModal(recipeKey) {
-        const r = recipes[recipeKey];
-        document.getElementById("modalImg").src = r.img;
-        document.getElementById("modalTitle").innerText = r.title;
-        document.getElementById("modalAuthor").innerText = "by " + r.author;
-        document.getElementById("modalDesc").innerText = r.desc;
-
-        const ingList = document.getElementById("modalIngredients");
-        ingList.innerHTML = "";
-        r.ingredients.forEach(i => ingList.innerHTML += `<li>${i}</li>`);
-
-        const stepList = document.getElementById("modalSteps");
-        stepList.innerHTML = "";
-        r.steps.forEach(s => stepList.innerHTML += `<li>${s}</li>`);
-
-        document.getElementById("recipeModal").classList.add("show");
-    }
-
-    function closeRecipeModal() {
-        document.getElementById("recipeModal").classList.remove("show");
-    }
-</script>
 
 <body>
 
-    <!-- ================= NAVIGATION ================= -->
-    <nav>
-        <div class="logo">FlavorShare</div>
+  <!-- ================= NAVIGATION ================= -->
+  <nav>
+    <div class="logo">FlavorShare</div>
 
-        <ul class="nav-links">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="browse.html">Explore</a></li>
-            <li><a href="cookbook.html">My Cookbook</a></li>
-            <li><a href="following.html">Following</a></li>
-        </ul>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="browse.html">Explore</a></li>
+      <li><a href="cookbook.html">My Cookbook</a></li>
+      <li><a href="following.html">Following</a></li>
+    </ul>
 
-        <div class="actions">
-            <input type="search" placeholder="Search recipes...">
-            <button class="upload-btn">+ Upload a Recipe</button>
-            <a href="sign-in.html" class="sign-in-btn">Sign In</a>
-            <span class="notif-bell" onclick="toggleNotif()">🔔</span>
-        </div>
-    </nav>
-
-    <!-- ================= NOTIFICATION PANEL ================= -->
-    <div id="notif-panel">
-        <h3>Notifications</h3>
-        <p>Emma liked your Rainbow Cupcakes.</p>
-        <p>Alex followed your profile.</p>
-        <p>New recipe posted: Spicy Garlic Ramen.</p>
-        <button onclick="toggleNotif()" class="close-btn">Close</button>
+    <div class="actions">
+      <input type="search" placeholder="Search recipes..." />
+      <button class="upload-btn">+ Upload a Recipe</button>
+      <a href="sign-in.html" class="sign-in-btn">Sign In</a>
+      <span class="notif-bell" onclick="toggleNotif()">🔔</span>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
     </div>
+  </nav>
 
-    <!-- ================= ULTRA PREMIUM HERO ================= -->
+  <!-- ================= NOTIFICATION PANEL ================= -->
+  <div id="notif-panel">
+    <h3>Notifications</h3>
+    <p>Emma liked your Rainbow Cupcakes.</p>
+    <p>Alex followed your profile.</p>
+    <p>New recipe posted: Spicy Garlic Ramen.</p>
+    <button onclick="toggleNotif()" class="close-btn">Close</button>
+  </div>
 
-    <header class="hero-ultra">
+  <!-- ================= ULTRA PREMIUM HERO ================= -->
+  <header class="hero-ultra">
+    <div class="hero-bg"></div>
 
-        <!-- Parallax Background Layer -->
-        <div class="hero-bg"></div>
+    <!-- Floating food shapes (optional decorative images) -->
+    <img src="https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=400&q=80"
+         class="float-item float1" alt="">
+    <img src="https://images.unsplash.com/photo-1521302080334-4bebac27605e?auto=format&fit=crop&w=400&q=80"
+         class="float-item float2" alt="">
+    <img src="https://images.unsplash.com/photo-1473093226795-af9932fe5856?auto=format&fit=crop&w=400&q=80"
+         class="float-item float3" alt="">
 
-        <!-- Floating Elements -->
-        <img src="https://i.imgur.com/GxUuZxp.png" class="float-item float1">
-        <img src="https://i.imgur.com/aY5l1P2.png" class="float-item float2">
-        <img src="https://i.imgur.com/6gE9NjH.png" class="float-item float3">
+    <div class="glow-ring"></div>
 
-        <!-- Glow Ring -->
-        <div class="glow-ring"></div>
+    <div class="hero-card">
+      <h1>Share Your Flavor!</h1>
+      <p>
+        Good food is best shared. Discover amazing recipes from home cooks around the world
+        and share your own creations.
+      </p>
 
-        <!-- Frosted Glass Card -->
-        <div class="hero-card">
-            <h1>Share Your Flavor!</h1>
-            <p>Good food is best shared. Discover amazing recipes from home cooks around the world and share your own creations.</p>
+      <div class="hero-search">
+        <span class="search-icon">🔍</span>
+        <input type="search" placeholder="Search for recipes..." />
+      </div>
 
-            <div class="hero-search">
-                <span class="search-icon">🔍</span>
-                <input type="search" placeholder="Search for recipes...">
-            </div>
+      <a href="browse.html" class="hero-btn">Explore Recipes</a>
+    </div>
+  </header>
 
-            <a href="browse.html" class="hero-btn">Explore Recipes</a>
-        </div>
-    </header>
-
-    <!-- ================= TRENDING ================= -->
-   <main>
-    <h2>Trending Recipes</h2>
+  <!-- ================= TRENDING RECIPES ================= -->
+  <main class="explore-main">
+    <section class="explore-header">
+      <h1>Trending Recipes</h1>
+      <p>Here’s what FlavorShare cooks are loving this week.</p>
+    </section>
 
     <section class="trending-grid">
 
-        <!-- Trending Card 1 -->
-        <article class="recipe-card-premium" onclick="openRecipeModal('Carbonara')">
-            <div class="recipe-thumb">
-                <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara">
-            </div>
-            <div class="recipe-body">
-                <h2>Creamy Carbonara</h2>
-                <p class="author">by Maria Romano • Pasta</p>
-                <div class="pill-row">
-                    <span class="pill">⭐ 4.9</span>
-                    <span class="pill">25 min</span>
-                </div>
-            </div>
-        </article>
+      <!-- Trending Card 1 -->
+      <article class="recipe-card-premium" data-recipe-id="Carbonara" onclick="openRecipeModal('Carbonara')">
+        <div class="recipe-thumb">
+          <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara" />
+        </div>
+        <div class="recipe-body">
+          <h2>Creamy Carbonara</h2>
+          <p class="author">by Maria Romano • Pasta</p>
+          <p class="excerpt">Silky egg sauce, parmesan, and crispy pancetta.</p>
+          <div class="pill-row">
+            <span class="pill">⭐ 4.9</span>
+            <span class="pill">25 min</span>
+          </div>
+        </div>
+      </article>
 
-        <!-- Trending Card 2 -->
-        <article class="recipe-card-premium" onclick="openRecipeModal('Cupcakes')">
-            <div class="recipe-thumb">
-                <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes">
-            </div>
-            <div class="recipe-body">
-                <h2>Rainbow Cupcakes</h2>
-                <p class="author">by Emma Baker • Desserts</p>
-                <div class="pill-row">
-                    <span class="pill">⭐ 4.8</span>
-                    <span class="pill">40 min</span>
-                </div>
-            </div>
-        </article>
+      <!-- Trending Card 2 -->
+      <article class="recipe-card-premium" data-recipe-id="Cupcakes" onclick="openRecipeModal('Cupcakes')">
+        <div class="recipe-thumb">
+          <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes" />
+        </div>
+        <div class="recipe-body">
+          <h2>Rainbow Cupcakes</h2>
+          <p class="author">by Emma Baker • Desserts</p>
+          <p class="excerpt">Fluffy vanilla cupcakes with colorful swirl frosting.</p>
+          <div class="pill-row">
+            <span class="pill">⭐ 4.8</span>
+            <span class="pill">40 min</span>
+          </div>
+        </div>
+      </article>
 
-        <!-- Trending Card 3 -->
-        <article class="recipe-card-premium" onclick="openRecipeModal('GreenCurry')">
-            <div class="recipe-thumb">
-                <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry">
-            </div>
-            <div class="recipe-body">
-                <h2>Thai Green Curry</h2>
-                <p class="author">by Alex Chen • Asian</p>
-                <div class="pill-row">
-                    <span class="pill">⭐ 4.7</span>
-                    <span class="pill">35 min</span>
-                </div>
-            </div>
-        </article>
+      <!-- Trending Card 3 -->
+      <article class="recipe-card-premium" data-recipe-id="GreenCurry" onclick="openRecipeModal('GreenCurry')">
+        <div class="recipe-thumb">
+          <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry" />
+        </div>
+        <div class="recipe-body">
+          <h2>Thai Green Curry</h2>
+          <p class="author">by Alex Chen • Asian</p>
+          <p class="excerpt">Fragrant coconut curry with herbs and veggies.</p>
+          <div class="pill-row">
+            <span class="pill">⭐ 4.7</span>
+            <span class="pill">35 min</span>
+          </div>
+        </div>
+      </article>
 
     </section>
-</main>
+  </main>
 
+  <!-- ================= RECIPE DETAIL MODAL ================= -->
+  <div id="recipeModal" class="recipe-modal">
+    <div class="recipe-modal-content">
+      <span class="close-modal" onclick="closeRecipeModal()">×</span>
 
-    <!-- ================= FOOTER ================= -->
-    <footer>
-        © 2025 FlavorShare. Good food is best shared.
-    </footer>
+      <img id="modalImg" class="modal-img" src="" alt="Recipe image" />
+      <h2 id="modalTitle"></h2>
+      <p id="modalAuthor"></p>
 
-    <script>
-        // toggle notifications
-        function toggleNotif() {
-            document.getElementById("notif-panel").classList.toggle("show");
-        }
+      <div class="modal-section">
+        <h3>About this recipe</h3>
+        <p id="modalDesc"></p>
+      </div>
 
-        // Parallax effect
-        document.addEventListener("mousemove", (e) => {
-            const moveX = (e.clientX - window.innerWidth / 2) * 0.02;
-            const moveY = (e.clientY - window.innerHeight / 2) * 0.02;
-            document.querySelector(".hero-bg").style.transform =
-                `translate(${moveX}px, ${moveY}px) scale(1.05)`;
-        });
-    </script>
+      <div class="modal-section">
+        <h3>Ingredients</h3>
+        <ul id="modalIngredients"></ul>
+      </div>
 
+      <div class="modal-section">
+        <h3>Instructions</h3>
+        <ol id="modalSteps"></ol>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 FlavorShare. Good food is best shared.
+  </footer>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script>
+    // Recipes used for the modal
+    const recipes = {
+      Carbonara: {
+        img: "images/creamy-carbonara-1-4.jpg",
+        title: "Creamy Carbonara",
+        author: "Maria Romano",
+        desc: "A silky Italian pasta with eggs, parmesan, and crispy pancetta.",
+        ingredients: [
+          "200g spaghetti",
+          "2 eggs",
+          "1/2 cup parmesan cheese",
+          "Pancetta or bacon",
+          "Salt and pepper"
+        ],
+        steps: [
+          "Cook spaghetti until al dente.",
+          "Whisk eggs and parmesan together in a bowl.",
+          "Fry pancetta until crisp.",
+          "Combine hot pasta, egg mixture, and pancetta off the heat.",
+          "Season with salt, pepper, and extra cheese."
+        ]
+      },
+      Cupcakes: {
+        img: "images/rainbow-cupcakes-17.jpg",
+        title: "Rainbow Cupcakes",
+        author: "Emma Baker",
+        desc: "Soft vanilla cupcakes with a rainbow swirl of buttercream frosting.",
+        ingredients: [
+          "Flour, sugar, eggs, butter",
+          "Vanilla extract",
+          "Milk",
+          "Food coloring",
+          "Butter and powdered sugar for frosting"
+        ],
+        steps: [
+          "Preheat the oven and line a muffin tin.",
+          "Prepare the cupcake batter.",
+          "Divide and color batter, then swirl into liners.",
+          "Bake until a toothpick comes out clean.",
+          "Decorate with colorful buttercream."
+        ]
+      },
+      GreenCurry: {
+        img: "images/Thai-Green-Curry-square-FS.jpg",
+        title: "Thai Green Curry",
+        author: "Alex Chen",
+        desc: "Creamy coconut-based curry with green chili paste and fresh herbs.",
+        ingredients: [
+          "Green curry paste",
+          "Coconut milk",
+          "Chicken or tofu",
+          "Vegetables (eggplant, bell pepper, etc.)",
+          "Thai basil, fish sauce, lime"
+        ],
+        steps: [
+          "Sauté green curry paste in a little oil.",
+          "Add coconut milk and bring to a gentle simmer.",
+          "Add protein and cook through.",
+          "Add vegetables until just tender.",
+          "Finish with basil, fish sauce, and lime."
+        ]
+      }
+    };
+
+    function openRecipeModal(key) {
+      const r = recipes[key];
+      if (!r) return;
+
+      document.getElementById("modalImg").src = r.img;
+      document.getElementById("modalTitle").textContent = r.title;
+      document.getElementById("modalAuthor").textContent = "by " + r.author;
+      document.getElementById("modalDesc").textContent = r.desc;
+
+      const ingEl = document.getElementById("modalIngredients");
+      ingEl.innerHTML = "";
+      r.ingredients.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        ingEl.appendChild(li);
+      });
+
+      const stepsEl = document.getElementById("modalSteps");
+      stepsEl.innerHTML = "";
+      r.steps.forEach(step => {
+        const li = document.createElement("li");
+        li.textContent = step;
+        stepsEl.appendChild(li);
+      });
+
+      document.getElementById("recipeModal").classList.add("show");
+    }
+
+    function closeRecipeModal() {
+      document.getElementById("recipeModal").classList.remove("show");
+    }
+
+    // Notification toggle
+    function toggleNotif() {
+      document.getElementById("notif-panel").classList.toggle("show");
+    }
+
+    // Dark mode toggle with localStorage
+    document.addEventListener("DOMContentLoaded", () => {
+      const themeToggle = document.getElementById("themeToggle");
+      const savedTheme = localStorage.getItem("flavorshare-theme");
+
+      if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+        themeToggle.textContent = "☀️";
+      }
+
+      themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        const isDark = document.body.classList.contains("dark-mode");
+        themeToggle.textContent = isDark ? "☀️" : "🌙";
+        localStorage.setItem("flavorshare-theme", isDark ? "dark" : "light");
+      });
+    });
+
+    // Simple parallax effect on hero background
+    document.addEventListener("mousemove", (e) => {
+      const bg = document.querySelector(".hero-bg");
+      if (!bg) return;
+      const moveX = (e.clientX - window.innerWidth / 2) * 0.02;
+      const moveY = (e.clientY - window.innerHeight / 2) * 0.02;
+      bg.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
+    });
+
+    // Close modal when clicking outside content
+    document.getElementById("recipeModal").addEventListener("click", (e) => {
+      if (e.target.id === "recipeModal") {
+        closeRecipeModal();
+      }
+    });
+  </script>
 </body>
 </html>
