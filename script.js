@@ -11,11 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const createAccountBtn = document.getElementById('createAccountBtn');
 
   function showModal() {
-    signupModal.classList.remove('hidden');
+    if (signupModal) {
+      signupModal.classList.remove('hidden');
+    }
   }
 
   function hideModal() {
-    signupModal.classList.add('hidden');
+    if (signupModal) {
+      signupModal.classList.add('hidden');
+    }
   }
 
   function handleRestrictedClick(url) {
@@ -26,28 +30,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  uploadBtn.addEventListener('click', e => {
-    e.preventDefault();
-    handleRestrictedClick('upload.html');
-  });
+  if (uploadBtn) {
+    uploadBtn.addEventListener('click', e => {
+      e.preventDefault();
+      handleRestrictedClick('upload.html');
+    });
+  }
 
-  cookbookBtn.addEventListener('click', e => {
-    e.preventDefault();
-    handleRestrictedClick('cookbook.html');
-  });
+  if (cookbookBtn) {
+    cookbookBtn.addEventListener('click', e => {
+      e.preventDefault();
+      handleRestrictedClick('my-cookbook.html');
+    });
+  }
 
-  followingBtn.addEventListener('click', e => {
-    e.preventDefault();
-    handleRestrictedClick('following.html');
-  });
+  if (followingBtn) {
+    followingBtn.addEventListener('click', e => {
+      e.preventDefault();
+      handleRestrictedClick('following.html');
+    });
+  }
 
-  closeModalBtn.addEventListener('click', hideModal);
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', hideModal);
+  }
 
-  signupModal.addEventListener('click', e => {
-    if (e.target === signupModal) hideModal();
-  });
+  if (signupModal) {
+    signupModal.addEventListener('click', e => {
+      if (e.target === signupModal) hideModal();
+    });
+  }
 
-  createAccountBtn.addEventListener('click', () => {
-    window.location.href = 'sign-in.html';
-  });
+  if (createAccountBtn) {
+    createAccountBtn.addEventListener('click', () => {
+      window.location.href = 'sign-up.html';
+    });
+  }
 });
