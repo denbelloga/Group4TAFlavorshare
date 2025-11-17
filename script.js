@@ -319,6 +319,47 @@ function initUploadForm() {
       return;
     }
 
+    // GET FIELD VALUES
+    const title = form.title.value.trim();
+    const imageUrl = form.image.value.trim();
+    const author = user.name || user.email;
+    const recipeId = "recipe-" + Date.now();
+
+    if (!title || !imageUrl) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    // ========== AUTO-SAVE TO COOKBOOK ==========
+    const key = "fs_cookbook_" + user.email;
+    let list = JSON.parse(localStorage.getItem(key) || "[]");
+
+    list.push({
+      id: recipeId,
+      title: title,
+      author: author,
+      image: imageUrl
+    });
+
+    localStorage.setItem(key, JSON.stringify(list));
+
+    // ========== SHOW SUCCESS ANIMATION ==========
+    const overlay = document.getElementById("uploadSuccessOverlay");
+    overlay.classList.add("show");
+
+    // Hide after 2 seconds and redirect to Explore
+    setTimeout(() => {
+      overlay.classList.remove("show");
+      window.location.href = "browse.html";
+    }, 2000);
+
+    // Clear form
+    form.reset();
+  });
+}
+
+    }
+
     // Example fields — adjust names to your exact HTML fields
     const title = form.title.value.trim();
     const author = user.name || user.email;
@@ -345,6 +386,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initForgotForm();
   initResetForm();
   loadCookbookPage();
+  initUploadForm();
+
 });
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
