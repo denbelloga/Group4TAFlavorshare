@@ -1,161 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FlavorShare – Explore</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Recipes - FlavorShare</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <nav>
-    <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="explore.html" class="active">Explore</a></li>
-      <li><a href="my-cookbook.html" id="protectCookbook">My Cookbook</a></li>
-      <li><a href="following.html" id="protectFollowing">Following</a></li>
-    </ul>
-    <div class="actions">
-      <input type="search" placeholder="Search recipes..." />
-      <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
-      <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
-      <div id="userMenu" class="hidden">
-        <span id="userNameDisplay"></span>
-        <div id="userDropdown" class="hidden">
-          <button id="logoutBtn" type="button">Log Out</button>
+
+    <!-- NAV -->
+    <nav>
+        <div class="logo">FlavorShare</div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="explore.html" class="active">Explore</a></li>
+            <li><a href="my-cookbook.html">My Cookbook</a></li>
+            <li><a href="following.html">Following</a></li>
+        </ul>
+
+        <div class="actions">
+            <input type="search" placeholder="Search recipes...">
+            <button class="upload-btn" onclick="location.href='upload.html'">+ Upload a Recipe</button>
+            <a href="sign-in.html" class="sign-in-btn">Sign In</a>
+            <span class="notif-bell" onclick="toggleNotif()">🔔</span>
         </div>
-      </div>
-      <button id="themeToggle" class="theme-toggle" type="button">🌙 Dark</button>
-      <span id="notifBell" class="notif-bell">🔔</span>
+    </nav>
+
+    <!-- NOTIF PANEL -->
+    <div id="notif-panel" class="notif-panel">
+        <h3>Notifications</h3>
+        <p>You have 3 new recipes from cooks you follow.</p>
+        <p>Maria saved your Creamy Carbonara.</p>
+        <p>New follower: @foodielover.</p>
+        <button onclick="toggleNotif()" class="close-btn">Close</button>
     </div>
-  </nav>
 
-  <div id="notifPanel">
-    <h4>Notifications</h4>
-    <ul><li>No new notifications.</li></ul>
-    <button id="notifClose" type="button">Close</button>
-  </div>
+    <main class="explore-container">
 
-  <main>
-    <section>
-      <h2>Explore Recipes</h2>
-      <p class="section-subtitle">Discover flavorful dishes shared by home cooks around the world.</p>
+        <h1>Explore All Recipes</h1>
+        <p class="subtitle">
+            Browse a curated collection of home-cooked recipes from around the world.
+            Discover something new for every craving.
+        </p>
 
-      <div class="category-filter">
-        <button class="filter-btn active">All</button>
-        <button class="filter-btn">Pasta</button>
-        <button class="filter-btn">Desserts</button>
-        <button class="filter-btn">Asian</button>
-        <button class="filter-btn">Comfort</button>
-        <button class="filter-btn">Quick & Easy</button>
-      </div>
+        <!-- FILTER BUTTONS -->
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterRecipes('all')">All</button>
+            <button class="filter-btn" onclick="filterRecipes('pasta')">Pasta</button>
+            <button class="filter-btn" onclick="filterRecipes('dessert')">Desserts</button>
+            <button class="filter-btn" onclick="filterRecipes('asian')">Asian</button>
+            <button class="filter-btn" onclick="filterRecipes('comfort')">Comfort Food</button>
+            <button class="filter-btn" onclick="filterRecipes('quick')">Quick & Easy</button>
+        </div>
 
-      <div class="recipe-grid">
-        <article class="recipe-card"
-          onclick="openRecipeModal({id: 'creamy-carbonara', title: 'Creamy Carbonara', author: 'Maria Romano', image: 'images/creamy-carbonara-1-4.jpg', description: 'A silky Italian classic with eggs, parmesan, and crispy bacon.', ingredients: ['200g spaghetti','2 eggs','1/2 cup grated parmesan','80g pancetta or bacon','Salt & pepper'], instructions: ['Cook pasta in salted boiling water until al dente.','Crisp the pancetta in a pan.','Whisk eggs and parmesan in a bowl.','Toss hot pasta with pancetta, then quickly add egg mixture off the heat.','Season and serve immediately.']})">
-          <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara">
-          <div class="info">
-            <h3>Creamy Carbonara</h3>
-            <p class="author">Maria Romano</p>
-            <div class="meta-row">
-              <span class="pill">⭐ 4.9</span>
-              <span class="pill">25 min</span>
-              <span class="pill">Pasta</span>
-            </div>
-            <div class="card-actions">
-              <button class="primary-btn"
-                onclick="event.stopPropagation(); addToCookbook('creamy-carbonara','Creamy Carbonara','Maria Romano','images/creamy-carbonara-1-4.jpg')">
-                Save
-              </button>
-            </div>
-          </div>
-        </article>
+        <!-- FIXED RECIPE GRID -->
+        <div id="exploreGrid" class="recipe-grid">
 
-        <article class="recipe-card"
-          onclick="openRecipeModal({id: 'rainbow-cupcakes', title: 'Rainbow Cupcakes', author: 'Emma Baker', image: 'images/rainbow-cupcakes-17.jpg', description: 'Soft vanilla cupcakes topped with colorful buttercream swirls.', ingredients: ['2 cups flour','1 cup sugar','2 eggs','1 cup milk','Buttercream + food coloring'], instructions: ['Prepare cupcake batter and divide into bowls.','Tint each bowl with different food coloring.','Spoon colors into cupcake liners and bake.','Pipe rainbow-tinted buttercream on cooled cupcakes.']})">
-          <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes">
-          <div class="info">
-            <h3>Rainbow Cupcakes</h3>
-            <p class="author">Emma Baker</p>
-            <div class="meta-row">
-              <span class="pill">⭐ 4.8</span>
-              <span class="pill">40 min</span>
-              <span class="pill">Dessert</span>
-            </div>
-            <div class="card-actions">
-              <button class="primary-btn"
-                onclick="event.stopPropagation(); addToCookbook('rainbow-cupcakes','Rainbow Cupcakes','Emma Baker','images/rainbow-cupcakes-17.jpg')">
-                Save
-              </button>
-            </div>
-          </div>
-        </article>
+            <!-- RECIPES WILL BE INJECTED BY JS -->
 
-        <article class="recipe-card"
-          onclick="openRecipeModal({id: 'thai-green-curry', title: 'Thai Green Curry', author: 'Alex Chen', image: 'images/Thai-Green-Curry-square-FS.jpg', description: 'A fragrant coconut-based curry with vegetables and herbs.', ingredients: ['Green curry paste','Coconut milk','Chicken or tofu','Eggplant, beans, basil','Fish sauce (optional)'], instructions: ['Sauté curry paste until aromatic.','Add coconut milk and bring to a simmer.','Add protein and vegetables; cook until tender.','Finish with basil and season to taste.']})">
-          <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry">
-          <div class="info">
-            <h3>Thai Green Curry</h3>
-            <p class="author">Alex Chen</p>
-            <div class="meta-row">
-              <span class="pill">⭐ 4.7</span>
-              <span class="pill">35 min</span>
-              <span class="pill">Asian</span>
-            </div>
-            <div class="card-actions">
-              <button class="primary-btn"
-                onclick="event.stopPropagation(); addToCookbook('thai-green-curry','Thai Green Curry','Alex Chen','images/Thai-Green-Curry-square-FS.jpg')">
-                Save
-              </button>
-            </div>
-          </div>
-        </article>
+        </div>
+    </main>
 
-        <article class="recipe-card"
-          onclick="openRecipeModal({id: 'palabok-fiesta', title: 'Palabok Fiesta', author: 'Lara Santos', image: 'images/Palabok.jpg', description: 'A Filipino noodle dish with rich shrimp sauce and toppings.', ingredients: ['Rice noodles','Shrimp broth','Ground pork','Chicharrón, eggs, spring onions'], instructions: ['Soak and cook rice noodles.','Prepare palabok sauce with shrimp broth and seasonings.','Pour sauce over noodles and top with chicharrón, eggs, and onions.']})">
-          <img src="images/Palabok.jpg" alt="Palabok Fiesta">
-          <div class="info">
-            <h3>Palabok Fiesta</h3>
-            <p class="author">Lara Santos</p>
-            <div class="meta-row">
-              <span class="pill">⭐ 4.6</span>
-              <span class="pill">45 min</span>
-              <span class="pill">Comfort</span>
-            </div>
-            <div class="card-actions">
-              <button class="primary-btn"
-                onclick="event.stopPropagation(); addToCookbook('palabok-fiesta','Palabok Fiesta','Lara Santos','images/Palabok.jpg')">
-                Save
-              </button>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
+    <!-- RECIPE MODAL -->
+    <div id="recipeModal" class="recipe-modal">
+        <div class="recipe-modal-content">
+            <span class="close-modal" onclick="closeRecipeModal()">×</span>
+            <img id="modalImage" src="">
+            <h2 id="modalTitle"></h2>
+            <p id="modalAuthor"></p>
 
-  <div id="recipeModal">
-    <div class="recipe-modal-inner">
-      <button class="modal-close" type="button">×</button>
-      <img id="modalImage" class="modal-image" src="" alt="Recipe image" />
-      <h2 id="modalTitle"></h2>
-      <p id="modalAuthor" class="modal-author"></p>
-      <h3>About this recipe</h3>
-      <p id="modalDescription"></p>
-      <h3>Ingredients</h3>
-      <ul id="modalIngredients"></ul>
-      <h3>Instructions</h3>
-      <ol id="modalInstructions"></ol>
-      <button id="saveFromModalBtn" class="primary-btn" type="button">
-        Save to Cookbook
-      </button>
+            <h3>About this recipe</h3>
+            <p id="modalDesc"></p>
+
+            <h3>Ingredients</h3>
+            <ul id="modalIngredients"></ul>
+
+            <h3>Instructions</h3>
+            <p id="modalSteps"></p>
+        </div>
     </div>
-  </div>
 
-  <footer>
-    © 2025 FlavorShare. Good food is best shared.
-  </footer>
+    <footer>
+        © 2025 FlavorShare. Good food is best shared.
+    </footer>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
