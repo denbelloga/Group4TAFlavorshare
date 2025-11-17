@@ -7,45 +7,48 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- NAVBAR -->
+
   <nav>
-    <div class="logo">FlavorShare</div>
+    <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="browse.html">Explore</a></li>
-      <li><a href="my-cookbook.html" class="active">My Cookbook</a></li>
-      <li><a href="following.html">Following</a></li>
+      <li><a href="my-cookbook.html" class="active" id="protectCookbook">My Cookbook</a></li>
+      <li><a href="following.html" id="protectFollowing">Following</a></li>
     </ul>
     <div class="actions">
       <input type="search" placeholder="Search recipes..." />
-      <button class="upload-btn" onclick="location.href='upload.html'">+ Upload a Recipe</button>
-      <a href="sign-in.html" class="sign-in-btn">Sign In</a>
-      <span id="notifBell" class="notif-bell" aria-label="Notifications" role="button">🔔</span>
+      <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
+      <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
+      <div id="userMenu" class="hidden">
+        <span id="userNameDisplay"></span>
+        <div id="userDropdown" class="hidden">
+          <button id="logoutBtn">Log Out</button>
+        </div>
+      </div>
+      <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
+      <span id="notifBell" class="notif-bell">🔔</span>
     </div>
   </nav>
 
-  <!-- NOTIFICATION PANEL -->
-  <div id="notifPanel" class="notif-panel">
+  <div id="notifPanel">
     <h4>Notifications</h4>
-    <ul id="notifList">
-      <li>No notifications yet.</li>
+    <ul>
+      <li>No new notifications.</li>
     </ul>
-    <button id="notifClose" class="notif-close">Close</button>
+    <button id="notifClose">Close</button>
   </div>
 
   <main>
     <section>
       <h2>My Cookbook</h2>
-      <p class="section-subtitle">
-        All the recipes you've saved live here. Come back anytime to cook your favorites.
-      </p>
+      <p class="section-subtitle">All the recipes you've saved in one place.</p>
 
       <div id="cookbookGrid" class="recipe-grid"></div>
 
       <div id="cookbookEmpty" class="empty-state">
         <h3>Your cookbook is empty</h3>
-        <p>Browse recipes and tap “Save to Cookbook” to keep them here.</p>
-        <a href="browse.html" class="btn-primary">Discover Recipes</a>
+        <p>You haven’t saved any recipes yet.</p>
       </div>
     </section>
   </main>
@@ -53,18 +56,6 @@
   <footer>
     © 2025 FlavorShare. Good food is best shared.
   </footer>
-
-  <!-- LOGIN REQUIRED MODAL -->
-  <div id="loginRequiredModal" class="login-modal">
-    <div class="login-modal-box">
-      <h2>Sign In Required</h2>
-      <p>You need an account to view your cookbook.</p>
-      <div class="login-modal-actions">
-        <a href="sign-in.html" class="btn-primary">Sign In</a>
-        <a href="sign-up.html" class="btn-outline">Create Account</a>
-      </div>
-    </div>
-  </div>
 
   <script src="script.js"></script>
 </body>
