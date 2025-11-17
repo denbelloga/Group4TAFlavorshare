@@ -3,217 +3,163 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Explore Recipes - FlavorShare</title>
+  <title>FlavorShare – Explore</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-
-  <!-- NAV (same as home) -->
+  <!-- NAVBAR -->
   <nav>
     <div class="logo">FlavorShare</div>
-
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="browse.html" class="active">Explore</a></li>
       <li><a href="my-cookbook.html">My Cookbook</a></li>
       <li><a href="following.html">Following</a></li>
     </ul>
-
     <div class="actions">
       <input type="search" placeholder="Search recipes..." />
-      <button class="upload-btn">+ Upload a Recipe</button>
+      <button class="upload-btn" onclick="location.href='upload.html'">+ Upload a Recipe</button>
       <a href="sign-in.html" class="sign-in-btn">Sign In</a>
-      <span class="notif-bell" onclick="toggleNotif()">🔔</span>
+      <span id="notifBell" class="notif-bell" aria-label="Notifications" role="button">🔔</span>
     </div>
   </nav>
 
-  <!-- NOTIFICATION PANEL (shared) -->
-  <div id="notif-panel">
-    <h3>Notifications</h3>
-    <p>You have 3 new recipes from cooks you follow.</p>
-    <p>Maria saved your Creamy Carbonara.</p>
-    <p>New follower: @foodielover.</p>
-    <button onclick="toggleNotif()" class="close-btn">Close</button>
+  <!-- NOTIFICATION PANEL -->
+  <div id="notifPanel" class="notif-panel">
+    <h4>Notifications</h4>
+    <ul id="notifList">
+      <li>No notifications yet.</li>
+    </ul>
+    <button id="notifClose" class="notif-close">Close</button>
   </div>
 
-  <!-- ULTRA PREMIUM EXPLORE CONTENT -->
-  <main class="explore-main">
-
-    <!-- Explore header -->
-    <section class="explore-header">
-      <h1>Explore All Recipes</h1>
-      <p>
-        Browse a curated collection of recipes from home cooks around the world.  
-        Discover something new for every craving.
+  <main>
+    <section>
+      <h2>Explore All Recipes</h2>
+      <p class="section-subtitle">
+        Browse a curated collection of recipes from home cooks around the world. Discover something new for every craving.
       </p>
 
-      <div class="explore-filters">
-        <button class="chip chip-active">All</button>
-        <button class="chip">Pasta</button>
-        <button class="chip">Desserts</button>
-        <button class="chip">Asian</button>
-        <button class="chip">Comfort Food</button>
-        <button class="chip">Quick & Easy</button>
+      <div class="filter-row">
+        <button class="filter-pill active">All</button>
+        <button class="filter-pill">Pasta</button>
+        <button class="filter-pill">Desserts</button>
+        <button class="filter-pill">Asian</button>
+        <button class="filter-pill">Comfort Food</button>
+        <button class="filter-pill">Quick &amp; Easy</button>
       </div>
-    </section>
 
-    <!-- Recipe grid -->
-    <section class="explore-grid">
+      <div class="recipe-grid">
+        <!-- Copy of the 3 cards and a few extra ones -->
 
-      <!-- CARD 1 -->
-      <article class="recipe-card-premium">
-        <div class="recipe-thumb">
+        <article class="recipe-card">
           <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara" />
-        </div>
-        <div class="recipe-body">
-          <h2>Creamy Carbonara</h2>
-          <p class="author">by Maria Romano • Pasta</p>
-          <p class="excerpt">Rich, silky sauce with eggs, parmesan, and crispy pancetta.</p>
-          <div class="pill-row">
-            <span class="pill">⭐ 4.9</span>
-            <span class="pill">25 min</span>
-            <span class="pill">234 reviews</span>
+          <div class="info">
+            <h3>Creamy Carbonara</h3>
+            <p class="author">Maria Romano</p>
+            <div class="meta-row">
+              <span class="pill">⭐ 4.9</span>
+              <span class="pill">25 min</span>
+            </div>
+            <div class="card-actions">
+              <button class="primary-btn"
+                onclick="saveRecipeToCookbook('creamy-carbonara','Creamy Carbonara','images/creamy-carbonara-1-4.jpg','Maria Romano')">
+                Save
+              </button>
+              <button class="icon-btn"
+                onclick="likeRecipe('creamy-carbonara','Creamy Carbonara')">
+                ❤️ <span data-like-count="creamy-carbonara">0</span>
+              </button>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- CARD 2 -->
-      <article class="recipe-card-premium">
-        <div class="recipe-thumb">
+        <article class="recipe-card">
           <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes" />
-        </div>
-        <div class="recipe-body">
-          <h2>Rainbow Cupcakes</h2>
-          <p class="author">by Emma Baker • Desserts</p>
-          <p class="excerpt">Fluffy vanilla cupcakes topped with colorful swirls of buttercream.</p>
-          <div class="pill-row">
-            <span class="pill">⭐ 4.8</span>
-            <span class="pill">40 min</span>
-            <span class="pill">189 reviews</span>
+          <div class="info">
+            <h3>Rainbow Cupcakes</h3>
+            <p class="author">Emma Baker</p>
+            <div class="meta-row">
+              <span class="pill">⭐ 4.8</span>
+              <span class="pill">40 min</span>
+            </div>
+            <div class="card-actions">
+              <button class="primary-btn"
+                onclick="saveRecipeToCookbook('rainbow-cupcakes','Rainbow Cupcakes','images/rainbow-cupcakes-17.jpg','Emma Baker')">
+                Save
+              </button>
+              <button class="icon-btn"
+                onclick="likeRecipe('rainbow-cupcakes','Rainbow Cupcakes')">
+                ❤️ <span data-like-count="rainbow-cupcakes">0</span>
+              </button>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- CARD 3 -->
-      <article class="recipe-card-premium">
-        <div class="recipe-thumb">
+        <article class="recipe-card">
           <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry" />
-        </div>
-        <div class="recipe-body">
-          <h2>Thai Green Curry</h2>
-          <p class="author">by Alex Chen • Asian</p>
-          <p class="excerpt">Fragrant coconut curry with herbs, veggies, and a gentle heat.</p>
-          <div class="pill-row">
-            <span class="pill">⭐ 4.7</span>
-            <span class="pill">35 min</span>
-            <span class="pill">310 reviews</span>
+          <div class="info">
+            <h3>Thai Green Curry</h3>
+            <p class="author">Alex Chen</p>
+            <div class="meta-row">
+              <span class="pill">⭐ 4.7</span>
+              <span class="pill">35 min</span>
+            </div>
+            <div class="card-actions">
+              <button class="primary-btn"
+                onclick="saveRecipeToCookbook('thai-green-curry','Thai Green Curry','images/Thai-Green-Curry-square-FS.jpg','Alex Chen')">
+                Save
+              </button>
+              <button class="icon-btn"
+                onclick="likeRecipe('thai-green-curry','Thai Green Curry')">
+                ❤️ <span data-like-count="thai-green-curry">0</span>
+              </button>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- CARD 4 -->
-      <article class="recipe-card-premium">
-        <div class="recipe-thumb">
-          <img src="images/Palabok.jpg" alt="Fiesta Palabok" />
-        </div>
-        <div class="recipe-body">
-          <h2>Fiesta Palabok</h2>
-          <p class="author">by Angelic Belloga • Filipino</p>
-          <p class="excerpt">Savory noodle dish with shrimp sauce, chicharrón, and egg.</p>
-          <div class="pill-row">
-            <span class="pill">⭐ 4.9</span>
-            <span class="pill">45 min</span>
-            <span class="pill">128 reviews</span>
+        <article class="recipe-card">
+          <img src="images/Palabok.jpg" alt="Palabok Fiesta" />
+          <div class="info">
+            <h3>Palabok Fiesta</h3>
+            <p class="author">Lara Santos</p>
+            <div class="meta-row">
+              <span class="pill">⭐ 4.6</span>
+              <span class="pill">45 min</span>
+            </div>
+            <div class="card-actions">
+              <button class="primary-btn"
+                onclick="saveRecipeToCookbook('palabok','Palabok Fiesta','images/Palabok.jpg','Lara Santos')">
+                Save
+              </button>
+              <button class="icon-btn"
+                onclick="likeRecipe('palabok','Palabok Fiesta')">
+                ❤️ <span data-like-count="palabok">0</span>
+              </button>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- CARD 5 -->
-      <article class="recipe-card-premium">
-        <div class="recipe-thumb">
-          <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80"
-               alt="Margherita Pizza" />
-        </div>
-        <div class="recipe-body">
-          <h2>Classic Margherita Pizza</h2>
-          <p class="author">by Luca Rossi • Italian</p>
-          <p class="excerpt">Crispy crust, fresh mozzarella, basil, and bright tomato sauce.</p>
-          <div class="pill-row">
-            <span class="pill">⭐ 4.6</span>
-            <span class="pill">30 min</span>
-            <span class="pill">412 reviews</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- CARD 6 -->
-      <article class="recipe-card-premium">
-        <div class="recipe-thumb">
-          <img src="https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=800&q=80"
-               alt="Orange Chicken Bowl" />
-        </div>
-        <div class="recipe-body">
-          <h2>Orange Chicken Bowl</h2>
-          <p class="author">by Kenji Sato • Comfort Food</p>
-          <p class="excerpt">Crispy chicken tossed in sticky orange sauce served over rice.</p>
-          <div class="pill-row">
-            <span class="pill">⭐ 4.5</span>
-            <span class="pill">35 min</span>
-            <span class="pill">273 reviews</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- CARD 7 -->
-      <article class="recipe-card-premium">
-        <div class="recipe-thumb">
-          <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80"
-               alt="Berry Smoothie Bowl" />
-        </div>
-        <div class="recipe-body">
-          <h2>Berry Smoothie Bowl</h2>
-          <p class="author">by Zoe Hart • Healthy</p>
-          <p class="excerpt">Thick berry smoothie topped with granola, chia, and fresh fruit.</p>
-          <div class="pill-row">
-            <span class="pill">⭐ 4.9</span>
-            <span class="pill">10 min</span>
-            <span class="pill">356 reviews</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- CARD 8 -->
-      <article class="recipe-card-premium">
-        <div class="recipe-thumb">
-          <img src="https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83?auto=format&fit=crop&w=800&q=80"
-               alt="Garlic Butter Shrimp Pasta" />
-        </div>
-        <div class="recipe-body">
-          <h2>Garlic Butter Shrimp Pasta</h2>
-          <p class="author">by Tristan Cunanan • Quick & Easy</p>
-          <p class="excerpt">Juicy shrimp, garlic butter sauce, and al dente spaghetti.</p>
-          <div class="pill-row">
-            <span class="pill">⭐ 4.8</span>
-            <span class="pill">20 min</span>
-            <span class="pill">221 reviews</span>
-          </div>
-        </div>
-      </article>
-
+      </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer>
     © 2025 FlavorShare. Good food is best shared.
   </footer>
 
-  <script>
-    function toggleNotif() {
-      document.getElementById("notif-panel").classList.toggle("show");
-    }
-  </script>
+  <!-- LOGIN REQUIRED MODAL -->
+  <div id="loginRequiredModal" class="login-modal">
+    <div class="login-modal-box">
+      <h2>Sign In Required</h2>
+      <p>You need an account to save recipes to your cookbook.</p>
+      <div class="login-modal-actions">
+        <a href="sign-in.html" class="btn-primary">Sign In</a>
+        <a href="sign-up.html" class="btn-outline">Create Account</a>
+      </div>
+    </div>
+  </div>
 
+  <script src="script.js"></script>
 </body>
 </html>
