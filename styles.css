@@ -1,14 +1,17 @@
+
 /* =============== RESET =============== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
+html, body {
+  height: 100%;
+}
 body {
-  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background: #fff8f0;
-  color: #2d2d2d;
+  color: #222222;
   line-height: 1.5;
 }
 
@@ -24,38 +27,32 @@ nav {
   top: 0;
   z-index: 1000;
 }
-
 .logo {
   font-size: 1.7rem;
   font-weight: 900;
   color: #eb5424;
   cursor: pointer;
 }
-
 .nav-links {
   list-style: none;
   display: flex;
   gap: 28px;
 }
-
 .nav-links a {
   text-decoration: none;
   color: #444;
   font-weight: 600;
   font-size: 0.95rem;
 }
-
 .nav-links a:hover,
 .nav-links a.active {
   color: #eb5424;
 }
-
 .actions {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-
 .actions input[type="search"] {
   border-radius: 18px;
   border: 1px solid #cccccc;
@@ -63,7 +60,6 @@ nav {
   width: 210px;
   font-size: 0.9rem;
 }
-
 .upload-btn {
   border-radius: 18px;
   border: 1.5px solid #eb5424;
@@ -74,12 +70,10 @@ nav {
   font-size: 0.85rem;
   cursor: pointer;
 }
-
 .upload-btn:hover {
   background: #eb5424;
   color: #ffffff;
 }
-
 .sign-in-btn {
   padding: 7px 14px;
   border-radius: 18px;
@@ -89,12 +83,9 @@ nav {
   font-weight: 700;
   font-size: 0.85rem;
 }
-
-/* User menu (username + dropdown) */
 #userMenu {
   position: relative;
 }
-
 #userNameDisplay {
   background: #ffe5d6;
   color: #eb5424;
@@ -104,7 +95,6 @@ nav {
   cursor: pointer;
   font-size: 0.85rem;
 }
-
 #userDropdown {
   position: absolute;
   top: 110%;
@@ -115,7 +105,6 @@ nav {
   padding: 6px;
   min-width: 130px;
 }
-
 #userDropdown button {
   width: 100%;
   padding: 7px 10px;
@@ -127,17 +116,13 @@ nav {
   cursor: pointer;
   font-size: 0.85rem;
 }
-
 .hidden {
   display: none;
 }
-
-/* Bell + theme toggle */
 .notif-bell {
   font-size: 1.3rem;
   cursor: pointer;
 }
-
 .theme-toggle {
   cursor: pointer;
   font-size: 0.85rem;
@@ -146,7 +131,7 @@ nav {
   padding: 4px 10px;
 }
 
-/* =============== NOTIFICATION PANEL =============== */
+/* NOTIFICATION PANEL */
 #notifPanel {
   position: fixed;
   top: 70px;
@@ -160,27 +145,22 @@ nav {
   display: none;
   z-index: 1200;
 }
-
 #notifPanel.show {
   display: block;
 }
-
 #notifPanel h4 {
   font-size: 0.95rem;
   font-weight: 800;
   margin-bottom: 6px;
 }
-
 #notifPanel ul {
   list-style: none;
   font-size: 0.85rem;
   margin-bottom: 8px;
 }
-
 #notifPanel li {
   margin-bottom: 4px;
 }
-
 #notifClose {
   width: 100%;
   padding: 6px 10px;
@@ -196,41 +176,75 @@ nav {
 /* =============== HERO (HOME) =============== */
 .hero-section {
   min-height: 60vh;
-  background: linear-gradient(135deg, rgba(235, 84, 36, 0.9), rgba(255, 167, 81, 0.9)),
-    url("images/Title-Image-8.webp") center/cover no-repeat;
+  background: radial-gradient(circle at top left, #ffcf9f, #eb5424);
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  text-align: center;
-  padding: 60px 20px 70px;
+  padding: 70px 10% 80px;
   color: white;
 }
-
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("images/Title-Image-8.webp") center/cover no-repeat;
+  opacity: 0.25;
+}
+.hero-inner {
+  position: relative;
+  max-width: 520px;
+}
+.hero-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  opacity: 0.86;
+}
 .hero-section h1 {
   font-size: 3rem;
   font-weight: 900;
-  margin-bottom: 12px;
+  margin: 10px 0;
 }
-
 .hero-section p {
-  max-width: 580px;
-  font-size: 1.05rem;
-  margin-bottom: 20px;
+  max-width: 480px;
+  font-size: 1rem;
+  margin-bottom: 18px;
 }
-
+.hero-search {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
 .hero-search input {
   padding: 10px 18px;
   border-radius: 999px;
   border: none;
   width: 100%;
-  max-width: 420px;
+  max-width: 360px;
   font-size: 0.95rem;
+}
+.hero-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
   margin-bottom: 18px;
 }
-
+.hero-pill {
+  font-size: 0.75rem;
+  border-radius: 999px;
+  border: none;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
 .hero-btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   padding: 10px 22px;
   border-radius: 999px;
   background: #ffffff;
@@ -239,6 +253,9 @@ nav {
   font-size: 0.95rem;
   font-weight: 800;
 }
+.hero-btn span {
+  font-size: 1.1rem;
+}
 
 /* =============== MAIN LAYOUT =============== */
 main {
@@ -246,14 +263,12 @@ main {
   margin: 40px auto 60px;
   padding: 0 20px;
 }
-
 main h2 {
   text-align: center;
   font-size: 2rem;
   color: #eb5424;
   margin-bottom: 6px;
 }
-
 .section-subtitle {
   text-align: center;
   font-size: 0.95rem;
@@ -269,52 +284,44 @@ main h2 {
   gap: 24px;
   margin-top: 10px;
 }
-
 .recipe-card {
   background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.11);
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
-
 .recipe-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
 }
-
 .recipe-card img {
   width: 100%;
-  height: 170px;
+  height: 180px;
   object-fit: cover;
 }
-
 .recipe-card .info {
-  padding: 10px 14px 14px;
+  padding: 12px 14px 14px;
 }
-
 .recipe-card h3 {
   font-size: 1.05rem;
   font-weight: 800;
   margin-bottom: 4px;
 }
-
 .recipe-card .author {
   font-size: 0.85rem;
   color: #777;
   margin-bottom: 8px;
 }
-
 .meta-row {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   margin-bottom: 8px;
 }
-
 .pill {
   font-size: 0.75rem;
   padding: 3px 8px;
@@ -322,13 +329,12 @@ main h2 {
   background: #ffe9da;
   color: #884023;
 }
-
 .card-actions {
   display: flex;
   justify-content: flex-start;
   gap: 6px;
+  margin-top: 6px;
 }
-
 .primary-btn {
   border-radius: 999px;
   border: none;
@@ -339,17 +345,24 @@ main h2 {
   font-weight: 700;
   cursor: pointer;
 }
+.icon-btn {
+  border-radius: 999px;
+  border: none;
+  padding: 6px 10px;
+  background: #ffe9da;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
 
-/* =============== FILTERS (Explore) =============== */
-.filter-row {
+/* FILTER ROW (Explore) */
+.category-filter {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 8px;
   margin-bottom: 10px;
 }
-
-.filter-pill {
+.filter-btn {
   border-radius: 999px;
   border: 1px solid #f3b694;
   background: white;
@@ -357,21 +370,19 @@ main h2 {
   font-size: 0.8rem;
   cursor: pointer;
 }
-
-.filter-pill:hover,
-.filter-pill.active {
+.filter-btn:hover,
+.filter-btn.active {
   background: #eb5424;
   color: white;
   border-color: #eb5424;
 }
 
-/* =============== EMPTY STATE =============== */
+/* EMPTY STATE */
 .empty-state {
   text-align: center;
   margin-top: 26px;
   color: #666;
 }
-
 .empty-state h3 {
   font-size: 1.2rem;
   margin-bottom: 4px;
@@ -379,18 +390,16 @@ main h2 {
 
 /* =============== AUTH PAGES =============== */
 .auth-body {
-  background: radial-gradient(circle at top left, #ffe1cd, #fff8f0);
+  background: radial-gradient(circle at top, #ffe1cd, #fff8f0);
 }
-
 .auth-container {
   max-width: 380px;
   margin: 80px auto 60px;
   background: #ffffff;
-  border-radius: 16px;
-  padding: 24px 22px 26px;
-  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.15);
+  border-radius: 18px;
+  padding: 26px 22px 28px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
 }
-
 .auth-logo {
   text-align: center;
   font-size: 1.6rem;
@@ -398,25 +407,21 @@ main h2 {
   font-weight: 900;
   margin-bottom: 4px;
 }
-
 .auth-title {
   text-align: center;
   font-size: 1.2rem;
   margin-bottom: 4px;
 }
-
 .auth-sub {
   text-align: center;
   font-size: 0.9rem;
   color: #777;
   margin-bottom: 16px;
 }
-
 .auth-form label {
   font-size: 0.85rem;
   font-weight: 600;
 }
-
 .auth-form input {
   width: 100%;
   padding: 8px 10px;
@@ -425,7 +430,6 @@ main h2 {
   border: 1px solid #cccccc;
   font-size: 0.9rem;
 }
-
 .auth-btn {
   width: 100%;
   padding: 9px 12px;
@@ -438,19 +442,16 @@ main h2 {
   cursor: pointer;
   margin-top: 4px;
 }
-
 .auth-link {
   text-align: center;
   margin-top: 10px;
   font-size: 0.85rem;
 }
-
 .auth-link a {
   color: #eb5424;
   text-decoration: none;
   font-weight: 700;
 }
-
 .auth-error {
   font-size: 0.8rem;
   color: #c0392b;
@@ -468,106 +469,8 @@ footer {
   font-size: 0.85rem;
 }
 
-/* =============== DARK MODE =============== */
-body.dark-mode {
-  background: #121212;
-  color: #f1f1f1;
-}
-
-body.dark-mode nav {
-  background: #1f1f1f;
-  border-bottom-color: #333;
-}
-
-body.dark-mode .logo {
-  color: #ffb089;
-}
-
-body.dark-mode .nav-links a {
-  color: #dddddd;
-}
-
-body.dark-mode .nav-links a.active,
-body.dark-mode .nav-links a:hover {
-  color: #ffb089;
-}
-
-body.dark-mode .actions input[type="search"] {
-  background: #262626;
-  border-color: #444;
-  color: #f0f0f0;
-}
-
-body.dark-mode .upload-btn {
-  border-color: #ffb089;
-  color: #ffb089;
-}
-
-body.dark-mode .upload-btn:hover {
-  background: #ffb089;
-  color: #1a1a1a;
-}
-
-body.dark-mode .sign-in-btn {
-  background: #ff8b53;
-}
-
-body.dark-mode #userNameDisplay {
-  background: #4a2a1f;
-  color: #ffb089;
-}
-
-body.dark-mode #userDropdown {
-  background: #262626;
-  border-color: #444;
-}
-
-body.dark-mode #userDropdown button {
-  background: #ff8b53;
-  color: #1a1a1a;
-}
-
-body.dark-mode .theme-toggle {
-  border-color: #555;
-  color: #f1f1f1;
-}
-
-/* dark: hero overlay a bit darker */
-body.dark-mode .hero-section {
-  background: linear-gradient(135deg, rgba(10,10,10,0.9), rgba(40,40,40,0.9)),
-    url("images/Title-Image-8.webp") center/cover no-repeat;
-}
-
-/* dark: cards, panels */
-body.dark-mode .recipe-card,
-body.dark-mode .auth-container,
-body.dark-mode #notifPanel {
-  background: #1f1f1f;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.6);
-}
-
-body.dark-mode .recipe-card .author,
-body.dark-mode .section-subtitle,
-body.dark-mode .empty-state {
-  color: #bbbbbb;
-}
-
-body.dark-mode .pill {
-  background: #3a2418;
-  color: #ffd4b5;
-}
-
-body.dark-mode .primary-btn {
-  background: #ff8b53;
-  color: #1a1a1a;
-}
-
-body.dark-mode footer {
-  background: #0c0c0c;
-}
-
-/* =============== RECIPE MODAL =============== */
-.recipe-modal-overlay {
+/* =============== MODAL =============== */
+#recipeModal {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.65);
@@ -578,8 +481,10 @@ body.dark-mode footer {
   z-index: 9999;
   overflow-y: auto;
 }
-
-.recipe-modal {
+#recipeModal.show {
+  display: flex;
+}
+.recipe-modal-inner {
   background: #fff;
   border-radius: 24px;
   max-width: 900px;
@@ -589,12 +494,10 @@ body.dark-mode footer {
   box-shadow: 0 20px 40px rgba(0,0,0,0.25);
   animation: modalShow 0.25s ease-out;
 }
-
 @keyframes modalShow {
   from { transform: translateY(40px); opacity: 0; }
   to   { transform: translateY(0); opacity: 1; }
 }
-
 .modal-image {
   width: 100%;
   height: 290px;
@@ -602,7 +505,6 @@ body.dark-mode footer {
   border-radius: 16px;
   margin-bottom: 20px;
 }
-
 .modal-close {
   position: absolute;
   top: 18px;
@@ -612,43 +514,114 @@ body.dark-mode footer {
   background: transparent;
   border: none;
 }
-
 .modal-author {
   margin-top: -10px;
   color: #666;
   font-style: italic;
 }
-
-/* Lists styling */
-.recipe-modal ul,
-.recipe-modal ol {
+#modalIngredients,
+#modalInstructions {
   margin-left: 20px;
   margin-bottom: 15px;
   line-height: 1.6;
 }
 
-/* DARK MODE MODAL */
-body.dark-mode .recipe-modal {
-  background: #222;
-  color: #fff;
+/* DARK MODE SUPPORT */
+body.dark-mode {
+  background: #121212;
+  color: #f1f1f1;
+}
+body.dark-mode nav {
+  background: #1f1f1f;
+  border-bottom-color: #333;
+}
+body.dark-mode .logo {
+  color: #ffb089;
+}
+body.dark-mode .nav-links a {
+  color: #dddddd;
+}
+body.dark-mode .nav-links a.active,
+body.dark-mode .nav-links a:hover {
+  color: #ffb089;
+}
+body.dark-mode .actions input[type="search"] {
+  background: #262626;
+  border-color: #444;
+  color: #f0f0f0;
+}
+body.dark-mode .upload-btn {
+  border-color: #ffb089;
+  color: #ffb089;
+}
+body.dark-mode .upload-btn:hover {
+  background: #ffb089;
+  color: #1a1a1a;
+}
+body.dark-mode .sign-in-btn {
+  background: #ff8b53;
+}
+body.dark-mode #userNameDisplay {
+  background: #4a2a1f;
+  color: #ffb089;
+}
+body.dark-mode #userDropdown {
+  background: #262626;
+  border-color: #444;
+}
+body.dark-mode #userDropdown button {
+  background: #ff8b53;
+  color: #1a1a1a;
+}
+body.dark-mode .theme-toggle {
+  border-color: #555;
+  color: #f1f1f1;
+}
+body.dark-mode .hero-section {
+  background: linear-gradient(135deg, rgba(15,15,15,0.95), rgba(40,40,40,0.95));
+}
+body.dark-mode .recipe-card,
+body.dark-mode .auth-container,
+body.dark-mode #notifPanel,
+body.dark-mode .recipe-modal-inner {
+  background: #1f1f1f;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.6);
+}
+body.dark-mode .recipe-card .author,
+body.dark-mode .section-subtitle,
+body.dark-mode .empty-state {
+  color: #bbbbbb;
+}
+body.dark-mode .pill {
+  background: #3a2418;
+  color: #ffd4b5;
+}
+body.dark-mode .primary-btn {
+  background: #ff8b53;
+  color: #1a1a1a;
+}
+body.dark-mode .icon-btn {
+  background: #3a2418;
+  color: #ffb089;
+}
+body.dark-mode footer {
+  background: #0c0c0c;
 }
 
-body.dark-mode .modal-author {
-  color: #bbb;
-}
-
-/* =============== RESPONSIVE =============== */
-@media (max-width: 840px) {
+/* RESPONSIVE */
+@media (max-width: 900px) {
   nav {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    padding: 12px 16px;
+    flex-wrap: wrap;
+    gap: 8px;
   }
   .nav-links {
     gap: 16px;
   }
+  .hero-section {
+    padding: 50px 24px 60px;
+  }
 }
-
 @media (max-width: 600px) {
   .hero-section h1 {
     font-size: 2.2rem;
@@ -662,162 +635,4 @@ body.dark-mode .modal-author {
   .recipe-grid {
     grid-template-columns: 1fr;
   }
-}
-/* ===== HEADER / NAV SYSTEM ===== */
-
-.main-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 40px;
-  background: #fff;
-  border-bottom: 1px solid #ddd;
-  position: sticky;
-  top: 0;
-  z-index: 2000;
-}
-
-.main-nav .logo a {
-  font-size: 1.8rem;
-  font-weight: 900;
-  color: #eb5424;
-  text-decoration: none;
-}
-
-.nav-links {
-  display: flex;
-  gap: 32px;
-  list-style: none;
-}
-
-.nav-links a {
-  color: #333;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.nav-links a:hover,
-.nav-links .active {
-  color: #eb5424;
-}
-
-.actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.nav-search {
-  padding: 8px 16px;
-  border-radius: 20px;
-  border: 1px solid #ccc;
-  width: 260px;
-}
-
-.upload-btn {
-  padding: 8px 16px;
-  border-radius: 20px;
-  border: 1.5px solid #eb5424;
-  background: transparent;
-  font-weight: 700;
-  color: #eb5424;
-  cursor: pointer;
-}
-
-.upload-btn:hover {
-  background: #eb5424;
-  color: #fff;
-}
-
-.sign-in-btn {
-  background: #eb5424;
-  padding: 8px 16px;
-  color: white;
-  border-radius: 20px;
-  text-decoration: none;
-  font-weight: 700;
-  display: inline-block;
-}
-
-.notif-bell {
-  font-size: 1.6rem;
-  cursor: pointer;
-}
-
-/* ===== Username Dropdown ===== */
-
-.user-menu {
-  display: none;
-  position: relative;
-  cursor: pointer;
-  font-weight: 700;
-}
-
-.user-name {
-  background: #eb5424;
-  color: #fff;
-  padding: 8px 16px;
-  border-radius: 20px;
-}
-
-.user-menu .dropdown {
-  display: none;
-  position: absolute;
-  right: 0;
-  top: 42px;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  width: 140px;
-  text-align: left;
-}
-
-.user-menu .dropdown button {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  background: white;
-  cursor: pointer;
-}
-
-.user-menu .dropdown button:hover {
-  background: #ffe2d5;
-}
-
-/* Show dropdown */
-.user-menu.show .dropdown {
-  display: block;
-}
-
-/* ===== Notification Panel ===== */
-.notif-panel {
-  position: fixed;
-  right: 25px;
-  top: 80px;
-  width: 280px;
-  background: #fff;
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.2);
-  display: none;
-  z-index: 3000;
-}
-
-.notif-panel h4 {
-  margin-bottom: 10px;
-}
-
-.notif-panel ul {
-  list-style: none;
-  margin-bottom: 12px;
-}
-
-.notif-close {
-  width: 100%;
-  padding: 10px;
-  background: #eb5424;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
 }
