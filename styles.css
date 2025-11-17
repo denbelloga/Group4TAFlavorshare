@@ -228,3 +228,193 @@ footer {
   padding: 35px;
   color: #555;
 }
+
+/* ============================================================
+   ULTRA PREMIUM EXPLORE PAGE
+============================================================ */
+
+.explore-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+
+/* Header text & filters */
+.explore-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.explore-header h1 {
+  font-size: 2.4rem;
+  color: #eb5424;
+  margin-bottom: 10px;
+}
+
+.explore-header p {
+  font-size: 1rem;
+  color: #555;
+  max-width: 650px;
+  margin: 0 auto 20px;
+  line-height: 1.6;
+}
+
+/* Filter chips */
+.explore-filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  border-radius: 999px;
+  padding: 8px 16px;
+  border: 1px solid #f0b296;
+  background: #fff6ef;
+  color: #c24f21;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.chip:hover {
+  background: #ffc6a8;
+}
+
+.chip-active {
+  background: #eb5424;
+  color: white;
+  border-color: #eb5424;
+}
+
+/* Recipe grid – ultra premium */
+.explore-grid {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+}
+
+/* Card */
+.recipe-card-premium {
+  background: linear-gradient(145deg, #ffffff, #fff2e9);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.recipe-card-premium::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left,
+      rgba(235,84,36,0.18),
+      transparent 55%);
+  opacity: 0;
+  transition: 0.25s ease;
+}
+
+.recipe-card-premium:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+}
+
+.recipe-card-premium:hover::before {
+  opacity: 1;
+}
+
+.recipe-thumb img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+}
+
+.recipe-body {
+  padding: 16px 18px 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.recipe-body h2 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.recipe-body .author {
+  font-size: 0.9rem;
+  color: #8a6850;
+  margin-bottom: 8px;
+}
+
+.recipe-body .excerpt {
+  font-size: 0.9rem;
+  color: #5a554f;
+  margin-bottom: 12px;
+}
+
+/* Pills row */
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  font-size: 0.8rem;
+  background: #fff;
+  border-radius: 999px;
+  padding: 5px 10px;
+  border: 1px solid #f0c3a4;
+  color: #8c4a27;
+  font-weight: 600;
+}
+
+/* Notification panel (shared for all pages) */
+#notif-panel {
+  position: fixed;
+  right: 24px;
+  top: 80px;
+  width: 260px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.18);
+  display: none;
+  z-index: 3000;
+}
+
+#notif-panel.show {
+  display: block;
+}
+
+#notif-panel h3 {
+  margin-bottom: 8px;
+  color: #eb5424;
+}
+
+#notif-panel p {
+  font-size: 0.85rem;
+  color: #444;
+  margin-bottom: 4px;
+}
+
+#notif-panel .close-btn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: none;
+  background: #eb5424;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
