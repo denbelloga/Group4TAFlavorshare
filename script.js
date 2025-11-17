@@ -113,3 +113,27 @@ function refreshUserMenu() {
   });
 }
 
+/* =========================================================
+   PROTECT PAGES THAT REQUIRE LOGIN
+   ========================================================= */
+
+function requireLogin() {
+    const user = getUser();
+
+    // If not logged in → show modal
+    if (!user) {
+        const lockModal = document.getElementById("loginRequiredModal");
+        if (lockModal) lockModal.classList.add("show");
+    }
+}
+
+// Auto-unlock pages based on filename
+document.addEventListener("DOMContentLoaded", () => {
+    const protectedPages = ["my-cookbook.html", "following.html"];
+
+    const currentPage = window.location.pathname.split("/").pop();
+
+    if (protectedPages.includes(currentPage)) {
+        requireLogin();
+    }
+});
