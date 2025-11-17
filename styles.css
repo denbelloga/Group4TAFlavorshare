@@ -672,4 +672,60 @@ body.dark-mode footer {
 .success-popup.show {
   opacity: 1;
 }
+/* === RECIPE POPUP MODAL === */
+.recipe-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 9999;
+}
+
+.recipe-modal.hidden {
+  display: none;
+}
+
+.recipe-modal-content {
+  background: var(--card-bg);
+  width: 90%;
+  max-width: 850px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  animation: popupFade 0.25s ease-out;
+}
+
+@keyframes popupFade {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-image {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.close-btn {
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  float: right;
+  margin-bottom: 10px;
+}
+
+.modal-author {
+  margin-top: -8px;
+  color: gray;
+}
+
+.recipe-modal-content h3 {
+  margin-top: 20px;
+  color: #d35400;
+}
 
