@@ -1,30 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlavorShare - Home</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlavorShare - Home</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-<!-- ================= NAVIGATION ================= -->
-<nav>
+  <!-- NAVIGATION -->
+  <nav>
     <div class="logo">FlavorShare</div>
 
     <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="browse.html">Explore</a></li>
-        <li><a href="cookbook.html">My Cookbook</a></li>
-        <li><a href="following.html">Following</a></li>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="browse.html">Explore</a></li>
+      <li><a href="my-cookbook.html">My Cookbook</a></li>
+      <li><a href="following.html">Following</a></li>
     </ul>
 
     <div class="actions">
-        <input type="search" placeholder="Search recipes...">
-        <button class="upload-btn">+ Upload a Recipe</button>
-        <a href="sign-in.html" class="sign-in-btn">Sign In</a>
-        <span class="notif-bell">🔔</span>
+      <input type="search" placeholder="Search recipes..." />
+      <button class="upload-btn">+ Upload a Recipe</button>
+      <a href="sign-in.html" class="sign-in-btn">Sign In</a>
+      <span id="notifBell" class="notif-bell" aria-label="Notifications" role="button">🔔</span>
     </div>
-</nav>
+  </nav>
 
-<!-- ================= HERO SECTION =================
+  <!-- NOTIFICATION PANEL -->
+  <div id="notifPanel" class="notif-panel">
+    <h4>Notifications</h4>
+    <ul>
+      <li>Emma liked your Rainbow Cupcakes.</li>
+      <li>Alex followed your profile.</li>
+      <li>New recipe: Spicy Garlic
