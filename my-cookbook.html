@@ -1,63 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Cookbook - FlavorShare</title>
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-
-  <!-- Global CSS -->
-  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
+<body>
+  <!-- NAV -->
+  <nav>
+    <div class="logo">FlavorShare</div>
 
-<body class="bg-[#FFF8F0] font-sans text-gray-800 flex flex-col min-h-screen">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="browse.html">Explore</a></li>
+      <li><a href="my-cookbook.html" class="active">My Cookbook</a></li>
+      <li><a href="following.html">Following</a></li>
+    </ul>
 
-  <!-- HEADER -->
-  <div id="header"></div>
+    <div class="actions">
+      <input type="search" placeholder="Search recipes..." />
+      <button class="upload-btn">+ Upload a Recipe</button>
+      <a href="sign-in.html" class="sign-in-btn">Sign In</a>
+      <span id="notifBell" class="notif-bell" aria-label="Notifications" role="button">🔔</span>
+    </div>
+  </nav>
 
-  <main id="mainContent" class="flex-1 max-inner-width mx-auto px-6 py-20 flex flex-col items-center justify-center text-center">
-    <!-- Content controlled by JS -->
+  <!-- NOTIF PANEL -->
+  <div id="notifPanel" class="notif-panel">
+    <h4>Notifications</h4>
+    <ul>
+      <li>No new notifications yet.</li>
+    </ul>
+    <button id="notifClose" class="notif-close">Close</button>
+  </div>
+
+  <main>
+    <h2>My Cookbook</h2>
+    <p style="text-align:center; max-width:600px; margin:0 auto 20px;">
+      Your cookbook is currently empty. Once you start uploading recipes, they’ll appear here.
+    </p>
   </main>
 
-  <footer class="bg-[#2D2A26] text-gray-300 text-sm py-6 mt-auto text-center">
-    &copy; 2025 FlavorShare — Good food is best shared.
+  <footer>
+    © 2025 FlavorShare. Good food is best shared.
   </footer>
 
-  <script src="js/header.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const userStr = localStorage.getItem('user');
-      const mainContent = document.getElementById('mainContent');
-
-      if (!userStr) {
-        window.location.href = 'sign-in.html'; // redirect if not logged in
-        return;
-      }
-
-      const user = JSON.parse(userStr);
-
-      mainContent.innerHTML = `
-        <div class="bg-white rounded-xl p-10 shadow-soft max-w-lg">
-          <i class="fa-solid fa-book-open text-[#E4572E] text-6xl mb-6"></i>
-          <h1 class="text-3xl font-extrabold text-[#E4572E] mb-4">Your Cookbook is Empty</h1>
-          <p class="text-gray-700 mb-8 text-lg leading-relaxed">
-            You haven’t uploaded any recipes yet.
-            Start sharing your favorite dishes with the FlavorShare community!
-          </p>
-          <a href="upload-recipe.html"
-            class="inline-block px-8 py-3 bg-[#E4572E] text-white font-semibold rounded-full shadow-soft hover:bg-[#b73d20] transition">
-            Upload a Recipe
-          </a>
-        </div>
-      `;
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
-
 </html>
