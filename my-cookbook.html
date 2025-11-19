@@ -6,29 +6,30 @@
   <title>FlavorShare – My Cookbook</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-  <!-- === RECIPE POPUP === -->
-<div id="recipeModal" class="recipe-modal hidden">
-  <div class="recipe-modal-content">
-    <span id="recipeModalClose" class="close-btn">×</span>
-
-    <img id="modalImage" class="modal-image" alt="Recipe Image">
-
-    <h2 id="modalTitle"></h2>
-    <p id="modalAuthor" class="modal-author"></p>
-
-    <h3>About this recipe</h3>
-    <p id="modalDescription"></p>
-
-    <h3>Ingredients</h3>
-    <ul id="modalIngredients"></ul>
-
-    <h3>Steps</h3>
-    <ol id="modalSteps"></ol>
-  </div>
-</div>
 
 <body>
 
+  <!-- === RECIPE POPUP === -->
+  <div id="recipeModal" class="recipe-modal hidden">
+    <div class="recipe-modal-content">
+      <span id="recipeModalClose" class="close-btn">×</span>
+      <img id="modalImage" class="modal-image" alt="Recipe Image">
+
+      <h2 id="modalTitle"></h2>
+      <p id="modalAuthor" class="modal-author"></p>
+
+      <h3>About this recipe</h3>
+      <p id="modalDescription"></p>
+
+      <h3>Ingredients</h3>
+      <ul id="modalIngredients"></ul>
+
+      <h3>Steps</h3>
+      <ol id="modalSteps"></ol>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
   <nav>
     <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
     <ul class="nav-links">
@@ -60,17 +61,20 @@
     <button id="notifClose">Close</button>
   </div>
 
+  <!-- MAIN CONTENT -->
   <main>
     <section>
       <h2>My Cookbook</h2>
       <p class="section-subtitle">All the recipes you've saved in one place.</p>
 
-      <div id="cookbookGrid" class="recipe-grid"></div>
-
+      <!-- FIRST: EMPTY MESSAGE -->
       <div id="cookbookEmpty" class="empty-state">
         <h3>Your cookbook is empty</h3>
-        <p>You haven’t saved any recipes yet.</p>
+        <p>You haven’t saved or uploaded any recipes yet.</p>
       </div>
+
+      <!-- SECOND: GRID OF SAVED RECIPES -->
+      <div id="cookbookGrid" class="recipe-grid"></div>
     </section>
   </main>
 
