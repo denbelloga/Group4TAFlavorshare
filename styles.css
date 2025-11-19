@@ -765,4 +765,45 @@ body.dark-mode footer {
     transform: translateY(0);
   }
 }
+/* ==========================================================
+   RECIPE MODAL — DARK MODE FIX
+========================================================== */
+
+/* Modal background & card */
+body.dark-mode .recipe-modal-content {
+  background: #1e1e1e !important;
+  color: #f5f5f5 !important;
+}
+
+/* Headings */
+body.dark-mode .recipe-modal-content h2,
+body.dark-mode .recipe-modal-content h3 {
+  color: #ffb089 !important; /* matches your orange theme */
+}
+
+/* Paragraphs, ingredients, steps */
+body.dark-mode .recipe-modal-content p,
+body.dark-mode .recipe-modal-content li {
+  color: #e0e0e0 !important;
+}
+
+/* Author styling */
+body.dark-mode #modalAuthor,
+body.dark-mode .modal-author {
+  color: #bbbbbb !important;
+}
+
+/* Close button */
+body.dark-mode .close-btn {
+  color: #ffffff !important;
+}
+
+body.dark-mode .close-btn:hover {
+  color: #ff6b6b !important;
+}
+
+/* Section headers spacing stays consistent */
+body.dark-mode .recipe-modal-content h3 {
+  color: #ffb089 !important;
+}
 
