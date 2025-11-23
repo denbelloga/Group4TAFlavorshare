@@ -1,81 +1,106 @@
-# FlavorShare – Recipe Web App
 
-FlavorShare is a web app where users can **browse and view recipes**, and (in this MS1 version) try a demo flow for **signing in and uploading recipes**.
+# **FlavorShare – Recipe Sharing Website**
 
----
+FlavorShare is a simple web-based recipe platform where users can browse dishes, save their favorites, and upload their own recipes. The website is built using HTML, CSS, and JavaScript and uses **localStorage** to simulate user accounts and data.
 
-## User Problem
 
-Finding reliable recipes online is messy, and saving or sharing your own recipes often feels scattered (screenshots, notes, chats). FlavorShare aims to make it easier to **discover recipes in card form and share your own** in one simple, consistent interface.
+## **Overview**
 
----
+FlavorShare includes the following core features:
 
-## Target Users
+### **Homepage**
 
-- Home cooks looking for new recipes  
-- Students / beginners learning to cook  
-- Food enthusiasts who want to share their dishes  
+* Hero banner with search
+* Quick access to Explore page
+* Trending recipes section
+* Recipe modal that opens when a card is clicked
 
----
+### **Explore Page**
 
-## Success Metrics (for MS1)
+* Displays multiple recipe cards
+* Filter buttons (Pasta, Dessert, Asian, etc.)
+* Each card can be viewed in a modal
+* “Save to Cookbook” button
 
-- Landing page loads, shows hero + navigation clearly  
-- Users can:
-  - Go to **Browse** and view recipe cards  
-  - Open a **recipe detail modal** from a card  
-  - **Sign up / Sign in** using an email ending in `@gmail.com`  
-  - Access the **Upload Recipe** page only when signed in  
-- Forms have basic client-side validation  
-- Navigation links work end-to-end for MS1 flows  
-- Layout works on desktop and basic mobile sizes  
+### **User Accounts (Simulated)**
 
----
+* Sign In, Sign Up, Forgot Password, Reset Password
+* Any email ending with **@gmail.com** is accepted
+* Credentials are stored in localStorage
 
-## In-Scope Pages / Features (MS1)
+### **Protected Pages**
 
-- **Landing Page** (`landing-page.html`)  
-- **Browse Recipes** (`browse.html`) – cards + modal  
-- **Upload Recipe** (`upload.html`) – with basic validation & login requirement  
-- **Sign Up** (`sign-up.html`) – demo signup with `@gmail.com` rule  
-- **Sign In** (`sign-in.html`) – demo login with `@gmail.com` rule  
+* **My Cookbook**
+* **Following**
+  Users must be signed in to access these pages; otherwise they are redirected to Sign In.
 
-(Other pages like *My Cookbook* / *Following* are planned but not fully implemented in MS1.)
+### **My Cookbook**
 
----
+* Shows all recipes the user saved
+* Also shows recipes the user uploads
+* Stored locally in `fs_cookbook_<email>`
+* Displays an empty state if no recipes are saved
 
-## Sitemap
+### **Upload a Recipe**
 
-Landing Page (`landing-page.html`)  
-├── Browse Recipes (`browse.html`)  
-│   └── Recipe Detail (modal)  
-├── Sign Up (`sign-up.html`)  
-├── Sign In (`sign-in.html`)  
-└── Upload Recipe (`upload.html`)  *(requires sign-in)*  
+* Users can upload title, description, image URL, ingredients, and steps
+* Successfully uploading triggers a full-screen success animation
+* Uploads are automatically added to the user’s Cookbook
 
----
+### **Dark Mode**
 
-## Acceptance Criteria
+* Full dark mode support including modal, cards, buttons, and backgrounds
+* Saves theme preference in `fs_theme`
 
-**Landing Page**  
-- Navigation links to *Home, Browse, Upload, Sign In* work.  
-- Hero section is readable and visually clear.
+## **How It Works**
 
-**Browse Recipes**  
-- Recipe cards are displayed.  
-- Clicking a card opens a modal with recipe info.  
-- Modal can be closed with a close button.
+### **localStorage Keys**
 
-**Recipe Detail / Modal**  
-- Shows recipe title and description.  
-- Closes cleanly and returns focus to the page.
+* `fs_user` – stores the currently signed-in user
+* `fs_theme` – stores light/dark theme
+* `fs_cookbook_<email>` – stores user-specific saved recipes
 
-**Sign Up / Sign In**  
-- Forms validate required fields.  
-- Only emails ending in `@gmail.com` are considered valid.  
-- On success, a “logged-in” state is stored (via `localStorage`) and user is redirected.
+### **Main Files**
 
-**Upload Recipe**  
-- Page can only be used properly when logged in.  
-- Required fields show validation errors if empty.  
-- On success, a confirmation message is shown (demo behavior).
+index.html
+browse.html
+my-cookbook.html
+upload.html
+sign-in.html
+sign-up.html
+following.html
+forgot-password.html
+reset-new-password.html
+styles.css
+script.js
+/images
+```
+
+## **User Flow**
+
+1. User signs up or logs in
+2. User browses recipes on the Explore page
+3. Clicking a recipe opens the recipe modal
+4. Saving a recipe adds it to the user’s Cookbook
+5. Uploading a recipe also saves it automatically
+6. User may switch between light and dark mode
+7. User can log out through the dropdown menu
+
+
+## **Testing Summary**
+
+* Navigation buttons working
+* Sign In / Sign Up validation works
+* Protected pages redirect properly
+* Saving recipes and uploading both add to Cookbook
+* Dark mode works on modal and all pages
+* Recipe modal fully readable in both themes
+
+
+## **Notes**
+
+* This is a **front-end–only** demo
+* No backend or real database
+* All stored data resets when browser storage is cleared
+* Images used are sample images
+
