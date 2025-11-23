@@ -1,5 +1,5 @@
 /* ==========================================================
-   RESET & BASE
+   GLOBAL RESET
 ========================================================== */
 * {
   margin: 0;
@@ -7,7 +7,9 @@
   box-sizing: border-box;
 }
 
-html, body {
+/* Make footer stick to bottom without covering content */
+html,
+body {
   height: 100%;
 }
 
@@ -18,21 +20,6 @@ body {
   line-height: 1.5;
   display: flex;
   flex-direction: column;
-}
-
-/* Sticky Footer */
-main {
-  flex: 1;
-}
-
-footer {
-  flex-shrink: 0;
-  text-align: center;
-  padding: 16px;
-  background: #222;
-  color: #f1f1f1;
-  font-size: 0.85rem;
-  margin-top: 40px;
 }
 
 /* ==========================================================
@@ -54,11 +41,12 @@ nav {
   font-size: 1.7rem;
   font-weight: 900;
   color: #eb5424;
+  cursor: pointer;
 }
 
 .nav-links {
-  display: flex;
   list-style: none;
+  display: flex;
   gap: 28px;
 }
 
@@ -82,52 +70,40 @@ nav {
 
 .actions input[type="search"] {
   border-radius: 18px;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   padding: 7px 14px;
   width: 210px;
   font-size: 0.9rem;
 }
 
-.upload-btn,
-.sign-in-btn {
-  padding: 7px 14px;
-  border-radius: 18px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  cursor: pointer;
-}
-
+/* Buttons in navbar */
 .upload-btn {
+  border-radius: 18px;
   border: 1.5px solid #eb5424;
+  padding: 7px 14px;
   background: transparent;
   color: #eb5424;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
 }
 
 .upload-btn:hover {
   background: #eb5424;
-  color: #fff;
+  color: #ffffff;
 }
 
 .sign-in-btn {
+  padding: 7px 14px;
+  border-radius: 18px;
   background: #eb5424;
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
-}
-
-.notif-bell {
-  font-size: 1.3rem;
-  cursor: pointer;
-}
-
-.theme-toggle {
-  cursor: pointer;
+  font-weight: 700;
   font-size: 0.85rem;
-  border: 1px solid #ccc;
-  padding: 4px 10px;
-  border-radius: 999px;
 }
 
-/* User Dropdown */
+/* User menu (username + dropdown) */
 #userMenu {
   position: relative;
 }
@@ -135,8 +111,8 @@ nav {
 #userNameDisplay {
   background: #ffe5d6;
   color: #eb5424;
-  padding: 7px 14px;
   border-radius: 999px;
+  padding: 7px 14px;
   font-weight: 700;
   cursor: pointer;
   font-size: 0.85rem;
@@ -148,7 +124,7 @@ nav {
   right: 0;
   background: #ffffff;
   border-radius: 10px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
   padding: 6px;
   min-width: 130px;
 }
@@ -169,18 +145,32 @@ nav {
   display: none;
 }
 
+/* Bell + theme toggle */
+.notif-bell {
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.theme-toggle {
+  cursor: pointer;
+  font-size: 0.85rem;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  padding: 4px 10px;
+}
+
 /* ==========================================================
-   NOTIFICATIONS
+   NOTIFICATION PANEL
 ========================================================== */
 #notifPanel {
   position: fixed;
   top: 70px;
   right: 20px;
   width: 240px;
-  background: #fff;
+  background: #ffffff;
   border-radius: 12px;
   border: 1px solid #e5e5e5;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
   padding: 12px 14px;
   display: none;
   z-index: 1200;
@@ -190,32 +180,52 @@ nav {
   display: block;
 }
 
+#notifPanel h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+#notifPanel ul {
+  list-style: none;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+#notifPanel li {
+  margin-bottom: 4px;
+}
+
 #notifClose {
   width: 100%;
   padding: 6px 10px;
+  border-radius: 8px;
+  border: none;
   background: #eb5424;
   color: white;
-  border: none;
-  border-radius: 8px;
   font-size: 0.8rem;
-  cursor: pointer;
   font-weight: 700;
+  cursor: pointer;
 }
 
 /* ==========================================================
-   HERO SECTION
+   HERO (HOME + LANDING)
 ========================================================== */
 .hero-section {
   min-height: 60vh;
-  background: linear-gradient(135deg, rgba(235,84,36,0.9), rgba(255,167,81,0.9)),
+  background: linear-gradient(
+      135deg,
+      rgba(235, 84, 36, 0.9),
+      rgba(255, 167, 81, 0.9)
+    ),
     url("images/Title-Image-8.webp") center/cover no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   padding: 60px 20px 70px;
   color: white;
-  text-align: center;
 }
 
 .hero-section h1 {
@@ -224,60 +234,77 @@ nav {
   margin-bottom: 12px;
 }
 
+.hero-section p {
+  max-width: 580px;
+  font-size: 1.05rem;
+  margin-bottom: 20px;
+}
+
 .hero-search input {
   padding: 10px 18px;
   border-radius: 999px;
   border: none;
   width: 100%;
   max-width: 420px;
+  font-size: 0.95rem;
   margin-bottom: 18px;
 }
 
 .hero-btn {
+  display: inline-block;
   padding: 10px 22px;
   border-radius: 999px;
-  background: #fff;
+  background: #ffffff;
   color: #eb5424;
-  font-weight: 800;
   text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 800;
 }
 
 /* ==========================================================
-   MAIN
+   MAIN LAYOUT
 ========================================================== */
 main {
   max-width: 1100px;
+  width: 100%;
   margin: 40px auto 60px;
   padding: 0 20px;
+  flex: 1 0 auto;
 }
 
 main h2 {
   text-align: center;
   font-size: 2rem;
   color: #eb5424;
+  margin-bottom: 6px;
 }
 
 .section-subtitle {
   text-align: center;
+  font-size: 0.95rem;
   color: #777;
-  margin-bottom: 24px;
+  max-width: 600px;
+  margin: 0 auto 24px;
 }
 
 /* ==========================================================
-   RECIPE GRID
+   RECIPE GRID & CARDS
 ========================================================== */
 .recipe-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 24px;
+  margin-top: 10px;
 }
 
 .recipe-card {
-  background: #fff;
+  background: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.11);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.11);
   overflow: hidden;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
 .recipe-card img {
@@ -291,85 +318,208 @@ main h2 {
 }
 
 .recipe-card h3 {
+  font-size: 1.05rem;
   font-weight: 800;
   margin-bottom: 4px;
 }
 
+.recipe-card .author {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
 .pill {
+  font-size: 0.75rem;
   padding: 3px 8px;
   border-radius: 999px;
   background: #ffe9da;
   color: #884023;
-  font-size: 0.75rem;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+}
+
+.primary-btn {
+  border-radius: 999px;
+  border: none;
+  padding: 6px 12px;
+  background: #eb5424;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.icon-btn {
+  border-radius: 999px;
+  border: none;
+  padding: 6px 10px;
+  background: #ffe9da;
+  font-size: 0.8rem;
+  cursor: pointer;
 }
 
 /* ==========================================================
-   RECIPE MODAL (OPTIMIZED)
+   FILTER PILL ROW (BROWSE)
 ========================================================== */
-
-.recipe-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
+.filter-row {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  padding: 30px;
-  overflow-y: auto;
-  z-index: 9999;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 
-.recipe-modal.hidden {
-  display: none;
-}
-
-.recipe-modal-content {
-  background: #fff;
-  width: 95%;
-  max-width: 850px;
-  max-height: 90vh;
-  overflow-y: auto;
-  border-radius: 16px;
-  padding: 25px 32px;
-  position: relative;
-  animation: modalFadeUp .25s ease-out;
-}
-
-.modal-image {
-  width: 100%;
-  max-height: 300px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 20px;
-}
-
-.close-btn {
-  position: absolute;
-  top: 12px;
-  right: 18px;
-  padding: 6px 12px;
-  border-radius: 8px;
-  background: rgba(0,0,0,0.55);
-  color: #fff;
-  font-size: 30px;
+.filter-pill {
+  border-radius: 999px;
+  border: 1px solid #f3b694;
+  background: white;
+  padding: 4px 10px;
+  font-size: 0.8rem;
   cursor: pointer;
-  z-index: 999999;
 }
 
-.close-btn:hover {
-  background: rgba(255,80,80,0.85);
+.filter-pill:hover,
+.filter-pill.active {
+  background: #eb5424;
+  color: white;
+  border-color: #eb5424;
+}
+
+/* ==========================================================
+   EMPTY STATES
+========================================================== */
+.empty-state {
+  text-align: center;
+  margin-top: 26px;
+  color: #666;
+}
+
+.empty-state h3 {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+/* ==========================================================
+   AUTH PAGES (Sign-in, Sign-up, Forgot, Reset, Upload form)
+========================================================== */
+.auth-body {
+  background: radial-gradient(circle at top left, #ffe1cd, #fff8f0);
+  min-height: 100%;
+}
+
+.auth-container {
+  max-width: 400px;
+  margin: 80px auto 60px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px 22px 26px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.15);
+}
+
+.auth-logo {
+  text-align: center;
+  font-size: 1.6rem;
+  color: #eb5424;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.auth-title {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.auth-sub {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 16px;
+}
+
+.auth-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.auth-form input,
+.auth-form textarea {
+  width: 100%;
+  padding: 8px 10px;
+  margin: 6px 0 12px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  font-size: 0.9rem;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 40px;
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 999px;
+  border: none;
+  background: #eb5424;
+  color: white;
+  font-weight: 800;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.auth-link {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.85rem;
+}
+
+.auth-link a {
+  color: #eb5424;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.auth-error {
+  font-size: 0.8rem;
+  color: #c0392b;
+  min-height: 16px;
+  margin-top: 4px;
+}
+
+/* ==========================================================
+   FOOTER (STICKY TO BOTTOM)
+========================================================== */
+footer {
+  text-align: center;
+  padding: 16px;
+  background: #222;
+  color: #f1f1f1;
+  font-size: 0.85rem;
+  margin-top: auto;
 }
 
 /* ==========================================================
    DARK MODE
 ========================================================== */
-
 body.dark-mode {
   background: #121212;
   color: #f1f1f1;
 }
 
-/* Navbar */
 body.dark-mode nav {
   background: #1f1f1f;
   border-bottom-color: #333;
@@ -380,10 +530,14 @@ body.dark-mode .logo {
 }
 
 body.dark-mode .nav-links a {
-  color: #ddd;
+  color: #dddddd;
 }
 
-/* Search & Buttons */
+body.dark-mode .nav-links a.active,
+body.dark-mode .nav-links a:hover {
+  color: #ffb089;
+}
+
 body.dark-mode .actions input[type="search"] {
   background: #262626;
   border-color: #444;
@@ -404,12 +558,48 @@ body.dark-mode .sign-in-btn {
   background: #ff8b53;
 }
 
-/* Cards */
+body.dark-mode #userNameDisplay {
+  background: #4a2a1f;
+  color: #ffb089;
+}
+
+body.dark-mode #userDropdown {
+  background: #262626;
+  border-color: #444;
+}
+
+body.dark-mode #userDropdown button {
+  background: #ff8b53;
+  color: #1a1a1a;
+}
+
+body.dark-mode .theme-toggle {
+  border-color: #555;
+  color: #f1f1f1;
+}
+
+/* dark: hero overlay a bit darker */
+body.dark-mode .hero-section {
+  background: linear-gradient(
+      135deg,
+      rgba(10, 10, 10, 0.9),
+      rgba(40, 40, 40, 0.9)
+    ),
+    url("images/Title-Image-8.webp") center/cover no-repeat;
+}
+
+/* dark: cards, panels, auth */
 body.dark-mode .recipe-card,
 body.dark-mode .auth-container,
 body.dark-mode #notifPanel {
   background: #1f1f1f;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.6);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .recipe-card .author,
+body.dark-mode .section-subtitle,
+body.dark-mode .empty-state {
+  color: #bbbbbb;
 }
 
 body.dark-mode .pill {
@@ -417,10 +607,247 @@ body.dark-mode .pill {
   color: #ffd4b5;
 }
 
-/* Recipe Modal */
+body.dark-mode .primary-btn {
+  background: #ff8b53;
+  color: #1a1a1a;
+}
+
+body.dark-mode .icon-btn {
+  background: #3a2418;
+  color: #ffb089;
+}
+
+body.dark-mode footer {
+  background: #0c0c0c;
+}
+
+/* Auth dark-mode tweaks */
+body.dark-mode .auth-body {
+  background: radial-gradient(circle at top left, #3a2418, #121212);
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+@media (max-width: 840px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .nav-links {
+    gap: 16px;
+  }
+
+  .hero-section {
+    padding: 50px 16px 60px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-section h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-section p {
+    font-size: 0.9rem;
+  }
+
+  .actions input[type="search"] {
+    width: 150px;
+  }
+
+  .recipe-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================
+   SUCCESS POPUP + OVERLAY (UPLOAD)
+========================================================== */
+.success-popup {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #28a745;
+  color: white;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 9999;
+}
+
+.success-popup.show {
+  opacity: 1;
+}
+
+.success-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.success-overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.success-box {
+  background: #fff;
+  padding: 40px 60px;
+  border-radius: 20px;
+  text-align: center;
+  animation: popIn 0.4s ease forwards;
+}
+
+.dark-mode .success-box {
+  background: #222;
+  color: white;
+}
+
+.checkmark {
+  font-size: 70px;
+  margin-bottom: 10px;
+  color: #3cdd78;
+  animation: scaleBounce 0.6s ease;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleBounce {
+  0% {
+    transform: scale(0);
+  }
+  70% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ==========================================================
+   RECIPE MODAL (BROWSE + COOKBOOK)
+========================================================== */
+.recipe-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9998;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.recipe-modal.hidden {
+  display: none;
+}
+
+.recipe-modal-content {
+  background: #ffffff;
+  width: 95%;
+  max-width: 850px;
+  max-height: 90vh;
+  border-radius: 16px;
+  padding: 25px 32px 28px;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  animation: modalFadeUp 0.25s ease-out;
+  overflow-y: auto;
+}
+
+/* modal image */
+.modal-image {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+/* close button */
+.close-btn {
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  font-size: 28px;
+  color: #333;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  color: #ff4b4b;
+}
+
+/* text spacing */
+.recipe-modal-content h2 {
+  margin-bottom: 5px;
+  font-size: 28px;
+}
+
+.recipe-modal-content h3 {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-size: 22px;
+  color: #d24a20;
+}
+
+.recipe-modal-content ul,
+.recipe-modal-content ol {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.modal-author {
+  color: #777;
+  margin-bottom: 12px;
+}
+
+/* animation */
+@keyframes modalFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modal dark-mode */
 body.dark-mode .recipe-modal-content {
-  background: #1f1f1f !important;
-  color: #f1f1f1 !important;
+  background: #1e1e1e !important;
+  color: #f5f5f5 !important;
 }
 
 body.dark-mode .recipe-modal-content h2,
@@ -430,28 +857,18 @@ body.dark-mode .recipe-modal-content h3 {
 
 body.dark-mode .recipe-modal-content p,
 body.dark-mode .recipe-modal-content li {
-  color: #e6e6e6 !important;
+  color: #e0e0e0 !important;
 }
 
+body.dark-mode #modalAuthor,
 body.dark-mode .modal-author {
   color: #bbbbbb !important;
 }
 
 body.dark-mode .close-btn {
-  background: rgba(255,255,255,0.2) !important;
-  color: white !important;
+  color: #ffffff !important;
 }
 
-/* ==========================================================
-   RESPONSIVE
-========================================================== */
-@media (max-width: 840px) {
-  nav { flex-direction: column; align-items: flex-start; gap: 10px; }
-}
-
-@media (max-width: 600px) {
-  .hero-section h1 { font-size: 2.2rem; }
-  .hero-section p { font-size: 0.9rem; }
-  .actions input[type="search"] { width: 150px; }
-  .recipe-grid { grid-template-columns: 1fr; }
+body.dark-mode .close-btn:hover {
+  color: #ff6b6b !important;
 }
