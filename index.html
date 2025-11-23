@@ -2,80 +2,85 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FlavorShare – Home</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 
-<!-- === RECIPE POPUP === -->
-<div id="recipeModal" class="recipe-modal hidden">
-  <div class="recipe-modal-content">
-    <span id="recipeModalClose" class="close-btn">×</span>
-
-    <img id="modalImage" class="modal-image" alt="Recipe Image">
-
-    <h2 id="modalTitle"></h2>
-    <p id="modalAuthor" class="modal-author"></p>
-
-    <h3>About this recipe</h3>
-    <p id="modalDescription"></p>
-
-    <h3>Ingredients</h3>
-    <ul id="modalIngredients"></ul>
-
-    <h3>Steps</h3>
-    <ol id="modalSteps"></ol>
-  </div>
-</div>
-
-
 <body>
 
-  <!-- NAVBAR -->
+  <!-- ===================== RECIPE MODAL ===================== -->
+  <div id="recipeModal" class="recipe-modal hidden" aria-hidden="true">
+    <div class="recipe-modal-content" role="dialog" aria-labelledby="modalTitle">
+      <span id="recipeModalClose" class="close-btn" aria-label="Close recipe">×</span>
+
+      <img id="modalImage" class="modal-image" alt="Recipe Image">
+
+      <h2 id="modalTitle"></h2>
+      <p id="modalAuthor" class="modal-author"></p>
+
+      <h3>About this recipe</h3>
+      <p id="modalDescription"></p>
+
+      <h3>Ingredients</h3>
+      <ul id="modalIngredients"></ul>
+
+      <h3>Steps</h3>
+      <ol id="modalSteps"></ol>
+    </div>
+  </div>
+
+  <!-- ===================== NAVIGATION ===================== -->
   <nav>
     <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
+
     <ul class="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="browse.html">Explore</a></li>
       <li><a href="my-cookbook.html" id="protectCookbook">My Cookbook</a></li>
       <li><a href="following.html" id="protectFollowing">Following</a></li>
     </ul>
+
     <div class="actions">
-      <input type="search" placeholder="Search recipes..." />
+      <input type="search" placeholder="Search recipes..." aria-label="Search recipes">
+
       <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
+
       <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
+
+      <!-- USER MENU -->
       <div id="userMenu" class="hidden">
-        <span id="userNameDisplay"></span>
+        <span id="userNameDisplay" role="button"></span>
         <div id="userDropdown" class="hidden">
           <button id="logoutBtn">Log Out</button>
         </div>
       </div>
+
       <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
-      <span id="notifBell" class="notif-bell">🔔</span>
+      <span id="notifBell" class="notif-bell" aria-label="Notifications">🔔</span>
     </div>
   </nav>
 
+  <!-- ===================== NOTIFICATIONS PANEL ===================== -->
   <div id="notifPanel">
     <h4>Notifications</h4>
-    <ul>
-      <li>No new notifications.</li>
-    </ul>
+    <ul><li>No new notifications.</li></ul>
     <button id="notifClose">Close</button>
   </div>
 
-
-  <!-- HERO -->
+  <!-- ===================== HERO SECTION ===================== -->
   <header class="hero-section">
     <h1>Share Your Flavor!</h1>
     <p>Good food is best shared. Discover recipes from home cooks and upload your own creations.</p>
+
     <div class="hero-search">
-      <input type="search" placeholder="Search for recipes, ingredients, or chefs…" />
+      <input type="search" placeholder="Search for recipes, ingredients, or chefs…" aria-label="Search">
     </div>
+
     <a href="browse.html" class="hero-btn">Explore Recipes</a>
   </header>
 
-
-  <!-- TRENDING -->
+  <!-- ===================== TRENDING RECIPES ===================== -->
   <main>
     <section>
       <h2>Trending Recipes</h2>
@@ -83,11 +88,9 @@
 
       <div class="recipe-grid">
 
-        <!-- CARD 1 -->
-        <article class="recipe-card"
-          onclick="openRecipePopup('creamy-carbonara')">
-
-          <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara" />
+        <!-- CARD TEMPLATE -->
+        <article class="recipe-card" onclick="openRecipePopup('creamy-carbonara')">
+          <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara">
           <div class="info">
             <h3>Creamy Carbonara</h3>
             <p class="author">Maria Romano</p>
@@ -105,12 +108,8 @@
           </div>
         </article>
 
-
-        <!-- CARD 2 -->
-        <article class="recipe-card"
-          onclick="openRecipePopup('rainbow-cupcakes')">
-
-          <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes" />
+        <article class="recipe-card" onclick="openRecipePopup('rainbow-cupcakes')">
+          <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes">
           <div class="info">
             <h3>Rainbow Cupcakes</h3>
             <p class="author">Emma Baker</p>
@@ -128,12 +127,8 @@
           </div>
         </article>
 
-
-        <!-- CARD 3 -->
-        <article class="recipe-card"
-          onclick="openRecipePopup('thai-green-curry')">
-
-          <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry" />
+        <article class="recipe-card" onclick="openRecipePopup('thai-green-curry')">
+          <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry">
           <div class="info">
             <h3>Thai Green Curry</h3>
             <p class="author">Alex Chen</p>
@@ -155,7 +150,7 @@
     </section>
   </main>
 
-
+  <!-- ===================== FOOTER ===================== -->
   <footer>
     © 2025 FlavorShare. Good food is best shared.
   </footer>
