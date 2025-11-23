@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FlavorShare – Upload Recipe</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-  <!-- ===================== SUCCESS POPUPS ===================== -->
+  <!-- SUCCESS POPUP -->
   <div id="successPopup" class="success-popup">Recipe added successfully!</div>
 
+  <!-- FULLSCREEN SUCCESS OVERLAY -->
   <div id="uploadSuccessOverlay" class="success-overlay hidden">
     <div class="success-box">
       <div class="checkmark">✔</div>
@@ -20,10 +21,9 @@
     </div>
   </div>
 
-  <!-- ===================== NAVIGATION ===================== -->
+  <!-- NAV -->
   <nav>
     <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
-
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="browse.html">Explore</a></li>
@@ -32,32 +32,32 @@
     </ul>
 
     <div class="actions">
-      <input type="search" placeholder="Search recipes..." aria-label="Search" />
-
+      <input type="search" placeholder="Search recipes..." />
       <button class="upload-btn" id="uploadBtn" type="button">+ Upload a Recipe</button>
-
       <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
 
       <div id="userMenu" class="hidden">
-        <span id="userNameDisplay" role="button"></span>
+        <span id="userNameDisplay"></span>
         <div id="userDropdown" class="hidden">
           <button id="logoutBtn">Log Out</button>
         </div>
       </div>
 
       <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
-      <span id="notifBell" class="notif-bell" aria-label="Notifications">🔔</span>
+      <span id="notifBell" class="notif-bell">🔔</span>
     </div>
   </nav>
 
-  <!-- ===================== NOTIFICATION PANEL ===================== -->
+  <!-- NOTIFICATION PANEL -->
   <div id="notifPanel">
     <h4>Notifications</h4>
-    <ul><li>No new notifications.</li></ul>
+    <ul>
+      <li>No new notifications.</li>
+    </ul>
     <button id="notifClose">Close</button>
   </div>
 
-  <!-- ===================== MAIN CONTENT ===================== -->
+  <!-- MAIN -->
   <main>
     <section>
       <h2>Upload a Recipe</h2>
@@ -65,7 +65,6 @@
 
       <div class="auth-container">
         <form id="uploadForm" class="auth-form">
-
           <label for="recipeTitle">Recipe Title</label>
           <input type="text" id="recipeTitle" required />
 
@@ -81,14 +80,12 @@
           <label for="recipeSteps">Steps</label>
           <textarea id="recipeSteps" placeholder="One step per line…" rows="4"></textarea>
 
-          <button type="submit" class="auth-btn">Upload Recipe</button>
-
+          <button type="submit" class="auth-btn">Upload Recipe (Demo)</button>
         </form>
       </div>
     </section>
   </main>
 
-  <!-- ===================== FOOTER ===================== -->
   <footer>
     © 2025 FlavorShare. Good food is best shared.
   </footer>
