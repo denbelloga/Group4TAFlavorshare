@@ -9,44 +9,9 @@
 
 <body class="auth-body">
 
-  <!-- NAVBAR -->
-  <nav>
-    <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="browse.html">Explore</a></li>
-      <li><a href="my-cookbook.html" id="protectCookbook">My Cookbook</a></li>
-      <li><a href="following.html" id="protectFollowing">Following</a></li>
-    </ul>
-
-    <div class="actions">
-      <input type="search" placeholder="Search recipes..." />
-
-      <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
-      <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
-
-      <div id="userMenu" class="hidden">
-        <span id="userNameDisplay"></span>
-        <div id="userDropdown" class="hidden">
-          <button id="logoutBtn">Log Out</button>
-        </div>
-      </div>
-
-      <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
-      <span id="notifBell" class="notif-bell">🔔</span>
-    </div>
-  </nav>
-
-  <!-- NOTIFICATIONS -->
-  <div id="notifPanel">
-    <h4>Notifications</h4>
-    <ul><li>No new notifications.</li></ul>
-    <button id="notifClose">Close</button>
-  </div>
-
-  <!-- SIGN-IN FORM -->
   <div class="auth-container">
     <h1 class="auth-logo">FlavorShare</h1>
+
     <h2 class="auth-title">Welcome Back</h2>
     <p class="auth-sub">Sign in using any @gmail.com email and any password.</p>
 
@@ -62,16 +27,14 @@
     </form>
 
     <p class="auth-link">
-      Don’t have an account? <a href="sign-up.html">Sign up</a>
+      Don’t have an account?
+      <a href="sign-up.html">Sign up</a>
     </p>
+
     <p class="auth-link">
-      <a href="#">Forgot password?</a>
+      <a href="forgot-password.html">Forgot password?</a>
     </p>
   </div>
-
-  <footer>
-    © 2025 FlavorShare. Good food is best shared.
-  </footer>
 
   <script src="script.js" defer></script>
 </body>
