@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FlavorShare – Explore</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-  <!-- === RECIPE POPUP === -->
-  <div id="recipeModal" class="recipe-modal hidden">
-    <div class="recipe-modal-content">
-      <span id="recipeModalClose" class="close-btn">×</span>
+  <!-- ===================== RECIPE MODAL ===================== -->
+  <div id="recipeModal" class="recipe-modal hidden" aria-hidden="true">
+    <div class="recipe-modal-content" role="dialog" aria-labelledby="modalTitle">
+      <span id="recipeModalClose" class="close-btn" aria-label="Close recipe">×</span>
 
       <img id="modalImage" class="modal-image" alt="Recipe Image">
 
@@ -30,43 +30,50 @@
     </div>
   </div>
 
-  <!-- NAVIGATION -->
+  <!-- ===================== NAVIGATION ===================== -->
   <nav>
     <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
+
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="browse.html" class="active">Explore</a></li>
       <li><a href="my-cookbook.html" id="protectCookbook">My Cookbook</a></li>
       <li><a href="following.html" id="protectFollowing">Following</a></li>
     </ul>
+
     <div class="actions">
-      <input type="search" placeholder="Search recipes..." />
+      <input type="search" placeholder="Search recipes..." aria-label="Search recipes">
+
       <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
+
       <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
+
       <div id="userMenu" class="hidden">
-        <span id="userNameDisplay"></span>
+        <span id="userNameDisplay" role="button"></span>
         <div id="userDropdown" class="hidden">
           <button id="logoutBtn">Log Out</button>
         </div>
       </div>
+
       <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
-      <span id="notifBell" class="notif-bell">🔔</span>
+      <span id="notifBell" class="notif-bell" aria-label="Notifications">🔔</span>
     </div>
   </nav>
 
+  <!-- ===================== NOTIFICATION PANEL ===================== -->
   <div id="notifPanel">
     <h4>Notifications</h4>
-    <ul>
-      <li>No new notifications.</li>
-    </ul>
+    <ul><li>No new notifications.</li></ul>
     <button id="notifClose">Close</button>
   </div>
 
+  <!-- ===================== MAIN CONTENT ===================== -->
   <main>
     <section>
       <h2>Explore All Recipes</h2>
       <p class="section-subtitle">Discover recipes by mood, cuisine, and experience level.</p>
 
+      <!-- FILTERS -->
       <div class="filter-row">
         <button class="filter-pill active">All</button>
         <button class="filter-pill">Pasta</button>
@@ -76,11 +83,12 @@
         <button class="filter-pill">Quick & Easy</button>
       </div>
 
+      <!-- RECIPE GRID -->
       <div class="recipe-grid">
 
         <!-- CARD 1 -->
         <article class="recipe-card" onclick="openRecipePopup('creamy-carbonara')">
-          <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara" />
+          <img src="images/creamy-carbonara-1-4.jpg" alt="Creamy Carbonara">
           <div class="info">
             <h3>Creamy Carbonara</h3>
             <p class="author">Maria Romano</p>
@@ -99,7 +107,7 @@
 
         <!-- CARD 2 -->
         <article class="recipe-card" onclick="openRecipePopup('rainbow-cupcakes')">
-          <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes" />
+          <img src="images/rainbow-cupcakes-17.jpg" alt="Rainbow Cupcakes">
           <div class="info">
             <h3>Rainbow Cupcakes</h3>
             <p class="author">Emma Baker</p>
@@ -118,7 +126,7 @@
 
         <!-- CARD 3 -->
         <article class="recipe-card" onclick="openRecipePopup('thai-green-curry')">
-          <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry" />
+          <img src="images/Thai-Green-Curry-square-FS.jpg" alt="Thai Green Curry">
           <div class="info">
             <h3>Thai Green Curry</h3>
             <p class="author">Alex Chen</p>
@@ -137,7 +145,7 @@
 
         <!-- CARD 4 -->
         <article class="recipe-card" onclick="openRecipePopup('palabok-fiesta')">
-          <img src="images/Palabok.jpg" alt="Palabok Fiesta" />
+          <img src="images/Palabok.jpg" alt="Palabok Fiesta">
           <div class="info">
             <h3>Palabok Fiesta</h3>
             <p class="author">Lara Santos</p>
@@ -158,6 +166,7 @@
     </section>
   </main>
 
+  <!-- ===================== FOOTER ===================== -->
   <footer>
     © 2025 FlavorShare. Good food is best shared.
   </footer>
