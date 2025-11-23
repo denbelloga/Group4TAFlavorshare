@@ -2,17 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FlavorShare – Upload Recipe</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-  <!-- SUCCESS POPUP (must be inside body!) -->
+  <!-- ===================== SUCCESS POPUPS ===================== -->
   <div id="successPopup" class="success-popup">Recipe added successfully!</div>
 
-  <!-- FULLSCREEN SUCCESS OVERLAY -->
   <div id="uploadSuccessOverlay" class="success-overlay hidden">
     <div class="success-box">
       <div class="checkmark">✔</div>
@@ -21,9 +20,10 @@
     </div>
   </div>
 
-  <!-- ================= NAV ================= -->
+  <!-- ===================== NAVIGATION ===================== -->
   <nav>
     <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
+
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="browse.html">Explore</a></li>
@@ -32,35 +32,32 @@
     </ul>
 
     <div class="actions">
-      <input type="search" placeholder="Search recipes..." />
+      <input type="search" placeholder="Search recipes..." aria-label="Search" />
 
-      <!-- FIX: type="button" -->
       <button class="upload-btn" id="uploadBtn" type="button">+ Upload a Recipe</button>
 
       <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
 
       <div id="userMenu" class="hidden">
-        <span id="userNameDisplay"></span>
+        <span id="userNameDisplay" role="button"></span>
         <div id="userDropdown" class="hidden">
           <button id="logoutBtn">Log Out</button>
         </div>
       </div>
 
       <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
-      <span id="notifBell" class="notif-bell">🔔</span>
+      <span id="notifBell" class="notif-bell" aria-label="Notifications">🔔</span>
     </div>
   </nav>
 
-  <!-- ================= NOTIF PANEL ================= -->
+  <!-- ===================== NOTIFICATION PANEL ===================== -->
   <div id="notifPanel">
     <h4>Notifications</h4>
-    <ul>
-      <li>No new notifications.</li>
-    </ul>
+    <ul><li>No new notifications.</li></ul>
     <button id="notifClose">Close</button>
   </div>
 
-  <!-- ================= MAIN ================= -->
+  <!-- ===================== MAIN CONTENT ===================== -->
   <main>
     <section>
       <h2>Upload a Recipe</h2>
@@ -68,27 +65,30 @@
 
       <div class="auth-container">
         <form id="uploadForm" class="auth-form">
-          <label>Recipe Title</label>
+
+          <label for="recipeTitle">Recipe Title</label>
           <input type="text" id="recipeTitle" required />
 
-          <label>Short Description</label>
+          <label for="recipeDesc">Short Description</label>
           <input type="text" id="recipeDesc" required />
 
-          <label>Image URL (demo only)</label>
-          <input type="url" id="recipeImage" placeholder="https://..." />
+          <label for="recipeImage">Image URL (demo only)</label>
+          <input type="url" id="recipeImage" placeholder="https://..." required />
 
-          <label>Ingredients</label>
-          <input type="text" id="recipeIngredients" placeholder="List ingredients…" />
+          <label for="recipeIngredients">Ingredients</label>
+          <textarea id="recipeIngredients" placeholder="One ingredient per line…" rows="4"></textarea>
 
-          <label>Steps</label>
-          <input type="text" id="recipeSteps" placeholder="Brief steps…" />
+          <label for="recipeSteps">Steps</label>
+          <textarea id="recipeSteps" placeholder="One step per line…" rows="4"></textarea>
 
-          <button type="submit" class="auth-btn">Upload Recipe (Demo)</button>
+          <button type="submit" class="auth-btn">Upload Recipe</button>
+
         </form>
       </div>
     </section>
   </main>
 
+  <!-- ===================== FOOTER ===================== -->
   <footer>
     © 2025 FlavorShare. Good food is best shared.
   </footer>
