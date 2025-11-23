@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FlavorShare – My Cookbook</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-  <!-- === RECIPE POPUP === -->
-  <div id="recipeModal" class="recipe-modal hidden">
-    <div class="recipe-modal-content">
-      <span id="recipeModalClose" class="close-btn">×</span>
+  <!-- ===================== RECIPE MODAL ===================== -->
+  <div id="recipeModal" class="recipe-modal hidden" aria-hidden="true">
+    <div class="recipe-modal-content" role="dialog" aria-labelledby="modalTitle">
+      <span id="recipeModalClose" class="close-btn" aria-label="Close recipe">×</span>
+
       <img id="modalImage" class="modal-image" alt="Recipe Image">
 
       <h2 id="modalTitle"></h2>
@@ -29,60 +30,64 @@
     </div>
   </div>
 
-  <!-- NAVIGATION -->
+  <!-- ===================== NAVIGATION ===================== -->
   <nav>
     <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
+
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="browse.html">Explore</a></li>
       <li><a href="my-cookbook.html" class="active" id="protectCookbook">My Cookbook</a></li>
       <li><a href="following.html" id="protectFollowing">Following</a></li>
     </ul>
+
     <div class="actions">
-      <input type="search" placeholder="Search recipes..." />
+      <input type="search" placeholder="Search recipes..." aria-label="Search your cookbook">
       <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
+
       <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
+
       <div id="userMenu" class="hidden">
-        <span id="userNameDisplay"></span>
+        <span id="userNameDisplay" role="button"></span>
         <div id="userDropdown" class="hidden">
           <button id="logoutBtn">Log Out</button>
         </div>
       </div>
+
       <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
-      <span id="notifBell" class="notif-bell">🔔</span>
+      <span id="notifBell" class="notif-bell" aria-label="Notifications">🔔</span>
     </div>
   </nav>
 
+  <!-- ===================== NOTIFICATION PANEL ===================== -->
   <div id="notifPanel">
     <h4>Notifications</h4>
-    <ul>
-      <li>No new notifications.</li>
-    </ul>
+    <ul><li>No new notifications.</li></ul>
     <button id="notifClose">Close</button>
   </div>
 
-  <!-- MAIN CONTENT -->
+  <!-- ===================== MAIN CONTENT ===================== -->
   <main>
     <section>
       <h2>My Cookbook</h2>
-      <p class="section-subtitle">All the recipes you've saved in one place.</p>
+      <p class="section-subtitle">All the recipes you've saved or uploaded.</p>
 
-      <!-- FIRST: EMPTY MESSAGE -->
+      <!-- EMPTY STATE -->
       <div id="cookbookEmpty" class="empty-state">
         <h3>Your cookbook is empty</h3>
-        <p>You haven’t saved or uploaded any recipes yet.</p>
+        <p>Save recipes or upload your own to see them here.</p>
       </div>
 
-      <!-- SECOND: GRID OF SAVED RECIPES -->
+      <!-- RECIPE GRID -->
       <div id="cookbookGrid" class="recipe-grid"></div>
     </section>
   </main>
 
+  <!-- ===================== FOOTER ===================== -->
   <footer>
     © 2025 FlavorShare. Good food is best shared.
   </footer>
 
   <script src="script.js" defer></script>
-
 </body>
 </html>
