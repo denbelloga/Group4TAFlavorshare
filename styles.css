@@ -1,16 +1,13 @@
-/* ==========================================================
-   GLOBAL RESET
-========================================================== */
+/* =============== RESET =============== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Make footer stick to bottom without covering content */
 html,
 body {
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
@@ -22,9 +19,19 @@ body {
   flex-direction: column;
 }
 
-/* ==========================================================
-   NAVBAR
-========================================================== */
+/* So footer stays at bottom on short pages */
+main {
+  max-width: 1100px;
+  margin: 40px auto 60px;
+  padding: 0 20px;
+  flex: 1;
+}
+
+/* =============== NAVBAR =============== */
+header {
+  width: 100%;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -48,6 +55,7 @@ nav {
   list-style: none;
   display: flex;
   gap: 28px;
+  flex-wrap: wrap;
 }
 
 .nav-links a {
@@ -55,6 +63,10 @@ nav {
   color: #444;
   font-weight: 600;
   font-size: 0.95rem;
+  white-space: nowrap;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .nav-links a:hover,
@@ -66,6 +78,8 @@ nav {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .actions input[type="search"] {
@@ -76,7 +90,6 @@ nav {
   font-size: 0.9rem;
 }
 
-/* Buttons in navbar */
 .upload-btn {
   border-radius: 18px;
   border: 1.5px solid #eb5424;
@@ -157,11 +170,19 @@ nav {
   border-radius: 999px;
   border: 1px solid #ccc;
   padding: 4px 10px;
+  background: #ffffff;
 }
 
-/* ==========================================================
-   NOTIFICATION PANEL
-========================================================== */
+/* =============== ACCESSIBILITY FOCUS =============== */
+a:focus-visible,
+button:focus-visible,
+.theme-toggle:focus-visible,
+.filter-pill:focus-visible {
+  outline: 2px solid #eb5424;
+  outline-offset: 2px;
+}
+
+/* =============== NOTIFICATION PANEL =============== */
 #notifPanel {
   position: fixed;
   top: 70px;
@@ -208,16 +229,10 @@ nav {
   cursor: pointer;
 }
 
-/* ==========================================================
-   HERO (HOME + LANDING)
-========================================================== */
+/* =============== HERO (HOME) =============== */
 .hero-section {
   min-height: 60vh;
-  background: linear-gradient(
-      135deg,
-      rgba(235, 84, 36, 0.9),
-      rgba(255, 167, 81, 0.9)
-    ),
+  background: linear-gradient(135deg, rgba(235, 84, 36, 0.9), rgba(255, 167, 81, 0.9)),
     url("images/Title-Image-8.webp") center/cover no-repeat;
   display: flex;
   flex-direction: column;
@@ -261,22 +276,12 @@ nav {
   font-weight: 800;
 }
 
-/* ==========================================================
-   MAIN LAYOUT
-========================================================== */
-main {
-  max-width: 1100px;
-  width: 100%;
-  margin: 40px auto 60px;
-  padding: 0 20px;
-  flex: 1 0 auto;
-}
-
+/* =============== MAIN TITLES =============== */
 main h2 {
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.1rem; /* slightly larger hierarchy */
   color: #eb5424;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .section-subtitle {
@@ -287,9 +292,7 @@ main h2 {
   margin: 0 auto 24px;
 }
 
-/* ==========================================================
-   RECIPE GRID & CARDS
-========================================================== */
+/* =============== RECIPE GRID & CARDS =============== */
 .recipe-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -305,11 +308,19 @@ main h2 {
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.recipe-card:hover,
+.recipe-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
 }
 
 .recipe-card img {
   width: 100%;
-  height: 170px;
+  height: auto;
+  aspect-ratio: 4 / 3; /* keeps card images consistent */
   object-fit: cover;
 }
 
@@ -362,6 +373,10 @@ main h2 {
   cursor: pointer;
 }
 
+.primary-btn:hover {
+  background: #d6491e;
+}
+
 .icon-btn {
   border-radius: 999px;
   border: none;
@@ -371,9 +386,7 @@ main h2 {
   cursor: pointer;
 }
 
-/* ==========================================================
-   FILTER PILL ROW (BROWSE)
-========================================================== */
+/* =============== FILTERS (Explore) =============== */
 .filter-row {
   display: flex;
   flex-wrap: wrap;
@@ -389,6 +402,7 @@ main h2 {
   padding: 4px 10px;
   font-size: 0.8rem;
   cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
 .filter-pill:hover,
@@ -398,9 +412,7 @@ main h2 {
   border-color: #eb5424;
 }
 
-/* ==========================================================
-   EMPTY STATES
-========================================================== */
+/* =============== EMPTY STATE + CTA =============== */
 .empty-state {
   text-align: center;
   margin-top: 26px;
@@ -412,16 +424,29 @@ main h2 {
   margin-bottom: 4px;
 }
 
-/* ==========================================================
-   AUTH PAGES (Sign-in, Sign-up, Forgot, Reset, Upload form)
-========================================================== */
+.primary-link-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: #eb5424;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.primary-link-btn:hover {
+  background: #d6491e;
+}
+
+/* =============== AUTH PAGES =============== */
 .auth-body {
   background: radial-gradient(circle at top left, #ffe1cd, #fff8f0);
-  min-height: 100%;
 }
 
 .auth-container {
-  max-width: 400px;
+  max-width: 380px;
   margin: 80px auto 60px;
   background: #ffffff;
   border-radius: 16px;
@@ -455,17 +480,13 @@ main h2 {
   font-weight: 600;
 }
 
-.auth-form input,
-.auth-form textarea {
+.auth-form input {
   width: 100%;
   padding: 8px 10px;
   margin: 6px 0 12px;
   border-radius: 10px;
   border: 1px solid #cccccc;
   font-size: 0.9rem;
-  font-family: inherit;
-  resize: vertical;
-  min-height: 40px;
 }
 
 .auth-btn {
@@ -481,6 +502,10 @@ main h2 {
   margin-top: 4px;
 }
 
+.auth-btn:hover {
+  background: #d6491e;
+}
+
 .auth-link {
   text-align: center;
   margin-top: 10px;
@@ -493,6 +518,10 @@ main h2 {
   font-weight: 700;
 }
 
+.auth-link a:hover {
+  text-decoration: underline;
+}
+
 .auth-error {
   font-size: 0.8rem;
   color: #c0392b;
@@ -500,21 +529,17 @@ main h2 {
   margin-top: 4px;
 }
 
-/* ==========================================================
-   FOOTER (STICKY TO BOTTOM)
-========================================================== */
+/* =============== FOOTER =============== */
 footer {
   text-align: center;
   padding: 16px;
+  margin-top: 40px;
   background: #222;
   color: #f1f1f1;
   font-size: 0.85rem;
-  margin-top: auto;
 }
 
-/* ==========================================================
-   DARK MODE
-========================================================== */
+/* =============== DARK MODE =============== */
 body.dark-mode {
   background: #121212;
   color: #f1f1f1;
@@ -576,19 +601,16 @@ body.dark-mode #userDropdown button {
 body.dark-mode .theme-toggle {
   border-color: #555;
   color: #f1f1f1;
+  background: #2a2a2a;
 }
 
 /* dark: hero overlay a bit darker */
 body.dark-mode .hero-section {
-  background: linear-gradient(
-      135deg,
-      rgba(10, 10, 10, 0.9),
-      rgba(40, 40, 40, 0.9)
-    ),
+  background: linear-gradient(135deg, rgba(10, 10, 10, 0.9), rgba(40, 40, 40, 0.9)),
     url("images/Title-Image-8.webp") center/cover no-repeat;
 }
 
-/* dark: cards, panels, auth */
+/* dark: cards, panels */
 body.dark-mode .recipe-card,
 body.dark-mode .auth-container,
 body.dark-mode #notifPanel {
@@ -617,55 +639,16 @@ body.dark-mode .icon-btn {
   color: #ffb089;
 }
 
+body.dark-mode .primary-link-btn {
+  background: #ff8b53;
+  color: #1a1a1a;
+}
+
 body.dark-mode footer {
   background: #0c0c0c;
 }
 
-/* Auth dark-mode tweaks */
-body.dark-mode .auth-body {
-  background: radial-gradient(circle at top left, #3a2418, #121212);
-}
-
-/* ==========================================================
-   RESPONSIVE
-========================================================== */
-@media (max-width: 840px) {
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .nav-links {
-    gap: 16px;
-  }
-
-  .hero-section {
-    padding: 50px 16px 60px;
-  }
-}
-
-@media (max-width: 600px) {
-  .hero-section h1 {
-    font-size: 2.2rem;
-  }
-
-  .hero-section p {
-    font-size: 0.9rem;
-  }
-
-  .actions input[type="search"] {
-    width: 150px;
-  }
-
-  .recipe-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ==========================================================
-   SUCCESS POPUP + OVERLAY (UPLOAD)
-========================================================== */
+/* =============== SUCCESS POPUP =============== */
 .success-popup {
   position: fixed;
   bottom: 30px;
@@ -686,6 +669,7 @@ body.dark-mode .auth-body {
   opacity: 1;
 }
 
+/* ========== SUCCESS OVERLAY ========== */
 .success-overlay {
   position: fixed;
   inset: 0;
@@ -713,7 +697,7 @@ body.dark-mode .auth-body {
   animation: popIn 0.4s ease forwards;
 }
 
-.dark-mode .success-box {
+body.dark-mode .success-box {
   background: #222;
   color: white;
 }
@@ -749,7 +733,7 @@ body.dark-mode .auth-body {
 }
 
 /* ==========================================================
-   RECIPE MODAL (BROWSE + COOKBOOK)
+   RECIPE MODAL
 ========================================================== */
 .recipe-modal {
   position: fixed;
@@ -757,7 +741,7 @@ body.dark-mode .auth-body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7); /* dark overlay */
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -774,20 +758,15 @@ body.dark-mode .auth-body {
   background: #ffffff;
   width: 95%;
   max-width: 850px;
-  max-height: 90vh;
   border-radius: 16px;
-  padding: 25px 32px 28px;
+  padding: 25px 32px;
   position: relative;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
   animation: modalFadeUp 0.25s ease-out;
-  overflow-y: auto;
 }
 
-/* modal image */
 .modal-image {
   width: 100%;
-  max-height: 280px;
-  object-fit: cover;
   border-radius: 12px;
   margin-bottom: 20px;
 }
@@ -795,9 +774,9 @@ body.dark-mode .auth-body {
 /* close button */
 .close-btn {
   position: absolute;
-  top: 14px;
-  right: 20px;
-  font-size: 28px;
+  top: 18px;
+  right: 22px;
+  font-size: 32px;
   color: #333;
   cursor: pointer;
   font-weight: bold;
@@ -844,7 +823,7 @@ body.dark-mode .auth-body {
   }
 }
 
-/* Modal dark-mode */
+/* DARK MODE FOR MODAL */
 body.dark-mode .recipe-modal-content {
   background: #1e1e1e !important;
   color: #f5f5f5 !important;
@@ -871,4 +850,57 @@ body.dark-mode .close-btn {
 
 body.dark-mode .close-btn:hover {
   color: #ff6b6b !important;
+}
+
+/* =============== RESPONSIVE =============== */
+@media (max-width: 840px) {
+  nav {
+    padding: 10px 16px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .actions input[type="search"] {
+    width: 160px;
+  }
+
+  .nav-links {
+    gap: 16px;
+  }
+
+  .hero-section h1 {
+    font-size: 2.4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-section {
+    padding: 40px 16px 50px;
+  }
+
+  .hero-section h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-section p {
+    font-size: 0.9rem;
+  }
+
+  .actions input[type="search"] {
+    width: 140px;
+  }
+
+  .recipe-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recipe-modal-content {
+    padding: 18px 16px;
+  }
 }
