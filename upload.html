@@ -6,7 +6,6 @@
   <title>FlavorShare – Upload Recipe</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
 
   <!-- SUCCESS POPUP -->
@@ -22,45 +21,48 @@
   </div>
 
   <!-- NAV -->
-  <nav>
-    <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="browse.html">Explore</a></li>
-      <li><a href="my-cookbook.html" id="protectCookbook">My Cookbook</a></li>
-      <li><a href="following.html" id="protectFollowing">Following</a></li>
-    </ul>
+  <header>
+    <nav aria-label="Main navigation">
+      <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="browse.html">Explore</a></li>
+        <li><a href="my-cookbook.html" id="protectCookbook">My Cookbook</a></li>
+        <li><a href="following.html" id="protectFollowing">Following</a></li>
+      </ul>
 
-    <div class="actions">
-      <input type="search" placeholder="Search recipes..." />
-      <button class="upload-btn" id="uploadBtn" type="button">+ Upload a Recipe</button>
-      <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
+      <div class="actions">
+        <input type="search" placeholder="Search recipes..." aria-label="Search recipes" />
+        <button class="upload-btn" id="uploadBtn" type="button">+ Upload a Recipe</button>
 
-      <div id="userMenu" class="hidden">
-        <span id="userNameDisplay"></span>
-        <div id="userDropdown" class="hidden">
-          <button id="logoutBtn">Log Out</button>
+        <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
+
+        <div id="userMenu" class="hidden">
+          <span id="userNameDisplay"></span>
+          <div id="userDropdown" class="hidden">
+            <button id="logoutBtn" type="button">Sign Out</button>
+          </div>
         </div>
+
+        <button id="themeToggle" class="theme-toggle" type="button">🌙 Dark</button>
+        <span id="notifBell" class="notif-bell" aria-label="Notifications" role="button">🔔</span>
       </div>
+    </nav>
+  </header>
 
-      <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
-      <span id="notifBell" class="notif-bell">🔔</span>
-    </div>
-  </nav>
-
-  <!-- NOTIFICATION PANEL -->
-  <div id="notifPanel">
+  <!-- NOTIF PANEL -->
+  <div id="notifPanel" role="region" aria-label="Notifications">
     <h4>Notifications</h4>
     <ul>
       <li>No new notifications.</li>
     </ul>
-    <button id="notifClose">Close</button>
+    <button id="notifClose" type="button">Close</button>
   </div>
 
   <!-- MAIN -->
   <main>
-    <section>
-      <h2>Upload a Recipe</h2>
+    <section aria-labelledby="upload-heading">
+      <h2 id="upload-heading">Upload a Recipe</h2>
       <p class="section-subtitle">Share your favorite dish with the FlavorShare community.</p>
 
       <div class="auth-container">
@@ -72,13 +74,13 @@
           <input type="text" id="recipeDesc" required />
 
           <label for="recipeImage">Image URL (demo only)</label>
-          <input type="url" id="recipeImage" placeholder="https://..." required />
+          <input type="url" id="recipeImage" placeholder="https://..." />
 
           <label for="recipeIngredients">Ingredients</label>
-          <textarea id="recipeIngredients" placeholder="One ingredient per line…" rows="4"></textarea>
+          <input type="text" id="recipeIngredients" placeholder="List ingredients…" />
 
           <label for="recipeSteps">Steps</label>
-          <textarea id="recipeSteps" placeholder="One step per line…" rows="4"></textarea>
+          <input type="text" id="recipeSteps" placeholder="Brief steps…" />
 
           <button type="submit" class="auth-btn">Upload Recipe (Demo)</button>
         </form>
