@@ -2,65 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FlavorShare – Following</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
 
-  <!-- ===================== NAVIGATION ===================== -->
-  <nav>
-    <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
-
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="browse.html">Explore</a></li>
-      <li><a href="my-cookbook.html" id="protectCookbook">My Cookbook</a></li>
-      <li><a href="following.html" class="active" id="protectFollowing">Following</a></li>
-    </ul>
-
-    <div class="actions">
-      <input type="search" placeholder="Search recipes..." aria-label="Search" />
-      <button class="upload-btn" id="uploadBtn">+ Upload a Recipe</button>
-
-      <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
-
-      <div id="userMenu" class="hidden">
-        <span id="userNameDisplay" role="button"></span>
-        <div id="userDropdown" class="hidden">
-          <button id="logoutBtn">Log Out</button>
+  <header>
+    <nav aria-label="Main navigation">
+      <div class="logo" onclick="location.href='index.html'">FlavorShare</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="browse.html">Explore</a></li>
+        <li><a href="my-cookbook.html" id="protectCookbook">My Cookbook</a></li>
+        <li><a href="following.html" class="active" id="protectFollowing">Following</a></li>
+      </ul>
+      <div class="actions">
+        <input type="search" placeholder="Search recipes..." aria-label="Search recipes" />
+        <button class="upload-btn" id="uploadBtn" type="button">+ Upload a Recipe</button>
+        <a href="sign-in.html" class="sign-in-btn" id="signInBtn">Sign In</a>
+        <div id="userMenu" class="hidden">
+          <span id="userNameDisplay"></span>
+          <div id="userDropdown" class="hidden">
+            <button id="logoutBtn" type="button">Sign Out</button>
+          </div>
         </div>
+        <button id="themeToggle" class="theme-toggle" type="button">🌙 Dark</button>
+        <span id="notifBell" class="notif-bell" aria-label="Notifications" role="button">🔔</span>
       </div>
+    </nav>
+  </header>
 
-      <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
-      <span id="notifBell" class="notif-bell" aria-label="Notifications">🔔</span>
-    </div>
-  </nav>
-
-  <!-- ===================== NOTIFICATION PANEL ===================== -->
-  <div id="notifPanel">
+  <div id="notifPanel" role="region" aria-label="Notifications">
     <h4>Notifications</h4>
-    <ul><li>No new notifications.</li></ul>
-    <button id="notifClose">Close</button>
+    <ul>
+      <li>No new notifications.</li>
+    </ul>
+    <button id="notifClose" type="button">Close</button>
   </div>
 
-  <!-- ===================== MAIN CONTENT ===================== -->
   <main>
-    <section>
-      <h2>Following</h2>
+    <section aria-labelledby="following-heading">
+      <h2 id="following-heading">Following</h2>
       <p class="section-subtitle">
-        When you follow a cook, their newest recipes will appear here.
+        When you start following other cooks, their latest recipes will appear here.
       </p>
 
       <div class="empty-state">
-        <h3>You’re not following anyone yet</h3>
-        <p>Explore more recipes and follow your favorite creators.</p>
+        <h3>You're not following anyone yet</h3>
+        <p>Discover community recipes and follow your favorite cooks.</p>
+        <a href="browse.html" class="primary-link-btn">Explore recipes</a>
       </div>
     </section>
   </main>
 
-  <!-- ===================== FOOTER ===================== -->
   <footer>
     © 2025 FlavorShare. Good food is best shared.
   </footer>
