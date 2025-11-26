@@ -77,6 +77,7 @@ script.js
 
 ### **Links**
 Video Walkthrough: https://drive.google.com/file/d/1U_qaQEFJ3ygp3Kfnwy5nT53VSf4SW4j0/view?usp=sharing
+
 Git Page: https://denbelloga.github.io/Group4TAFlavorshare/
 
 ```
